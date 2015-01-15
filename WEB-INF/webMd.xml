@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ Esri Inc. licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>METADATA</display-name>
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.esri.gpt.control.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>*.page</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>MultipartFilter</filter-name>
+    <filter-class>com.esri.gpt.control.filter.MultipartFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>MultipartFilter</filter-name>
+    <url-pattern>/catalog/publication/uploadMetadata.page</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>MultipartFilter</filter-name>
+    <url-pattern>/catalog/publication/validateMetadata.page</url-pattern>
+  </filter-mapping>
+  <context-param>
+    <param-name>javax.faces.CONFIG_FILES</param-name>
+    <param-value>/WEB-INF/faces-config.xml, /WEB-INF/gpt-faces-config.xml</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>chainConfig</param-name>
+      <param-value>org/apache/struts/tiles/chain-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>InitializationServlet</servlet-name>
+    <servlet-class>com.esri.gpt.framework.context.InitializationServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>ThumbnailServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.view.ThumbnailServlet</servlet-class>
+  </servlet>
+	<servlet>
+		<servlet-name>WAFerAdapterServlet</servlet-name>
+		<servlet-class>WAFerAdapterServlet</servlet-class>
+	</servlet>
+  <servlet>
+    <servlet-name>ServletConnector</servlet-name>
+    <servlet-class>com.esri.gpt.control.arcims.ServletConnector</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RestQueryServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.georss.RestQueryServlet</servlet-class>
+    <init-param>
+      <param-name>bundleBaseName</param-name>
+      <param-value>gpt.resources.gpt</param-value>
+    </init-param>
+    <load-on-startup>6</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>RestrictedRestQueryServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.georss.RestQueryServlet</servlet-class>
+    <init-param>
+      <param-name>bundleBaseName</param-name>
+      <param-value>gpt.resources.gpt</param-value>
+    </init-param>
+    <load-on-startup>7</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>REST servlet.</description>
+    <display-name>REST servlet</display-name>
+    <servlet-name>ESRIRestServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.rest.RestServlet</servlet-class>
+    <init-param>
+      <param-name>bundleBaseName</param-name>
+      <param-value>gpt.resources.gpt</param-value>
+    </init-param>
+    <load-on-startup>8</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>ManageDocumentServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.rest.ManageDocumentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>IndexStatsServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.rest.IndexStatsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RestRepositoriesServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.rest.repositories.RepositoriesServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OpenSearchDescription</servlet-name>
+    <servlet-class>com.esri.gpt.control.rest.OpenSearchDescriptionServlet</servlet-class>
+  </servlet>
+      <servlet>
+        <servlet-name>InnoRestServletMd</servlet-name>
+        <servlet-class>InnoRestServletMd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InnoRestQueryServlet</servlet-name>
+        <servlet-class>InnoRestQueryServlet</servlet-class>
+    	<init-param>
+      		<param-name>defaultMaxRecords</param-name>
+      		<param-value>3</param-value>
+    	</init-param>
+    </servlet>
+
+
+    <servlet>
+        <servlet-name>UploadDataGov</servlet-name>
+        <servlet-class>com.innovateteam.gpt.UploadDataGov</servlet-class>
+    </servlet>
+
+	<servlet>
+		<servlet-name>GDGSSOLogout</servlet-name>
+		<jsp-file>/logout.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GDGSSOLogout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.page</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SimpleSOSBridge</servlet-name>
+    <servlet-class>com.esri.gpt.control.livedata.sos.SimpleSOSBridge</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ThumbnailServlet</servlet-name>
+    <url-pattern>/thumbnail</url-pattern>
+  </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>WAFerAdapterServlet</servlet-name>
+		<url-pattern>/waf</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletConnector</servlet-name>
+    <url-pattern>/com.esri.esrimap.Esrimap</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletConnector</servlet-name>
+    <url-pattern>/servlet/com.esri.esrimap.Esrimap</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ESRIRestServlet</servlet-name>
+        <url-pattern>/RestServlet</url-pattern>
+    </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ESRIRestServlet</servlet-name>
+    <url-pattern>/ESRIRestServlet/*</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet-mapping>
+    <servlet-name>RestQueryServlet</servlet-name>
+    <url-pattern>/RestQueryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RestQueryServlet</servlet-name>
+    <url-pattern>/sitemap</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RestrictedRestQueryServlet</servlet-name>
+    <url-pattern>/restricted/rest/find/document/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InnoRestServletMd</servlet-name>
+    <url-pattern>/rest/document/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ESRIRestServlet</servlet-name>
+    <url-pattern>/sitemap/document/*</url-pattern>
+  </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UploadDataGov</servlet-name>
+        <url-pattern>/catalog/publication/UploadDataGov/</url-pattern>
+    </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ManageDocumentServlet</servlet-name>
+    <url-pattern>/rest/manage/document/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IndexStatsServlet</servlet-name>
+    <url-pattern>/rest/index/stats/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+
+    <servlet-name>InnoRestQueryServlet</servlet-name>
+    <url-pattern>/rest/find/document/*</url-pattern>
+  </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>InnoRestQueryServlet</servlet-name>
+        <url-pattern>/rest/find/document.kml/*</url-pattern>
+    </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>RestrictedRestQueryServlet</servlet-name>
+    <url-pattern>/restricted/rest/find/document/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>InnoRestServletMd</servlet-name>
+    <url-pattern>/rest/document/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>InnoRestServletMd</servlet-name>
+    <url-pattern>/rest/document.csv/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>RestRepositoriesServlet</servlet-name>
+    <url-pattern>/rest/repositories/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OpenSearchDescription</servlet-name>
+    <url-pattern>/openSearchDescription</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SimpleSOSBridge</servlet-name>
+    <url-pattern>/SimpleSOSBridge</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DistributedSearchServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.rest.search.DistributedSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DistributedSearchServlet</servlet-name>
+    <url-pattern>/rest/distributed</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CswServlet</servlet-name>
+    <servlet-class>com.esri.gpt.server.csw.provider.CswServlet</servlet-class>
+    <init-param>
+      <param-name>cswSubContextPath</param-name>
+      <param-value>/csw</param-value>
+    </init-param>
+    <init-param>
+      <param-name>resourceFilePrefix</param-name>
+      <param-value>gpt/metadata/csw</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw/discovery</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw/discovery/soap</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw202/discovery</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw202/discovery/soap</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw/publication</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw/publication/soap</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw202/publication</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CswServlet</servlet-name>
+    <url-pattern>/csw202/publication/soap</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AsnServlet</servlet-name>
+    <servlet-class>com.esri.gpt.server.assertion.AsnServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AsnServlet</servlet-name>
+    <url-pattern>/assertion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AsnServlet</servlet-name>
+    <url-pattern>/assertion/operations</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Used to generate the browse table of contents</description>
+    <display-name>TocServlet</display-name>
+    <servlet-name>TocServlet</servlet-name>
+    <servlet-class>com.esri.gpt.control.search.browse.TocServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TocServlet</servlet-name>
+    <url-pattern>/browse/toc</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>OpenidConsumerServlet</servlet-name>
+    <servlet-class>com.esri.gpt.framework.security.identity.open.OpenidConsumerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OpenidConsumerServlet</servlet-name>
+    <url-pattern>/openid</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+<resource-ref>
+  <description>Jndi jdbc for gptlv10</description>
+  <res-ref-name>jdbc/gptlv10</res-ref-name>
+  <res-type>javax.sql.DataSource</res-type>
+  <res-auth>Container</res-auth>
+  <res-driverClassName>org.postgresql.Driver</res-driverClassName>
+  <res-url>jdbc:postgresql://localhost:5433/postgres</res-url>
+  <res-username>gptlv10</res-username>
+  <res-password>RTPedg01</res-password>
+</resource-ref>
+  <welcome-file-list>
+    <welcome-file>catalog/main/home.page</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>savedSearch</display-name>
+    <servlet-name>savedSearch</servlet-name>
+    <servlet-class>com.esri.gpt.control.search.ServletSavedSearch</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>savedSearch</servlet-name>
+    <url-pattern>/savedSearch</url-pattern>
+  </servlet-mapping>
+</web-app>

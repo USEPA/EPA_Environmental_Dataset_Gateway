@@ -1,0 +1,4 @@
+# pack-refs with: peeled fully-peeled 
+8ab5f8b87c2f87d12563dccada7a1382ce8c30c9 refs/remotes/origin/Buzzard
+284f2f1287a313afd357521bdf9258097c7714c0 refs/remotes/origin/Staging
+8ab5f8b87c2f87d12563dccada7a1382ce8c30c9 refs/remotes/origin/master
