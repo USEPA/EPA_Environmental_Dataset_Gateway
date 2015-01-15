@@ -1443,3 +1443,104 @@ img.datepicker_trigger {
   margin-right: 0em; 
   vertical-align: top;  
 }
+.openstreetmap {
+  position: absolute;
+  bottom: 0px;
+  right: 45px;
+  color: grey;
+  font-size: xx-small;
+}
+.openstreetmapPreview {
+  position: absolute;
+  bottom: 40px;
+  right: 75px;
+  color: grey;
+  font-size: xx-small;
+}
+.user{
+  border-style: solid;
+}
+#user-search-results {
+	width: 100%;
+	height: 380px;
+	overflow: auto;
+	border: 1px solid #ccc;	
+}
+#user-search-results A {
+	margin: 0 1em 0 0;
+	font-size: 1.1em;
+}
+#user-search-results .current {
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	border-bottom: none;
+}
+#user-search-results a:visited {
+  color:#AE4F0C;
+}
+#user-search-results a.current:visited {
+  color:#000;
+}
+#user-current-title{
+  width:65%; 
+  padding-left:20px;
+}
+#user-current{
+  vertical-align: top; 
+}
+#user-managed-td {
+	vertical-align: top;
+}
+#user-managed{
+  width:65%; 
+  padding-left:20px;
+}
+#user-search {
+  width:30%; 
+}
+.user-Name {
+  font-size:1.5em;
+  color:#8A8E27;
+  font-family:"Trebuchet MS",Helvetica,Arial,Geneva,sans-serif;
+  font-weight:normal;
+}
+.agp2agpCaption {
+  font-weight: bold;
+  display: table-cell;
+  padding-top: 10px;
+}
+#harvestCreate .timePoints {
+  min-height: 110px;
+  max-height: 110px;
+  min-width: 350px;
+  border: lightgrey solid 1px;
+  width: 350px;
+  margin-bottom: 10px;
+  overflow-y: scroll;
+}
+#timeDialog .dijitArrowButton {
+  height: 18px;
+}
+#timeDialog #buttonsDiv {
+  margin-top: 10px;
+}
+#harvestCreate .timePointDiv {
+  padding: 2px;
+}
+#harvestCreate .timePointSpan {
+}
+#harvestCreate .timePointDelete {
+  float: right;
+  cursor: pointer;
+  background-image: url(images/Preview_Decline_16.png);
+  width: 16px;
+  height: 16px;
+}
+#harvestCreate .hint {
+  font-size: x-small;
+}
+#harvestCreate .hint .hint-text {
+}
+#harvestCreate .hint .hint-example {
+}
