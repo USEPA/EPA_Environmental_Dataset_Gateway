@@ -24,7 +24,7 @@
 	com.esri.gpt.framework.context.RequestContext schContext = com.esri.gpt.framework.context.RequestContext.extract(request);
 	com.esri.gpt.catalog.context.CatalogConfiguration schCatalogCfg = schContext.getCatalogConfiguration();
 	com.esri.gpt.framework.collection.StringAttributeMap schParameters = schCatalogCfg.getParameters();
-	boolean hasSearchHint = false;
+	boolean hasSearchHint = true;
 	if(schParameters.containsKey("catalog.searchCriteria.hasSearchHint")){	
 		String schHasSearchHint = com.esri.gpt.framework.util.Val.chkStr(schParameters.getValue("catalog.searchCriteria.hasSearchHint"));
 		hasSearchHint = Boolean.valueOf(schHasSearchHint);
@@ -1797,7 +1797,7 @@
 
   <% // map %>
   <h:panelGrid id="pnlMap">
-    <h:panelGroup id="mapToolbar" styleClass="mapToolbar" style="display:none">
+    <h:panelGroup id="mapToolbar" styleClass="mapToolbar">
       <h:outputLabel for="mapInput-locate" value="#{gptMsg['catalog.search.search.lblLocator']}"/>
       <h:inputText id="mapInput-locate" styleClass="locatorInput"
                    maxlength="1024" onkeypress="return scMap.onLocatorKeyPress(event);"/>
