@@ -505,7 +505,7 @@
     -->
     <!--identity encKey="PtkESRI" realm="Geoportal"-->
 	<identity encKey="PtkESRI">  
-        <!--
+        
         <simpleAdapter>
             <account username="gptadmin" password="Innovate4fun!" encrypted="false"/>
             <roles>
@@ -514,8 +514,8 @@
                 <role key="gptAdministrator"/>
             </roles>
         </simpleAdapter>
-         -->
-
+         
+	<!--
 	 <ldapAdapter>
      
          <ldapConnectionProperties
@@ -709,6 +709,7 @@
           groupDN="cn=GDG-OP,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
           </groups>
         </ldapAdapter>
+		-->
  </identity>
     
   
