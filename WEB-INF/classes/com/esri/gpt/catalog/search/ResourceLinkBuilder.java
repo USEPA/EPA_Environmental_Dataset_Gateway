@@ -63,7 +63,7 @@ public class ResourceLinkBuilder {
     private static final Logger LOG = Logger.getLogger(ResourceLinkBuilder.class.getCanonicalName());
     /** instance variables ====================================================== */
     private String baseContextPath = "";
-    private final String externalMetadataPath = "/catalog/search/dsFullMetadata.page";
+protected final String              externalMetadataPath = "/catalog/search/dsFullMetadata.page";
     private final String imagePath = "/catalog/images";
     private String mapViewerUrl = "";
     private final String metadataPath = "/rest/document";
@@ -341,8 +341,9 @@ protected void setBaseContextPath(String path) {
         String url;
         String resourceKey;
         ResourceLink link;
+  Pattern maplayer = Pattern.compile("/\\d+$");
 
-        if ((restUrl.length() > 0) && serviceType.equals("ags")) {
+  if ((restUrl.length() > 0) && serviceType.equals("ags") && !maplayer.matcher(resourceUrl).find() ) {
 
     // kml
     if (xRecord.getLinks().readShowLink(ResourceLink.TAG_AGSKML)

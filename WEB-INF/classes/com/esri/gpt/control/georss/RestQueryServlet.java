@@ -18,6 +18,7 @@ import com.esri.gpt.catalog.discovery.SpatialClause;
 import com.esri.gpt.catalog.discovery.rest.RestQuery;
 import com.esri.gpt.catalog.discovery.rest.RestQueryParser;
 import com.esri.gpt.catalog.search.ASearchEngine;
+import com.esri.gpt.catalog.search.CswResourceLinkBuilder;
 import com.esri.gpt.catalog.search.GetRecordsGenerator;
 import com.esri.gpt.catalog.search.ISearchFilterSpatialObj;
 import com.esri.gpt.catalog.search.OpenSearchProperties;
@@ -37,12 +38,20 @@ import com.esri.gpt.catalog.search.SearchFilterThemeTypes;
 import com.esri.gpt.catalog.search.SearchFiltersList;
 import com.esri.gpt.catalog.search.SearchResult;
 import com.esri.gpt.catalog.search.SearchResultRecords;
+import com.esri.gpt.control.georss.dcatcache.DcatCache;
+import com.esri.gpt.control.georss.dcatcache.DcatCacheUpdateRequest;
 import com.esri.gpt.framework.context.BaseServlet;
 import com.esri.gpt.framework.context.RequestContext;
 import com.esri.gpt.framework.jsf.FacesContextBroker;
 import com.esri.gpt.framework.jsf.MessageBroker;
 import com.esri.gpt.framework.util.Val;
 import com.esri.gpt.server.csw.provider.local.CoreQueryables;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -226,6 +235,7 @@ public class RestQueryServlet extends BaseServlet {
     SearchCriteria criteria = this.toSearchCriteria(request, context, query);
     SearchResult result = new SearchResult();
     String rid = Val.chkStr(query.getRepositoryId());
+    CswContext cswContext = CswContext.create(query.getCswUrl(), query.getCswProfile());
     RestQueryServlet.ResponseFormat format = getResponseFormat(request, query);
 
     boolean isJavascriptEnabled =
@@ -248,13 +258,14 @@ public class RestQueryServlet extends BaseServlet {
     } else {
       context.setViewerExecutesJavascript(false);
     }
-    ResourceLinkBuilder rBuild = ResourceLinkBuilder.newBuilder(context,
-            request, messageBroker);
+    ResourceLinkBuilder rBuild = cswContext==null?
+      ResourceLinkBuilder.newBuilder(context,request, messageBroker):
+      CswResourceLinkBuilder.newBuilder(context,cswContext,request, messageBroker);
 
 
 
     // handle a request against the local repository
-    if ((rid.length() == 0) || rid.equalsIgnoreCase("local")) {
+    if ((rid.length() == 0 || rid.equalsIgnoreCase("local")) && cswContext==null ) {
 
       // generate the CSW request string
       String cswRequest = "";
@@ -276,7 +287,11 @@ public class RestQueryServlet extends BaseServlet {
 
       // create the criteria, execute the query
       int iSearchTime = Val.chkInt(request.getParameter("maxSearchTimeMilliSec"), -1);
+      if (cswContext!=null) {
+        engine = SearchEngineFactory.createSearchEngine(criteria, result, context, cswContext, messageBroker);
+      } else {
       engine = SearchEngineFactory.createSearchEngine(criteria, result, context, rid, messageBroker);
+      }
       engine.setResourceLinkBuilder(rBuild);
       if (iSearchTime > 0) {
         engine.setConnectionTimeoutMs(iSearchTime);
@@ -373,7 +388,7 @@ public class RestQueryServlet extends BaseServlet {
         break;
       case dcat:
         response.setContentType("application/json;charset=UTF-8");
-        response.setHeader("Content-disposition", "attachment; filename=\"dcat.json\"");
+        //response.setHeader("Content-disposition", "attachment; filename=\"dcat.json\"");
         break;
       case json:
         response.setContentType("application/json;charset=UTF-8");
@@ -492,7 +507,8 @@ public class RestQueryServlet extends BaseServlet {
       
       // Normalized DCAT JSON writer
     } else if (format.equals(RestQueryServlet.ResponseFormat.dcat)) {
-      DcatJsonFeedWriter jsonWriter = new DcatJsonFeedWriter(request, context, printWriter, query, true);
+      DcatJsonFeedWriterFactory factory = DcatJsonFeedWriterFactory.getInstance();
+      DcatJsonFeedWriter jsonWriter = factory.create(request, context, printWriter, query);
       jsonWriter.setMessageBroker(messageBroker);
       return jsonWriter;
       
@@ -571,6 +587,8 @@ public class RestQueryServlet extends BaseServlet {
     }
 
     parser.parseRepositoryId("rid");
+    parser.parseCswUrl("cswUrl");
+    parser.parseCswProfile("cswProfile");
     parser.parseResponseFormat("f");
     parser.parseResponseGeometry("geometryType");
     parser.parseResponseStyle("style");
