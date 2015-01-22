@@ -15,8 +15,10 @@
 package com.esri.gpt.catalog.management;     
 import com.esri.gpt.catalog.arcims.ImsMetadataAdminDao;
 import com.esri.gpt.catalog.context.CatalogConfiguration;
+import com.esri.gpt.catalog.discovery.DiscoveryException;
 import com.esri.gpt.catalog.harvest.repository.HrRecord.HarvestFrequency;
 import com.esri.gpt.catalog.harvest.repository.HrRecord.RecentJobStatus;
+import com.esri.gpt.catalog.harvest.repository.HrSelectRequest;
 import com.esri.gpt.catalog.management.MmdEnums.PublicationMethod;
 import com.esri.gpt.framework.collection.StringAttributeMap;
 import com.esri.gpt.framework.context.RequestContext;
@@ -45,6 +47,11 @@ import java.util.TreeMap;
 import javax.naming.NamingException;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.lucene.queryParser.ParseException;
+import com.esri.gpt.control.webharvest.protocol.ProtocolParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.xml.sax.SAXException;
 
 /**
@@ -61,6 +68,7 @@ private boolean                 enableEditForAllPubMethods = false;
 private boolean                 isGptAdministrator;
 private String                  tblImsUser;
 private HashMap<String, String> hmEditablePublishers = new HashMap<String, String>();
+private static final Logger LOGGER = Logger.getLogger(MmdQueryRequest.class.getCanonicalName());
 
 
 // constructors ================================================================
@@ -477,8 +485,11 @@ private void readRecord(ResultSet rs, MmdRecord record, String ownername) throws
     record.setHarvestFrequency(HarvestFrequency.checkValueOf(frequency));
   record.setSendNotification(Val.chkBool(rs.getString(n++), false));
   String protocol = Val.chkStr(rs.getString(n++));
-  if (protocol.length()>0)
+  try {
     record.setProtocol(getApplicationConfiguration().getProtocolFactories().parseProtocol(protocol));
+  } catch (ProtocolParseException ex) {
+    LOGGER.log(Level.INFO, "Error setProtocol", ex);
+  }
 
   // set the editable status
   boolean isEditor = record.getPublicationMethod().equalsIgnoreCase(PublicationMethod.editor.name());
