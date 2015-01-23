@@ -373,7 +373,10 @@
   
   <property-meaning name="fgdc.multidate" valueType="Timestamp" comparisonType="value">
   </property-meaning>
-  
+  <property-meaning name="dcat.programCode" valueType="String" comparisonType="value">
+  </property-meaning>  
+  <property-meaning name="dcat.accessLevel" valueType="String" comparisonType="value">
+  </property-meaning>  
   <property-meaning name="dcat.accessLevelComment" valueType="String" comparisonType="value">
   </property-meaning>
   <property-meaning name="dcat.mbox" valueType="String" comparisonType="value">
@@ -388,8 +391,10 @@
   </property-meaning>
   <property-meaning name="dcat.publisher" valueType="String" comparisonType="value">
   </property-meaning>  
- <property-meaning name="dcat.accessUrl" valueType="String" comparisonType="value">
+  <property-meaning name="dcat.accessUrl" valueType="String" comparisonType="value">
   </property-meaning>  
+  <property-meaning name="dcat.webService" valueType="String" comparisonType="value">
+  </property-meaning> 
    <property-meaning name="dcat.format" valueType="String" comparisonType="value">
   </property-meaning>  
 <!--Added by Torrin Hultgren 2/21/13 to include "Optional" dcat components-->
@@ -408,5 +413,5 @@
      <property-meaning name="dcat.landingPage" valueType="String" comparisonType="value">
   </property-meaning> 
     <property-meaning name="metadataFormat" valueType="String" comparisonType="value">
-  </property-meaning> 
+  </property-meaning>   
 </property-meanings>
