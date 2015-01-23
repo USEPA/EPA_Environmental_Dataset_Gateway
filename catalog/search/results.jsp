@@ -649,25 +649,42 @@ function rsGetQualityOfService() {
 <% // expand/zoom to results %>
 <h:panelGroup>
 
+  <div>
+    <span>
+      <h:selectBooleanCheckbox id="srToggle"
+        rendered="#{not empty PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'] and PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'].value == 'true'}"
+        style="#{SearchController.expandResultCheckboxStyle}"
+        onclick="void(this);"/>
+      <h:outputLabel for="srToggle" id="srToggle_label"
+        rendered="#{not empty PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'] and PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'].value == 'true'}"
+        value="#{gptMsg['catalog.search.searchResult.lblToggle']}"
+        style="vertical-align: top; #{SearchController.expandResultCheckboxStyle}"/>
 	<h:selectBooleanCheckbox id="srExpandResults"
 	  value="#{SearchController.searchCriteria.expandResultContent}"
 	  style="#{SearchController.expandResultCheckboxStyle}"
 	  onclick="rsExpandAllRecords(this);"/>
 	<h:outputLabel for="srExpandResults" 
 	  value="#{gptMsg['catalog.search.searchResult.lblExpand']}"
-	  style="#{SearchController.expandResultCheckboxStyle}"/>
-	<h:outputText escape="false" value="&nbsp;&nbsp;&nbsp;"/>
-	<h:outputLink id="srLnkZoomToThese" value="javascript:void(0)" 
+        style="vertical-align: top; #{SearchController.expandResultCheckboxStyle}"/>
+    </span>
+    <span style="float: right; margin-right: 4px;">
+      <h:outputLink id="srLnkZoomToThese2" value="javascript:void(0)" 
+        rendered="#{empty PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'] or not PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'].value == 'true'}"
 	  onclick="javascript:return srZoomToThese();"
 	  style="#{SearchController.expandResultCheckboxStyle}">
-	  <h:outputText id="srTxtZoomToThese" value="#{gptMsg['catalog.search.searchResult.zoomToThese']}" />
+        <h:outputText id="srTxtZoomToThese2" value="#{gptMsg['catalog.search.searchResult.zoomToThese']}" />
 	</h:outputLink>
-  <h:outputText escape="false" value="&nbsp;&nbsp;&nbsp;"/>
-  <h:outputLink id="srLnkZoomToAOI" value="javascript:void(0)" 
+      <h:outputText escape="false" value="&nbsp;&nbsp;&nbsp;" 
+         rendered="#{empty PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'] or not PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'].value == 'true'}"
+                    />
+      <h:outputLink id="srLnkZoomToAOI2" value="javascript:void(0)" 
+        rendered="#{empty PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'] or not PageContext.applicationConfiguration.catalogConfiguration.parameters['catalog.cart.enabled'].value == 'true'}"
     onclick="javascript:return srZoomToAOI();"
     style="#{SearchController.expandResultCheckboxStyle}">
-    <h:outputText id="srTxtZoomToAOI" value="#{gptMsg['catalog.search.searchResult.zoomToAOI']}" />
+        <h:outputText id="srTxtZoomToAOI2" value="#{gptMsg['catalog.search.searchResult.zoomToAOI']}" />
   </h:outputLink>
+    </span>
+  </div>
 </h:panelGroup>
    
 <% // results %>
@@ -774,6 +791,9 @@ function rsGetQualityOfService() {
   <h:outputText value="#{gptMsg['catalog.search.searchResult.restLabel']}"/>
   <h:outputLink id="srRestGEORSS" target="_blank" value="#{SearchController.restSearchRequestUrlGeorss}" styleClass="resultsLinkRestApi">
     <h:outputText value="GEORSS"/>
+  </h:outputLink>
+   <h:outputLink id="srRestATOM" target="_blank" value="#{SearchController.restSearchRequestUrlAtom}" styleClass="resultsLinkRestApi">
+    <h:outputText value="ATOM"/>
   </h:outputLink>
   <h:outputLink id="srRestHTML" target="_blank" value="#{SearchController.restSearchRequestUrlHtml}" styleClass="resultsLinkRestApi">
     <h:outputText value="HTML"/>

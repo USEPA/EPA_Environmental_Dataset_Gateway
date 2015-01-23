@@ -490,10 +490,10 @@
 <f:verbatim>
 
     <span id="browse-prompt" class="prompt"><%=brwPrompt %></span> 
-    <div dojoType="dojo.data.ItemFileReadStore" url="<%=brwTocUrl %>" jsid="popStore" requestMethod="get"/>
-    <div class="section" id="browse-splitter" dojoType="dijit.layout.SplitContainer"
-         orientation="horizontal" sizerWidth="7" activeSizing="true" style="width: 100%; height: 500px;">	               	
-        <div id="browse-toc" class="tundra" dojotype="dijit.Tree" store="popStore" labelattr="name" 
+  <div dojoType="dojo.data.ItemFileReadStore" url="<%=brwTocUrl %>" jsid="popStore" requestMethod="get" urlPreventCache="true"/>
+  <div class="section tundra" id="browse-splitter" dojoType="dijit.layout.SplitContainer"
+    orientation="horizontal" sizerWidth="7" activeSizing="true" style="width: 100%; height: 500px; position: relative;">	               	
+    <div id="browse-toc" dojotype="dijit.Tree" store="popStore" labelattr="name" 
              sizeMin="30" sizeShare="30" style="overflow:scroll;">			        			        	
             <script type="dojo/method" event="onClick" args="item">treeItemClicked(item);</script>			
         </div>
