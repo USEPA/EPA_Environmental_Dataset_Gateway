@@ -30,6 +30,9 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     ............................................ -->
+	<listener>
+      <listener-class>com.esri.gpt.framework.context.ApplicationContextListener</listener-class>
+    </listener>
     <filter>
         <filter-name>ClickjackFilterDeny</filter-name>
         <filter-class>org.owasp.filters.ClickjackFilter</filter-class>
@@ -190,6 +193,10 @@
     <servlet>
         <servlet-name>OpenSearchDescription</servlet-name>
         <servlet-class>com.esri.gpt.control.rest.OpenSearchDescriptionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CswProfilesServlet</servlet-name>
+        <servlet-class>com.esri.gpt.server.apps.CswProfilesServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
@@ -497,7 +504,10 @@
       <servlet-name>DcatCacheServlet</servlet-name>
       <url-pattern>/dcat.json</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>CswProfilesServlet</servlet-name>
+        <url-pattern>/csw/profiles</url-pattern>
+    </servlet-mapping>
     <session-config>
       <session-timeout>30</session-timeout>
     </session-config>
