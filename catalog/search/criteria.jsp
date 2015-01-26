@@ -1803,7 +1803,7 @@
 
   <% // map %>
   <h:panelGrid id="pnlMap">
-    <h:panelGroup id="mapToolbar" styleClass="mapToolbar">
+    <h:panelGroup id="mapToolbar" styleClass="mapToolbar"  style="display:none">
       <h:outputLabel for="mapInput-locate" value="#{gptMsg['catalog.search.search.lblLocator']}"/>
       <h:inputText id="mapInput-locate" styleClass="locatorInput"
                    maxlength="1024" onkeypress="return scMap.onLocatorKeyPress(event);"/>
