@@ -42,6 +42,8 @@ import com.esri.gpt.framework.search.DcList;
 import com.esri.gpt.framework.search.SearchXslRecord;
 import com.esri.gpt.framework.util.LogUtil;
 import com.esri.gpt.framework.util.Val;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.innovateteam.gpt.innoCollection;
@@ -124,8 +126,17 @@ private String getRelativePath() {
 		if (Val.chkStr(this.baseContextPath).equals("")) {
 			return null;
 		}
-		String tmpContextPath = this.baseContextPath.replaceAll("/$", "");
-		tmpContextPath = tmpContextPath.replaceAll(".*/", "/");
+		String temp = this.baseContextPath.replaceAll("/$", "");
+		String tmpContextPath = temp.replaceAll(".*/", "/");
+        try {
+          URL url = new URL(temp);
+          String temp2 = url.getPath();
+          if (temp2==null || temp2.length()==0) {
+            temp2 = "/";
+          }
+          tmpContextPath = temp2;
+        } catch (Exception ex) {
+        }
 		return tmpContextPath;
 	} catch (Throwable e) {
 		LOG.log(Level.FINER, "", e);

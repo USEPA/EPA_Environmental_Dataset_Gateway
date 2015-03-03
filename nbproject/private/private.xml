@@ -3,45 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/webhelp/en/gptlv10/inno/CSSFiles/widget_intranet.html</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/widgets/old/searchProxy.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/js/v1.2.2/gpt-browse.js</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/search/criteria.jsp.bak</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/META-INF/context.xml</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/sso.properties</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/skins/lookAndFeel.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/skins/tiles/primaryNavigation.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/widgets/searchProxy.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/publication/arcgised.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/gpt/config/gpt.xml</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/widgets/searchjs%20-%20Copy.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/META-INF/context.xml.xml</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/logging.properties</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/widgets/old/searchjs.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/InnoRestQueryServlet.java</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/collection/js/virtualResourceBody.js</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/com/esri/gpt/framework/http/HttpClientRequest.java</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/com/esri/gpt/control/georss/RestQueryServlet.java</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/gpt/resources/gpt.properties</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/js/v1.1/gpt-browse.js</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/com/esri/gpt/catalog/search/ResourceLinkBuilder.java</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/js/v1.1.2/gpt-browse.js</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/search/mysearches.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/main/homeBody.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/search/my_criteria.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/components/componentsBody.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/legacyXsl.txt</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/components/components.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/search/browse/browseBody.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/collection/js_/virtualResourceBody.js</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/widgets/exampleTitle.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/web_ori.xml</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/search/searchBody.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/search/search.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/widgets/searchjs.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/catalog/search/criteria.jsp</file>
-            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/FixStaging/Staging/metadata/WEB-INF/classes/InnoRestServlet.java</file>
+            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/Upgrade_DCAT/Upgrade_DCAT_1_1/EDG_metadata/webhelp/en/gptlv10/rsrc/searchindex.js</file>
+            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/Upgrade_DCAT/Upgrade_DCAT_1_1/EDG_metadata/WEB-INF/classes/com/esri/gpt/control/georss/dcatcache/DcatCacheUpdateRequest.java</file>
+            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/Upgrade_DCAT/Upgrade_DCAT_1_1/EDG_metadata/WEB-INF/classes/gpt/metadata/property-meanings.xml</file>
+            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/Upgrade_DCAT/Upgrade_DCAT_1_1/EDG_metadata/WEB-INF/classes/com/esri/gpt/control/webharvest/client/dcat/DCATRecord.java</file>
+            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/Upgrade_DCAT/Upgrade_DCAT_1_1/EDG_metadata/WEB-INF/classes/gpt/metadata/dcat-mappings.xml</file>
+            <file>file:/C:/Users/Baohong_Inno/Documents/Ji_Inno/Project/EDG_java/ProjectDoc/Upgrade_DCAT/Upgrade_DCAT_1_1/EDG_metadata/WEB-INF/classes/gpt/config/gpt.xml</file>
         </group>
     </open-files>
 </project-private>
