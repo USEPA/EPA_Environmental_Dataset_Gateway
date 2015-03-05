@@ -54,7 +54,7 @@
     -->
     
     <interactiveMap
-        jsapiUrl="https://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"
+        jsapiUrl="//js.arcgis.com/3.12/"
         mapServiceUrl="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
         mapServiceType="dynamic" 
         geometryServiceUrl="https://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
@@ -445,6 +445,7 @@
         <parameter key="dcat.mappings" value="gpt/metadata/dcat-mappings.xml"/>
         <!-- DCAT cache directory -->
         <parameter key="dcat.cache.path" value="D:/Public/Server/tomcat7042/webapps/metadata"/>
+	<parameter key="dcat.landingPage.default.details" value="false"/>
     </catalog>
     
     <!-- Download data configuration.
@@ -759,13 +760,15 @@
       <protocol factoryClass="com.esri.gpt.control.webharvest.protocol.factories.Agp2AgpProtocolFactory"
                resourceKey="catalog.harvest.manage.edit.protocol.agp2agp"/>  
 -->
-    
+<!--      
       <protocol factoryClass="com.esri.gpt.control.webharvest.protocol.factories.Agp2AgpRelaxedProtocolFactory"
                resourceKey="catalog.harvest.manage.edit.protocol.agp2agp"/>  
+-->
 
+<!--      
       <protocol factoryClass="com.esri.gpt.control.webharvest.protocol.factories.Ags2AgpProtocolFactory"
-               resourceKey="catalog.harvest.manage.edit.protocol.ags2agp"/>
-
+               resourceKey="catalog.harvest.manage.edit.protocol.ags2agp"/>  
+-->
       <protocol factoryClass="com.esri.gpt.control.webharvest.protocol.factories.DCATProtocolFactory"
                resourceKey="catalog.harvest.manage.edit.protocol.dcat"/>  
 
