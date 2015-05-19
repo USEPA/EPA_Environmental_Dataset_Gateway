@@ -14,7 +14,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<gptConfig version="1.2.5">
+<gptConfig version="1.2.6">
 
     <databaseReference name="gpt" jndiName="jdbc/gptlv10"/>
     
@@ -54,7 +54,7 @@
     -->
     
     <interactiveMap
-        jsapiUrl="//js.arcgis.com/3.12/"
+        jsapiUrl="//js.arcgis.com/3.13/"
         mapServiceUrl="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
         mapServiceType="dynamic" 
         geometryServiceUrl="https://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
@@ -231,7 +231,7 @@
                 <parameter key="profileId" 
                     value="urn:ogc:CSW:2.0.2:HTTP:APISO:pycsw" /> 
                 <parameter key="url" 
-                    value="http://catalog.data.gov/csw?service=CSW&amp;version=2.0.2&amp;request=GetCapabilities" /> 
+                    value="http://catalog.data.gov/csw-all?service=CSW&amp;version=2.0.2&amp;request=GetCapabilities" /> 
             </repository>
             <repository
                  key="geodab"
@@ -440,6 +440,9 @@
         <parameter key="catalog.cart.enabled" value="false"/>
         <parameter key="catalog.cart.maxItems" value="100"/>
         <parameter key="catalog.cart.processor" value="com.esri.gpt.control.cart.ZipXmls"/>
+        <parameter key="catalog.cart.processor.whitelist" value="com.esri.gpt.control.cart.ZipXmls"/>
+        <parameter key="catalog.cart.xslt.whitelist" value=""/>
+        <parameter key="catalog.cart.tryhandler.class" value=""/>
 
         <!-- Mapping file to map dcat fields to lucene index fields -->
         <parameter key="dcat.mappings" value="gpt/metadata/dcat-mappings.xml"/>
