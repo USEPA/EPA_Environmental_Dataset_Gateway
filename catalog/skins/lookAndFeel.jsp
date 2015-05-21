@@ -22,7 +22,7 @@ String VER = "v1";
 %>
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="//js.arcgis.com/3.11/dijit/themes/tundra/tundra.css">
+<link rel="stylesheet" href="//js.arcgis.com/3.13/dijit/themes/tundra/tundra.css">
 <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.12/esri/css/esri.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/catalog/skins/themes/blue/main.css"  />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/catalog/skins/themes/blue/preview.css"  />
