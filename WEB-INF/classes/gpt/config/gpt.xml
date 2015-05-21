@@ -509,7 +509,7 @@
     -->
     <!--identity encKey="PtkESRI" realm="Geoportal"-->
 	<identity encKey="PtkESRI">  
-        
+    <!--    
         <simpleAdapter>
             <account username="gptadmin" password="Innovate4fun!" encrypted="false"/>
             <roles>
@@ -518,6 +518,7 @@
                 <role key="gptAdministrator"/>
             </roles>
         </simpleAdapter>
+	-->
          
 	<!--
 	 <ldapAdapter>
@@ -529,7 +530,7 @@
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="fKs49C2p"
+                  securityCredentials="gld50v3t"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
