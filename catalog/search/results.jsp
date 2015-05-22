@@ -331,6 +331,7 @@ function innoFixRestIntraLinks() {
     innoFixRestIntraLink("srRestFRAGMENTIntra");
     innoFixRestIntraLink("srRestKMLIntra");
     innoFixRestIntraLink("srRestJSONIntra");
+    innoFixRestIntraLink("srRestDCATIntra");
     innoFixRestIntraLink("srRestCSVIntra");
     //alert("frmSearchCriteria:srRestGEORSSIntra:" + dojo.byId("frmSearchCriteria:srRestGEORSSIntra").value);
     //INNfixRestLinks();
@@ -788,7 +789,7 @@ function rsGetQualityOfService() {
 
 <% // rest bindings for this result %>
 <h:panelGroup rendered="#{SearchController.searchResult.recordSize > 0 && SearchController.restSearchRequestUrlGeorss != null}">
-  <h:outputText value="#{gptMsg['catalog.search.searchResult.restLabel']}"/>
+  <h:outputText value="#{gptMsg['catalog.search.searchResult.restLabel']}"/><br/>
   <h:outputLink id="srRestGEORSS" target="_blank" value="#{SearchController.restSearchRequestUrlGeorss}" styleClass="resultsLinkRestApi">
     <h:outputText value="GEORSS"/>
   </h:outputLink>
@@ -815,7 +816,7 @@ function rsGetQualityOfService() {
   </h:outputLink>
   </h:panelGroup><br/>
 <h:panelGroup rendered="#{SearchController.searchResult.recordSize > 0 && SearchController.restSearchRequestUrlGeorss != null}">
-  <h:outputText value="#{gptMsg['catalog.search.searchResult.restLabelIntranet']}"/>
+  <h:outputText value="#{gptMsg['catalog.search.searchResult.restLabelIntranet']}"/><br/>
   <h:outputLink id="srRestGEORSSIntra" target="_blank" value="#{SearchController.restSearchRequestUrlGeorss}" styleClass="resultsLinkRestApi">
     <h:outputText value="GEORSS"/>
   </h:outputLink>
@@ -831,6 +832,9 @@ function rsGetQualityOfService() {
   <h:outputLink id="srRestJSONIntra" target="_blank" value="#{SearchController.restSearchRequestUrlJson}" styleClass="resultsLinkRestApi">
     <h:outputText value="JSON"/>
   </h:outputLink>
+  <h:outputLink id="srRestDCATIntra" target="_blank" value="#{SearchController.restSearchRequestUrlDcat}" styleClass="resultsLinkRestApi">
+    <h:outputText value="DCAT"/>
+  </h:outputLink>  
   <h:outputLink id="srRestCSVIntra" target="_blank" value="javascript:void(0);" onclick="javascript:getCsv('#{SearchController.restSearchRequestUrlJson}'); return false;" styleClass="resultsLinkRestApi">
     <h:outputText value="CSV"/>
   </h:outputLink>
