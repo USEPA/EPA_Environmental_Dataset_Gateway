@@ -327,6 +327,7 @@ function innoFixRestIntraLinks() {
 	//alert("in innoFixRestIntraLinks");
     //console.debug("in innoFixRestIntraLinks");
     innoFixRestIntraLink("srRestGEORSSIntra");
+    innoFixRestIntraLink("srRestATOMIntra");
     innoFixRestIntraLink("srRestHTMLIntra");
     innoFixRestIntraLink("srRestFRAGMENTIntra");
     innoFixRestIntraLink("srRestKMLIntra");
@@ -820,6 +821,9 @@ function rsGetQualityOfService() {
   <h:outputLink id="srRestGEORSSIntra" target="_blank" value="#{SearchController.restSearchRequestUrlGeorss}" styleClass="resultsLinkRestApi">
     <h:outputText value="GEORSS"/>
   </h:outputLink>
+  <h:outputLink id="srRestATOMIntra" target="_blank" value="#{SearchController.restSearchRequestUrlAtom}" styleClass="resultsLinkRestApi">
+    <h:outputText value="ATOM"/>
+  </h:outputLink>  
   <h:outputLink id="srRestHTMLIntra" target="_blank" value="#{SearchController.restSearchRequestUrlHtml}" styleClass="resultsLinkRestApi">
     <h:outputText value="HTML"/>
   </h:outputLink>
