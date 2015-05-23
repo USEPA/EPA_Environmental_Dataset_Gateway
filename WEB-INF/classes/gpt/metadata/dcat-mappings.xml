@@ -37,7 +37,7 @@
 	  <field name="description" index="abstract" type="string" required="true"/>
 	  <field name="keyword" index="dataTheme" type="array" required="true"/>
 	  <field name="modified" index="dateModified" isDate="true" dateFormat="yyyy-MM-dd" type="date" delimiter="/" required="true"/>
-	  <field name="publisher" index="publisher" required="true"/>
+	  <field name="publisher" index="dcat.publisher" required="true"/>
 	  <field name="contactPoint" index="dcat.person" required="true"/>
 	  <field name="mbox"	index="dcat.mbox" required="true"/>
 	  <field name="identifier" required="true"/>  
@@ -53,7 +53,7 @@
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
 	  <field name="webService" index="resource.url" />
 	  <field name="format" index="dcat.format" required="true"/>
-	  <field name="license" index="dcat.null" required="true"/>
+	  <field name="license" index="dcat.license" required="false"/>
 	  <field name="accessURL" index="dcat.accessUrl" required="true"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="true"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
@@ -80,7 +80,7 @@
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
 	  <field name="webService" index="resource.url" required="false"/> 
 	  <field name="format" index="dcat.format" required="false"/>
-	  <field name="license" index="dcat.null" required="false"/>
+	  <field name="license" index="dcat.license" required="false"/>
 	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="true"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
@@ -110,7 +110,9 @@
 	  <field name="accessURL" index="resource.url" required="false"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="false"/>
 	  <field name="format" index="dcat.format" required="false"/>
-	  <field name="license" index="dcat.null" required="false"/>
+	  <field name="license" index="dcat.license" required="false">
+        <map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
+      </field>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
 	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" required="true" delimiter="/"/>
       <field name="references" index="dcat.references" type="array" required="false"/>
@@ -165,7 +167,7 @@
       <field name="downloadURL" index="dcat.downloadUrl" required="false">
       </field>
 	  <field name="format" index="apiso.Format" required="false"/>
-	  <field name="license" index="dcat.null"  required="false"/>
+	  <field name="license" index="dcat.license"  required="false"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
 	  <field name="temporal" index="apiso.TempExtent_begin,apiso.TempExtent_end" required="true" isDate="true" type="date" dateFormat="yyyy-MM-dd" delimiter="/"/>
 <!--Added by Torrin Hultgren 2/21/14 to include "Optional" dcat components-->

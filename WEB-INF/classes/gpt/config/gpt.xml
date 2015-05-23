@@ -509,7 +509,7 @@
     -->
     <!--identity encKey="PtkESRI" realm="Geoportal"-->
 	<identity encKey="PtkESRI">  
-    <!--    
+     
         <simpleAdapter>
             <account username="gptadmin" password="Innovate4fun!" encrypted="false"/>
             <roles>
@@ -518,9 +518,9 @@
                 <role key="gptAdministrator"/>
             </roles>
         </simpleAdapter>
-	-->
+	
          
-
+	<!--
 	 <ldapAdapter>
      
          <ldapConnectionProperties
@@ -714,6 +714,7 @@
           groupDN="cn=GDG-OP,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
           </groups>
         </ldapAdapter>
+		-->
 
  </identity>
     
@@ -721,7 +722,7 @@
     <!-- Scheduled Background Threads -->
     <scheduler active="true" corePoolSize="0">
         <!-- Catalog synchronization (sync Lucene index with the database) -->
-        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="00:30"/>
+        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="16:50"/>
         <!--<thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" period='4[HOUR]' delay="30[SECOND]"/>-->
         <!-- Index optimization --> 
         <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:10"/>

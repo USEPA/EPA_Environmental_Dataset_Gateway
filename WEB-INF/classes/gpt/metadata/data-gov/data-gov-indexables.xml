@@ -24,6 +24,7 @@
   <property meaning="resource.type" xpath="/dataGov/gdg/contentType"/>
   <property meaning="body" xpath="/dataGov/*"/>
   <property meaning="publisher" xpath="/dataGov/basic/agencyName"/>
+  <property meaning="dcat.publisher" xpath="/dataGov/basic/agencyName"/>
   <property meaning="dcat.person"         xpath="/dataGov/basic/contactName" />
   <property meaning="dcat.mbox"           xpath="/dataGov/basic/contactEmailAddress"/>
   <property meaning="dcat.license"        xpath="/dataGov/basic/datasetLicenseAgreementUrl" />

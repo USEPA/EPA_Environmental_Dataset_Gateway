@@ -88,6 +88,7 @@
   <property meaning="dcat.publisher.origin" xpath="/metadata/idinfo/citation/citeinfo/origin"/>
   <property meaning="dcat.format" xpath="/metadata/distinfo/storder/digform/digtinfo/fname"/>
   <property meaning="dcat.accrualPeriodicity" xpath="/metadata/idinfo/status/update"/>
+  <property meaning="dcat.license" xpath="/metadata/distinfo/distliab"/>
   <!-- EPA URL Convention -->
   <property meaning="dcat.accessUrl" xpath="/metadata/idinfo/citation/citeinfo/onlink[1]"/>
   <property meaning="dcat.downloadUrl" xpath="/metadata/idinfo/citation/citeinfo/onlink[1]"/>
