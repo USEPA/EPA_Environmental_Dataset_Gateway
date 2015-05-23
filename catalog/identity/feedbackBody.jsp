@@ -43,6 +43,11 @@
     value="#{gptMsg['catalog.identity.feedback.label.body']}"/>
    <h:inputTextarea id="feedbackBody" rows="12" cols="50" 
     value="#{SelfCareController.feedbackMessage.body}"/>
+  <% // anti-spam field %>
+  <h:outputLabel for="antispam" styleClass="requiredField"
+    value="#{gptMsg['catalog.identity.feedback.label.antispam']}"/>
+  <h:inputText id="antispam" size="30" maxlength="128"
+    value="#{SelfCareController.feedbackMessage.antispam}"/>
     
   <% // submit button %>
   <h:outputText value=""/>
