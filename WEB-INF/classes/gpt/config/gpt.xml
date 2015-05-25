@@ -54,7 +54,7 @@
     -->
     
     <interactiveMap
-        jsapiUrl="//js.arcgis.com/3.13/"
+        jsapiUrl="https://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"
         mapServiceUrl="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
         mapServiceType="dynamic" 
         geometryServiceUrl="https://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
@@ -170,8 +170,8 @@
     -->   
         
     <search
-        searchTimeoutMillisecs="1000000"
-        distributedSearchTimeoutMillisecs="500000"
+        searchTimeoutMillisecs="10000"
+        distributedSearchTimeoutMillisecs="5000"
         distributedSearchMaxSelectedSites="5"
         searchResultsPerPage="25"
         searchResultsReviewsShown="only-reviewed"
@@ -203,7 +203,7 @@
                 labelResourceKey="catalog.search.searchSite.epageoplatform"
                 abstractResourceKey="catalog.search.searchSite.epageoplatform.abstract">
                 <parameter key="endPointSearchUrl" 
-                    value="https://epa.maps.arcgis.com/sharing/search?q={searchTerms}%20AND%20accountid:cJ9YHowT8TU7DUyn&amp;start={startIndex}&amp;num={count}&amp;f=json"/>
+                    value="http://epa.maps.arcgis.com/sharing/search?q={searchTerms}%20AND%20accountid:cJ9YHowT8TU7DUyn&amp;start={startIndex}&amp;num={count}&amp;f=json"/>
                 <parameter key="defaultParamValues"
                     value="q&#x2714;access:public"/>  
                 <parameter key="profileId" 
@@ -231,7 +231,7 @@
                 <parameter key="profileId" 
                     value="urn:ogc:CSW:2.0.2:HTTP:APISO:pycsw" /> 
                 <parameter key="url" 
-                    value="http://catalog.data.gov/csw-all?service=CSW&amp;version=2.0.2&amp;request=GetCapabilities" /> 
+                    value="http://catalog.data.gov/csw?service=CSW&amp;version=2.0.2&amp;request=GetCapabilities" /> 
             </repository>
             <repository
                  key="geodab"
@@ -392,7 +392,7 @@
         <parameter key="publicationRequest.autoApprove" value="false"/>
         <parameter key="spatialRelevance.ranking.maxDoc" value="1000000"/>
         <parameter key="rssProviderUrl" value=""/>
-        <parameter key="reverseProxy.baseContextPath" value=""/>
+        <parameter key="reverseProxy.baseContextPath" value="https://edg.epa.gov/metadata"/>
         <parameter key="RestServlet.printXml.stripStyleSheets" value="true"/>
         <parameter key="Administration.viewMetadata.stripStyleSheets" value="true"/>
         <parameter key="httpClientRequest.connectionTimeout" value="2[MINUTE]"/>
@@ -404,7 +404,7 @@
 			      - resourceLinkBuilder.preview.filter: regular expression disabling ‘preview’ link on search result 
 				      for all records having resource URL matching template. 
 		    -->	
-        <parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.zip$|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.gz$|.*\.tgz$|.*\.tar$|.*\.rar$|.*\.shp$|.*\.dbf$|.*\.xls$|.*\.dwg$|.*\.dxf$|.*\.dgn$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*/MapServer.*"/>
+        <parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.zip$|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.gz$|.*\.tgz$|.*\.tar$|.*\.rar$|.*\.shp$|.*\.dbf$|.*\.xls$|.*\.dwg$|.*\.dxf$|.*\.dgn$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*"/>
 		<!--parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.nsf/*|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*/MapServer.*"/-->
 
         <!-- This parameter is used to enable managing user role in ldap identity store. -->
