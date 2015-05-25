@@ -24,8 +24,12 @@
   com.esri.gpt.framework.ArcGIS.InteractiveMap imConfig = 
      com.esri.gpt.framework.context.RequestContext.extract(request).getApplicationConfiguration().getInteractiveMap();
   String vmdUuid = Val.chkStr(request.getParameter("uuid"));
-  String sRestUrl = request.getContextPath()+"/rest/document?f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
-  
+  String sRestUrl = request.getContextPath()+"/rest/document?&xsl=metadata_to_html_full&f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
+  if ((request.getParameter("redirected"))!= null){  
+       if ((request.getParameter("redirected")).equals("true")) {
+        sRestUrl = request.getContextPath()+"/rest/document?&xsl=metadata_to_html_full&redirected=true&f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
+       }  
+}
 %>
 
 <script type="text/javascript">

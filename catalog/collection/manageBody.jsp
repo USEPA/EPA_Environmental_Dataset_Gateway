@@ -255,7 +255,7 @@
     paging.setCurrentPage(allParameters.containsKey("frm:page") ? Integer.parseInt(allParameters.get("frm:page").toString()) : 1);
     int offset = paging.getOffset(), limit = paging.getLimit();
     filter.put("col_id", allParameters.get("frm:col_id"));
-    //filter.put("strictfilter", "1");
+    filter.put("strictfilter", "1");
     //Added by Baohong
     if (grps.size() != 0) {
             filter.put("owner_in", grps);  
