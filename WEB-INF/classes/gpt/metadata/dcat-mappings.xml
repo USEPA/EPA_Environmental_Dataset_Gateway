@@ -53,7 +53,9 @@
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
 	  <field name="webService" index="resource.url" />
 	  <field name="format" index="dcat.format" required="true"/>
-	  <field name="license" index="dcat.license" required="false"/>
+      <field name="license" index="dcat.license" required="false">
+        <map from=".*" to="https://edg.epa.gov/EPA_Data_License.html"/>
+      </field>
 	  <field name="accessURL" index="dcat.accessUrl" required="true"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="true"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
@@ -80,7 +82,11 @@
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
 	  <field name="webService" index="resource.url" required="false"/> 
 	  <field name="format" index="dcat.format" required="false"/>
-	  <field name="license" index="dcat.license" required="false"/>
+	  <field name="license" index="dcat.license" required="false">
+        <map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
+        <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
+        <!--<map from="(.*\n?)*" to=""/>-->
+      </field>
 	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="true"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
@@ -105,13 +111,15 @@
 	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
 	  <field name="programCode" index="dcat.programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary" />
-	  <field name="webService" index="dcat.webService" required="false"/> 
+	  <!--<field name="webService" index="dcat.webService" required="false"/> -->
 	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
-	  <field name="accessURL" index="resource.url" required="false"/>
+	  <!--<field name="accessURL" index="resource.url" required="false"/>-->
 	  <field name="downloadURL" index="dcat.downloadUrl" required="false"/>
 	  <field name="format" index="dcat.format" required="false"/>
 	  <field name="license" index="dcat.license" required="false">
-        <map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
+        <map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and\/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
+        <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
+        <map from="(.*\n?)*" to=""/>
       </field>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
 	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" required="true" delimiter="/"/>
@@ -139,8 +147,9 @@
         <map from="Weekly|weekly" to="R/P1W"/>
         <map from="^R/P[^DWMYS]*[DWMYS]$" to="*"/>
         <map from="asNeeded|notPlanned|unknown" to="irregular"/>
-        <map from=".*" to="irregular"/>
+        <map from="(.*\n?)*" to="irregular"/>
       </field>
+      <field name="isPartOf" index="dcat.isPartOf" required="false" />
 	</fields>
 	<fields schema="iso-19115,iso-19119,iso19115-2,gemini-iso-19115,gemini-iso-19119,inspire-iso-19115,inspire-iso-19119"> 
 	  <field name="title" index="title"  required="true"/>  
@@ -167,7 +176,11 @@
       <field name="downloadURL" index="dcat.downloadUrl" required="false">
       </field>
 	  <field name="format" index="apiso.Format" required="false"/>
-	  <field name="license" index="dcat.license"  required="false"/>
+	  <field name="license" index="dcat.license"  required="false">
+        <map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
+        <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
+        <!--<map from="(.*\n?)*" to=""/>-->
+      </field>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
 	  <field name="temporal" index="apiso.TempExtent_begin,apiso.TempExtent_end" required="true" isDate="true" type="date" dateFormat="yyyy-MM-dd" delimiter="/"/>
 <!--Added by Torrin Hultgren 2/21/14 to include "Optional" dcat components-->
@@ -201,5 +214,6 @@
       <field name="references" index="dcat.references" type="array" required="false"/>
       <field name="size" index="dcat.size"  required="false"/>
       <field name="landingPage" index="dcat.landingPage"  required="false"/>
+      <field name="isPartOf" index="apiso.ParentIdentifier" required="false" />
 	  </fields>
 </dcat>

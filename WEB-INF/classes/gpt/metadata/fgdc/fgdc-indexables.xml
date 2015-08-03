@@ -65,7 +65,7 @@
       xpath="concat('tp.position.',caldate,'.fgdctime.',time)"/>
   </property>
   
-  <property meaning="body" xpathType="STRING" xpath="/*"/>
+  <!--<property meaning="body" xpathType="STRING" xpath="/*"/>-->
   <!-- dcat-specific -->
   <property meaning="dcat.accessLevel" xpath="/metadata/idinfo/secinfo/secclass"/>
   <property meaning="dcat.accessLevelComment" xpath="/metadata/idinfo/accconst"/> <!-- | /metadata/idinfo/useconst | /metadata/distinfo/distliab"/>-->
@@ -89,8 +89,9 @@
   <property meaning="dcat.format" xpath="/metadata/distinfo/storder/digform/digtinfo/fname"/>
   <property meaning="dcat.accrualPeriodicity" xpath="/metadata/idinfo/status/update"/>
   <property meaning="dcat.license" xpath="/metadata/distinfo/distliab"/>
+  <property meaning="dcat.isPartOf" xpath="/metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/onlink"/>
   <!-- EPA URL Convention -->
-  <property meaning="dcat.accessUrl" xpath="/metadata/idinfo/citation/citeinfo/onlink[1]"/>
+  <property meaning="dcat.accessUrl" xpath="/metadata/idinfo/citation/citeinfo/onlink[2]"/>
   <property meaning="dcat.downloadUrl" xpath="/metadata/idinfo/citation/citeinfo/onlink[1]"/>
   <property meaning="dcat.webService" xpath="/metadata/idinfo/citation/citeinfo/onlink[2]"/>
   <property meaning="dcat.references" xpath="/metadata/idinfo/citation/citeinfo/onlink[3]"/>

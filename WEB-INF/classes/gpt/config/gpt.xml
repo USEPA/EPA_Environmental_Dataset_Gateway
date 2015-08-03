@@ -58,8 +58,8 @@
         mapServiceUrl="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
         mapServiceType="dynamic" 
         geometryServiceUrl="https://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
-        locatorUrl="https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer"
-        locatorSingleFieldParameter = "City"/>
+        locatorUrl="https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+        locatorSingleFieldParameter = "singleLine"/>
   
     <catalog gptTablePrefix="GPT_">       
     <!-- Lucene configuration.
@@ -526,7 +526,7 @@
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="gld50v3t"
+                  securityCredentials="fkf61c4r"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
