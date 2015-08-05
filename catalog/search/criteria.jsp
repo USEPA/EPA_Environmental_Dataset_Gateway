@@ -29,7 +29,8 @@
 		String schHasSearchHint = com.esri.gpt.framework.util.Val.chkStr(schParameters.getValue("catalog.searchCriteria.hasSearchHint"));
 		hasSearchHint = Boolean.valueOf(schHasSearchHint);
 	}
-	String schHintPrompt = schMsgBroker.retrieveMessage("catalog.searchCriteria.hintSearch.prompt");
+	//String schHintPrompt = schMsgBroker.retrieveMessage("catalog.searchCriteria.hintSearch.prompt");
+	String schHintPrompt = "";
 	String VER121 = "v1.2.1";
 %>
 
@@ -60,6 +61,18 @@
 
  <script type="text/javascript">
     // &filter parameter based on window.location.href
+	function chkSearchSynonymClick(elCheckBox) {
+	    if (elCheckBox != null) {
+			var bChecked = elCheckBox.checked;
+			//alert(bChecked);
+			if (bChecked) {
+				hasSearchHint = false;
+		}
+			else {
+				hasSearchHint = true;
+			}
+	    }
+	}
     function scAppendExtendedFilter(sUrlParams,bIsRemoteCatalog) {
       if (bIsRemoteCatalog == false) {
         var f = scGetExtendedFilter();
@@ -842,13 +855,25 @@
     var contentDateQuery = makeContentDateQuery();
     if (contentDateQuery.length>0) {
       if (scText.length > 0) {
-      	//scText = "+("+scText+") +("+contentDateQuery+")";
+		var check = dojo.byId("frmSearchCriteria:searchSynonym");
+		var enabled = check!=null? check.checked: false;
+		if (enabled) {
+			scText = "like|" + scText;
+		}
       	scText = "("+scText+") AND ("+contentDateQuery+")";
       } else {
         scText = contentDateQuery;
       }
     }
-    if (scText != "") restParams += "&searchText="+ encodeURIComponent(scText);
+    if (scText != "") {
+		var check = dojo.byId("frmSearchCriteria:searchSynonym");
+		var enabled = check!=null? check.checked: false;
+		if (enabled) {
+			scText = "like|" + scText;
+		}
+
+		restParams += "&searchText="+ encodeURIComponent(scText);
+	}
 
     // &filter parameter based on window.location.href
     restParams = scAppendExtendedFilter(restParams,bIsRemoteCatalog);
@@ -1653,14 +1678,20 @@
   </h:graphicImage>
                 </td>
             </tr>
+			<tr>
+				<td>
+                    <h:selectBooleanCheckbox id="searchSynonym" value="false"  onclick="chkSearchSynonymClick(this)"/>
+					<label for="searchSynonym">Include synonyms</label>
+                </td>
+            </tr>
             <tr>
-                <td colspan="3">
-   	<div id="hints"></div>
+                <td colspan="1">
+					<div id="hints"></div>
                 </td>
             </tr>
         </tbody>
     </table> 
-
+ 
 <h:panelGroup id="dockDistributedSearch" rendered="#{SearchController.searchConfig.allowExternalSearch == true}">
   <f:verbatim>
     <div id="djtCntDistributedSearches" class="section" style="width:400px">

@@ -29,6 +29,11 @@ $(document).ready(function(){
 	);
 	
 	$("input[id='frmSearchCriteria:scText']").keyup( function() {
+		var check = document.getElementById("frmSearchCriteria:searchSynonym");
+		var enabled = check!=null? check.checked: false;
+		if (enabled) {
+			return false;
+		}
 		var element = document.getElementById("frmSearchCriteria:pngTagbox");
 		if (typeof(element) != 'undefined' && element != null)
 		{
