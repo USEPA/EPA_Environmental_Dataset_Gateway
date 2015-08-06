@@ -62,6 +62,13 @@
  <script type="text/javascript">
     // &filter parameter based on window.location.href
 	function chkSearchSynonymClick(elCheckBox) {
+	    var scText = GptUtils.valChkStr(dojo.byId('frmSearchCriteria:scText').value);
+
+        if (scText.length > 0) {
+			javascript:scSetPageTo(1); 
+			scExecuteDistributedSearch(); 
+			
+		}
 	    if (elCheckBox != null) {
 			var bChecked = elCheckBox.checked;
 			//alert(bChecked);
@@ -72,6 +79,7 @@
 				hasSearchHint = true;
 			}
 	    }
+		return false;
 	}
     function scAppendExtendedFilter(sUrlParams,bIsRemoteCatalog) {
       if (bIsRemoteCatalog == false) {
