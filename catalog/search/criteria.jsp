@@ -62,23 +62,25 @@
  <script type="text/javascript">
     // &filter parameter based on window.location.href
 	function chkSearchSynonymClick(elCheckBox) {
-	    var scText = GptUtils.valChkStr(dojo.byId('frmSearchCriteria:scText').value);
-
-        if (scText.length > 0) {
-			javascript:scSetPageTo(1); 
-			scExecuteDistributedSearch(); 
-			
-		}
 	    if (elCheckBox != null) {
 			var bChecked = elCheckBox.checked;
 			//alert(bChecked);
 			if (bChecked) {
 				hasSearchHint = false;
+				$("#hints").hide();
 		}
 			else {
 				hasSearchHint = true;
+				$("#hints").show();
 			}
 	    }
+		
+		var scText = GptUtils.valChkStr(dojo.byId('frmSearchCriteria:scText').value);
+        if (scText.length > 0) {
+			javascript:scSetPageTo(1); 
+			scExecuteDistributedSearch(); 
+			
+		}
 		return false;
 	}
     function scAppendExtendedFilter(sUrlParams,bIsRemoteCatalog) {
@@ -208,7 +210,9 @@
         scMap.zoomAnywhere();
       }
     }
-
+    function scOnMyClicked() {
+alert("test");
+    }
 
     var _scRdbIndex = null;
     var _scRpsIndex = null;
@@ -1688,8 +1692,8 @@
             </tr>
 			<tr>
 				<td>
-                    <h:selectBooleanCheckbox id="searchSynonym" value="false"  onclick="chkSearchSynonymClick(this)"/>
-					<label for="searchSynonym">Include synonyms</label>
+                    <h:selectBooleanCheckbox id="searchSynonym"   onclick="javascript:chkSearchSynonymClick(this);"/>
+					<label for="searchSynonym">Include related terms</label>
                 </td>
             </tr>
             <tr>
