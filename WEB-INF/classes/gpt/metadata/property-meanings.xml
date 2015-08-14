@@ -60,7 +60,7 @@
     <dc name="dct:abstract" aliases="abstract"/>
   </property-meaning>  
   
-  <property-meaning name="contentType" valueType="String" comparisonType="keyword">
+  <property-meaning name="contentType" meaningType="contentType" valueType="String" comparisonType="keyword">
     <dc name="dc:type" aliases="type,format,dc:format" 
         scheme="urn:x-esri:specification:ServiceType:ArcIMS:Metadata:ContentType"/>
   </property-meaning> 
@@ -167,6 +167,11 @@
       
   <!--  Dublin Core response property sets (brief, summary, full) -->
   <propertySets>
+    <minimal>
+      <dc>
+        <meaning-names>uuid,title</meaning-names>
+      </dc>
+    </minimal>
     <brief>
       <dc>
         <meaning-names>fileIdentifier,uuid,title,contentType,geometry</meaning-names>
@@ -425,5 +430,5 @@
   <property-meaning name="dcat.metc.per.org" valueType="String" comparisonType="value"/>
   <property-meaning name="dcat.metc.per.per" valueType="String" comparisonType="value"/>
   <property-meaning name="dcat.publisher.origin" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.isPartOf" valueType="String" comparisonType="value"/>
+  <property-meaning name="dcat.parentIdentifier" valueType="String" comparisonType="value"/>
 </property-meanings>
