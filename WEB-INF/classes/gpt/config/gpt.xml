@@ -334,6 +334,7 @@
         <parameter key="webharvester.queueEnabled" value="true"/>
         <parameter key="webharvester.poolsize" value="4"/>
         <parameter key="webharvester.autoSelectFrequency" value="2[HOUR]"/>
+        <parameter key="webharvester.autoSelectSuspendPeriod" value=""/>
         <parameter key="webharvester.watchDogFrequency" value="2[HOUR]"/>
         <parameter key="webharvester.baseContextPath" value=""/>
         <parameter key="webharvester.maxRepRecords" value="10000"/> 
@@ -440,6 +441,9 @@
         <parameter key="catalog.cart.enabled" value="false"/>
         <parameter key="catalog.cart.maxItems" value="100"/>
         <parameter key="catalog.cart.processor" value="com.esri.gpt.control.cart.ZipXmls"/>
+        <parameter key="catalog.cart.processor.whitelist" value="com.esri.gpt.control.cart.ZipXmls"/>
+        <parameter key="catalog.cart.xslt.whitelist" value=""/>
+        <parameter key="catalog.cart.tryhandler.class" value=""/>
 
         <!-- Mapping file to map dcat fields to lucene index fields -->
         <parameter key="dcat.mappings" value="gpt/metadata/dcat-mappings.xml"/>
