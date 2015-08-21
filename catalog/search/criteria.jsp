@@ -1692,7 +1692,7 @@ alert("test");
             </tr>
 			<tr>
 				<td>
-                    <h:selectBooleanCheckbox id="searchSynonym"   onclick="javascript:chkSearchSynonymClick(this);"/>
+                    <h:selectBooleanCheckbox id="searchSynonym" title="Check to expand search results to include acronyms, synonyms, and other terms related to your search string"  onclick="javascript:chkSearchSynonymClick(this);"/>
 					<label for="searchSynonym">Include related terms</label>
                 </td>
             </tr>
