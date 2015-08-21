@@ -485,10 +485,12 @@ private void readRecord(ResultSet rs, MmdRecord record, String ownername) throws
     record.setHarvestFrequency(HarvestFrequency.checkValueOf(frequency));
   record.setSendNotification(Val.chkBool(rs.getString(n++), false));
   String protocol = Val.chkStr(rs.getString(n++));
-  try {
-    record.setProtocol(getApplicationConfiguration().getProtocolFactories().parseProtocol(protocol));
-  } catch (ProtocolParseException ex) {
-    LOGGER.log(Level.INFO, "Error setProtocol", ex);
+  if (protocol.length()>0) {
+      try {
+            record.setProtocol(getApplicationConfiguration().getProtocolFactories().parseProtocol(protocol));
+        } catch (ProtocolParseException ex) {
+            LOGGER.log(Level.INFO, "Error setProtocol", ex);
+        }
   }
 
   // set the editable status
