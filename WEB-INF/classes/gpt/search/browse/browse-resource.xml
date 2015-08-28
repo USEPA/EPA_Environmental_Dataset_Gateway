@@ -19,13 +19,25 @@
   <identifier>name</identifier>
   <item>
     <name resourceKey="catalog.browse.toc.browseResource"></name>
-		<item>
+		<!--<item>
 			<name resourceKey="catalog.resource.relationships.toc.operates-On">Operates On</name>
 	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso.OperatesOn-apiso.ResourceIdentifier</query>
 		</item>	
 		<item>
 			<name resourceKey="catalog.resource.relationships.toc.used-By"></name>  
 	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso.ResourceIdentifier-apiso.OperatesOn</query>		
+		</item>	-->
+		<item>
+			<name resourceKey="catalog.resource.relationships.toc.child-of">Child of</name>  
+	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso:ParentIdentifier-apiso.ResourceIdentifier</query>
 		</item>	
+		<item>
+			<name resourceKey="catalog.resource.relationships.toc.parent-to">Parent to</name>
+	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso.ResourceIdentifier-apiso:ParentIdentifier</query>		
+		</item>	        
+ 		<item>
+			<name resourceKey="catalog.resource.relationships.toc.same-publisher">Others from this publisher</name>
+	    <query>urn:esri:geoportal:browse:resourceRelationship:publisher-publisher</query>		
+		</item>	       
   </item>
 </tree>
