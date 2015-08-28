@@ -17,7 +17,10 @@
 <%@page language="java" contentType="text/javascript; charset=UTF-8" session="false"%>
 <%@ page import="java.net.URLDecoder"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ page import = "java.util.logging.Logger"%>
 <%
+  Logger log = Logger.getLogger("com.esri.gpt");
+  log.info("Baohong  1st log line");
   com.esri.gpt.framework.jsf.MessageBroker msg = 
     (new com.esri.gpt.framework.jsf.FacesContextBroker(request,response)).extractMessageBroker();
 
@@ -228,6 +231,7 @@ function <%=fStartup%>() {
       
         // find the script element
         var insertionNode = null;
+        log.info("Baohong  before dojo.query");
         dojo.query("script").forEach(function(item) {
           if (item.src.indexOf(_gSearchRequestPath) == 0) {
             if (insertionNode == null) insertionNode = item;
