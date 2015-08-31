@@ -449,6 +449,11 @@
         <parameter key="dcat.mappings" value="gpt/metadata/dcat-mappings.xml"/>
         <!-- DCAT cache directory -->
         <parameter key="dcat.cache.path" value="D:/Public/Server/tomcat7042/webapps/metadata"/>
+		<parameter key="dcat.landingPage.default.details" value="true"/>
+		<parameter key="dcat.rights.writeAlways" value="false"/>
+            
+		<parameter key="catalog.useCollections" value="true"/>
+		<parameter key="lucene.maxrecords.threshold" value="1000"/>
     </catalog>
     
     <!-- Download data configuration.

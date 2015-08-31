@@ -59,7 +59,7 @@
 	  <field name="accessURL" index="dcat.accessUrl" required="true"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="true"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
-	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" required="true" delimiter="/"/>
+	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" dateFormat="yyyy-MM-dd" required="true" delimiter="/"/>
 	</fields>
 	<fields schema="others">
 	  <field name="title" index="title" type="string" required="true"/>  
@@ -90,13 +90,14 @@
 	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="true"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
-	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" required="true" delimiter="/"/>
+	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" dateFormat="yyyy-MM-dd" required="true" delimiter="/"/>
 	</fields>
 	<fields schema="dcat">
 	  <field name="title" index="title" type="string" required="true"/>  
 	  <field name="description" index="abstract" type="string" required="true"/>
 	  <field name="keyword" index="keywords" type="array" required="true"/>
-	  <field name="modified" index="dateModified" isDate="true" dateFormat="yyyy-MM-dd" type="date" delimiter="/" required="true"/>
+	  <field name="modified" index="dcat.modified" isDate="true" dateFormat="yyyy-MM-dd" type="date" delimiter="/" required="true"/>
+      <field name="issued" index="dcat.issued"  isDate="true" type="date" dateFormat="yyyy-MM-dd" required="false"/>	
 	  <field name="publisher" index="publisher" required="true"/>
 	  <field name="contactPoint" index="dcat.person" required="true"/>
 	  <field name="mbox"	index="dcat.mbox" required="true"/>
@@ -108,8 +109,8 @@
         <map from=".*" to="public"/>
       </field>
 	  <field name="accessLevelComment" index="dcat.accessLevelComment" maxChars="255" required="false"/>
-	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
-	  <field name="programCode" index="programCode" type="array" required="true"/>
+	  <field name="bureauCode" index="dcat.bureauCode" type="array" required="true"/>
+	  <field name="programCode" index="dcat.programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
 	  <field name="webService" index="resource.url" required="false"/> 
 	  <field name="format" index="dcat.format" required="false"/>
@@ -117,7 +118,7 @@
 	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="true"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
-	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" required="true" delimiter="/"/>
+	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" dateFormat="yyyy-MM-dd" required="true" delimiter="/"/>
       <field name="theme" index="dataTheme" required="false" />
       <field name="accrualPeriodicity" index="dcat.accrualPeriodicity"  required="false">
         <map from="Decennial" to="R/P10Y"/>
@@ -145,6 +146,12 @@
       <field name="isPartOf" index="sys.parentid"  required="false"/>
       <field name="primaryITInvestmentUII" index="dcat.primaryITInvestmentUII"  required="false"/>
       <field name="dataQuality" index="dcat.dataQuality"  required="false"/>
+      <field name="describedBy" index="dcat.describedBy"  required="false"/>
+      <field name="describedByType" index="dcat.describedByType"  required="false"/>
+      <field name="language" index="dcat.language" type="array" required="false" />
+      <field name="references" index="dcat.references" type="array" required="false"/>
+      <field name="accessLevelComment" index="dcat.accessLevelComment" maxChars="255" required="false"/>
+      <field name="landingPage" index="dcat.landingPage"  required="false"/>
 	</fields>	
 	<fields schema="fgdc">
 	  <field name="title" index="title" required="true"/>  
@@ -162,12 +169,12 @@
         <map from=".*" to="public"/>
       </field>
 	  <field name="accessLevelComment" index="dcat.accessLevelComment" maxChars="255" required="false"/>
-	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
+	  <field name="bureauCode" index="dcat.bureauCode" type="array" required="true"/>
 	  <field name="programCode" index="dcat.programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary" />
 	  <!--<field name="webService" index="dcat.webService" required="false"/> -->
 	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
-	  <!--<field name="accessURL" index="resource.url" required="false"/>-->
+	  <field name="accessURL" index="resource.url" required="false"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="false"/>
 	  <field name="format" index="dcat.format" required="false"/>
 	  <field name="license" index="dcat.license" required="false">
@@ -176,7 +183,7 @@
         <map from="(.*\n?)*" to=""/>
       </field>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
-	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" required="true" delimiter="/"/>
+	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" dateFormat="yyyy-MM-dd" required="true" delimiter="/"/>
       <field name="references" index="dcat.references" type="array" required="false"/>
       <field name="landingPage" index="dcat.landingPage"  required="false"/>
       <field name="theme" index="dataTheme" required="false" />
@@ -221,7 +228,7 @@
         <map from=".*" to="public"/>
       </field>
 	  <field name="accessLevelComment" index="apiso.AccessConstraints;dcat.accessLevelComment" maxChars="255" required="false"/>
-	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
+	  <field name="bureauCode" index="dcat.bureauCode" type="array" required="true"/>
 	  <field name="programCode" index="dcat.programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary" />
 	  <field name="webService" index="resource.url" required="false"/>
