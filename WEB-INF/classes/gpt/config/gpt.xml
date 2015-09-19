@@ -83,7 +83,7 @@
         </adaptor>
     -->
 	    <adaptor name="like" className="com.esri.gpt.catalog.lucene.StandardNetworkParserAdaptor">
-			<attribute key="baseUrl" value="https://edg-staging.epa.gov/OntologyService/query?threshold=0.25&amp;term="/>
+			<attribute key="baseUrl" value="https://edg.epa.gov/OntologyService/query?threshold=0.25&amp;term="/>
         </adaptor>
     </lucene> 
  
@@ -392,7 +392,7 @@
         <parameter key="publicationRequest.autoApprove" value="false"/>
         <parameter key="spatialRelevance.ranking.maxDoc" value="1000000"/>
         <parameter key="rssProviderUrl" value=""/>
-        <parameter key="reverseProxy.baseContextPath" value="https://edg-staging.epa.gov/metadata"/>
+        <parameter key="reverseProxy.baseContextPath" value="https://edg.epa.gov/metadata"/>
         <parameter key="RestServlet.printXml.stripStyleSheets" value="true"/>
         <parameter key="Administration.viewMetadata.stripStyleSheets" value="true"/>
         <parameter key="httpClientRequest.connectionTimeout" value="2[MINUTE]"/>
@@ -449,7 +449,7 @@
         <!-- DCAT cache directory -->
         <parameter key="dcat.cache.path" value="D:/Public/Server/tomcat7042/webapps/metadata"/>
 	<parameter key="dcat.landingPage.default.details" value="true"/>
-	<parameter key="dcat.rights.writeAlways" value="true"/>
+	<parameter key="dcat.rights.writeAlways" value="false"/>
             
 	<parameter key="catalog.useCollections" value="false"/>
 	<parameter key="lucene.maxrecords.threshold" value="1000"/>
@@ -513,19 +513,18 @@
     -->
     <!--identity encKey="PtkESRI" realm="Geoportal"-->
 	<identity encKey="PtkESRI">  
-     
-        <!--<simpleAdapter>
+    <!-- 
+        <simpleAdapter>
             <account username="gptadmin" password="Innovate4fun!" encrypted="false"/>
             <roles>
                 <role key="gptRegisteredUser"/>
                 <role key="gptPublisher"/>
                 <role key="gptAdministrator"/>
             </roles>
-        </simpleAdapter>-->
-	
-	
+        </simpleAdapter>
+	-->
          
-	 
+	
 	 <ldapAdapter>
      
          <ldapConnectionProperties
@@ -535,7 +534,7 @@
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="csoUGK2U"
+                  securityCredentials="fkf61c4r"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
@@ -719,7 +718,7 @@
           groupDN="cn=GDG-OP,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
           </groups>
         </ldapAdapter>
-	
+		
 
  </identity>
     
@@ -727,10 +726,10 @@
     <!-- Scheduled Background Threads -->
     <scheduler active="true" corePoolSize="0">
         <!-- Catalog synchronization (sync Lucene index with the database) -->
-        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="18:25"/>
+        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="00:10"/>
         <!--<thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" period='4[HOUR]' delay="30[SECOND]"/>-->
         <!-- Index optimization --> 
-        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:40"/>
+        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:30"/>
     
 <!-- Innovate's batch thread -->
       <thread class="com.innovateteam.gpt.BatchUpdateWrapper"

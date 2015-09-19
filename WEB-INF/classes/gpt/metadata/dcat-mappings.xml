@@ -101,7 +101,7 @@
 	  <field name="publisher" index="publisher" required="true"/>
 	  <field name="contactPoint" index="dcat.person" required="true"/>
 	  <field name="mbox"	index="dcat.mbox" required="true"/>
-	  <field name="identifier" index="apiso:Identifier" required="true"/>  
+	  <field name="identifier" required="true"/>  
 	  <field name="accessLevel" index="dcat.accessLevel" required="true">
         <map from="High Confidentiality|Non-public|Secret|Top Secret" to="non-public"/>
         <map from="Medium Confidentiality|Restricted|Confidential|Sensitive" to="restricted public"/>
@@ -143,7 +143,7 @@
         <map from="asNeeded|notPlanned|unknown" to="irregular"/>
         <map from=".*" to="irregular"/>
       </field>
-      <field name="isPartOf" index="dcat.isPartOf"  required="false"/>
+      <field name="isPartOf" index="sys.parentid"  required="false"/>
       <field name="primaryITInvestmentUII" index="dcat.primaryITInvestmentUII"  required="false"/>
       <field name="dataQuality" index="dcat.dataQuality"  required="false"/>
       <field name="describedBy" index="dcat.describedBy"  required="false"/>
@@ -275,6 +275,6 @@
       <field name="references" index="dcat.references" type="array" required="false"/>
       <field name="size" index="dcat.size"  required="false"/>
       <field name="landingPage" index="dcat.landingPage"  required="false"/>
-      <field name="isPartOf" index="dcat.isPartOf" required="false" />
+      <field name="isPartOf" index="apiso.ParentIdentifier" required="false" />
 	  </fields>
 </dcat>
