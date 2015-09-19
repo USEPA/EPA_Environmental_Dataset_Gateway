@@ -47,15 +47,6 @@
   <!-- identification section -->
   <section key="identification">
     <label resourceKey="catalog.mdParam.identification.caption"/>
-    
-    <parameter key="identification.fileIdentifier">
-      <label resourceKey="catalog.mdParam.general.fileIdentifier"/>
-      <input type="text" size="50" maxlength="50" editable="false" 
-               defaultValue="#{EditMetadataController.newUuid}"/>
-      <validation required="false"/>
-      <content useSelectForUpdate="true"
-                 select="/rdf:RDF/dcat:dataset/dct:identifier"/> 
-    </parameter>
 
     <parameter key="identification.title"> 
       <label resourceKey="catalog.mdParam.identification.title"/>
@@ -72,35 +63,76 @@
       <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/rdf:RDF/dcat:dataset/dct:description"/>
     </parameter>
-    
-    <parameter key="identification.resourceURL">
-      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+
+    <parameter key="identification.fileIdentifier">
+      <label resourceKey="catalog.mdParam.general.fileIdentifier"/>
+      <input type="text" size="50" maxlength="50" editable="false" 
+               defaultValue="#{EditMetadataController.newUuid}"/>
+      <validation required="false"/>
+      <content useSelectForUpdate="true"
+                 select="/rdf:RDF/dcat:dataset/dct:identifier"/> 
+    </parameter>
+	
+  </section>
+
+  <!-- Distribution Section -->
+  <section key="pod.distribution">
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="identification.downloadURL">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/rdf:RDF/dcat:dataset/dcat:distribution/dcat:downloadURL" />
     </parameter> 
     
-    <parameter key="identification.resourceURL">
+    <parameter key="identification.accessURL">
       <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/rdf:RDF/dcat:dataset/dcat:distribution/dcat:accessURL" />
     </parameter> 
-    
-    <!-- Originator  1:N  origin-->
-    <parameter key="identification.originator"> 
-      <label resourceKey="catalog.mdParam.citation.originator"/>
-      <input type="text" maxlength="255" defaultValue="#{EditMetadataController.userProfile['firstName'].value} #{EditMetadataController.userProfile['lastName'].value}"/>
-      <validation required="false"/>
-      <content useSelectForUpdate="true" deleteIfEmpty="true"
-               select="/rdf:RDF/dcat:dataset/dct:publisher/foaf:name"/>
-    </parameter>
   
-    <!-- Publication Date pubdate -->
-    <parameter key="identification.publicationDate"> 
-      <label resourceKey="catalog.mdParam.citation.publicationDate"/>
+  </section>
+  
+  <!-- Access Section -->
+  <section key="pod.access">
+	<label resourceKey="catalog.mdParam.constraint.caption"/>
+	<parameter key="accessLevel">
+		<label resourceKey="catalog.mdParam.schema.dcat.accessLevel"/>
+		<input type="selectOneMenu" defaultValue="Public" />
+		<validation required="true"/>
+		<content useSelectForUpdate="true" deleteIfEmpty="false"
+				select="/rdf:RDF/dcat:dataset/pod:accessLevel">
+			<codes>
+				<code key="public" resourceKey="catalog.mdParam.schema.dcat.accessLevel.public"/>
+				<code key="restricted public" resourceKey="catalog.mdParam.schema.dcat.accessLevel.restrictedPublic"/>
+				<code key="non-public" resourceKey="catalog.mdParam.schema.dcat.accessLevel.nonPublic"/>
+				</codes>
+		</content>
+	</parameter>
+	<parameter key="pod.rights">
+		<label resourceKey="catalog.mdParam.schema.dcat.rights"/>
+		<input type="textArea"/>
+		<validation required="false"/>
+		<content useSelectForUpdate="true" deleteIfEmpty="true"
+			   select="/rdf:RDF/dcat:dataset/dct:rights"/>
+	</parameter>
+	<parameter key="pod.license">
+      <label resourceKey="catalog.mdParam.schema.dcat.license"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="true" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="false"
+               select="/rdf:RDF/dcat:dataset/dct:license" />
+    </parameter> 
+  </section>
+  
+  <section key="pod.dates">
+	<label resourceKey="catalog.fgdc.metainfo.section.dates"/>
+    <!-- Modified Date -->
+    <parameter key="pod.modifiedDate"> 
+      <label resourceKey="catalog.gxe.dc.modified"/>
       <input type="text" size="20" maxlength="10" 
              hintResourceKey="catalog.general.inputDateFormat"
              defaultValue="#{EditMetadataController.now}"/>
@@ -108,34 +140,64 @@
       <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/rdf:RDF/dcat:dataset/dct:modified"/>
     </parameter> 
-           
-    <parameter key="metadata.language">
-      <label resourceKey="catalog.mdParam.general.metadataLanguage"/>
-      <input type="selectOneMenu" defaultValue="eng" />
-      <validation required="false"/>
+    <!-- Issued Date -->
+    <parameter key="pod.issuedDate"> 
+      <label resourceKey="catalog.gxe.dc.issued"/>
+      <input type="text" size="20" maxlength="10" 
+             hintResourceKey="catalog.general.inputDateFormat"
+             defaultValue="#{EditMetadataController.now}"/>
+      <validation required="false" valueType="date"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
-                     select="/rdf:RDF/dcat:dataset/dct:language">
-        <codes>
-          <code key="ger" resourceKey="catalog.mdCode.language.iso639_2.ger"/>
-          <code key="dut" resourceKey="catalog.mdCode.language.iso639_2.dut"/>
-          <code key="eng" resourceKey="catalog.mdCode.language.iso639_2.eng"/>
-          <code key="fre" resourceKey="catalog.mdCode.language.iso639_2.fre"/>
-          <code key="ita" resourceKey="catalog.mdCode.language.iso639_2.ita"/>
-          <code key="kor" resourceKey="catalog.mdCode.language.iso639_2.kor"/>
-          <code key="lit" resourceKey="catalog.mdCode.language.iso639_2.lit"/>
-          <code key="nor" resourceKey="catalog.mdCode.language.iso639_2.nor"/>
-          <code key="pol" resourceKey="catalog.mdCode.language.iso639_2.pol"/>
-          <code key="por" resourceKey="catalog.mdCode.language.iso639_2.por"/>
-          <code key="rus" resourceKey="catalog.mdCode.language.iso639_2.rus"/>
-          <code key="spa" resourceKey="catalog.mdCode.language.iso639_2.spa"/>
-          <code key="swe" resourceKey="catalog.mdCode.language.iso639_2.swe"/>
-          <code key="tur" resourceKey="catalog.mdCode.language.iso639_2.tur"/>
-          <code key="chi" resourceKey="catalog.mdCode.language.iso639_2.chi"/>
-        </codes>
-      </content>
-    </parameter>			
+               select="/rdf:RDF/dcat:dataset/dct:issued"/>
+    </parameter> 	
+    <!-- Temporal Date (date of data) -needs work!- -->
+    <parameter key="pod.resourceDate"> 
+      <label resourceKey="catalog.mdParam.schema.dcat.temporal"/>
+      <input type="text" size="20" maxlength="10" 
+             hintResourceKey="catalog.general.inputDateFormat"
+             defaultValue="#{EditMetadataController.now}"/>
+      <validation required="false" valueType="date"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dct:temporal"/>
+    </parameter>	
+	<!-- Accrual Periodicity (needs code map)-->
+	<parameter key="pod.accrual">
+      <label resourceKey="catalog.mdParam.schema.dcat.accrualPeriodicity"/>
+      <input type="text" size="50" maxlength="50" />
+      <validation required="false"/>
+      <content useSelectForUpdate="true"
+                 select="/rdf:RDF/dcat:dataset/dct:accrualPeriodicity"/> 
+    </parameter>
   </section>
-
+  
+  <section key="pod.contact">
+	<label resourceKey="catalog.mdParam.contact.caption"/>
+	<!-- Originator  1:N  origin-->
+    <parameter key="identification.originator"> 
+      <label resourceKey="catalog.mdParam.contact.organization"/>
+      <input type="text" maxlength="255" defaultValue="#{EditMetadataController.userProfile['firstName'].value} #{EditMetadataController.userProfile['lastName'].value}"/>
+      <validation required="true"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dct:publisher/foaf:name"/>
+    </parameter>
+	<!-- Contact Point-->
+    <parameter key="pod.contactPoint"> 
+      <label resourceKey="catalog.mdParam.contact.person"/>
+      <input type="text" maxlength="255" defaultValue="#{EditMetadataController.userProfile['firstName'].value} #{EditMetadataController.userProfile['lastName'].value}"/>
+      <validation required="true"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:contactPoint/vcard:fn"/>
+    </parameter>
+	<!-- Contact Email-->
+    <parameter key="pod.contactEmail"> 
+      <label resourceKey="catalog.mdParam.contact.email"/>
+      <input type="text" maxlength="255" />
+      <validation required="true"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:contactPoint/vcard:hasEmail"/>
+    </parameter>
+  </section>
+  
   <!-- theme section -->
   <section key="theme">
     <label resourceKey="catalog.mdParam.theme.caption"/>
@@ -201,8 +263,8 @@
              hintResourceKey="catalog.general.inputLongitudeFormat"/>
       <validation required="false" valueType="double"/>
       <content nodeType="pairLeftValue"
-               select="concat(/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/westbc ,  substring-before(/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/ows:LowerCorner, ' '))"
-               update="/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/ows:LowerCorner"/> 
+               select="concat(/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/westbc ,  substring-before(/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/ows:LowerCorner, ' '))"
+               update="/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/ows:LowerCorner"/> 
     </parameter>
     
     <parameter key="envelope.east" meaning="envelope.east"> 
@@ -211,8 +273,8 @@
              hintResourceKey="catalog.general.inputLongitudeFormat"/>
       <validation required="false" valueType="double"/>
       <content nodeType="pairLeftValue"
-               select="concat(/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/eastbc ,  substring-before(/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/ows:UpperCorner, ' '))"
-               update="/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/ows:UpperCorner"/> 
+               select="concat(/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/eastbc ,  substring-before(/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/ows:UpperCorner, ' '))"
+               update="/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/ows:UpperCorner"/> 
     </parameter>
     
     <parameter key="envelope.north" meaning="envelope.north"> 
@@ -221,8 +283,8 @@
              hintResourceKey="catalog.general.inputLatitudeFormat"/>
       <validation required="false" valueType="double"/>
       <content nodeType="pairRightValue"
-               select="concat(/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/northbc , substring-after(/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/ows:UpperCorner,' '))"
-               update="/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/ows:UpperCorner"/> 
+               select="concat(/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/northbc , substring-after(/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/ows:UpperCorner,' '))"
+               update="/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/ows:UpperCorner"/> 
     </parameter>
 
     <parameter key="envelope.south" meaning="envelope.south"> 
@@ -231,8 +293,8 @@
              hintResourceKey="catalog.general.inputLatitudeFormat"/>
       <validation required="false" valueType="double" />
       <content nodeType="pairRightValue"
-               select="concat(/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/southbc, substring-after(/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/ows:LowerCorner,' '))"
-               update="/rdf:RDF/rdf:Description/ows:WGS84BoundingBox/ows:LowerCorner"/>  
+               select="concat(/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/southbc, substring-after(/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/ows:LowerCorner,' '))"
+               update="/rdf:RDF/dcat:dataset/ows:WGS84BoundingBox/ows:LowerCorner"/>  
     </parameter>
     
     <!--  interactive map -->
@@ -243,4 +305,57 @@
     </section>
 
   </section>
+  
+  <section key="pod.Reference">
+	<label resourceKey="catalog.mdParam.standard.caption"/>
+    <parameter key="pod.landingPage">
+      <label resourceKey="catalog.mdParam.schema.dcat.landingPage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:landingPage" />
+    </parameter> 
+	<parameter key="pod.References">
+      <label resourceKey="catalog.mdParam.basic.referenceForTechnicalDocumentation"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dct:references" />
+    </parameter> 
+	<parameter key="pod.describedBy">
+      <label resourceKey="fgdc.entiAndAttrInfo.overDesc.entiAndAttrDetaCita"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:describedBy" />
+    </parameter> 
+      
+    <parameter key="metadata.language">
+      <label resourceKey="catalog.mdParam.general.metadataLanguage"/>
+      <input type="selectOneMenu" defaultValue="eng" />
+      <validation required="false"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+                     select="/rdf:RDF/dcat:dataset/dct:language">
+        <codes>
+          <code key="ger" resourceKey="catalog.mdCode.language.iso639_2.ger"/>
+          <code key="dut" resourceKey="catalog.mdCode.language.iso639_2.dut"/>
+          <code key="eng" resourceKey="catalog.mdCode.language.iso639_2.eng"/>
+		  <code key="en-US" resourceKey="catalog.mdCode.language.iso639_2.eng"/>
+          <code key="fre" resourceKey="catalog.mdCode.language.iso639_2.fre"/>
+          <code key="ita" resourceKey="catalog.mdCode.language.iso639_2.ita"/>
+          <code key="kor" resourceKey="catalog.mdCode.language.iso639_2.kor"/>
+          <code key="lit" resourceKey="catalog.mdCode.language.iso639_2.lit"/>
+          <code key="nor" resourceKey="catalog.mdCode.language.iso639_2.nor"/>
+          <code key="pol" resourceKey="catalog.mdCode.language.iso639_2.pol"/>
+          <code key="por" resourceKey="catalog.mdCode.language.iso639_2.por"/>
+          <code key="rus" resourceKey="catalog.mdCode.language.iso639_2.rus"/>
+          <code key="spa" resourceKey="catalog.mdCode.language.iso639_2.spa"/>
+          <code key="swe" resourceKey="catalog.mdCode.language.iso639_2.swe"/>
+          <code key="tur" resourceKey="catalog.mdCode.language.iso639_2.tur"/>
+          <code key="chi" resourceKey="catalog.mdCode.language.iso639_2.chi"/>
+        </codes>
+      </content>
+    </parameter>
+  </section>
+  
 </schema>

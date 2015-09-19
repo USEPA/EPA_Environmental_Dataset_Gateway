@@ -449,7 +449,7 @@
         <!-- DCAT cache directory -->
         <parameter key="dcat.cache.path" value="D:/Public/Server/tomcat7042/webapps/metadata"/>
 	<parameter key="dcat.landingPage.default.details" value="true"/>
-	<parameter key="dcat.rights.writeAlways" value="false"/>
+	<parameter key="dcat.rights.writeAlways" value="true"/>
             
 	<parameter key="catalog.useCollections" value="false"/>
 	<parameter key="lucene.maxrecords.threshold" value="1000"/>
@@ -514,18 +514,18 @@
     <!--identity encKey="PtkESRI" realm="Geoportal"-->
 	<identity encKey="PtkESRI">  
      
-        <simpleAdapter>
+        <!--<simpleAdapter>
             <account username="gptadmin" password="Innovate4fun!" encrypted="false"/>
             <roles>
                 <role key="gptRegisteredUser"/>
                 <role key="gptPublisher"/>
                 <role key="gptAdministrator"/>
             </roles>
-        </simpleAdapter>
+        </simpleAdapter>-->
 	
 	
          
-	 <!--
+	 
 	 <ldapAdapter>
      
          <ldapConnectionProperties
@@ -719,7 +719,7 @@
           groupDN="cn=GDG-OP,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
           </groups>
         </ldapAdapter>
-	-->
+	
 
  </identity>
     
@@ -727,10 +727,10 @@
     <!-- Scheduled Background Threads -->
     <scheduler active="true" corePoolSize="0">
         <!-- Catalog synchronization (sync Lucene index with the database) -->
-        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="12:24"/>
+        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="18:25"/>
         <!--<thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" period='4[HOUR]' delay="30[SECOND]"/>-->
         <!-- Index optimization --> 
-        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="12:49"/>
+        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:40"/>
     
 <!-- Innovate's batch thread -->
       <thread class="com.innovateteam.gpt.BatchUpdateWrapper"
