@@ -19,7 +19,7 @@
  
   <property meaning="title" xpath="/metadata/idinfo/citation/citeinfo/title"/>
   <property meaning="abstract" xpath="/metadata/idinfo/descript/abstract"/>
-    
+  <property meaning="apiso:Identifier" xpath="/metadata/Esri/PublishedDocID"/>  
   <property meaning="keywords"
     xpath="/metadata/idinfo/keywords/theme/themekey | /metadata/idinfo/keywords/place/placekey | /metadata/idinfo/keywords/stratum/stratkey | /metadata/idinfo/keywords/temporal/tempkey"/>
     
@@ -89,14 +89,13 @@
   <property meaning="dcat.format" xpath="/metadata/distinfo/storder/digform/digtinfo/fname"/>
   <property meaning="dcat.accrualPeriodicity" xpath="/metadata/idinfo/status/update"/>
   <property meaning="dcat.license" xpath="/metadata/distinfo/distliab"/>
-  <property meaning="dcat.isPartOf" xpath="/metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/onlink"/>
   <!-- EPA URL Convention -->
   <property meaning="dcat.accessUrl" xpath="/metadata/idinfo/citation/citeinfo/onlink[1]"/>
   <property meaning="dcat.downloadUrl" xpath="/metadata/idinfo/citation/citeinfo/onlink[1]"/>
   <property meaning="dcat.webService" xpath="/metadata/idinfo/citation/citeinfo/onlink[2]"/>
   <property meaning="dcat.references" xpath="/metadata/idinfo/citation/citeinfo/onlink[3]"/>
   <property meaning="dcat.landingPage" xpath="/metadata/idinfo/citation/citeinfo/onlink[4]"/>  
-  <property meaning="dcat.parentIdentifier" xpath="/metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/othcit"/>
+  <property meaning="dcat.isPartOf" xpath="/metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/othcit"/>
  
   <!-- Full-text search -->
   <property meaning="body" xpathType="STRING" xpath="//*"/>

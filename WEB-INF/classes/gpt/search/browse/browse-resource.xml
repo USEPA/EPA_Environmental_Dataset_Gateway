@@ -29,15 +29,15 @@
 		</item>	-->
 		<item>
 			<name resourceKey="catalog.resource.relationships.toc.child-of">Child of</name>  
-	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso:ParentIdentifier-apiso.ResourceIdentifier</query>
+	    <query>urn:esri:geoportal:browse:resourceRelationship:dcat.isPartOf-apiso:Identifier</query>
 		</item>	
 		<item>
 			<name resourceKey="catalog.resource.relationships.toc.parent-to">Parent to</name>
-	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso.ResourceIdentifier-apiso:ParentIdentifier</query>		
+	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso:Identifier-dcat.isPartOf</query>		
 		</item>	        
  		<item>
 			<name resourceKey="catalog.resource.relationships.toc.same-publisher">Others from this publisher</name>
-	    <query>urn:esri:geoportal:browse:resourceRelationship:publisher-publisher</query>		
+	    <query>urn:esri:geoportal:browse:resourceRelationship:dcat.publisher-dcat.publisher</query>		
 		</item>	       
   </item>
 </tree>
