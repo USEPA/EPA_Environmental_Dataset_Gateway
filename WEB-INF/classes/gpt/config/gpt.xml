@@ -87,7 +87,7 @@
         </adaptor>
     </lucene> 
  
-    <!-- Additional configuration for Lucene
+    <!-- Additional configuration for Lucene 
         - lucene.alwaysStoreXmlInIndex: 
 			true if the full document xml should be store within the index
         - lucene.force.isPartOf: 
