@@ -86,5 +86,6 @@
   <property meaning="dcat.describedByType" xpath="/rdf:RDF/dcat:dataset/dcat:describedByType"/>
   <property meaning="dcat.references" xpath="/rdf:RDF/dcat:dataset/dct:references"/>
   <property meaning="dcat.isPartOf" xpath="/rdf:RDF/dcat:dataset/pod:isPartOf"/>  
+  <property meaning="metadataFormat" xpathType="STRING" xpath="'dcat'"/>
 </indexables>
 
