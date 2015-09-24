@@ -54,7 +54,7 @@
     -->
     
     <interactiveMap
-        jsapiUrl="https://serverapi.arcgisonline.com/jsapi/arcgis/?v=1.3"
+        jsapiUrl="https://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"
         mapServiceUrl="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
         mapServiceType="dynamic" 
         geometryServiceUrl="https://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
