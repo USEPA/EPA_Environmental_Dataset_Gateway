@@ -452,7 +452,7 @@
 	<parameter key="dcat.rights.writeAlways" value="true"/>
             
 	<parameter key="catalog.useCollections" value="false"/>
-	<parameter key="lucene.maxrecords.threshold" value="1000"/>
+	<parameter key="lucene.maxrecords.threshold" value="10000"/>
     </catalog>
     
     <!-- Download data configuration.

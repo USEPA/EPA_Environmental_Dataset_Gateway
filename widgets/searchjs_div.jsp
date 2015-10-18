@@ -38,7 +38,7 @@
   String msgNoMatch = msg.retrieveMessage("catalog.widget.search.msg.noMatch");
   String about = msg.retrieveMessage("catalog.widget.search.about");
   
-  String frameworkUrl = "https://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5";
+  String frameworkUrl = "//serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5";
   String baseUrl = com.esri.gpt.framework.context.RequestContext.resolveBaseContextPath(request);
   String restUrl = baseUrl+"/rest/find/document";
   String cssUrl = baseUrl+"/widgets/widgets.css";
@@ -386,7 +386,7 @@ function <%=fStartup%>() {
 	          elControl.appendChild(elBtn);
 	          dojo.connect(elBtn,"onclick",this,"asRSS");
 	          
-	          elBtn = makeIcon("https://www.google.com/earth/images/google_earth_link.gif",this.tipKML);
+	          elBtn = makeIcon("//www.google.com/earth/images/google_earth_link.gif",this.tipKML);
 	          elControl.appendChild(elBtn);
 	          dojo.connect(elBtn,"onclick",this,"asKML");
 	
