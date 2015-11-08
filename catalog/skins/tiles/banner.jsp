@@ -40,7 +40,11 @@
 		onclick="javascript:mainOpenPageHelp()">
 		<h:outputText value="#{gptMsg['catalog.help.menuCaption']}" />
 	</h:outputLink>
-
+	<h:outputLink value="#"
+		id="openShareFeedback" 
+		onclick="javascript:mainOpenShareFeedback()">
+		<h:outputText value="#{gptMsg['catalog.shareFeedback']}" />
+	</h:outputLink>
 	<%--h:commandLink id="identityMyProfile"
 		action="catalog.identity.myProfile" 
 		value="#{gptMsg['catalog.identity.myProfile.menuCaption']}"

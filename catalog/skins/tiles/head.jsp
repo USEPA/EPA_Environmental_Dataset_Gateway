@@ -75,8 +75,14 @@ function mainOpenInternalLink(oLink,sHref) {
 	}
 }
 
+
+
 function mainOpenPageHelp() {
 	openHelp("GPT_Context_Help", "<%=com.esri.gpt.framework.jsf.PageContext.extract().getPageId()%>");
+}
+
+function mainOpenShareFeedback() {
+	window.open('<%= http://developer.epa.gov/forums/forum/dataset-qa/%>', 'share your feedback');
 }
 // Global variable to be used for map viewer
 var mainGptMapViewer = new GptMapViewer(mainGptMvsUrl);
