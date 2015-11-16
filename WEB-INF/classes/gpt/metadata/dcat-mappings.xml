@@ -173,9 +173,15 @@
 	  <field name="programCode" index="dcat.programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary" />
 	  <!--<field name="webService" index="dcat.webService" required="false"/> -->
-	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
-	  <field name="accessURL" index="resource.url" required="false"/>
-	  <field name="downloadURL" index="dcat.downloadUrl" required="false"/>
+	  <field name="accessURL" index="dcat.accessUrl" required="false">
+        <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
+        <map from="(.*\n?)*" to=""/>
+      </field>
+	  <!--<field name="accessURL" index="resource.url" required="false"/>-->
+	  <field name="downloadURL" index="dcat.downloadUrl" required="false">
+        <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
+        <map from="(.*\n?)*" to=""/>
+      </field>
 	  <field name="format" index="dcat.format" required="false"/>
 	  <field name="license" index="dcat.license" required="false">
         <map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and\/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
@@ -184,7 +190,10 @@
       </field>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
 	  <field name="temporal" index="timeperiod.l.0,timeperiod.u.0" isDate="true" type="date" dateFormat="yyyy-MM-dd" required="true" delimiter="/"/>
-      <field name="references" index="dcat.references" type="array" required="false"/>
+      <field name="references" index="dcat.references" type="array" required="false">
+        <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
+        <map from="(.*\n?)*" to=""/>
+      </field>
       <field name="landingPage" index="dcat.landingPage"  required="false"/>
       <field name="theme" index="dataTheme" required="false" />
       <field name="accrualPeriodicity" index="dcat.accrualPeriodicity"  required="false">

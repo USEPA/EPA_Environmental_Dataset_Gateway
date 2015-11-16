@@ -28,23 +28,23 @@
         <a href="/metrics/" target="_blank">EDG Inventory</a>
     </f:verbatim>
 
-
-	<h:commandLink 
+	<h:outputLink value="#" styleClass="bigGreen" style="padding-top:0px" value = "#{gptMsg['catalog.shareFeedback']}"
+		id="openShareFeedback" 
+		onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
+	</h:outputLink>
+	
+	<%--h:commandLink 
         id="identityFeedback"
         action="catalog.identity.feedback" 
         styleClass="#{PageContext.tabStyleMap['catalog.identity.feedback']}"
-        value="#{gptMsg['catalog.identity.feedback.menuCaption']}" />
+        value="#{gptMsg['catalog.identity.feedback.menuCaption']}" /--%>
         
 	<h:outputLink value="#"
 		id="openHelp" 
 		onclick="javascript:mainOpenPageHelp()">
 		<h:outputText value="#{gptMsg['catalog.help.menuCaption']}" />
 	</h:outputLink>
-	<h:outputLink value="#"
-		id="openShareFeedback" 
-		onclick="javascript:mainOpenShareFeedback()">
-		<h:outputText value="#{gptMsg['catalog.shareFeedback']}" />
-	</h:outputLink>
+
 	<%--h:commandLink id="identityMyProfile"
 		action="catalog.identity.myProfile" 
 		value="#{gptMsg['catalog.identity.myProfile.menuCaption']}"
