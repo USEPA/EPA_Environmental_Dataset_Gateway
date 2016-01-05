@@ -1693,7 +1693,7 @@ alert("test");
 			<tr>
 				<td>
                     <h:selectBooleanCheckbox id="searchSynonym" title="Check to expand search results to include acronyms, synonyms, and other terms related to your search string"  onclick="javascript:chkSearchSynonymClick(this);"/>
-					<label for="searchSynonym">Include related terms</label>
+					<h:outputLink  value="" onclick="window.open('http://www.epa.gov/research/epa-science-vocabulary', '')"><h:outputText value="Include related terms" /></h:outputLink >
                 </td>
             </tr>
             <tr>

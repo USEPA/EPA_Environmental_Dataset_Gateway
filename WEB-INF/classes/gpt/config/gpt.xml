@@ -222,7 +222,7 @@
                 <parameter key="profileId" 
                     value="urn:esri:gpt:HTTP:JSON:ESRI:AGSONLINE" /> 
             </repository>
-            <repository
+            <!-- repository
                  key="dataGov"
                  class="com.esri.gpt.catalog.search.SearchEngineExternalCsw"
                  labelResourceKey="catalog.search.searchSite.dataGov"
@@ -232,8 +232,8 @@
                     value="urn:ogc:CSW:2.0.2:HTTP:APISO:pycsw" /> 
                 <parameter key="url" 
                     value="http://catalog.data.gov/csw?service=CSW&amp;version=2.0.2&amp;request=GetCapabilities" /> 
-            </repository>
-            <repository
+            repository -->
+            <!-- repository
                  key="geodab"
                  class="com.esri.gpt.catalog.search.SearchEngineExternalCsw"
                  labelResourceKey="catalog.search.searchSite.geoDab"
@@ -243,7 +243,7 @@
                     value="urn:ogc:CSW:2.0.2:HTTP:APISO:GICAT" /> 
                 <parameter key="url" 
                     value="http://production.geodab.eu/gi-cat-StP/services/cswiso?request=GetCapabilities&amp;service=CSW&amp;version=2.0.2" /> 
-            </repository>
+            repository -->
 
             <!-- For the registered CS-W repositories flagged for viewing in federated search -->
             <repository key="*" 
@@ -535,7 +535,7 @@
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="csoUGK2U"
+                  securityCredentials="vdiYHL3r"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
@@ -688,6 +688,33 @@
           name="OAR-OTAQ"
           groupDN="cn=GDG-OAR-OTAQ,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
 	<metadataManagementGroup
+          name="OLEM"
+          groupDN="cn=GDG-OLEM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-CPA"
+          groupDN="cn=GDG-OLEM-CPA,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-FFRRO"
+          groupDN="cn=GDG-OLEM-FFRRO,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OBLR"
+          groupDN="cn=GDG-OLEM-OBLR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OEM"
+          groupDN="cn=GDG-OLEM-OEM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OPM"
+          groupDN="cn=GDG-OLEM-OPM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-ORCR"
+          groupDN="cn=GDG-OLEM-ORCR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OSRTI"
+          groupDN="cn=GDG-OLEM-OSRTI,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OUST"
+          groupDN="cn=GDG-OLEM-OUST,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
           name="OSWER-OBLR"
           groupDN="cn=GDG-OSWER-OBLR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
         <metadataManagementGroup
@@ -727,10 +754,10 @@
     <!-- Scheduled Background Threads -->
     <scheduler active="true" corePoolSize="0">
         <!-- Catalog synchronization (sync Lucene index with the database) -->
-        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="18:25"/>
+        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="08:10"/>
         <!--<thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" period='4[HOUR]' delay="30[SECOND]"/>-->
         <!-- Index optimization --> 
-        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:40"/>
+        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="08:30"/>
     
 <!-- Innovate's batch thread -->
       <thread class="com.innovateteam.gpt.BatchUpdateWrapper"
