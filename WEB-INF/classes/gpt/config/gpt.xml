@@ -54,7 +54,7 @@
     -->
     
     <interactiveMap
-        jsapiUrl="https://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"
+        jsapiUrl="https://js.arcgis.com/3.13/init.js"
         mapServiceUrl="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
         mapServiceType="dynamic" 
         geometryServiceUrl="https://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
@@ -535,7 +535,7 @@
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="vdiYHL3r"
+                  securityCredentials="cnsUJP4e"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>

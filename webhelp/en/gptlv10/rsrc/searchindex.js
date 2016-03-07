@@ -22792,7 +22792,7 @@
 70:1,
 38:1
 },
-"SRC=\"HTTP://SERVERAPI.ARCGISONLINE.COM/JSAPI/ARCGIS/?V=2.5\"></SCRIPT":{
+"SRC=\"http://js.arcgis.com/3.13/init.js"></SCRIPT":{
 26:1
 },
 "POINTING":{

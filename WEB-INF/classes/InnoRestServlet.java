@@ -146,7 +146,11 @@ public class InnoRestServlet extends HttpServlet {
             }
             String fParm = request.getParameter("f");
             String xslParm = request.getParameter("xsl");
-            if (xslParm == null || xslParm.equals("")) {
+            
+            response.setContentType(contentType);
+            out.println(xmlIn);
+            return;            
+            /*if (xslParm == null || xslParm.equals("")) {
                 response.setContentType(contentType);
                 out.println(xmlIn);
                 return;
@@ -196,7 +200,7 @@ public class InnoRestServlet extends HttpServlet {
             } catch (Exception e2) {
                 log.severe("InnoRestServlet processRequest threw exception" + e2);
                 return;
-            }
+            }*/
         } finally {
             out.close();
         }

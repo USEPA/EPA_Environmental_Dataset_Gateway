@@ -34,9 +34,12 @@
 	}
 	String rnpQueryString = "";
 	String rnpRestUrl = "";
+        String rnpRestUrlDCAT = "";
 	if(rnpUuid.length() > 0){
 		rnpUuid = java.net.URLEncoder.encode(rnpUuid,"UTF-8");
 		rnpRestUrl = rnpContextPath+"/rest/document?id=" + rnpUuid + "&f=json";
+                ///rest/find/document?f=dcat&uuid={C5B9FFB2-8BC6-46DD-9B05-D3557EC4B805}
+                rnpRestUrlDCAT = rnpContextPath+"/rest/find/document?uuid=" + rnpUuid + "&f=dcat";
 		rnpQueryString = "uuid="+ rnpUuid;	
 		makeUrls(rnpContextPath,rnpQueryString);	
 	}
@@ -105,14 +108,13 @@ function rnpInit(){
             	elPreview.style.display = "none";          	
             }else{
             	elPreview.style.display = "inline";
-            	//elPreview.href = previewUrl;     
-				elPreview.href = "http://google"; 				
+            	elPreview.href = previewUrl;            
             }
-
         }
-		var elReview = dojo.byId("rnpReview");
-		elReview.href = "http://google"; 
-		elReview.innerHTML = "newTest"; 
+		//var elLinkDevelop = dojo.byId("rnpLinkDevelop");
+		//elLinkDevelop.href = "http://www.google.com"; 
+		//elLinkDevelop.innerHTML = "newTest"; 
+
         var elTitle = dojo.byId("cmPlPcCaption");
         if(elTitle != null){
             if(title == null){
@@ -122,10 +124,51 @@ function rnpInit(){
             	elTitle.innerHTML = title;        
             }
         }
-		myTitle = title;
       }
     });  
   }
+  //start extract dcat info
+   var uDCAT = "<%=rnpRestUrlDCAT%>";
+   if(uDCAT.length > 0){		     
+    dojo.xhrGet({
+      handleAs: "json",
+      preventCache: true,
+      url: uDCAT,
+      load: function(responseObject,ioArgs) {
+        var previewUrl = null;
+        var title = null;
+        var keywordInfo = null;
+        var emailAddress = null;
+        var externalLink = "https://developer.epa.gov/dataforum/topic?uuid=" + "<%=rnpUuid%>";
+        if(responseObject != null && responseObject.dataset != null){
+        	title = responseObject.dataset[0].title;
+                externalLink = externalLink + "&title=" + title;
+                keywordResponse = "";
+                if(responseObject.dataset[0].contactPoint != null) {
+                    if(responseObject.dataset[0].contactPoint.hasEmail != null) {
+                        emailAddress = responseObject.dataset[0].contactPoint.hasEmail;
+                        //String[] emailAddressArray = emailAddress.split("[:]"); 
+                        //externalLink = externalLink + "&contactEmail=" + emailAddressArray[1];
+                        //webUrl.replace("http://","");
+                        externalLink = externalLink + "&contactEmail=" + emailAddress.replace("mailto:","");
+                    }
+                }
+                if(responseObject.dataset[0].keyword != null) {
+                    keywordInfo = responseObject.dataset[0].keyword;
+                    externalLink = externalLink + "&keywords=" + keywordInfo;
+                }
+        } 
+        var elLinkDevelop = dojo.byId("rnpLinkDevelop");
+        elLinkDevelop.href = externalLink; 
+        elLinkDevelop.innerHTML = "Discussion Forum"; 
+
+
+
+      }
+    });  
+  }
+  
+  //end of extracting dcat info
 }
 if (typeof(dojo) != 'undefined') {
 	  dojo.addOnLoad(rnpInit);
@@ -133,7 +176,8 @@ if (typeof(dojo) != 'undefined') {
 </script>
 <f:verbatim>
 	<a id="rnpDetails" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
-	<a id="rnpReview" href=""><%=myTitle%></a>
+	<a id="rnpReview" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>
 	<a id="rnpRelationships" style="display:none" href="<%=rnpRelationshipsUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.relationships.title")%></a>
+	<a id="rnpLinkDevelop" href="" target="_blank"><%=myTitle%></a>
 	<a id="rnpPreview" style="display:none" href="<%=rnpPreviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.liveData.title")%></a>
 </f:verbatim>

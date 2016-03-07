@@ -2,43 +2,29 @@
 * html .visualIEFloatFix { height: 0.01%; }
  
 BODY {
-	font-size: 8pt;
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-variant: small-caps;
+	font-size: 10pt;
+	font-family: Tahoma, Geneva, Verdana, sans-serif;
 	margin: 5;
 	padding: 5;
 	text-align: left;
-	color: "#FFFFFF";
-	background-color: "#517986";
 }
 div.title {
-	font-size: 8pt;
-	BACKGROUND-COLOR: #C4DBDF;
-	FONT-STYLE: bold;
-	font-variant: small-caps;
-	color: #3F78BE;
-	opacity: ".5";
+	font-size: 10pt;
+    font-weight: bold;
 	PADDING: 1px;
-
+    margin-top: 2px;
 }
 div.abstract {
-	font-size: 8pt;
-	BACKGROUND-COLOR: #C7DEE2;
-	FONT-STYLE: normal;
-	font-variant: small-caps;
+	font-size: 9pt;
 	color: #000000;
 	opacity: ".5";
-	PADDING: 1px;
+	PADDING: 2px;
 }
 div.links {
-	font-size: 7pt;
+	font-size: 9pt;
 	BACKGROUND-COLOR: #454545;
-	FONT-STYLE: normal;
-	font-variant: small-caps;
 	color: #FFFFFF;
-	opacity: ".5";
-	PADDING: 1px;
-	PADDING-BOTTOM: 1px;
+	PADDING: 2px;
 	BORDER-BOTTOM: #808080 1px dashed;
 
 

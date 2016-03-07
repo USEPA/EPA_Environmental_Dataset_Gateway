@@ -40,8 +40,8 @@
      xpath="/metadata/idinfo/citation/citeinfo/onlink"/>
   <property meaning="resource.url" xpathType="NODESET"
      xpath="/metadata/Esri/primaryOnlink"/> --> 
-  <property meaning="resource.url" xpath="/metadata/idinfo/citation/citeinfo/onlink[1]"/>
-  <property meaning="website.url" xpath="/metadata/idinfo/citation/citeinfo/onlink[2]"/>
+  <property meaning="resource.url" xpath="/metadata/idinfo/citation/citeinfo/onlink[2]"/>
+  <property meaning="website.url" xpath="/metadata/idinfo/citation/citeinfo/onlink[1]"/>
   
   <property meaning="thumbnail.url" xpath="/metadata/idinfo/browse/browsen"/>
     
