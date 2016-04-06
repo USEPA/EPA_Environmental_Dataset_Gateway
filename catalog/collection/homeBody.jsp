@@ -86,9 +86,9 @@
                 String added = obj.fnAddCollection(data);
                 if (added != null) {
                     allParameters.remove("action");
-                    out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"successMessage\">Collection successfully added.</li></ul></span>");
+                    out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"successMessage\">Compilation successfully added.</li></ul></span>");
                 } else {
-                    out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"errorMessage\">Collection could not be added.</li></ul></span>");
+                    out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"errorMessage\">Compilation could not be added.</li></ul></span>");
                 }
                 
                  allParameters.put("name", "");
@@ -100,7 +100,7 @@
                     filter.put("owner", allParameters.get("owner"));
                 }
             } else {
-                out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"errorMessage\">You do not have permission to add collection under selected owner.</li></ul></span>");
+                out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"errorMessage\">You do not have permission to add Compilation under selected owner.</li></ul></span>");
             }
             cur_page = "1";
 
@@ -127,13 +127,13 @@
                 int deleted = obj.fnDeleteCollection(col_id, delete_orphaned_virtual_resource.equals("Y"));
                 if (deleted == 1) {
                     allParameters.remove("action");
-                    out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"successMessage\">Collection successfully deleted.</li></ul></span>");
+                    out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"successMessage\">Compilation successfully deleted.</li></ul></span>");
                 } else {
-                    out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"errorMessage\">Collection could not be deleted.</li></ul></span>");
+                    out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"errorMessage\">Compilation could not be deleted.</li></ul></span>");
                 }
 
             } else {
-                out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"errorMessage\">You donot have permission to delete this collection.</li></ul></span>");
+                out.print("<span id=\"cmPlPgpGptMessages\"><ul id=\"cmPlMsgsPageMessages\"><li class=\"errorMessage\">You donot have permission to delete this Compilation.</li></ul></span>");
             }
 
         } else if ("search".equals(allParameters.get("action"))) {
@@ -226,8 +226,8 @@
 
             out.print("<tr " + className + ">");
             
-            out.print("<td><span id=\"colname_" + rs.getString("col_id") + "\">" + rs.getString("name") + "  </span><img name=\"treeButton\" src=\"" + contextPath + "/catalog/images/chart_organisation.png\" title=\"Collection visualization\" onclick=\"openTreeChart('" + rs.getString("col_id") + "');\" style=\"cursor:pointer;\" /></td>");
-//            out.print("<td>" + rs.getString("name") + " <img name=\"treeButton\" src=\"" + contextPath + "/catalog/images/chart_organisation.png\" title=\"Collection visualization\" onclick=\"openTreeChart('" + rs.getString("col_id") + "');\" style=\"cursor:pointer;\" /></td>");
+            out.print("<td><span id=\"colname_" + rs.getString("col_id") + "\">" + rs.getString("name") + "  </span><img name=\"treeButton\" src=\"" + contextPath + "/catalog/images/chart_organisation.png\" title=\"Compilation visualization\" onclick=\"openTreeChart('" + rs.getString("col_id") + "');\" style=\"cursor:pointer;\" /></td>");
+//            out.print("<td>" + rs.getString("name") + " <img name=\"treeButton\" src=\"" + contextPath + "/catalog/images/chart_organisation.png\" title=\"Compilation visualization\" onclick=\"openTreeChart('" + rs.getString("col_id") + "');\" style=\"cursor:pointer;\" /></td>");
             out.print("<td>" + rs.getString("username") + "</td>");
             if (isAdminUser || current_user_groups.contains(rs.getString("owner"))) {
                 out.print("<td style=\"text-align: center;\"><button class=\"add_virtual_resource\" col_id=\"" + rs.getString("col_id") + "\">Add</button></td>");
@@ -240,9 +240,9 @@
                 out.print("<td style=\"text-align: center;\">" + rs.getString("approved") + "</td>");
             }
             if (isAdminUser || current_user_groups.contains(rs.getString("owner"))) {
-                out.print("<td style=\"text-align: center;\"><img title=\"Manage collection members\" style=\"cursor: pointer;\" col_id=\"" + rs.getString("col_id") + "\" onclick=\"performAction('manage',this);\" alt=\"Manage\" src=\"" + contextPath + "/catalog/images/members.png\" /></td>");
+                out.print("<td style=\"text-align: center;\"><img title=\"Manage Compilation members\" style=\"cursor: pointer;\" col_id=\"" + rs.getString("col_id") + "\" onclick=\"performAction('manage',this);\" alt=\"Manage\" src=\"" + contextPath + "/catalog/images/members.png\" /></td>");
             } else {
-                out.print("<td style=\"text-align: center;\"><img title=\"Manage collection members\" col_id=\"" + rs.getString("col_id") + "\" src=\"" + contextPath + "/catalog/images/members_off.png\" /></td>");
+                out.print("<td style=\"text-align: center;\"><img title=\"Manage Compilation members\" col_id=\"" + rs.getString("col_id") + "\" src=\"" + contextPath + "/catalog/images/members_off.png\" /></td>");
             }
             //Added by Netty for editing collection
             if (isAdminUser || current_user_groups.contains(rs.getString("owner"))) {
@@ -282,7 +282,7 @@
     </form>
 </div>
 <!--Added by Netty-->
-<div id="dialog-form-edit" title="Update collection">
+<div id="dialog-form-edit" title="Update Compilation">
     <p class="validateEditTips">All form fields are required.</p>
     <form name="virtual_resource_edit_form">
         <input type="hidden" name="vr_col_id" value="vr_col_id" />
@@ -293,16 +293,16 @@
         <div id="virtual_resource_edit_response" style="font-weight: bold;"></div>
     </form>
 </div>
-<div id="dialog-form-delete" title="Delete Collection">
+<div id="dialog-form-delete" title="Delete Compilation">
     <form name="virtual_resource_delete_form">
         <input type="hidden" name="vr_col_id" value="vr_col_id" />
         <input type="hidden" name="del_virtual_resource" id="del_virtual_resource" value="Y"/>
-        <div>Are you sure you want to delete the '<span id="collection-name"></span>' collection and associated membership information?</div>
+        <div>Are you sure you want to delete the '<span id="collection-name"></span>' compilation and associated membership information?</div>
         <div>The metadata records will not be deleted.</div>
     </form>
 </div>
-<div id="dialog-form-member-tree" title="Collection members">
-    <div style="font-weight: bold;">Please pan around if you are unable to see all members of the collection.</div>
+<div id="dialog-form-member-tree" title="Compilation members">
+    <div style="font-weight: bold;">Please pan around if you are unable to see all members of the compilation.</div>
     <div style="clear:both;"></div>
     <div id="infovis"></div>
 </div>

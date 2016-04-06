@@ -218,14 +218,14 @@
 
     <table border="0">
         <tr>
-            <td style="text-align: right;">Collection : </td>
+            <td style="text-align: right;">Compilation : </td>
             <td><%
                 rs = null;
                 HashMap tmp = new HashMap();
                 tmp.put("col_id", allParameters.get("frm:col_id").toString());
                 rs = obj.fnListCollection(tmp, null, null);
                 while (rs.next()) {
-                    out.print(rs.getString("name") + " <img name=\"treeButton\" src=\"" + contextPath + "/catalog/images/chart_organisation.png\" title=\"Collection visualization\" onclick=\"openTreeChart('" + allParameters.get("frm:col_id").toString() + "');\" style=\"cursor:pointer;\" /> " + allParameters.get("frm:col_id").toString());
+                    out.print(rs.getString("name") + " <img name=\"treeButton\" src=\"" + contextPath + "/catalog/images/chart_organisation.png\" title=\"Compilation visualization\" onclick=\"openTreeChart('" + allParameters.get("frm:col_id").toString() + "');\" style=\"cursor:pointer;\" /> " + allParameters.get("frm:col_id").toString());
                 }
                 %></td>
         </tr>
@@ -242,7 +242,7 @@
             </td>
         </tr>
         <tr>
-            <td>Add/Update collection members : </td>
+            <td>Add/Update compilation members : </td>
             <td><input type="button" value="Execute" name="Save" id="Save" onclick="saveCollectionMember();" /></td>
         </tr>
     </table>
@@ -303,8 +303,8 @@
 <% out.print(paging.generateLinks());//print paging links
 obj.closeConnection();
 %>
-<div id="dialog-form-member-tree" title="Collection members">
-    <div style="font-weight: bold;">Please pan around if you are unable to see all members of the collection.</div>
+<div id="dialog-form-member-tree" title="Compilation members">
+    <div style="font-weight: bold;">Please pan around if you are unable to see all members of the compilation.</div>
     <div style="clear:both;"></div>
     <div id="infovis"></div>
 </div>

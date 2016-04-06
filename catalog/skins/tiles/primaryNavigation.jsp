@@ -79,7 +79,7 @@
         value="#{gptMsg['catalog.collection.home.menuCaption']}"
         styleClass="#{PageContext.tabStyleMap['catalog.collection.home']}"
         rendered="#{PageContext.roleMap['gptPublisher']}"
-        title="Collection"/>
+        title="Compilation"/>
   
 	<h:commandLink
         id="validationManageMetadata" 

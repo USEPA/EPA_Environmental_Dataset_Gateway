@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Visualize Collection</title>
+        <title>Visualize Compilation</title>
         <% String contextPath = request.getContextPath();%>
         <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.0/js/dojo/dijit/themes/tundra/tundra.css">
         <link rel="stylesheet" type="text/css" href="<% out.print(contextPath);%>/catalog/skins/themes/blue/main.css"  />
@@ -30,8 +30,8 @@
     </head>
     <body>
          <!--<div>TESTING</div>-->
-        <div id="dialog-form-member-tree" title="Collection members">
-            <div style="font-weight: bold;">Please pan around if you are unable to see all members of the collection.</div>
+        <div id="dialog-form-member-tree" title="Compilation members">
+            <div style="font-weight: bold;">Please pan around if you are unable to see all members of the compilation.</div>
             <div style="clear:both;"></div>
             <div id="infovis"></div>
         </div>

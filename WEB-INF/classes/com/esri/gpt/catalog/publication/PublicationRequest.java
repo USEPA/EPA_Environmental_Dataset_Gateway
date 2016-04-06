@@ -175,6 +175,10 @@ protected void determineUuid(Schema schema) throws SQLException {
   ImsMetadataAdminDao imsDao = null;
   PublicationRecord rec = getPublicationRecord();
   rec.setFileIdentifier(schema.getMeaning().getFileIdentifier());
+  String sFileIdentifier = schema.getMeaning().getFileIdentifier();
+  if (UuidUtil.isUuid(sFileIdentifier)) {
+    rec.setUuid(sFileIdentifier);
+  }
 
   if (rec.getUuid().length() == 0) {
     String sEsriDocID = schema.getMeaning().getEsriDocID();

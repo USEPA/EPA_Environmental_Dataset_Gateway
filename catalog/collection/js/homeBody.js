@@ -71,7 +71,7 @@ $(function() {
                                 $("#colname_"+col_id.replace("{", "\\{").replace("}", "\\}")).html($.trim(data)+"  ");
                                 $( curObj ).dialog( "close" );
                             }else{
-                                 updateTips("This collection name already exists");
+                                 updateTips("This compilation name already exists");
                                  name.addClass( "ui-state-error" );
                             }
                         }
@@ -534,12 +534,12 @@ function addCollection(){
     var colForm = document.forms["collectionForm"];
     if(colForm.name.value.replace(/\s/g,"")==""){
         valid = false;
-        alert("Please provide name of the collection.");
+        alert("Please provide name of the compilation.");
     }
     if(valid){
         if(colForm.owner.value=="-1"){
             valid = false;
-            alert("Please select owner for the collection.");
+            alert("Please select owner for the compilation.");
         }
     }
         

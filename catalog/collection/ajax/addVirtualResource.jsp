@@ -61,7 +61,7 @@
                 int ret = ps.executeUpdate();
                 obj.updateModifiedDateForResources(col_id);
                 if (ret > 0) {
-                    out.print("Placeholder record has been added as parent to the collection.");
+                    out.print("Placeholder record has been added as parent to the compilation.");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(innoCollection.class.getName()).log(Level.SEVERE, null, " Deewendra - " + ex.toString());
@@ -73,7 +73,7 @@
             filter.put("role", "parent-child");
             int ret = obj.fnAddCollectionMember(filter);
             if (ret > 0) {
-                out.print("Placeholder record has been added as parent to the collection.");
+                out.print("Placeholder record has been added as parent to the compilation.");
             }
         }
     } else {
@@ -87,7 +87,7 @@
        
         int ret = obj.fnAddCollectionMember(filter);
         if (ret > 0) {
-            out.print("Placeholder record has been added as child to the collection.");
+            out.print("Placeholder record has been added as child to the compilation.");
         }
     }
     

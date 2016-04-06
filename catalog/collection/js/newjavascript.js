@@ -401,12 +401,12 @@ function addCollection(){
     var colForm = document.forms["collectionForm"];
     if(colForm.name.value.replace(/\s/g,"")==""){
         valid = false;
-        alert("Please provide name of the collection.");
+        alert("Please provide name of the compilation.");
     }
     if(valid){
         if(colForm.owner.value==""){
             valid = false;
-            alert("Please select owner for the collection.");
+            alert("Please select owner for the compilation.");
         }
     }
         

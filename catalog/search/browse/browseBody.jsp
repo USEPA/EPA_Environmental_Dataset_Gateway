@@ -518,8 +518,8 @@
     </div>
 </f:verbatim>
 <f:verbatim>
-    <div id="dialog-form-member-tree" title="Collection members">
-        <div style="font-weight: bold;">Please pan around if you are unable to see all members of the collection.</div>
+    <div id="dialog-form-member-tree" title="Compilation members">
+        <div style="font-weight: bold;">Please pan around if you are unable to see all members of the compilation.</div>
         <div style="clear:both;"></div>
         <div id="infovis"></div>
     </div>
