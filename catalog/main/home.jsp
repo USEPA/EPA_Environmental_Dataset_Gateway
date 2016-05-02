@@ -19,6 +19,7 @@
 
 <% // initialize the page %>
 <gpt:page id="catalog.main.home"/>
-<tiles:insert definition=".gptLayout" flush="false" >
+<%--<tiles:insert definition=".gptLayout" flush="false" >
 	<tiles:put name="body" value="/catalog/main/homeBody.jsp"/>
-</tiles:insert>
+</tiles:insert>--%>
+<jsp:include page="homeBody.jsp"/>
