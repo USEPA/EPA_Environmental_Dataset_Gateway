@@ -1,0 +1,143 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+.title {
+  text-align: center;
+}
+.title h2 {
+  font-size: 36px;
+  color: #1b1b1b;
+  font-weight: 300;
+}
+.title p {
+  font-size: 18px;
+  font-weight: 400px;
+  color: #9da8ad;
+}
+.navbar-default {
+  background: transparent;
+  border: none;
+  margin-bottom: 0;
+}
+ul li {
+  /* list-style: none; */
+}
+
+.search-field {
+  margin-top: 10px;
+}
+
+#service {
+  padding: 80px 0 100px;
+}
+#service .title {
+  padding-bottom: 90px;
+}
+#service .title h2 {
+  margin-top: 0;
+}
+#service .block {
+  text-align: center;
+}
+#service .block h3 {
+  color: #202d33;
+  line-height: 48px;
+  margin-bottom: 0;
+}
+#service .block p {
+  color: #707b82;
+  line-height: 30px;
+  padding: 0 20px;
+}
+#showcase {
+  background-image: url("../images/showcase-bg.jpg");
+  background-size: cover;
+  baxkground-repeat: no-repeat;
+}
+#showcase .block {
+  padding-top: 90px;
+}
+#showcase .block img {
+  margin-bottom: -228px;
+}
+#feature {
+  padding: 10px 0 105px 0;
+}
+#feature .title {
+  margin-bottom: 60px;
+}
+#feature .block .media {
+  margin-bottom: 33px;
+}
+#feature .block .media:last-child {
+  margin-bottom: 0;
+}
+#feature .block .media h4 {
+  color: #1b1b1b;
+}
+#feature .block .media p {
+  color: #999999;
+}
+#feature .block .media > .pull-left {
+  padding-right: 20px;
+}
+#testimonial {
+  background: url('../images/testimonial-bg.jpg') no-repeat;
+  background-size: cover;
+  padding: 100px 0;
+}
+#testimonial .block {
+  text-align: center;
+}
+#testimonial .block h5 {
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+  padding: 20px;
+  font-size: 20px;
+  width: 65%;
+  margin: 0 auto;
+}
+#testimonial .block h5 span {
+  font-size: 12px;
+}
+#team {
+  padding: 80px 0 90px 0;
+}
+#team .title {
+  margin-bottom: 50px;
+}
+#team .social-link {
+  margin-top: 15px;
+}
+#team .social-link a {
+  display: inline-block;
+}
+#team .btn-facebook {
+  background: #6788ce;
+  color: #fff;
+  border-radius: 50%;
+  padding: 9px 14px;
+  font-size: 17px;
+  line-height: 1;
+  margin-right: 5px;
+}
+#team .btn-twitter {
+  background: #29c5f6;
+  color: #fff;
+  border-radius: 50%;
+  padding: 8px 9px;
+  font-size: 20px;
+  line-height: 1;
+}
+#team .media .pull-left {
+  padding-right: 25px;
+}
+#team .media .media-heading {
+  margin-top: 35px;
+  font-size: 21px;
+}
+#team .media p {
+  font-size: 16px;
+  color: #707b82;
+}
