@@ -574,7 +574,7 @@
 			</ul>
 		</nav>
 	</h:form>
-	</f:verbatim>
+	<f:verbatim>
 	<script type="text/javascript">
 	function openHelp(sTitle, sKey) {
 		var sUrl = "<%=request.getContextPath()%>/webhelp/index.jsp";
