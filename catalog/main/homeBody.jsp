@@ -51,18 +51,18 @@
 
 <!-- EPA Stuff -->
 <link type="text/css" rel="stylesheet"
-	href="http://www2.epa.gov/sites/all/libraries/template/s.css"
+	href="https://www2.epa.gov/sites/all/libraries/template/s.css"
 	media="all" />
-<!--[if lt IE 9]><link type="text/css" rel="stylesheet" href="http://www2.epa.gov/sites/all/themes/epa/css/ie.css" media="all" /><![endif]-->
+<!--[if lt IE 9]><link type="text/css" rel="stylesheet" href="https://www2.epa.gov/sites/all/themes/epa/css/ie.css" media="all" /><![endif]-->
 <link rel="alternate" type="application/atom+xml" title="EPA.gov News"
-	href="http://yosemite.epa.gov/opa/admpress.nsf/RSSRecentNews" />
+	href="https://yosemite.epa.gov/opa/admpress.nsf/RSSRecentNews" />
 <link rel="alternate" type="application/atom+xml"
 	title="EPA.gov Headquarters Press Releases"
-	href="http://yosemite.epa.gov/opa/admpress.nsf/RSSByLocation?open&amp;location=Headquarters" />
+	href="https://yosemite.epa.gov/opa/admpress.nsf/RSSByLocation?open&amp;location=Headquarters" />
 <link rel="alternate" type="application/atom+xml"
 	title="Greenversations, EPA's Blog"
-	href="http://blog.epa.gov/blog/feed/" />
-<!--[if lt IE 9]><script src="http://www2.epa.gov/sites/all/themes/epa/js/html5.js"></script><![endif]-->
+	href="https://blog.epa.gov/blog/feed/" />
+<!--[if lt IE 9]><script src="https://www2.epa.gov/sites/all/themes/epa/js/html5.js"></script><![endif]-->
 
 
 <!-- CSS -->
@@ -148,16 +148,16 @@
 
 	<header class="masthead clearfix" role="banner">
 		<img class="site-logo"
-			src="http://www2.epa.gov/sites/all/themes/epa/logo.png" alt="" />
+			src="https://www2.epa.gov/sites/all/themes/epa/logo.png" alt="" />
 		<hgroup class="site-name-and-slogan">
 			<h1 class="site-name">
-				<a href="http://www.epa.gov/" title="Go to the home page" rel="home"><span>US
+				<a href="https://www.epa.gov/" title="Go to the home page" rel="home"><span>US
 						EPA</span></a>
 			</h1>
 			<div class="site-slogan">United States Environmental Protection
 				Agency</div>
 		</hgroup>
-		<%-- <form class="epa-search" method="get" action="http://search.epa.gov/epasearch/epasearch">
+		<%-- <form class="epa-search" method="get" action="https://search.epa.gov/epasearch/epasearch">
       <label class="element-hidden" for="search-box">Search</label>
       <input class="form-text" placeholder="Search EPA.gov" name="querytext" id="search-box" value=""/>
       <button class="epa-search-button" id="search-button" type="submit" title="Search">Search</button>
@@ -227,9 +227,9 @@
 
 								<div class="col-md-3 col-sm-6">
 									<p>
-										<i class="fa fa-binoculars fa-2x"></i> <a href="#">Browse
+										<i class="fa fa-binoculars fa-2x"></i> <a href="https://edg-staging.epa.gov/metadata/catalog/search/browse/browse.page">Browse
 											the EDG</a> <br /> <i class="fa fa-bar-chart fa-2x"></i><a
-											href="#"> Metrics</a>
+											href="https://edg-staging.epa.gov/metrics/"> Metrics</a>
 									</p>
 
 								</div>
@@ -395,7 +395,7 @@
 															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_Metadata_Recommendations.pdf">EPA
 																Recommendations for Metadata Documentation</a></li>
 														<li><a
-															href="http://www2.epa.gov/geospatial/epa-geospatial-metadata-technical-specification">Geospatial
+															href="https://www2.epa.gov/geospatial/epa-geospatial-metadata-technical-specification">Geospatial
 																Metadata Technical Specifications</a></li>
 														<li><a
 															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/GenericMetadataGuide.pdf">Metadata
@@ -467,7 +467,7 @@
 															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf">Capturing
 																and Using RSS Feeds from the EDG</a></li>
 														<li>How to get started with EDG Reuse Components</li>
-														<li><a href="http://developer.epa.gov">Developer
+														<li><a href="https://developer.epa.gov">Developer
 																Central</a></li>
 														<li>Link to RCS</li>
 													</ul>
@@ -512,7 +512,7 @@
 												</div>
 												<div>
 													<h5>
-														<a href="http://developer.epa.gov/forums"
+														<a href="https://developer.epa.gov/forums"
 															style="color: #FFF">Visit our Developer Forum!</a>
 
 													</h5>
@@ -632,12 +632,12 @@
 						styleClass="menu-link">
 						<h:outputText value="#{gptMsg['catalog.help.menuCaption']}" />
 					</h:outputLink></li>
-				<li><h:outputLink styleClass="bigGreen" value="#"
+				<li><div id="gptBanner">
+				   <h:outputLink styleClass="bigGreen" value="#"
 						style="padding-top:0px;border: 0" id="openShareFeedback"
-						onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
+						onclick="window.open('https://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 						<h:outputText value="#{gptMsg['catalog.shareFeedback']}" />
-					</h:outputLink></li>
-
+					</h:outputLink></div></li>
 			</ul>
 		</nav>
 	</h:form>
@@ -647,26 +647,26 @@
 				<div class="row cols-2">
 					<div class="col size-2of5">
 						<ul class="pipeline">
-							<li><a href="http://www.epa.gov/">EPA Home</a></li>
+							<li><a href="https://www.epa.gov/">EPA Home</a></li>
 							<li><a
-								href="http://www2.epa.gov/home/privacy-and-security-notice">Privacy
+								href="https://www2.epa.gov/home/privacy-and-security-notice">Privacy
 									and Security Notice</a></li>
-							<li><a href="http://www2.epa.gov/accessibility">Accessibility</a></li>
+							<li><a href="https://www2.epa.gov/accessibility">Accessibility</a></li>
 						</ul>
 						<p class="last-updated">{LAST UPDATED DATE}</p>
 					</div>
 					<div class="col size-3of5">
 						<ul class="menu epa-menu">
 							<li class="menu-item"><a class="menu-link epa-hotline"
-								href="http://www2.epa.gov/home/epa-hotlines">Hotlines</a></li>
+								href="https://www2.epa.gov/home/epa-hotlines">Hotlines</a></li>
 							<li class="menu-item"><a class="menu-link epa-news"
-								href="http://www2.epa.gov/newsroom">News</a></li>
+								href="https://www2.epa.gov/newsroom">News</a></li>
 							<li class="menu-item"><a class="menu-link epa-blog"
-								href="http://www2.epa.gov/aboutepa/greenversations">Blogs</a></li>
+								href="https://www2.epa.gov/aboutepa/greenversations">Blogs</a></li>
 							<li class="menu-item"><a class="menu-link epa-apps"
-								href="http://developer.epa.gov/category/apps/">Apps</a></li>
+								href="https://developer.epa.gov/category/apps/">Apps</a></li>
 							<li class="menu-item"><a class="menu-link epa-widgets"
-								href="http://developer.epa.gov/category/widgets/">Widgets</a></li>
+								href="https://developer.epa.gov/category/widgets/">Widgets</a></li>
 						</ul>
 						<div class="social-menu-wrapper">
 							<div class="social-menu-title">Social sites:</div>
@@ -676,14 +676,14 @@
 								<li class="menu-item"><a class="menu-link social-facebook"
 									href="https://www.facebook.com/EPA">Facebook</a></li>
 								<li class="menu-item"><a class="menu-link social-youtube"
-									href="http://www.youtube.com/user/USEPAgov">YouTube</a></li>
+									href="https://www.youtube.com/user/USEPAgov">YouTube</a></li>
 								<li class="menu-item"><a class="menu-link social-flickr"
-									href="http://www.flickr.com/photos/usepagov">Flickr</a></li>
+									href="https://www.flickr.com/photos/usepagov">Flickr</a></li>
 								<li class="menu-item"><a class="menu-link social-instagram"
-									href="http://instagram.com/epagov">Instagram</a></li>
+									href="https://instagram.com/epagov">Instagram</a></li>
 							</ul>
 							<p class="social-menu-more">
-								<a href="http://www2.epa.gov/home/social-media">More social
+								<a href="https://www2.epa.gov/home/social-media">More social
 									media at&#160;EPA&#160;»</a>
 							</p>
 						</div>
@@ -693,11 +693,11 @@
 		</div>
 	</footer>
 	<script
-		src="http://www2.epa.gov/sites/all/libraries/template/jquery.js"></script>
-	<script src="http://www2.epa.gov/sites/all/libraries/template/js.js"></script>
+		src="https://www2.epa.gov/sites/all/libraries/template/jquery.js"></script>
+	<script src="https://www2.epa.gov/sites/all/libraries/template/js.js"></script>
 	<script
-		src="http://www2.epa.gov/sites/all/modules/custom/epa_core/js/alert.js"></script>
-	<!--[if lt IE 9]><script src="http://www2.epa.gov/sites/all/themes/epa/js/ie.js"></script><![endif]-->
+		src="https://www2.epa.gov/sites/all/modules/custom/epa_core/js/alert.js"></script>
+	<!--[if lt IE 9]><script src="https://www2.epa.gov/sites/all/themes/epa/js/ie.js"></script><![endif]-->
 
 </body>
 	</html>
