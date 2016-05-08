@@ -87,13 +87,19 @@
 	padding-top: 10px;
 	background: url('../skins/themes/blue/images/icon_top.png') no-repeat;
 }
+
+.secondary-nav {
+  position: relative;
+  z-index: 10;
+  height:  0;
+}
 </style>
 
 <!-- Js -->
 
 <script src="../skins/themes/blue/js/vendor/modernizr-2.6.2.min.js"></script>
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../skins/themes/blue/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="../skins/themes/blue/js/bootstrap.min.js"></script>
 <script src="../skins/themes/blue/js/wow.min.js"></script>
@@ -200,7 +206,7 @@
 									<div class="block wow fadeInRight" data-wow-delay="1s">
 
 										<h2>Environmental Dataset Gateway</h2>
-										<p>Easily find Datasets. EDG slogan goes here.</p>
+										<p>Find data easily. Connecting EPA's Environmental Resources.</p>
 										<div class="app-showcase wow fadeInDown" data-wow-delay=".5s">
 											<h:form id="hpFrmSearch"
 												onkeypress="javascript:hpSubmitForm(event,this);">
