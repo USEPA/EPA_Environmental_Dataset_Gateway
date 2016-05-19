@@ -34,7 +34,7 @@
 
 <script type="text/javascript">
 //Hide Share your Feedback Link
-document.getElementById('frmTertiaryNavigation:openShareFeedback').style="display:none";
+document.getElementById('frmTertiaryNavigation:openShareFeedback').style.display="none";
 
   var gptMapConfig = new GptMapConfig();
   gptMapConfig.mapServiceURL = "<%=imConfig.getMapServiceUrl()%>";
