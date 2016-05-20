@@ -140,7 +140,7 @@ function rnpInit(){
         var title = null;
         var keywordInfo = null;
         var emailAddress = null;
-        var externalLink = "https://developer.epa.gov/dataforum/topic?uuid=" + "<%=rnpUuid%>";
+        var externalLink = "https://developer.epa.gov/new-forum-topic/topic?uuid=" + "<%=rnpUuid%>";
         if(responseObject != null && responseObject.dataset != null){
         	title = responseObject.dataset[0].title;
                 externalLink = externalLink + "&title=" + title;
