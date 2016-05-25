@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ Esri Inc. licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<tree>	
+  <label>name</label>
+  <identifier>name</identifier>
+  <item>
+    <name resourceKey="catalog.browse.toc.browseResource"></name>
+		<!--<item>
+			<name resourceKey="catalog.resource.relationships.toc.operates-On">Operates On</name>
+	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso.OperatesOn-apiso.ResourceIdentifier</query>
+		</item>	
+		<item>
+			<name resourceKey="catalog.resource.relationships.toc.used-By"></name>  
+	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso.ResourceIdentifier-apiso.OperatesOn</query>		
+		</item>	-->
+		<item>
+			<name resourceKey="catalog.resource.relationships.toc.child-of">Child of</name>  
+	    <query>urn:esri:geoportal:browse:resourceRelationship:dcat.isPartOf-apiso:Identifier</query>
+		</item>	
+		<item>
+			<name resourceKey="catalog.resource.relationships.toc.parent-to">Parent to</name>
+	    <query>urn:esri:geoportal:browse:resourceRelationship:apiso:Identifier-dcat.isPartOf</query>		
+		</item>	        
+ 		<item>
+			<name resourceKey="catalog.resource.relationships.toc.same-publisher">Others from this publisher</name>
+	    <query>urn:esri:geoportal:browse:resourceRelationship:dcat.publisher-dcat.publisher</query>		
+		</item>	       
+  </item>
+</tree>

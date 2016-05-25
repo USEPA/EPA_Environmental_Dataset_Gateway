@@ -1,0 +1,15 @@
+<h:form id="frmBanner">	
+	<h:outputLink 
+	  rendered="#{not empty PageContext.applicationConfiguration.catalogConfiguration.searchConfig.mapViewerUrl}"
+		id="openMapViewerMvs" 
+		value="#"
+		onclick="javascript: mainOpenDefaultMapViewer(); return false;">
+		<h:outputText value="#{gptMsg['catalog.menu.menuitem.launchMapViewer']}" />
+	</h:outputLink>
+	<h:outputLink 
+    rendered="#{empty PageContext.applicationConfiguration.catalogConfiguration.searchConfig.mapViewerUrl and not empty PageContext.applicationConfiguration.catalogConfiguration.searchConfig.defaultViewerUrl }"
+    id="openMapViewerGeneric" 
+    onclick="#{PageContext.applicationConfiguration.catalogConfiguration.searchConfig.defaultViewerUrl}; return false;">
+    <h:outputText value="#{gptMsg['catalog.menu.menuitem.launchMapViewer']}" />
+  </h:outputLink>
+</h:form>

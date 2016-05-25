@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file is used by the browse page to output the owner tree as a hierarchial tree.
+    To make this file, adhere to the following rules:
+
+    1) The tag names must not contain any spaces or special characters. They do not need
+    to agree with the actual owner names in LDAP. The only constraint is that the end tag
+    must agree with the start tag for each of the grouped owners (the owners that contain other
+    owners.
+    2) The name attribute will be used to display the node, and possibly to query for
+    owners, so it must agree with the name in LDAP.
+    3) Unless there is a "noQuery" attribute for the node, and its value is true, a
+    query will be generated for the node. The query will be for owners that match the name
+    attribute, as well as those that match any of the children names.
+    If the "noQuery" attribute is  present,
+    and its value is  true, then no query will be generated when clicking on the node.
+    4) If a node had a "makeOnly" attribute with a value of true, then a child node will
+    be generated with a name the same as the nodes name attribute suffixed with "-Only".
+    5) This file should be located in WEB-INF/classes/gpt/search/browse and be named 'ownerHierarchy.xml'
+-->
+
+<owners name="Owner" noQuery="true">
+    <OA name="OA">
+        <OP name="OP"/>
+    </OA>
+    <OAR name="OAR">
+        <OAR-OAP name="OAR-OAP"/>
+        <OAR-OAQPS name="OAR-OAQPS"/>
+        <OAR-ORIA name="OAR-ORIA"/>
+        <OAR-OTAQ name="OAR-OTAQ"/>
+    </OAR>
+    <OCSPP name="OCSPP">
+        <OCSPP-OPP name="OCSPP-OPP"/>
+        <OCSPP-OPPT name="OCSPP-OPPT"/>
+    </OCSPP>
+    <OECA name="OECA"/>
+    <OEI name="OEI">
+        <OEI-OIAA name="OEI-OIAA"/>
+        <OEI-OIC name="OEI-OIC"/>
+    </OEI>
+    <OCFO name="OCFO"/>
+    <ORD name="ORD">
+	<ORD-NCEA name="ORD-NCEA"/>
+    <ORD-NCEA-ESD name="ORD-NERL-ESD"/>
+	<ORD-NERL-ESD-REVA name="ORD-NERL-ESD-REVA"/>
+	<ORD-NHEERL-WED name="ORD-NHEERL-WED"/>
+	<ORD-NHEERL-AED name="ORD-NHEERL-AED"/>
+    <ORD-OSA name="ORD-OSA"/>
+    </ORD>
+    <OSWER name="OSWER">
+	<OSWER-OEM name="OSWER-OEM"/>
+	<OSWER-ORCR name="OSWER-ORCR"/>
+	<OSWER-CPA name="OSWER-CPA"/>
+	<OSWER-OBLR name="OSWER-OBLR"/>
+	<OSWER-OSRTI name="OSWER-OSRTI"/>
+	<OSWER-OUST name="OSWER-OUST"/>
+    </OSWER>
+	<OLEM name="OLEM">
+	<OLEM-CPA name="OLEM-CPA"/>
+	<OLEM-FFRRO name="OLEM-FFRRO"/>
+	<OLEM-OBLR name="OLEM-OBLR"/>
+	<OLEM-OEM name="OLEM-OEM"/>
+	<OLEM-OPM name="OLEM-OPM"/>
+	<OLEM-ORCR name="OLEM-ORCR"/>
+	<OLEM-OSRTI name="OLEM-OSRTI"/>
+	<OLEM-OUST name="OLEM-OUST"/>
+    </OLEM>
+    <OW name="OW"/>
+    <REGIONS name="REGIONS" noQuery="true">
+        <Region_1 name="Region 1"/>
+        <Region_2 name="Region 2"/>
+        <Region_3 name="Region 3"/>
+        <Region_3-CBP name="Region 3-CBP"/>
+        <Region_4 name="Region 4"/>
+        <Region_5 name="Region 5"/>
+        <Region_6 name="Region 6"/>
+        <Region_7 name="Region 7"/>
+        <Region_8 name="Region 8"/>
+        <Region_9 name="Region 9"/>
+        <Region_10 name="Region 10"/>
+    </REGIONS>
+</owners>
