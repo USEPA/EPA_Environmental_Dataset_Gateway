@@ -182,7 +182,7 @@
 			<div id="block-pane-epa-web-area-connect"
 				class="block block-pane contextual-links-region">
 				<ul class="menu utility-menu">
-					<li class="menu-item"><a href="{CONTACT URL}"
+					<li class="menu-item"><a href="../identity/feedback.page"
 						class="menu-link contact-us">Contact Us</a></li>
 				</ul>
 			</div>
@@ -233,9 +233,14 @@
 
 								<div class="col-md-3 col-sm-6">
 									<p>
-										<i class="fa fa-binoculars fa-2x"></i> <a href="https://edg-staging.epa.gov/metadata/catalog/search/browse/browse.page">Browse
-											the EDG</a> <br /> <i class="fa fa-bar-chart fa-2x"></i><a
-											href="https://edg-staging.epa.gov/metrics/"> Metrics</a>
+										<a href="../search/browse/browse.page">
+                                        <i class="fa fa-binoculars fa-2x"></i> Browse the EDG</a> </p> 
+                                    <p>
+                                        <a href="/metrics/"> 
+                                        <i class="fa fa-bar-chart fa-2x"></i> Metrics</a> </p>
+                                    <p>
+                                        <a href="../../webhelp/en/gptlv10/inno/Stewards/Stewards.html">
+                                        <i class="fa fa-users fa-2x"></i> Stewards</a>
 									</p>
 
 								</div>
@@ -359,7 +364,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="title wow pulse" data-wow-delay=".5s">
-											<h2>Popular Information Resources</h2>
+											<h2>Learn More</h2>
 											<p>Links to the most popular information in the EDG</p>
 										</div>
 									</div>
@@ -373,14 +378,9 @@
 												<div class="media-body">
 													<h4 class="media-heading">Download Data</h4>
 													<ul>
-														<li>EPA Data download site</li>
-														<li>Clip and Ship</li>
-														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_ClipAndShip_procedures.pdf">How
-																to post to the EDG clip and Ship</a></li>
-														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_Download_Locations.pdf">How
-																to post to the EDG download sites</a></li>
+														<li><a href="/data/" target='_blank'>EPA Data Download Site</a></li>
+														<li><a href="/clipship/" target='_blank'>Clip and Ship</a></li>
+                                                        <li><a href="ftp://newftp.epa.gov/EPADataCommons/" target='_blank'>EPA Data Commons FTP Site</a></li>
 													</ul>
 												</div>
 											</div>
@@ -390,21 +390,19 @@
 												<div class="media-body">
 													<h4 class="media-heading">Metadata Publishing</h4>
 													<ul>
-														<li>Link to Administration functions (sign in needed)</li>
-														<li>Link to collections function (sign in needed)</li>
-														<li><a href="https://edg.epa.gov/EME/">EPA
+														<li><a href="/EME/">EPA
 																Metadata Editor</a></li>
 														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_GettingStarted.pdf">Quick
+															href="../../webhelp/en/gptlv10/inno/EDG_GettingStarted.pdf">Quick
 																start guide for publishing metadata</a></li>
 														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_Metadata_Recommendations.pdf">EPA
+															href="../../webhelp/en/gptlv10/inno/EDG_Metadata_Recommendations.pdf">EPA
 																Recommendations for Metadata Documentation</a></li>
 														<li><a
 															href="https://www2.epa.gov/geospatial/epa-geospatial-metadata-technical-specification">Geospatial
 																Metadata Technical Specifications</a></li>
 														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/GenericMetadataGuide.pdf">Metadata
+															href="../../webhelp/en/gptlv10/inno/GenericMetadataGuide.pdf">Metadata
 																Style Guide</a></li>
 														<li><a
 															href="https://project-open-data.cio.gov/schema/">Project
@@ -412,34 +410,15 @@
 													</ul>
 												</div>
 											</div>
-											<div class="media wow fadeInDown" data-wow-delay="1.1s">
+                                            <div class="media wow fadeInDown" data-wow-delay="1.4s">
 												<img class="media-object pull-left"
-													src="../skins/themes/blue/images/item-3.png" alt="Image">
+													src="../skins/themes/blue/images/item-4.png" alt="Image">
 												<div class="media-body">
-													<h4 class="media-heading">Training and More</h4>
+													<h4 class="media-heading">Geospatial Program</h4>
 													<ul>
-														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_GettingStarted.pdf">How
-																to get started publishing metadata to the EDG</a></li>
-														<li>Search and discovery</li>
-														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_FactSheet.pdf">EDG
-																fact sheet</a></li>
-														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_ClipAndShip_procedures.pdf">How
-																to post to the EDG clip and Ship</a></li>
-														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_Download_Locations.pdf">How
-																to post to the EDG download sites</a></li>
-														<li>Capturing and Using RSS Feeds from the EDG</li>
-														<ul>
-															<li><a
-																href="https://edg-staging.epa.gov/metadata/webhelp/en/gptlv10/index.html#/Welcome_to_the_EPA_Environmental_Dataset_Server_Help/00t00000001z000000/">EDG
-																	Help Feature</a></li>
-														</ul>
-														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_Metadata_Recommendations.pdf">EPA
-																Recommendations for Metadata Documentation</a></li>
+														<li><a href="https://www.epa.gov/geospatial">EPA Geospatial Program</a></li>
+														<li><a href="https://epa.maps.arcgis.com/home/gallery.html#c=organization&o=numviews">EPA GeoPlatform Online</a></li>
+                                                        <li><a href="https://www.geoplatform.gov/">Federal GeoPlatform</a></li>
 													</ul>
 												</div>
 											</div>
@@ -449,14 +428,18 @@
 
 									<div class="col-md-6 col-sm-6">
 										<div class="block">
-											<div class="media wow fadeInDown" data-wow-delay="1.4s">
+											<div class="media wow fadeInDown" data-wow-delay="1.1s">
 												<img class="media-object pull-left"
-													src="../skins/themes/blue/images/item-4.png" alt="Image">
+													src="../skins/themes/blue/images/item-3.png" alt="Image">
 												<div class="media-body">
-													<h4 class="media-heading">Geospatial Program</h4>
+													<h4 class="media-heading">Training and More</h4>
 													<ul>
-														<li>Link to GeoPlatform</li>
-														<li>Link to public geo page</li>
+                                                        <li><a href="../../webhelp/en/gptlv10/index.html#/How_to_Login_and_Manage_my_Password/00t000000023000000/" target="_blank">Get Help Logging In </a></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_1.wmv" target = "_blank">EDG Search and Discovery Video 1 (Homepage Overview) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video1_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation1_HomepageWalkThrough.pdf" target = "_blank">Slides (PDF)<a/></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_2.wmv" target = "_blank">EDG Search and Discovery Video 2 (Advanced Search) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video2_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation2_AdvancedSearch.pdf" target = "_blank">Slides (PDF)<a/></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_3.wmv" target = "_blank">EDG Search and Discovery Video 3 (Search Results) (WMV)</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video3_Agenda.pdf" target = "_blank">Video Agenda</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation3_SearchResults.pdf" target = "_blank">Slides (PDF)<a/></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf" target = "_blank">How to Capture and Use RSS Feeds from EDG (PDF)</a> </li> 
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">How to Get Started with EDG Reuse (PDF) </a> </li>
 													</ul>
 												</div>
 											</div>
@@ -466,16 +449,11 @@
 												<div class="media-body">
 													<h4 class="media-heading">Developer Resources</h4>
 													<ul>
-														<li>EDG REST Interface</li>
-														<li>EDG Search Widget</li>
-														<li>EDG CS-W Interface</li>
-														<li><a
-															href="https://edg.epa.gov/metadata/webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf">Capturing
-																and Using RSS Feeds from the EDG</a></li>
-														<li>How to get started with EDG Reuse Components</li>
-														<li><a href="https://developer.epa.gov">Developer
-																Central</a></li>
-														<li>Link to RCS</li>
+														<li><a href="../../webhelp/en/gptlv10/index.html#/Catalog_Service/00t00000004m000000/" target = "_blank">EDG REST Interface</a></li>
+														<li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">EDG Search Widget</a></li>
+														<li><a href="../../webhelp/en/gptlv10/index.html#/Catalog_Service/00t00000004m000000/" target = "_blank">EDG CS-W Interface</a></li>
+														<li><a href="https://developer.epa.gov" target = "_blank">EPA's Developer Central</a></li>
+														<li><a href="https://www.epa.gov/sor/">EPA's System of Registries</a></li>
 													</ul>
 												</div>
 											</div>
@@ -485,12 +463,13 @@
 												<div class="media-body">
 													<h4 class="media-heading">Open Data</h4>
 													<ul>
-														<li>Data.gov link</li>
-														<li><a href="https://project-open-data.cio.gov/">Project
+														<li><a href="https://www.data.gov/">U.S. Government's Open Data Site: Data.gov</a></li>
+														<li><a href="https://project-open-data.cio.gov/">Federal Open Data Policy: Project
 																Open Data</a></li>
 														<li><a
 															href="https://project-open-data.cio.gov/schema/">Project
 																Open Data Metadata Schema</a></li>
+                                                        <li><a href="https://www.epa.gov/open/digital-strategy">EPA Digital Strategy for Open Data</a></li>
 													</ul>
 												</div>
 											</div>
