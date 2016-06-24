@@ -187,6 +187,7 @@
 				</ul>
 			</div>
 		</div>
+			
 		<div class="main-column clearfix">
 			<!--googleon: all-->
 			<%-- <h1 class="page-title"></h1> --%>
@@ -555,10 +556,23 @@
 						id="resources" action="catalog.resources.home"
 						value="#{gptMsg['catalog.resources.home.menuCaption']}"
 						styleClass="menu-link" title="Resources" /></li>
-
-			</ul>
+			    <li class="menu-item" id="menu-about" role="presentation"><h:commandLink 
+                        id="publicationManageMetadata"
+                        action="catalog.publication.manageMetadata" 
+                        styleClass="menu-link"
+                        value="#{gptMsg['catalog.publication.manageMetadata.menuCaption']}"
+                        rendered="#{PageContext.roleMap['gptPublisher']}"
+                        actionListener="#{ManageMetadataController.processAction}" /></li>
+                <li class="menu-item" id="menu-about" role="presentation"><h:commandLink
+                        id="collection" 
+                        action="catalog.collection.home"
+                        value="#{gptMsg['catalog.collection.home.menuCaption']}"
+                        styleClass="menu-link"
+                        rendered="#{PageContext.roleMap['gptPublisher']}"/></li>
+		</ul>
 		</nav>
 	</h:form>
+
 	<f:verbatim>
 	<script type="text/javascript">
 	function openHelp(sTitle, sKey) {
@@ -612,6 +626,18 @@
 						styleClass="menu-link"
 						rendered="#{PageContext.roleMap['anonymous'] && PageContext.identitySupport.supportsLogin}" />
 				</li>
+				<li><h:commandLink id="msgAuthenticatedUser"
+						rendered="#{not PageContext.roleMap['anonymous']}"
+						value="#{PageContext.welcomeMessage}" styleClass="menu-link" /></li>
+				<li><h:commandLink id="msgNonAuthenticatedUser"
+						rendered="#{PageContext.roleMap['anonymous']}"
+						value="#{gptMsg['catalog.site.anonymous']}" styleClass="menu-link"/></li>
+				<li><h:commandLink action="catalog.identity.logout"
+		                id="identityLogoutAE" styleClass="menu-link"
+		                rendered="#{not PageContext.roleMap['anonymous'] && PageContext.identitySupport.supportsLogout}">
+		                <h:outputText value="#{gptMsg['catalog.identity.logout.menuCaption']}" /></h:commandLink>
+	                    </li>
+	                
 				<li><h:outputLink value="#"
 						id="openHelp" onclick="javascript:mainOpenPageHelp()"
 						styleClass="menu-link">
@@ -623,9 +649,13 @@
 						onclick="window.open('https://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 						<h:outputText value="#{gptMsg['catalog.shareFeedback']}" />
 					</h:outputLink></div></li>
+				
 			</ul>
 		</nav>
+		
 	</h:form>
+	                  
+        
 	<footer class="main-footer clearfix" role="contentinfo">
 		<div class="region-footer">
 			<div id="block-epa-core-footer" class="block block-epa-core">
