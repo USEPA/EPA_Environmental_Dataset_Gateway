@@ -1133,6 +1133,7 @@ figure {
 
 img {
     vertical-align: middle;
+    padding-top: 20px;
 }
 
 .img-responsive,.thumbnail>img,.thumbnail a>img,.carousel-inner>.item>img,.carousel-inner>.item>a>img {
@@ -1589,6 +1590,7 @@ pre code {
 @media (min-width:1200px) {
 .container {
     width: 1170px;
+    padding-top: 20px;
 }
 }
 
@@ -3930,7 +3932,7 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 }
 
 .nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus {
-    color: #555;
+    color: #58b;
     cursor: default;
     background-color: #fff;
     border: 1px solid #ddd;

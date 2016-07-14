@@ -1,9 +1,30 @@
-
 <% // homeBody.jsp - Home page (JSF body) %>
+<%@page import="org.json.JSONObject" %>
+<%@page import="org.json.JSONArray" %>
+<%@page import="com.esri.gpt.framework.http.HttpClientRequest" %>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
-
+<%@page import="com.esri.gpt.framework.util.Val"%>   
+<%
+String responseBody = "";
+String site = "http://localhost:8080";
+//String site = "https://edg-staging.epa.gov";
+String url = "https://edg.epa.gov/metadata/rest/find/document?searchText=usgs&start=1&max=1750&f=json";
+int nTagCount = 140;
+JSONObject obj=null;
+HttpClientRequest client = new HttpClientRequest();
+client.setUrl(url);
+try{
+    responseBody =  client.readResponseAsCharacters();
+    obj = new JSONObject(responseBody);
+    
+    //System.out.println("Result JSON Object::"+obj);
+   }catch(Exception e){
+    //LOG.log(Level.SEVERE, "in SearchCriteria getTagscloud:", e);
+    e.printStackTrace();
+}
+%>
 <f:view>
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 	<!--[if IEMobile 7]><html class="iem7 no-js" lang="en" dir="ltr"><![endif]-->
@@ -21,6 +42,7 @@
 		src="../../catalog/js/jquery-ui/js/jquery.js"></script>
 	<script type="text/javascript"
 		src="../../catalog/js/jquery-ui/js/jquery-ui.js"></script>
+		
 	<head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,7 +88,6 @@
 
 
 <!-- CSS -->
-
 <link rel="stylesheet" href="../skins/themes/blue/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="../skins/themes/blue/css/font-awesome.min.css">
@@ -87,7 +108,6 @@
 	padding-top: 10px;
 	background: url('../skins/themes/blue/images/icon_top.png') no-repeat;
 }
-
 .secondary-nav {
   position: relative;
   z-index: 10;
@@ -114,7 +134,6 @@
             ).init();
 			
 	jQuery(document).ready(function () {
-
     jQuery(window).scroll(function () {
         if (jQuery(this).scrollTop() > 100) {
             jQuery('.scrollup').fadeIn();
@@ -122,14 +141,15 @@
             jQuery('.scrollup').fadeOut();
         }
     });
-
     jQuery('.scrollup').click(function () {
         jQuery("html, body").animate({
             scrollTop: 0
         }, 600);
         return false;
     });
-
+});
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 	
@@ -301,7 +321,6 @@
 <input type="search" id="search-header" title="" value="" name="q" class="search-field form-control">
 <i class="fa fa-search fa-2x" style=" position: absolute;right: 0px;padding-top:5px;"></i>
 <a href="#">Advanced Search</a>
-
                     </div>
                 </div> -->
 								<!-- JSF Serach Form Added Here  -->
@@ -314,8 +333,211 @@
 							</div>
 						</div>
 
+						<div class="container">
+							<h2>Featured Data Products</h2>
+							<ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab"
+									href="#climateChange">Climate Change</a></li>
+								<li><a data-toggle="tab" href="#envJustice">Environmental
+										Justice</a></li>
+								<li><a data-toggle="tab" href="#facData">Facility Data</a></li>
+							</ul>
 
-						<section id="service">
+							<div class="tab-content">
+
+								<div id="climateChange" class="tab-pane fade in active">
+									<div class="row" style="padding-top: 22px">
+										<%
+											try {
+													JSONArray arr = obj.getJSONArray("records");
+													int counter = 0;
+													for (int i = 0; i < arr.length(); i++) {
+														JSONObject record = arr.getJSONObject(i);
+														JSONArray links = record.getJSONArray("links");
+														String title = record.getString("title");
+														String uuid = record.getString("id");
+														if (counter == 6) {
+															break;
+														}
+														for (int j = 0; j < links.length(); j++) {
+															JSONObject details = links.getJSONObject(j);
+															String hrefDet = details.getString("href");
+															String typeDet = details.getString("type");
+															if ("thumbnail".equalsIgnoreCase(typeDet)) {
+																if (counter == 6) {
+																	break;
+																}
+																counter++;
+										%>
+										<a
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											target="_blank">
+											<div class="col-md-2">
+												<div class="thumbnail">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+														height="60" width="60" title="<%=title%>">
+													<div class="caption" style="word-wrap: break-word;"><%=title%></div>
+												</div>
+											</div>
+										</a>
+										<%
+											}
+												}
+													}
+												} catch (Exception e) {
+													System.out.println("print catch:" + e);
+												}
+										%>
+										<div class="row">
+											<%
+												try {
+														JSONArray arr = obj.getJSONArray("records");
+														int counter = 0;
+														for (int i = 6; i < arr.length(); i++) {
+															JSONObject record = arr.getJSONObject(i);
+															JSONArray links = record.getJSONArray("links");
+															String title = record.getString("title");
+															String uuid = record.getString("id");
+															for (int j = 0; j < links.length(); j++) {
+																JSONObject details = links.getJSONObject(j);
+																String hrefDet = details.getString("href");
+																String typeDet = details.getString("type");
+																if ("thumbnail".equalsIgnoreCase(typeDet)) {
+																	counter++;
+																	if (counter > 6) {
+											%>
+
+											<%
+												}
+													}
+															}
+														}
+													} catch (Exception e) {
+														System.out.println("print catch:" + e);
+													}
+											%>
+										</div>
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="../search/search.page">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+
+								<div id="envJustice" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
+											try {
+													JSONArray arr = obj.getJSONArray("records");
+													int counter = 0;
+													for (int i = 0; i < arr.length(); i++) {
+														JSONObject record = arr.getJSONObject(i);
+														JSONArray links = record.getJSONArray("links");
+														String title = record.getString("title");
+														String uuid = record.getString("id");
+														if (counter == 6) {
+															break;
+														}
+														for (int j = 0; j < links.length(); j++) {
+															JSONObject details = links.getJSONObject(j);
+															String hrefDet = details.getString("href");
+															String typeDet = details.getString("type");
+															if ("thumbnail".equalsIgnoreCase(typeDet)) {
+																if (counter == 6) {
+																	break;
+																}
+																counter++;
+										%>
+										<a
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											target="_blank">
+											<div class="col-md-2">
+												<div class="thumbnail">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+														height="60" width="60" title="<%=title%>">
+													<div class="caption" style="word-wrap: break-word;"><%=title%></div>
+												</div>
+											</div>
+										</a>
+										<%
+											}
+												}
+													}
+												} catch (Exception e) {
+													System.out.println("print catch:" + e);
+												}
+										%>
+										<div class="row">
+											<div class="col-md-12 col-sm-12 text-right">
+												<p>
+													<a href="../search/search.page">See More</a>
+												</p>
+												<p></p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="facData" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
+											try {
+													JSONArray arr = obj.getJSONArray("records");
+													int counter = 0;
+													for (int i = 0; i < arr.length(); i++) {
+														JSONObject record = arr.getJSONObject(i);
+														JSONArray links = record.getJSONArray("links");
+														String title = record.getString("title");
+														String uuid = record.getString("id");
+														if (counter == 6) {
+															break;
+														}
+														for (int j = 0; j < links.length(); j++) {
+															JSONObject details = links.getJSONObject(j);
+															String hrefDet = details.getString("href");
+															String typeDet = details.getString("type");
+															if ("thumbnail".equalsIgnoreCase(typeDet)) {
+																if (counter == 6) {
+																	break;
+																}
+																counter++;
+										%>
+										<a
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											target="_blank">
+											<div class="col-md-2">
+												<div class="thumbnail">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+														height="60" width="60" title="<%=title%>">
+													<div class="caption" style="word-wrap: break-word;"><%=title%></div>
+												</div>
+											</div>
+										</a>
+										<%
+											}
+														}
+													}
+												} catch (Exception e) {
+													System.out.println("print catch:" + e);
+												}
+										%>
+										<div class="row">
+											<div class="col-md-12 col-sm-12 text-right">
+												<p>
+													<a href="../search/search.page">See More</a>
+												</p>
+												<p></p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+	<%-- 					<section id="service">
 							<div class="container">
 								<div class="row">
 									<div class="col-md-12">
@@ -357,9 +579,62 @@
 									</div>
 								</div>
 							</div>
-						</section>
+						</section> --%>
+					<div class="container">
+						<h2>Popular Datasets</h2>
+						<div class="row">
 
+							<%
+								try {
+										JSONArray arr = obj.getJSONArray("records");
+										int counter = 1;
+										for (int i = 0; i < arr.length(); i++) {
+											JSONObject record = arr.getJSONObject(i);
+											JSONArray links = arr.getJSONObject(i).getJSONArray("links");
+											for (int j = 0; j < links.length(); j++) {
+												JSONObject details = links.getJSONObject(j);
+												String hrefDet = details.getString("href");
+												String typeDet = details.getString("type");
+												String title = record.getString("title");
+												String uuid = record.getString("id");
+												if ("thumbnail".equalsIgnoreCase(typeDet)) {
+													if (counter > 6 && counter % 6 == 1) {
+							%>
+						</div>
+						<!-- first row close tag-->
 
+						<div class="row">
+
+							<%
+								}
+							%>
+							<div class="col-md-2">
+								<a
+									href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+									target="_blank">
+
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											height="60" width="60" title="<%=title%>">
+										<div class="caption" style="word-wrap: break-word;"><%=title%></div>
+									</div>
+								</a>
+							</div>
+							<%
+								counter++;
+												}
+											}
+										}
+									} catch (Exception e) {
+										System.out.println("print catch:" + e);
+									}
+							%>
+						</div>
+						<!--  end row close tag -->
+
+					</div>
+				</div>
+												
 						<section id="feature">
 							<div class="container">
 								<div class="row">
@@ -483,7 +758,7 @@
 
 
 
-						<section id="testimonial">
+						<%-- <section id="testimonial">
 							<div class="container">
 								<div class="row">
 									<div class="col-md-12">
@@ -491,7 +766,6 @@
 											<div id="owl-example" class="owl-carousel">
 												<div>
 													<h5>Got a question?</h5>
-
 												</div>
 												<div>
 													<h5>Got a comment?</h5>
@@ -500,7 +774,6 @@
 													<h5>
 														<a href="https://developer.epa.gov/forums"
 															style="color: #FFF">Visit our Developer Forum!</a>
-
 													</h5>
 												</div>
 											</div>
@@ -508,7 +781,7 @@
 									</div>
 								</div>
 							</div>
-						</section>
+						</section> --%>
 
 						<a href="#" class="scrollup">Top</a>
 
@@ -556,6 +829,7 @@
 						id="resources" action="catalog.resources.home"
 						value="#{gptMsg['catalog.resources.home.menuCaption']}"
 						styleClass="menu-link" title="Resources" /></li>
+				<h:panelGroup rendered="#{PageContext.roleMap['gptPublisher']}">
 			    <li class="menu-item" id="menu-about" role="presentation"><h:commandLink 
                         id="publicationManageMetadata"
                         action="catalog.publication.manageMetadata" 
@@ -568,7 +842,7 @@
                         action="catalog.collection.home"
                         value="#{gptMsg['catalog.collection.home.menuCaption']}"
                         styleClass="menu-link"
-                        rendered="#{PageContext.roleMap['gptPublisher']}"/></li>
+                        rendered="#{PageContext.roleMap['gptPublisher']}"/></li></h:panelGroup>
 		</ul>
 		</nav>
 	</h:form>
@@ -605,7 +879,6 @@
 	function mainOpenHelp() {
 		openHelp("GPT_Help", "toc");
 	}
-
 	function mainOpenInternalLink(oLink,sHref) {
 		if (oLink && oLink.href && sHref) {
 			oLink.href = "<%=request.getContextPath()%>/"+sHref;
