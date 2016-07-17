@@ -7,12 +7,14 @@
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%@page import="com.esri.gpt.framework.util.Val"%>   
 <%
+
 String responseBody = "";
 String site = "http://localhost:8080";
 //String site = "https://edg-staging.epa.gov";
 String url = "https://edg.epa.gov/metadata/rest/find/document?searchText=usgs&start=1&max=1750&f=json";
 int nTagCount = 140;
 JSONObject obj=null;
+
 HttpClientRequest client = new HttpClientRequest();
 client.setUrl(url);
 try{
@@ -24,6 +26,8 @@ try{
     //LOG.log(Level.SEVERE, "in SearchCriteria getTagscloud:", e);
     e.printStackTrace();
 }
+
+
 %>
 <f:view>
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -108,6 +112,7 @@ try{
 	padding-top: 10px;
 	background: url('../skins/themes/blue/images/icon_top.png') no-repeat;
 }
+
 .secondary-nav {
   position: relative;
   z-index: 10;
@@ -134,6 +139,7 @@ try{
             ).init();
 			
 	jQuery(document).ready(function () {
+
     jQuery(window).scroll(function () {
         if (jQuery(this).scrollTop() > 100) {
             jQuery('.scrollup').fadeIn();
@@ -141,16 +147,20 @@ try{
             jQuery('.scrollup').fadeOut();
         }
     });
+
     jQuery('.scrollup').click(function () {
         jQuery("html, body").animate({
             scrollTop: 0
         }, 600);
         return false;
     });
+
 });
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+
 </script>
 	
 </f:verbatim>
@@ -321,6 +331,7 @@ $(document).ready(function(){
 <input type="search" id="search-header" title="" value="" name="q" class="search-field form-control">
 <i class="fa fa-search fa-2x" style=" position: absolute;right: 0px;padding-top:5px;"></i>
 <a href="#">Advanced Search</a>
+
                     </div>
                 </div> -->
 								<!-- JSF Serach Form Added Here  -->
@@ -349,6 +360,7 @@ $(document).ready(function(){
 									<div class="row" style="padding-top: 22px">
 										<%
 											try {
+
 													JSONArray arr = obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -360,9 +372,11 @@ $(document).ready(function(){
 															break;
 														}
 														for (int j = 0; j < links.length(); j++) {
+
 															JSONObject details = links.getJSONObject(j);
 															String hrefDet = details.getString("href");
 															String typeDet = details.getString("type");
+
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																if (counter == 6) {
 																	break;
@@ -383,7 +397,9 @@ $(document).ready(function(){
 										<%
 											}
 												}
+
 													}
+
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
@@ -391,6 +407,7 @@ $(document).ready(function(){
 										<div class="row">
 											<%
 												try {
+
 														JSONArray arr = obj.getJSONArray("records");
 														int counter = 0;
 														for (int i = 6; i < arr.length(); i++) {
@@ -398,11 +415,15 @@ $(document).ready(function(){
 															JSONArray links = record.getJSONArray("links");
 															String title = record.getString("title");
 															String uuid = record.getString("id");
+
 															for (int j = 0; j < links.length(); j++) {
+
 																JSONObject details = links.getJSONObject(j);
 																String hrefDet = details.getString("href");
 																String typeDet = details.getString("type");
+
 																if ("thumbnail".equalsIgnoreCase(typeDet)) {
+
 																	counter++;
 																	if (counter > 6) {
 											%>
@@ -411,7 +432,9 @@ $(document).ready(function(){
 												}
 													}
 															}
+
 														}
+
 													} catch (Exception e) {
 														System.out.println("print catch:" + e);
 													}
@@ -430,6 +453,7 @@ $(document).ready(function(){
 									<div class="row" style="padding-top: 22px">
 										<%
 											try {
+
 													JSONArray arr = obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -441,9 +465,11 @@ $(document).ready(function(){
 															break;
 														}
 														for (int j = 0; j < links.length(); j++) {
+
 															JSONObject details = links.getJSONObject(j);
 															String hrefDet = details.getString("href");
 															String typeDet = details.getString("type");
+
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																if (counter == 6) {
 																	break;
@@ -464,7 +490,9 @@ $(document).ready(function(){
 										<%
 											}
 												}
+
 													}
+
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
@@ -483,6 +511,7 @@ $(document).ready(function(){
 									<div class="row" style="padding-top: 22px">
 										<%
 											try {
+
 													JSONArray arr = obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -494,9 +523,11 @@ $(document).ready(function(){
 															break;
 														}
 														for (int j = 0; j < links.length(); j++) {
+
 															JSONObject details = links.getJSONObject(j);
 															String hrefDet = details.getString("href");
 															String typeDet = details.getString("type");
+
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																if (counter == 6) {
 																	break;
@@ -517,7 +548,9 @@ $(document).ready(function(){
 										<%
 											}
 														}
+
 													}
+
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
@@ -586,17 +619,21 @@ $(document).ready(function(){
 
 							<%
 								try {
+
 										JSONArray arr = obj.getJSONArray("records");
 										int counter = 1;
+
 										for (int i = 0; i < arr.length(); i++) {
 											JSONObject record = arr.getJSONObject(i);
 											JSONArray links = arr.getJSONObject(i).getJSONArray("links");
+
 											for (int j = 0; j < links.length(); j++) {
 												JSONObject details = links.getJSONObject(j);
 												String hrefDet = details.getString("href");
 												String typeDet = details.getString("type");
 												String title = record.getString("title");
 												String uuid = record.getString("id");
+
 												if ("thumbnail".equalsIgnoreCase(typeDet)) {
 													if (counter > 6 && counter % 6 == 1) {
 							%>
@@ -623,6 +660,7 @@ $(document).ready(function(){
 							<%
 								counter++;
 												}
+
 											}
 										}
 									} catch (Exception e) {
@@ -766,6 +804,7 @@ $(document).ready(function(){
 											<div id="owl-example" class="owl-carousel">
 												<div>
 													<h5>Got a question?</h5>
+
 												</div>
 												<div>
 													<h5>Got a comment?</h5>
@@ -774,6 +813,7 @@ $(document).ready(function(){
 													<h5>
 														<a href="https://developer.epa.gov/forums"
 															style="color: #FFF">Visit our Developer Forum!</a>
+
 													</h5>
 												</div>
 											</div>
@@ -879,6 +919,7 @@ $(document).ready(function(){
 	function mainOpenHelp() {
 		openHelp("GPT_Help", "toc");
 	}
+
 	function mainOpenInternalLink(oLink,sHref) {
 		if (oLink && oLink.href && sHref) {
 			oLink.href = "<%=request.getContextPath()%>/"+sHref;
