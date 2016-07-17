@@ -138,8 +138,8 @@ function rnpInit(){
         var title = null;
         var keywordInfo = null;
         var emailAddress = null;
-        var externalLink = "https://developer.epa.gov/dataforum/topic?uuid=" + "<%=rnpUuid%>";
-        if(responseObject != null && responseObject.dataset != null){
+        var externalLink = "https://developer.epa.gov/new-forum-topic/topic?uuid=" + "<%=rnpUuid%>";
+        /*if(responseObject != null && responseObject.dataset != null){
         	title = responseObject.dataset[0].title;
                 externalLink = externalLink + "&title=" + title;
                 keywordResponse = "";
@@ -156,10 +156,10 @@ function rnpInit(){
                     keywordInfo = responseObject.dataset[0].keyword;
                     externalLink = externalLink + "&keywords=" + keywordInfo;
                 }
-        } 
+        } */
         var elLinkDevelop = dojo.byId("rnpLinkDevelop");
         elLinkDevelop.href = externalLink; 
-        elLinkDevelop.innerHTML = "Discussion Forum"; 
+        elLinkDevelop.innerHTML = "Share Your Feedback"; 
 
 
 
@@ -177,6 +177,6 @@ if (typeof(dojo) != 'undefined') {
 	<a id="rnpDetails" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
 	<a id="rnpReview" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>
 	<a id="rnpRelationships" style="display:none" href="<%=rnpRelationshipsUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.relationships.title")%></a>
-	<a id="rnpLinkDevelop" href="" target="_blank"></a>
+	<a id="rnpLinkDevelop" href="" style="float:right;" target="_blank"></a>
 	<a id="rnpPreview" style="display:none" href="<%=rnpPreviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.liveData.title")%></a>
 </f:verbatim>

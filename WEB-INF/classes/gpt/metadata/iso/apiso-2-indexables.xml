@@ -272,6 +272,7 @@
     </property>
   </property>
   <property meaning="body" xpathType="STRING" xpath="//*"/>
+  <property meaning="metadataFormat" xpathType="STRING" xpath="'iso'"/>
   <!-- dcat-specific -->
   <property meaning="dcat.publisher"
  xpath="
