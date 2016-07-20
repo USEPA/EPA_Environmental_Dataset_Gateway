@@ -394,5 +394,4 @@ public String getNavigationOutcome() {
 public String getDoSearch() {
 	return null;
 }
->>>>>>> refs/remotes/origin/master
 }
