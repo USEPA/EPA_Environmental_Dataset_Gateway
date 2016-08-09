@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-
+﻿﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--
     See the NOTICE file distributed with
     this work for additional information regarding copyright ownership.
@@ -102,7 +101,7 @@
         - lucene.remoteWriterUrl:
 			the URL to be used when indexing documents remotely
     -->      
-    <parameter key="lucene.alwaysStoreXmlInIndex" value="false"/>
+    <parameter key="lucene.alwaysStoreXmlInIndex" value="true"/>
     <parameter key="lucene.force.isPartOf" value=""/>
     <parameter key="lucene.useSingleSearcher" value="true"/>
     <parameter key="lucene.useSingleWriter" value="true"/>
@@ -448,7 +447,7 @@
         <!-- Mapping file to map dcat fields to lucene index fields -->
         <parameter key="dcat.mappings" value="gpt/metadata/dcat-mappings.xml"/>
         <!-- DCAT cache directory -->
-        <parameter key="dcat.cache.path" value="D:/Public/Server/tomcat7042/webapps/metadata"/>
+        <parameter key="dcat.cache.path" value="D:/Public/Server/tomcat7/webapps/metadata"/>
 	<parameter key="dcat.landingPage.default.details" value="true"/>
 	<parameter key="dcat.rights.writeAlways" value="true"/>
             
@@ -536,7 +535,7 @@
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="cnsUJP4e"
+                  securityCredentials="VrXV4hub"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
