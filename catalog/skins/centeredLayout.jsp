@@ -19,7 +19,7 @@
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"  %>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt" %>
-<%
+<%-- <%
   String cl_jsapi = "";
   String cl_pageId = com.esri.gpt.framework.jsf.PageContext.extract().getPageId();
   if ((cl_pageId != null) && cl_pageId.equals("catalog.search.home")) {
@@ -31,7 +31,7 @@
       cl_jsapi += "<script type='text/javascript' src='"+tmp+"'></script>";
     }
   }
-%>
+%> --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <f:view>
