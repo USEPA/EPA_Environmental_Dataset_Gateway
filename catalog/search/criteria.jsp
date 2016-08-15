@@ -29,15 +29,14 @@
 		String schHasSearchHint = com.esri.gpt.framework.util.Val.chkStr(schParameters.getValue("catalog.searchCriteria.hasSearchHint"));
 		hasSearchHint = Boolean.valueOf(schHasSearchHint);
 	}
-	//String schHintPrompt = schMsgBroker.retrieveMessage("catalog.searchCriteria.hintSearch.prompt");
-	String schHintPrompt = "";
-	String VER121 = "v1.2.1";
+	String schHintPrompt = schMsgBroker.retrieveMessage("catalog.searchCriteria.hintSearch.prompt");
+	String PROD = "prod";
 %>
 
 <% if(hasSearchHint){ %>
   <input type="hidden" id="schContextPath" value="<%=schContextPath %>"/>
   <input type="hidden" id="schHintPrompt" value="<%=schHintPrompt %>"/>
-	<script type="text/javascript" src="<%=schContextPath+"/catalog/js/" +VER121+ "/gpt-search-hint.js"%>"></script>	
+	<script type="text/javascript" src="<%=schContextPath+"/catalog/js/" +PROD+ "/gpt-search-hint.js"%>"></script>	
 <% } %>
 
 <% // date picker support %>
@@ -1698,12 +1697,12 @@ alert("test");
             </tr>
             <tr>
                 <td colspan="1">
-					<div id="hints"></div>
+   	<div id="hints"></div>
                 </td>
             </tr>
         </tbody>
     </table> 
- 
+
 <h:panelGroup id="dockDistributedSearch" rendered="#{SearchController.searchConfig.allowExternalSearch == true}">
   <f:verbatim>
     <div id="djtCntDistributedSearches" class="section" style="width:400px">
@@ -1846,7 +1845,7 @@ alert("test");
 
   <% // map %>
   <h:panelGrid id="pnlMap">
-    <h:panelGroup id="mapToolbar" styleClass="mapToolbar"  style="display:none">
+    <h:panelGroup id="mapToolbar" styleClass="mapToolbar" style="display:none">
       <h:outputLabel for="mapInput-locate" value="#{gptMsg['catalog.search.search.lblLocator']}"/>
       <h:inputText id="mapInput-locate" styleClass="locatorInput"
                    maxlength="1024" onkeypress="return scMap.onLocatorKeyPress(event);"/>

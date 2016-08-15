@@ -81,6 +81,11 @@
         <param-name>javax.faces.CONFIG_FILES</param-name>
         <param-value>/WEB-INF/faces-config.xml, /WEB-INF/gpt-faces-config.xml</param-value>
     </context-param>
+    <!-- Fix exception (java.lang.IllegalStateException: Cannot create a session after the response has been committed) -->
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>client</param-value>
+    </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

@@ -13,6 +13,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 --%>
+
  <% // search.jsp - Search page(tiles definition) %>
 <%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <%@taglib prefix="gpt" uri="http://www.esri.com/tags-gpt"%>
