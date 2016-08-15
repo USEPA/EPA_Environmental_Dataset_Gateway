@@ -24,12 +24,12 @@
         value="#{gptMsg['catalog.main.home.menuCaption']}"
         styleClass="#{PageContext.tabStyleMap['catalog.main.home']}"/>
 	
-<h:commandLink
+<%-- <h:commandLink
         id="contentAbout"
         action="catalog.content.about"
         value="#{gptMsg['catalog.content.about.menuCaption']}"
       	styleClass="#{PageContext.tabStyleMap['catalog.content.about']}"
-        title="About the EDG" />
+        title="About the EDG" /> --%>
 
 <h:commandLink 
         id="searchHome" 

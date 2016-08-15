@@ -31,7 +31,7 @@
         
 	<h:commandLink 
         id="contentAbout"
-        action="catalog.content.about" 
+        action="catalog.main.home" 
         styleClass="#{PageContext.tabStyleMap['catalog.content.about']}"
         value="#{gptMsg['catalog.content.about.menuCaption']}"/>
 
