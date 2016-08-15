@@ -841,13 +841,13 @@ $(document).ready(function(){
 						id="mainHome" action="catalog.main.home"
 						value="#{gptMsg['catalog.main.home.menuCaption']}"
 						styleClass="menu-link" /></li>
-				<li class="menu-item" id="menu-scitech" role="presentation">
-					<%-- styleClass="#{PageContext.tabStyleMap['catalog.content.about']}" --%>
+			<%-- 	<li class="menu-item" id="menu-scitech" role="presentation">
+					styleClass="#{PageContext.tabStyleMap['catalog.content.about']}"
 					<h:commandLink id="contentAbout" action="catalog.content.about"
 						value="#{gptMsg['catalog.content.about.menuCaption']}"
 						styleClass="menu-link" title="About the EDG" />
 
-				</li>
+				</li> --%>
 				<li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
 						id="searchHome" action="catalog.search.home"
 						value="#{gptMsg['catalog.search.home.menuCaption']}"
