@@ -42,7 +42,7 @@
 	<title><%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%></title>
   <jsp:include page="/catalog/skins/lookAndFeel.jsp"/>
 	<tiles:insert attribute="head" flush="false"/>
-	<%=cl_jsapi%>
+	<%-- <%=cl_jsapi%> --%>
 </head>
 <body>
 	<div id="gptMainWrap" style="position: static;">
