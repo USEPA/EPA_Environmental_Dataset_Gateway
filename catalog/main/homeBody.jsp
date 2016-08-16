@@ -9,23 +9,57 @@
 <%
 String responseBody = "";
 //String site = "http://localhost:8080";
-String site = "https://edg-staging.epa.gov";
-String url = site + "/metadata/rest/find/document?searchText=usgs&start=1&max=1750&f=json";
-int nTagCount = 140;
-JSONObject obj=null;
+String site = "https://edg.epa.gov";
+/**Climate Change URL**/
+String cliChUrl = site + "/metadata/rest/find/document?searchText=climatechange&start=1&max=1750&f=json";
+/**Environmental Justice URL**/
+String ejUrl = site + "/metadata/rest/find/document?searchText=envjustice&start=1&max=1750&f=json";
+/**Facility Data URL**/
+String fDataUrl = site + "/metadata/rest/find/document?searchText=facilitydata&start=1&max=1750&f=json";
+/**Populat Datasets URL**/
+String popDataUrl = site + "/metadata/rest/find/document?childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D&start=1&max=6&f=json";
 
 HttpClientRequest client = new HttpClientRequest();
-client.setUrl(url);
+
+JSONObject cliChobj=null;
+client.setUrl(cliChUrl);
 try{
     responseBody =  client.readResponseAsCharacters();
-    obj = new JSONObject(responseBody);
-    
-    //System.out.println("Result JSON Object::"+obj);
+    cliChobj = new JSONObject(responseBody);
+   
    }catch(Exception e){
-    //LOG.log(Level.SEVERE, "in SearchCriteria getTagscloud:", e);
     e.printStackTrace();
 }
 
+JSONObject ejobj=null;
+client.setUrl(ejUrl);
+try{
+    responseBody =  client.readResponseAsCharacters();
+    ejobj = new JSONObject(responseBody);
+   
+   }catch(Exception e){
+    e.printStackTrace();
+}
+
+JSONObject fDataobj=null;
+client.setUrl(fDataUrl);
+try{
+    responseBody =  client.readResponseAsCharacters();
+    fDataobj = new JSONObject(responseBody);
+   
+   }catch(Exception e){
+    e.printStackTrace();
+}
+
+JSONObject popobj=null;
+client.setUrl(popDataUrl);
+try{
+    responseBody =  client.readResponseAsCharacters();
+    popobj = new JSONObject(responseBody);
+    
+   }catch(Exception e){
+    e.printStackTrace();
+}
 
 %>
 <f:view>
@@ -322,9 +356,15 @@ $(document).ready(function(){
 					    return true;
 					  }
 					}
+<<<<<<< HEAD
 				function executeSearchAction(){
 					var textEle=document.getElementById('hpFrmSearch:itxFilterKeywordText');
 					textEle.value="usgs";
+=======
+				function executeSearchAction(searchText){
+					var textEle=document.getElementById('hpFrmSearch:itxFilterKeywordText');
+					textEle.value=searchText;
+>>>>>>> origin/master
 					 var searchButtonId = "hpFrmSearch:btnDoSearch";
 					 var searchButton = document.getElementById(searchButtonId);
 					 searchButton.click();
@@ -369,7 +409,7 @@ $(document).ready(function(){
 										<%
 											try {
 
-													JSONArray arr = obj.getJSONArray("records");
+													JSONArray arr = cliChobj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
 														JSONObject record = arr.getJSONObject(i);
@@ -413,7 +453,11 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
+<<<<<<< HEAD
 											<a href="javascript: void(0)" onclick="javascript:executeSearchAction()">See More</a>
+=======
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('climatechange')">See More</a>
+>>>>>>> origin/master
 										</p>
 										<p></p>
 									</div>
@@ -424,7 +468,7 @@ $(document).ready(function(){
 										<%
 											try {
 
-													JSONArray arr = obj.getJSONArray("records");
+													JSONArray arr = ejobj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
 														JSONObject record = arr.getJSONObject(i);
@@ -468,7 +512,11 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
+<<<<<<< HEAD
 											<a href="javascript: void(0)" onclick="javascript:executeSearchAction()">See More</a>
+=======
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('envjustice')">See More</a>
+>>>>>>> origin/master
 										</p>
 										<p></p>
 									</div>
@@ -479,7 +527,7 @@ $(document).ready(function(){
 										<%
 											try {
 
-													JSONArray arr = obj.getJSONArray("records");
+													JSONArray arr = fDataobj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
 														JSONObject record = arr.getJSONObject(i);
@@ -523,7 +571,11 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
+<<<<<<< HEAD
 											<a href="javascript: void(0)" onclick="javascript:executeSearchAction()">See More</a>
+=======
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('facilitydata')">See More</a>
+>>>>>>> origin/master
 										</p>
 										<p></p>
 									</div>
@@ -584,7 +636,11 @@ $(document).ready(function(){
 										<%
 											try {
 
+<<<<<<< HEAD
 													JSONArray arr = obj.getJSONArray("records");
+=======
+													JSONArray arr = popobj.getJSONArray("records");
+>>>>>>> origin/master
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
 														JSONObject record = arr.getJSONObject(i);
@@ -628,7 +684,11 @@ $(document).ready(function(){
 									</div>
 												<div class="col-md-12 col-sm-12 text-right">
 										<p>
+<<<<<<< HEAD
 											<a href="javascript: void(0)" onclick="javascript:executeSearchAction()">See More</a>
+=======
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('Environmental Dataset Gateway GeoRSS')">See More</a>
+>>>>>>> origin/master
 										</p>
 										<p></p>
 									</div>
@@ -807,13 +867,13 @@ $(document).ready(function(){
 						id="mainHome" action="catalog.main.home"
 						value="#{gptMsg['catalog.main.home.menuCaption']}"
 						styleClass="menu-link" /></li>
-				<li class="menu-item" id="menu-scitech" role="presentation">
-					<%-- styleClass="#{PageContext.tabStyleMap['catalog.content.about']}" --%>
+			<%-- 	<li class="menu-item" id="menu-scitech" role="presentation">
+					styleClass="#{PageContext.tabStyleMap['catalog.content.about']}"
 					<h:commandLink id="contentAbout" action="catalog.content.about"
 						value="#{gptMsg['catalog.content.about.menuCaption']}"
 						styleClass="menu-link" title="About the EDG" />
 
-				</li>
+				</li> --%>
 				<li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
 						id="searchHome" action="catalog.search.home"
 						value="#{gptMsg['catalog.search.home.menuCaption']}"
