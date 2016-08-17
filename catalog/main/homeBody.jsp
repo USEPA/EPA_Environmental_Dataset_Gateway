@@ -10,19 +10,21 @@
 String responseBody = "";
 //String site = "http://localhost:8080";
 String site = "https://edg.epa.gov";
+String params = "&start=1&max=6&f=json";
+String urlPath = "/metadata/rest/find/document?";
 /**Climate Change URL**/
-String cliChUrl = site + "/metadata/rest/find/document?searchText=climatechange&start=1&max=1750&f=json";
+String tab1 = site + urlPath + "searchText=climatechange" + params;
 /**Environmental Justice URL**/
-String ejUrl = site + "/metadata/rest/find/document?searchText=envjustice&start=1&max=1750&f=json";
+String tab2 = site + urlPath + "searchText=envjustice" + params;
 /**Facility Data URL**/
-String fDataUrl = site + "/metadata/rest/find/document?searchText=facilitydata&start=1&max=1750&f=json";
+String tab3 = site + urlPath + "searchText=facilitydata" + params;
 /**Populat Datasets URL**/
-String popDataUrl = site + "/metadata/rest/find/document?childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D&start=1&max=6&f=json";
+String popDataUrl = site + urlPath + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + params;
 
 HttpClientRequest client = new HttpClientRequest();
 
 JSONObject cliChobj=null;
-client.setUrl(cliChUrl);
+client.setUrl(tab1);
 try{
     responseBody =  client.readResponseAsCharacters();
     cliChobj = new JSONObject(responseBody);
@@ -32,7 +34,7 @@ try{
 }
 
 JSONObject ejobj=null;
-client.setUrl(ejUrl);
+client.setUrl(tab2);
 try{
     responseBody =  client.readResponseAsCharacters();
     ejobj = new JSONObject(responseBody);
@@ -42,7 +44,7 @@ try{
 }
 
 JSONObject fDataobj=null;
-client.setUrl(fDataUrl);
+client.setUrl(tab3);
 try{
     responseBody =  client.readResponseAsCharacters();
     fDataobj = new JSONObject(responseBody);
@@ -274,11 +276,12 @@ $(document).ready(function(){
 										<div class="app-showcase wow fadeInDown" data-wow-delay=".5s">
 											<h:form id="hpFrmSearch"
 												onkeypress="javascript:hpSubmitForm(event,this);">
-												<h:inputText id="itxFilterKeywordText"
+												<h:inputText id="itxFilterKeywordText" 
 													styleClass="search-field form-control"
 													onkeypress="if (event.keyCode == 13) return false;"
 													value="#{SearchFilterKeyword.searchText}" />
-
+                                                <h:inputHidden id="start" value="1" />
+												<h:inputHidden id="max" value="10" />
 												<h:commandLink id="btnDoSearch"
 													value="#{gptMsg['catalog.search.search.advBtnSearch']}"
 													action="#{SearchController.getNavigationOutcome}"
@@ -358,10 +361,15 @@ $(document).ready(function(){
 					}
 				function executeSearchAction(searchText){
 					var textEle=document.getElementById('hpFrmSearch:itxFilterKeywordText');
+					var startEle=document.getElementById('hpFrmSearch:start');
+					var maxEle=document.getElementById('hpFrmSearch:max');
 					textEle.value=searchText;
-					 var searchButtonId = "hpFrmSearch:btnDoSearch";
-					 var searchButton = document.getElementById(searchButtonId);
-					 searchButton.click();
+					/*start and max values will vary*/
+					startEle.value="7";
+					maxEle.value="100";
+					var searchButtonId = "hpFrmSearch:btnDoSearch";
+					var searchButton = document.getElementById(searchButtonId);
+					searchButton.click();
 					   
 				}
 				</script></f:verbatim>
@@ -612,7 +620,7 @@ $(document).ready(function(){
 								</div>
 							</div>
 						</section> --%>
-					<div class="container">
+				<div class="container">
 						<h2>Popular Datasets</h2>
 									<div class="row" style="padding-top: 22px">
 										<%
@@ -666,11 +674,10 @@ $(document).ready(function(){
 										</p>
 										<p></p>
 									</div>
-									</div>
-						
-
+									</div> 
+								
 					</div>
-				</div>
+				
 												
 						<section id="feature">
 							<div class="container">
