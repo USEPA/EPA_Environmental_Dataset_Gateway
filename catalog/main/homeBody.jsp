@@ -15,7 +15,8 @@ String featuredTab1Title = "Climate Change";
 String featuredTab2Title = "Environmental Justice";
 String featuredTab3Title = "Facility Data";
 String urlSuffix = "&start=1&max=6&f=json";
-String baseURL = "/metadata/rest/find/document?";
+String baseURL = "/metadata/rest/find/document?searchText=";
+String popURL = "/metadata/rest/find/document?";
 /**Climate Change URL**/
 String featuredTab1SearchStr = "sys.collection%3a%22%7b9B7778AC-DE79-287A-2A79-F05863C8A212%7d%22";
 String tab1 = site + baseURL + featuredTab1SearchStr + urlSuffix;
@@ -26,7 +27,7 @@ String tab2 = site + baseURL + featuredTab2SearchStr + urlSuffix;
 String featuredTab3SearchStr = "sys.collection%3a%22%7bD5F39F59-7647-1653-DCCF-1EE6354CE412%7d%22";
 String tab3 = site + baseURL + featuredTab3SearchStr + urlSuffix;
 /**Populat Datasets URL**/
-String popDataUrl = site + baseURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
+String popDataUrl = site + popURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
 
 HttpClientRequest client = new HttpClientRequest();
 
