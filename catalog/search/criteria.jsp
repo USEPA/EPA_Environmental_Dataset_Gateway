@@ -1671,7 +1671,7 @@ alert("test");
                 </td>
                 <td>
   <h:commandButton id="btnDoSearch" rendered="true"
-                   onclick="javascript:scSetPageTo(1); scExecuteDistributedSearch(); return false;"
+                   onclick="javascript:scSetPageTo(1); scExecuteDistributedSearch();"
                    value="#{gptMsg['catalog.search.search.btnSearch']}"
                    action="#{SearchController.getNavigationOutcome}"
                    actionListener="#{SearchController.processAction}">

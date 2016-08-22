@@ -26,6 +26,7 @@ String PROD = "prod";
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/catalog/skins/themes/blue/preview.css"  />
 <link rel="icon" type="image/x-icon"   href="<%=request.getContextPath()%>/catalog/images/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/catalog/images/favicon.ico" />
+<link rel="stylesheet" href="https://js.arcgis.com/3.17/esri/css/esri.css">
 
 <script type="text/javascript">djConfig = {parseOnLoad: true};</script>
 <script type="text/javascript" src="<%=com.esri.gpt.framework.context.RequestContext.extract(request).getApplicationConfiguration().getInteractiveMap().getJsapiUrl()%>"></script>

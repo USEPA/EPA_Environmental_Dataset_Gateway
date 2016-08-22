@@ -35,12 +35,12 @@
 the html body where you want the widget to appear.</p>
 <textarea cols="110" rows="4">
 <!-- Catalog Search Widget -->
-<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"></script>
+<script type="text/javascript" src="//serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"></script>
 <script type="text/javascript" src="<%=searchjsUrl%>?owner=XXX"></script>
 </textarea>
 
 <br/>
-<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"></script>
+<script type="text/javascript" src="//serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"></script>
 <script type="text/javascript" src="<%=searchjsUrl%>?owner=Region 7&css=testWidgets.css"></script>
 <br/>
 

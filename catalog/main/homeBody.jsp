@@ -1,4 +1,4 @@
-<% // homeBody.jsp - Home page (JSF body) %>
+ï»¿<% // homeBody.jsp - Home page (JSF body) %>
 <%@page import="org.json.JSONObject" %>
 <%@page import="org.json.JSONArray" %>
 <%@page import="com.esri.gpt.framework.http.HttpClientRequest" %>
@@ -11,11 +11,11 @@ String responseBody = "";
 //String site = "http://localhost:8080";
 String site = "https://edg.epa.gov";
 /**Climate Change URL**/
-String cliChUrl = site + "/metadata/rest/find/document?searchText=climatechange&start=1&max=1750&f=json";
+String cliChUrl = site + "/metadata/rest/find/document?&searchText=sys.collection%3a%22%7b9B7778AC-DE79-287A-2A79-F05863C8A212%7d%22&start=1&max=6&f=json";
 /**Environmental Justice URL**/
-String ejUrl = site + "/metadata/rest/find/document?searchText=envjustice&start=1&max=1750&f=json";
+String ejUrl = site + "/metadata/rest/find/document?&searchText=sys.collection%3a%22%7bADC0F16A-E2EB-7F86-C1FB-33CB6E726851%7d%22&start=1&max=6&f=json";
 /**Facility Data URL**/
-String fDataUrl = site + "/metadata/rest/find/document?searchText=facilitydata&start=1&max=1750&f=json";
+String fDataUrl = site + "/metadata/rest/find/document?&searchText=sys.collection%3a%22%7bD5F39F59-7647-1653-DCCF-1EE6354CE412%7d%22&start=1&max=6&f=json";
 /**Populat Datasets URL**/
 String popDataUrl = site + "/metadata/rest/find/document?childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D&start=1&max=6&f=json";
 
@@ -356,15 +356,9 @@ $(document).ready(function(){
 					    return true;
 					  }
 					}
-<<<<<<< HEAD
-				function executeSearchAction(){
-					var textEle=document.getElementById('hpFrmSearch:itxFilterKeywordText');
-					textEle.value="usgs";
-=======
 				function executeSearchAction(searchText){
 					var textEle=document.getElementById('hpFrmSearch:itxFilterKeywordText');
 					textEle.value=searchText;
->>>>>>> origin/master
 					 var searchButtonId = "hpFrmSearch:btnDoSearch";
 					 var searchButton = document.getElementById(searchButtonId);
 					 searchButton.click();
@@ -453,11 +447,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-<<<<<<< HEAD
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction()">See More</a>
-=======
 											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('climatechange')">See More</a>
->>>>>>> origin/master
 										</p>
 										<p></p>
 									</div>
@@ -512,11 +502,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-<<<<<<< HEAD
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction()">See More</a>
-=======
 											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('envjustice')">See More</a>
->>>>>>> origin/master
 										</p>
 										<p></p>
 									</div>
@@ -571,11 +557,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-<<<<<<< HEAD
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction()">See More</a>
-=======
 											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('facilitydata')">See More</a>
->>>>>>> origin/master
 										</p>
 										<p></p>
 									</div>
@@ -636,11 +618,7 @@ $(document).ready(function(){
 										<%
 											try {
 
-<<<<<<< HEAD
-													JSONArray arr = obj.getJSONArray("records");
-=======
 													JSONArray arr = popobj.getJSONArray("records");
->>>>>>> origin/master
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
 														JSONObject record = arr.getJSONObject(i);
@@ -684,11 +662,7 @@ $(document).ready(function(){
 									</div>
 												<div class="col-md-12 col-sm-12 text-right">
 										<p>
-<<<<<<< HEAD
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction()">See More</a>
-=======
 											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('Environmental Dataset Gateway GeoRSS')">See More</a>
->>>>>>> origin/master
 										</p>
 										<p></p>
 									</div>
@@ -732,19 +706,19 @@ $(document).ready(function(){
 														<li><a href="/EME/">EPA
 																Metadata Editor</a></li>
 														<li><a
-															href="../../webhelp/en/gptlv10/inno/EDG_GettingStarted.pdf">Quick
+															href="../../webhelp/en/gptlv10/inno/EDG_GettingStarted.pdf" target="_blank">Quick
 																start guide for publishing metadata</a></li>
 														<li><a
-															href="../../webhelp/en/gptlv10/inno/EDG_Metadata_Recommendations.pdf">EPA
+															href="../../webhelp/en/gptlv10/inno/EDG_Metadata_Recommendations.pdf" target="_blank">EPA
 																Recommendations for Metadata Documentation</a></li>
 														<li><a
-															href="https://www2.epa.gov/geospatial/epa-geospatial-metadata-technical-specification">Geospatial
+															href="https://www2.epa.gov/geospatial/epa-geospatial-metadata-technical-specification" target="_blank">Geospatial
 																Metadata Technical Specifications</a></li>
 														<li><a
-															href="../../webhelp/en/gptlv10/inno/GenericMetadataGuide.pdf">Metadata
+															href="../../webhelp/en/gptlv10/inno/GenericMetadataGuide.pdf" target="_blank">Metadata
 																Style Guide</a></li>
 														<li><a
-															href="https://project-open-data.cio.gov/schema/">Project
+															href="https://project-open-data.cio.gov/v1.1/schema/" target="_blank">Project
 																Open Data Metadata Schema</a></li>
 													</ul>
 												</div>
@@ -755,9 +729,9 @@ $(document).ready(function(){
 												<div class="media-body">
 													<h4 class="media-heading">Geospatial Program</h4>
 													<ul>
-														<li><a href="https://www.epa.gov/geospatial">EPA Geospatial Program</a></li>
-														<li><a href="https://epa.maps.arcgis.com/home/gallery.html#c=organization&o=numviews">EPA GeoPlatform Online</a></li>
-                                                        <li><a href="https://www.geoplatform.gov/">Federal GeoPlatform</a></li>
+														<li><a href="https://www.epa.gov/geospatial" target="_blank">EPA Geospatial Program</a></li>
+														<li><a href="https://epa.maps.arcgis.com/home/gallery.html#c=organization&o=numviews target="_blank"">EPA GeoPlatform Online</a></li>
+                                                        <li><a href="https://www.geoplatform.gov/" target="_blank">Federal GeoPlatform</a></li>
 													</ul>
 												</div>
 											</div>
@@ -774,11 +748,11 @@ $(document).ready(function(){
 													<h4 class="media-heading">Training and More</h4>
 													<ul>
                                                         <li><a href="../../webhelp/en/gptlv10/index.html#/How_to_Login_and_Manage_my_Password/00t000000023000000/" target="_blank">Get Help Logging In </a></li>
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_1.wmv" target = "_blank">EDG Search and Discovery Video 1 (Homepage Overview) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video1_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation1_HomepageWalkThrough.pdf" target = "_blank">Slides (PDF)<a/></li>
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_2.wmv" target = "_blank">EDG Search and Discovery Video 2 (Advanced Search) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video2_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation2_AdvancedSearch.pdf" target = "_blank">Slides (PDF)<a/></li>
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_3.wmv" target = "_blank">EDG Search and Discovery Video 3 (Search Results) (WMV)</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video3_Agenda.pdf" target = "_blank">Video Agenda</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation3_SearchResults.pdf" target = "_blank">Slides (PDF)<a/></li>
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf" target = "_blank">How to Capture and Use RSS Feeds from EDG (PDF)</a> </li> 
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">How to Get Started with EDG Reuse (PDF) </a> </li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_1.wmv?dl=1" target="_blank">EDG Search and Discovery Video 1 (Homepage Overview) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video1_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation1_HomepageWalkThrough.pdf" target = "_blank">Slides (PDF)<a/></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_2.wmv?dl=1" target="_blank">EDG Search and Discovery Video 2 (Advanced Search) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video2_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation2_AdvancedSearch.pdf" target = "_blank">Slides (PDF)<a/></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_3.wmv?dl=1" target="_blank">EDG Search and Discovery Video 3 (Search Results) (WMV)</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video3_Agenda.pdf" target = "_blank">Video Agenda</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation3_SearchResults.pdf" target = "_blank">Slides (PDF)<a/></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf" target="_blank">How to Capture and Use RSS Feeds from EDG (PDF)</a> </li> 
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target="_blank">How to Get Started with EDG Reuse (PDF) </a> </li>
 													</ul>
 												</div>
 											</div>
@@ -788,11 +762,11 @@ $(document).ready(function(){
 												<div class="media-body">
 													<h4 class="media-heading">Developer Resources</h4>
 													<ul>
-														<li><a href="../../webhelp/en/gptlv10/index.html#/Catalog_Service/00t00000004m000000/" target = "_blank">EDG REST Interface</a></li>
-														<li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">EDG Search Widget</a></li>
-														<li><a href="../../webhelp/en/gptlv10/index.html#/Catalog_Service/00t00000004m000000/" target = "_blank">EDG CS-W Interface</a></li>
-														<li><a href="https://developer.epa.gov" target = "_blank">EPA's Developer Central</a></li>
-														<li><a href="https://www.epa.gov/sor/">EPA's System of Registries</a></li>
+														<li><a href="../../webhelp/en/gptlv10/index.html#/Catalog_Service/00t00000004m000000/" target="_blank">EDG REST Interface</a></li>
+														<li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target="_blank">EDG Search Widget</a></li>
+														<li><a href="../../webhelp/en/gptlv10/index.html#/Catalog_Service/00t00000004m000000/" target="_blank">EDG CS-W Interface</a></li>
+														<li><a href="https://developer.epa.gov" target="_blank">EPA's Developer Central</a></li>
+														<li><a href="https://www.epa.gov/sor/" target="_blank">EPA's System of Registries</a></li>
 													</ul>
 												</div>
 											</div>
@@ -1038,7 +1012,7 @@ $(document).ready(function(){
 							</ul>
 							<p class="social-menu-more">
 								<a href="https://www2.epa.gov/home/social-media">More social
-									media at&#160;EPA&#160;»</a>
+									media at&#160;EPA&#160;ï¿½</a>
 							</p>
 						</div>
 					</div>
