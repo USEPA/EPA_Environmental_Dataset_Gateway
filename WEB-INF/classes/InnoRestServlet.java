@@ -86,7 +86,9 @@ public class InnoRestServlet extends HttpServlet {
                 }
             }
 //            String xmlUrl = request.getScheme() + "://" + request.getServerName();
-            String xmlUrl = "https://edg-staging.epa.gov";
+            String xmlUrl = request.getScheme()+"://"+ request.getServerName()+":"+request.getServerPort();
+            log.info("print server url:"+xmlUrl);
+            //String xmlUrl = "https://edg-staging.epa.gov";
             //String xmlUrl = "https://edg.epa.gov";
             //String xmlUrl = "http://buzzard.innovateteam.com";
             //String xmlUrl = "http://localhost:8080";
