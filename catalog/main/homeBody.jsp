@@ -7,22 +7,31 @@
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%@page import="com.esri.gpt.framework.util.Val"%>   
 <%
+
 String responseBody = "";
 //String site = "http://localhost:8080";
 String site = "https://edg.epa.gov";
+String featuredTab1Title = "Climate Change";
+String featuredTab2Title = "Environmental Justice";
+String featuredTab3Title = "Facility Data";
+String urlSuffix = "&start=1&max=6&f=json";
+String baseURL = "/metadata/rest/find/document?";
 /**Climate Change URL**/
-String cliChUrl = site + "/metadata/rest/find/document?searchText=climatechange&start=1&max=1750&f=json";
+String featuredTab1SearchStr = "sys.collection%3a%22%7b9B7778AC-DE79-287A-2A79-F05863C8A212%7d%22";
+String tab1 = site + baseURL + featuredTab1SearchStr + urlSuffix;
 /**Environmental Justice URL**/
-String ejUrl = site + "/metadata/rest/find/document?searchText=envjustice&start=1&max=1750&f=json";
+String featuredTab2SearchStr = "sys.collection%3a%22%7bADC0F16A-E2EB-7F86-C1FB-33CB6E726851%7d%22";
+String tab2 = site + baseURL + featuredTab2SearchStr + urlSuffix;
 /**Facility Data URL**/
-String fDataUrl = site + "/metadata/rest/find/document?searchText=facilitydata&start=1&max=1750&f=json";
+String featuredTab3SearchStr = "sys.collection%3a%22%7bD5F39F59-7647-1653-DCCF-1EE6354CE412%7d%22";
+String tab3 = site + baseURL + featuredTab3SearchStr + urlSuffix;
 /**Populat Datasets URL**/
-String popDataUrl = site + "/metadata/rest/find/document?childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D&start=1&max=6&f=json";
+String popDataUrl = site + baseURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
 
 HttpClientRequest client = new HttpClientRequest();
 
 JSONObject cliChobj=null;
-client.setUrl(cliChUrl);
+client.setUrl(tab1);
 try{
     responseBody =  client.readResponseAsCharacters();
     cliChobj = new JSONObject(responseBody);
@@ -32,7 +41,7 @@ try{
 }
 
 JSONObject ejobj=null;
-client.setUrl(ejUrl);
+client.setUrl(tab2);
 try{
     responseBody =  client.readResponseAsCharacters();
     ejobj = new JSONObject(responseBody);
@@ -42,7 +51,7 @@ try{
 }
 
 JSONObject fDataobj=null;
-client.setUrl(fDataUrl);
+client.setUrl(tab3);
 try{
     responseBody =  client.readResponseAsCharacters();
     fDataobj = new JSONObject(responseBody);
@@ -274,11 +283,12 @@ $(document).ready(function(){
 										<div class="app-showcase wow fadeInDown" data-wow-delay=".5s">
 											<h:form id="hpFrmSearch"
 												onkeypress="javascript:hpSubmitForm(event,this);">
-												<h:inputText id="itxFilterKeywordText"
+												<h:inputText id="itxFilterKeywordText" 
 													styleClass="search-field form-control"
 													onkeypress="if (event.keyCode == 13) return false;"
 													value="#{SearchFilterKeyword.searchText}" />
-
+                                                <h:inputHidden id="start" value="1" />
+												<h:inputHidden id="max" value="10" />
 												<h:commandLink id="btnDoSearch"
 													value="#{gptMsg['catalog.search.search.advBtnSearch']}"
 													action="#{SearchController.getNavigationOutcome}"
@@ -358,10 +368,15 @@ $(document).ready(function(){
 					}
 				function executeSearchAction(searchText){
 					var textEle=document.getElementById('hpFrmSearch:itxFilterKeywordText');
+					var startEle=document.getElementById('hpFrmSearch:start');
+					var maxEle=document.getElementById('hpFrmSearch:max');
 					textEle.value=searchText;
-					 var searchButtonId = "hpFrmSearch:btnDoSearch";
-					 var searchButton = document.getElementById(searchButtonId);
-					 searchButton.click();
+					/*start and max values will vary*/
+					startEle.value="7";
+					maxEle.value="100";
+					var searchButtonId = "hpFrmSearch:btnDoSearch";
+					var searchButton = document.getElementById(searchButtonId);
+					searchButton.click();
 					   
 				}
 				</script></f:verbatim>
@@ -390,10 +405,9 @@ $(document).ready(function(){
 							<h2>Featured Data Products</h2>
 							<ul class="nav nav-tabs">
 								<li class="active"><a data-toggle="tab"
-									href="#climateChange">Climate Change</a></li>
-								<li><a data-toggle="tab" href="#envJustice">Environmental
-										Justice</a></li>
-								<li><a data-toggle="tab" href="#facData">Facility Data</a></li>
+									href="#climateChange"><%=featuredTab1Title%></a></li>
+								<li><a data-toggle="tab" href="#envJustice"><%=featuredTab2Title%></a></li>
+								<li><a data-toggle="tab" href="#facData"><%=featuredTab3Title%></a></li>
 							</ul>
 
 							<div class="tab-content">
@@ -447,7 +461,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('climatechange')">See More</a>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab1SearchStr%>')">See More</a>
 										</p>
 										<p></p>
 									</div>
@@ -502,7 +516,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('envjustice')">See More</a>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab2SearchStr%>')">See More</a>
 										</p>
 										<p></p>
 									</div>
@@ -557,7 +571,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('facilitydata')">See More</a>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab3SearchStr%>')">See More</a>
 										</p>
 										<p></p>
 									</div>
@@ -612,7 +626,7 @@ $(document).ready(function(){
 								</div>
 							</div>
 						</section> --%>
-					<div class="container">
+				<div class="container">
 						<h2>Popular Datasets</h2>
 									<div class="row" style="padding-top: 22px">
 										<%
@@ -666,11 +680,8 @@ $(document).ready(function(){
 										</p>
 										<p></p>
 									</div>
-									</div>
-						
-
-					</div>
-				</div>
+									</div> 
+									
 												
 						<section id="feature">
 							<div class="container">
