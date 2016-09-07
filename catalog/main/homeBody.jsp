@@ -732,6 +732,16 @@ $(document).ready(function(){
 														<li><a
 															href="https://project-open-data.cio.gov/schema/">Project
 																Open Data Metadata Schema</a></li>
+														
+														<li><a href="/metadata/webhelp/en/gptlv10/inno/EDG_ClipAndShip_procedures.pdf" target = "_blank">
+																How to Post Data to EDG Clip N Ship (PDF)</a></li>
+																
+														<li><a href="/metadata/webhelp/en/gptlv10/inno/EDG_Download_Locations.pdf" target = "_blank">
+														How to Post Data to EDG Download Sites (PDF)</a></li>
+														
+														<li><a href="/metadata/webhelp/en/gptlv10/inno/Stewards/Stewards.html" target = "_blank">
+														List of EDG Stewards (opens new window)</a></li>		
+														
 													</ul>
 												</div>
 											</div>
