@@ -287,7 +287,7 @@ $(document).ready(function(){
 												<h:inputText id="itxFilterKeywordText" 
 													styleClass="search-field form-control"
 													onkeypress="if (event.keyCode == 13) return false;"
-													value="#{SearchFilterKeyword.searchText}" />
+													value="" />
                                                 <h:inputHidden id="start" value="1" />
 												<h:inputHidden id="max" value="10" />
 												<h:commandLink id="btnDoSearch"
