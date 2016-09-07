@@ -445,8 +445,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-														height="60" width="60" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -500,8 +499,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-														height="60" width="60" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -555,8 +553,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-														height="60" width="60" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -660,8 +657,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-														height="60" width="60" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
