@@ -29,7 +29,8 @@
 		String schHasSearchHint = com.esri.gpt.framework.util.Val.chkStr(schParameters.getValue("catalog.searchCriteria.hasSearchHint"));
 		hasSearchHint = Boolean.valueOf(schHasSearchHint);
 	}
-	String schHintPrompt = schMsgBroker.retrieveMessage("catalog.searchCriteria.hintSearch.prompt");
+	//String schHintPrompt = schMsgBroker.retrieveMessage("catalog.searchCriteria.hintSearch.prompt");
+	String schHintPrompt = "";
 	String PROD = "prod";
 %>
 
@@ -1667,14 +1668,15 @@ alert("test");
   <h:outputLabel for="scText" value="#{gptMsg['catalog.search.search.lblSearch']}"/>
   <h:inputText id="scText"
                value="#{SearchController.searchCriteria.searchFilterKeyword.searchText}"
-               maxlength="4000" styleClass="searchBox" />
+               maxlength="4000" styleClass="searchBox"/>
                 </td>
                 <td>
   <h:commandButton id="btnDoSearch" rendered="true"
-                   onclick="javascript:scSetPageTo(1); scExecuteDistributedSearch();"
+                   onclick="javascript:scSetPageTo(1); scExecuteDistributedSearch();" 
                    value="#{gptMsg['catalog.search.search.btnSearch']}"
                    action="#{SearchController.getNavigationOutcome}"
                    actionListener="#{SearchController.processAction}">
+                   
     <f:attribute name="#{SearchController.searchEvent.event}"
                  value="#{SearchController.searchEvent.eventExecuteSearch}" />
     <f:attribute name="onSearchPage" value="true"/>
@@ -1697,12 +1699,12 @@ alert("test");
             </tr>
             <tr>
                 <td colspan="1">
-   	<div id="hints"></div>
+					<div id="hints"></div>
                 </td>
             </tr>
         </tbody>
     </table> 
-
+ 
 <h:panelGroup id="dockDistributedSearch" rendered="#{SearchController.searchConfig.allowExternalSearch == true}">
   <f:verbatim>
     <div id="djtCntDistributedSearches" class="section" style="width:400px">
@@ -1845,7 +1847,7 @@ alert("test");
 
   <% // map %>
   <h:panelGrid id="pnlMap">
-    <h:panelGroup id="mapToolbar" styleClass="mapToolbar" style="display:none">
+    <h:panelGroup id="mapToolbar" styleClass="mapToolbar"  style="display:none">
       <h:outputLabel for="mapInput-locate" value="#{gptMsg['catalog.search.search.lblLocator']}"/>
       <h:inputText id="mapInput-locate" styleClass="locatorInput"
                    maxlength="1024" onkeypress="return scMap.onLocatorKeyPress(event);"/>
