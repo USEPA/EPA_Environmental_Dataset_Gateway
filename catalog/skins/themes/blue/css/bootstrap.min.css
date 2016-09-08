@@ -4983,6 +4983,7 @@ a.list-group-item.active>.badge,.nav-pills>.active>a>.badge {
 .thumbnail>img,.thumbnail a>img {
     margin-right: auto;
     margin-left: auto;
+    margin-top: -20px;
 }
 
 a.thumbnail:hover,a.thumbnail:focus,a.thumbnail.active {

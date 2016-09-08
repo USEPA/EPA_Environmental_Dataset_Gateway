@@ -15,7 +15,8 @@ String featuredTab1Title = "Climate Change";
 String featuredTab2Title = "Environmental Justice";
 String featuredTab3Title = "Facility Data";
 String urlSuffix = "&start=1&max=6&f=json";
-String baseURL = "/metadata/rest/find/document?";
+String baseURL = "/metadata/rest/find/document?searchText=";
+String popURL = "/metadata/rest/find/document?";
 /**Climate Change URL**/
 String featuredTab1SearchStr = "sys.collection%3a%22%7b9B7778AC-DE79-287A-2A79-F05863C8A212%7d%22";
 String tab1 = site + baseURL + featuredTab1SearchStr + urlSuffix;
@@ -26,7 +27,7 @@ String tab2 = site + baseURL + featuredTab2SearchStr + urlSuffix;
 String featuredTab3SearchStr = "sys.collection%3a%22%7bD5F39F59-7647-1653-DCCF-1EE6354CE412%7d%22";
 String tab3 = site + baseURL + featuredTab3SearchStr + urlSuffix;
 /**Populat Datasets URL**/
-String popDataUrl = site + baseURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
+String popDataUrl = site + popURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
 
 HttpClientRequest client = new HttpClientRequest();
 
@@ -286,7 +287,7 @@ $(document).ready(function(){
 												<h:inputText id="itxFilterKeywordText" 
 													styleClass="search-field form-control"
 													onkeypress="if (event.keyCode == 13) return false;"
-													value="#{SearchFilterKeyword.searchText}" />
+													value="" />
                                                 <h:inputHidden id="start" value="1" />
 												<h:inputHidden id="max" value="10" />
 												<h:commandLink id="btnDoSearch"
@@ -444,8 +445,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-														height="60" width="60" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" height="220" width="220" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -499,8 +499,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-														height="60" width="60" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" height="220" width="220" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -554,8 +553,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-														height="60" width="60" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" height="220" width="220" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -659,8 +657,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-														height="60" width="60" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" height="220" width="220" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -731,6 +728,16 @@ $(document).ready(function(){
 														<li><a
 															href="https://project-open-data.cio.gov/schema/">Project
 																Open Data Metadata Schema</a></li>
+														
+														<li><a href="/metadata/webhelp/en/gptlv10/inno/EDG_ClipAndShip_procedures.pdf" target = "_blank">
+																How to Post Data to EDG Clip N Ship (PDF)</a></li>
+																
+														<li><a href="/metadata/webhelp/en/gptlv10/inno/EDG_Download_Locations.pdf" target = "_blank">
+														How to Post Data to EDG Download Sites (PDF)</a></li>
+														
+														<li><a href="/metadata/webhelp/en/gptlv10/inno/Stewards/Stewards.html" target = "_blank">
+														List of EDG Stewards (opens new window)</a></li>		
+														
 													</ul>
 												</div>
 											</div>
@@ -992,7 +999,7 @@ $(document).ready(function(){
 									and Security Notice</a></li>
 							<li><a href="https://www2.epa.gov/accessibility">Accessibility</a></li>
 						</ul>
-						<p class="last-updated">{LAST UPDATED DATE}</p>
+						<!-- <p class="last-updated">{LAST UPDATED DATE}</p> -->
 					</div>
 					<div class="col size-3of5">
 						<ul class="menu epa-menu">
