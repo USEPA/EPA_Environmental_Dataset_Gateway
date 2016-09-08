@@ -445,7 +445,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" height="220" width="220" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -499,7 +499,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" height="220" width="220" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -553,7 +553,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" height="220" width="220" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -657,7 +657,7 @@ $(document).ready(function(){
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" height="220" width="220" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -999,7 +999,7 @@ $(document).ready(function(){
 									and Security Notice</a></li>
 							<li><a href="https://www2.epa.gov/accessibility">Accessibility</a></li>
 						</ul>
-						<p class="last-updated">{LAST UPDATED DATE}</p>
+						<!-- <p class="last-updated">{LAST UPDATED DATE}</p> -->
 					</div>
 					<div class="col size-3of5">
 						<ul class="menu epa-menu">
