@@ -4981,6 +4981,8 @@ a.list-group-item.active>.badge,.nav-pills>.active>a>.badge {
 }
 
 .thumbnail>img,.thumbnail a>img {
+    height: 157px; 
+	width: 157px;
     margin-right: auto;
     margin-left: auto;
     margin-top: -20px;
