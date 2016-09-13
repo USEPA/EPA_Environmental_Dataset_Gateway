@@ -18,7 +18,7 @@
 %>
 
 <%
-String VER = "v1";
+String PROD = "prod";
 %>
 
 <link rel="stylesheet" type="text/css" href="https://serverapi.arcgisonline.com/jsapi/arcgis/2.0/js/dojo/dijit/themes/tundra/tundra.css">
@@ -26,15 +26,16 @@ String VER = "v1";
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/catalog/skins/themes/blue/preview.css"  />
 <link rel="icon" type="image/x-icon"   href="<%=request.getContextPath()%>/catalog/images/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/catalog/images/favicon.ico" />
+<link rel="stylesheet" href="https://js.arcgis.com/3.17/esri/css/esri.css">
 
 <script type="text/javascript">djConfig = {parseOnLoad: true};</script>
 <script type="text/javascript" src="<%=com.esri.gpt.framework.context.RequestContext.extract(request).getApplicationConfiguration().getInteractiveMap().getJsapiUrl()%>"></script>
-<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +VER+ "/GPTMapViewer.js"%>"></script>
-<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +VER+ "/jquery-1.2.3.pack.js"%>"></script>
-<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +VER+ "/ui.datepicker.packed.js"%>"></script>
-<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +VER+ "/gpt.js"%>"></script>
-<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +VER+ "/Utils.js"%>"></script>
-<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +VER+ "/livedata.js"%>"></script>
-<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +VER+ "/gpt-asn.js"%>"></script>
-<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +VER+ "/gpt-browse.js"%>"></script>
+<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/GPTMapViewer.js"%>"></script>
+<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/jquery-1.2.3.pack.js"%>"></script>
+<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/ui.datepicker.packed.js"%>"></script>
+<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/gpt.js"%>"></script>
+<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/Utils.js"%>"></script>
+<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/livedata.js"%>"></script>
+<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/gpt-asn.js"%>"></script>
+<script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/gpt-browse.js"%>"></script>
 

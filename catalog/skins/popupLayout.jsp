@@ -24,12 +24,12 @@
 <f:view>
 <f:loadBundle basename="gpt.resources.gpt" var="gptMsg"/>
 
-<html>
+<html lang="<%=request.getLocale().getLanguage()%>">
   
 <head>
   <title><%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%></title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <!--meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /-->
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
   <jsp:include page="/catalog/skins/lookAndFeel.jsp"/>
   <script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/Utils.js"%>"></script>
 </head>
