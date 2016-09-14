@@ -114,6 +114,15 @@
         value="#{gptMsg['catalog.publication.manageMetadata.menuCaption']}"
         rendered="#{PageContext.roleMap['gptPublisher']}"
         actionListener="#{ManageMetadataController.processAction}" />
+
+    <h:commandLink
+        id="collection" 
+        action="catalog.collection.home"
+        value="#{gptMsg['catalog.collection.home.menuCaption']}"
+        styleClass="#{PageContext.tabStyleMap['catalog.collection.home']}"
+        rendered="#{PageContext.roleMap['gptPublisher']}"
+        title="Compilation"/>
+
 	<h:commandLink
         id="validationManageMetadata" 
         action="catalog.publication.validateMetadata"
