@@ -23,11 +23,10 @@
 <f:verbatim>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /-->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <link rel="search" type="application/opensearchdescription+xml" 
   title="<%=com.esri.gpt.framework.jsf.PageContext.extract().getResourceMessage("catalog.openSearch.shortName")%>"
   href="<%=request.getContextPath()%>/openSearchDescription" />
-
 
 <script type="text/javascript">
 
@@ -75,13 +74,10 @@ function mainOpenInternalLink(oLink,sHref) {
 	}
 }
 
-
-
 function mainOpenPageHelp() {
 	openHelp("GPT_Context_Help", "<%=com.esri.gpt.framework.jsf.PageContext.extract().getPageId()%>");
 }
-
-
+// Global variable to be used for map viewer
 var mainGptMapViewer = new GptMapViewer(mainGptMvsUrl);
 
 /**

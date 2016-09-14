@@ -30,7 +30,8 @@
 		hasSearchHint = Boolean.valueOf(schHasSearchHint);
 	}
 	String schHintPrompt = schMsgBroker.retrieveMessage("catalog.searchCriteria.hintSearch.prompt");
-	String VER121 = "v1.2.1";
+	//String VER121 = "v1.2.1";
+	String PROD = "prod";
 %>
 
 

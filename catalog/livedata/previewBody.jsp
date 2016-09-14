@@ -77,7 +77,7 @@ private String makeSafeUrl(String contextPath, String infoUrl) {
 <div class="section previewInfoSection">
   <iframe src="<%=Val.escapeXmlForBrowser(LiveDataController.getCurrentInstance().getInfoUrl())%>&xsl=metadata_to_html_full"
           class="previewInfoFrame"
-          frameborder="0"
+          frameborder="0" 
           onload="innoHookUpFrame(this);" ></iframe>
 </div>
 <%}%>

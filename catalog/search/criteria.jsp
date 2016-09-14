@@ -31,13 +31,13 @@
 	}
 	//String schHintPrompt = schMsgBroker.retrieveMessage("catalog.searchCriteria.hintSearch.prompt");
 	String schHintPrompt = "";
-	String VER121 = "v1.2.1";
+	String PROD = "prod";
 %>
 
 <% if(hasSearchHint){ %>
   <input type="hidden" id="schContextPath" value="<%=schContextPath %>"/>
   <input type="hidden" id="schHintPrompt" value="<%=schHintPrompt %>"/>
-	<script type="text/javascript" src="<%=schContextPath+"/catalog/js/" +VER121+ "/gpt-search-hint.js"%>"></script>	
+	<script type="text/javascript" src="<%=schContextPath+"/catalog/js/" +PROD+ "/gpt-search-hint.js"%>"></script>	
 <% } %>
 
 <% // date picker support %>
@@ -1668,14 +1668,15 @@ alert("test");
   <h:outputLabel for="scText" value="#{gptMsg['catalog.search.search.lblSearch']}"/>
   <h:inputText id="scText"
                value="#{SearchController.searchCriteria.searchFilterKeyword.searchText}"
-               maxlength="4000" styleClass="searchBox" />
+               maxlength="4000" styleClass="searchBox"/>
                 </td>
                 <td>
   <h:commandButton id="btnDoSearch" rendered="true"
-                   onclick="javascript:scSetPageTo(1); scExecuteDistributedSearch();"
+                   onclick="javascript:scSetPageTo(1); scExecuteDistributedSearch();" 
                    value="#{gptMsg['catalog.search.search.btnSearch']}"
                    action="#{SearchController.getNavigationOutcome}"
                    actionListener="#{SearchController.processAction}">
+                   
     <f:attribute name="#{SearchController.searchEvent.event}"
                  value="#{SearchController.searchEvent.eventExecuteSearch}" />
     <f:attribute name="onSearchPage" value="true"/>

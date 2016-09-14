@@ -733,10 +733,9 @@ function uncheckForm() {
 			<% if (searchTextParam == ""){ %>
 				<h:panelGroup id="pngTagbox">
 					<div>
-							<%int number=5;
-								com.esri.gpt.catalog.search.SearchCriteria searchTags = new  
-
-com.esri.gpt.catalog.search.SearchCriteria();
+							<%
+							int number=5;
+								com.esri.gpt.catalog.search.SearchCriteria searchTags = new com.esri.gpt.catalog.search.SearchCriteria();
 								ArrayList<ArrayList<String>> tagList = searchTags.getTagscloud();
 								int oriSize = 4;//5 the base size of the tags with the highest frequency
 								int lightness = 30;// the tags with the highest frequency (such as water) will be shown with the lowest lightness

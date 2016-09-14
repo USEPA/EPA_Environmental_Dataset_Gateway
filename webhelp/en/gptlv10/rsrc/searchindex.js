@@ -22792,7 +22792,7 @@
 70:1,
 38:1
 },
-"SRC=\"http://js.arcgis.com/3.13/init.js"></SCRIPT":{
+"SRC=\"https://js.arcgis.com/3.13/init.js"></SCRIPT":{
 26:1
 },
 "POINTING":{
