@@ -5,7 +5,7 @@
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
-<%@page import="com.esri.gpt.framework.util.Val"%>   
+<%@page import="com.esri.gpt.framework.util.Val"%>  
 <%
 
 String responseBody = "";
@@ -368,6 +368,7 @@ $(document).ready(function(){
 					  }
 					}
 				function executeSearchAction(searchText){
+				    searchText=decodeURIComponent(searchText);
 					var textEle=document.getElementById('hpFrmSearch:itxFilterKeywordText');
 					var startEle=document.getElementById('hpFrmSearch:start');
 					var maxEle=document.getElementById('hpFrmSearch:max');
