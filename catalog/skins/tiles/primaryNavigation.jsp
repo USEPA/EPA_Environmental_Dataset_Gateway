@@ -37,7 +37,7 @@
 <h:form id="frmPrimaryNavigation">
 	<h:commandLink
         id="mainHome" 
-        action="catalog.main.home"
+        action="#{SearchController.getHomePageAction}
         value="#{gptMsg['catalog.main.home.menuCaption']}"
         styleClass="#{PageContext.tabStyleMap['catalog.main.home']}"/>
 <%-- <h:commandLink
