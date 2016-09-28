@@ -223,7 +223,6 @@ public String getHomePageAction(){
 	this.searchCriteria.getSearchFilterKeyword().reset();
 	return "catalog.main.home";
 }
-
 /**
  * Gets the style attribute for the save search control.
  * @return the style
@@ -364,8 +363,6 @@ public void processSubAction(ActionEvent event, RequestContext context)
 throws AbortProcessingException, Exception {
   try {
     processSearchActions(event, context);
-    //SearchCriteria searchCriteria = this.getSearchCriteria();
-	//searchCriteria.getSearchFilterKeyword().reset();
   } catch (Exception e) {
 
     boolean rethrowExcep = false;
@@ -448,7 +445,7 @@ public String processRequestParams() {
 @SuppressWarnings("unchecked")
 protected void processSearchActions(ActionEvent event, RequestContext context) 
 throws AbortProcessingException, Exception {
-	
+  
   // Actions will have to set the next navigation
   this.setNavigationOutcome(null);
   this.setSavedSearchesPanelStyle("display: none;");
@@ -488,13 +485,11 @@ throws AbortProcessingException, Exception {
     this.setNavigationOutcome(NAV_2SEARCHCRITERIA);
 
   } /*else if(eventType.equals(SearchEvents.Event.EVENT_VIEWMD_DETAILS.name())) {
-
     FacesContextBroker facesBroker = new FacesContextBroker();
     Map requestMap = facesBroker.getExternalContext().getRequestParameterMap();
     String uuid = (String) requestMap.get(SearchEvents.Event.PARAM_UUID);
     LOG.fine("Viewing Summary of "+ uuid);
     doViewMetadataDetails(context,uuid);
-
   }*/else if (eventType.equals(SearchEvents.Event.EVENT_EXECUTE_SEARCH.name())) {
     LOG.fine("Initiating new search");
     
@@ -730,7 +725,7 @@ throws SearchException {
   LOG.fine("Event: Performing Search");
   this.getSearchResult().reset();
   SearchCriteria criteria = this.getSearchCriteria();
-  
+
   if(LOG.isLoggable(Level.FINER)) {
     LOG.log(Level.FINER, "Search Criteria Object = \n{0}", criteria.toString());
   }
@@ -816,7 +811,6 @@ throws SearchException {
       this.getSearchResult().getRecords().remove(recordsPerPage);
 
     }
-    
     this.setNavigationOutcome(NAV_CRITERIA2RESULTS);
   } finally {
     // Readjust records per page incase it was affected by peeking

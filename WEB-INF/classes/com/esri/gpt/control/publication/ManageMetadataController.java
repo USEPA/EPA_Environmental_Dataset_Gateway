@@ -34,15 +34,24 @@ import com.esri.gpt.catalog.management.MmdResult;
 import com.esri.gpt.framework.security.metadata.MetadataAccessPolicy;
 import com.esri.gpt.control.view.PageCursorPanel;
 import com.esri.gpt.control.view.SelectablePublishers;
+import com.esri.gpt.control.webharvest.protocol.ProtocolFactories;
+import com.esri.gpt.control.webharvest.protocol.ProtocolFactory;
+import com.esri.gpt.control.webharvest.protocol.factories.AgpProtocolFactory;
+import com.esri.gpt.framework.collection.StringAttributeMap;
+import com.esri.gpt.framework.collection.StringSet;
+import com.esri.gpt.framework.context.ApplicationConfiguration;
+import com.esri.gpt.framework.context.ApplicationContext;
 import com.esri.gpt.framework.context.RequestContext;
 import com.esri.gpt.framework.jsf.BaseActionListener;
 import com.esri.gpt.framework.jsf.MessageBroker;
+import com.esri.gpt.framework.security.metadata.MetadataAccessPolicy;
 import com.esri.gpt.framework.security.identity.NotAuthorizedException;
 import com.esri.gpt.framework.security.identity.local.SimpleIdentityAdapter;
 import com.esri.gpt.framework.security.principal.Publisher;
 import com.esri.gpt.framework.util.Val;
 import com.esri.gpt.framework.collection.StringAttributeMap;
 import com.esri.gpt.framework.collection.StringSet;
+import java.util.ArrayList;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -604,16 +613,22 @@ public void setQueryCriteriaAsEncrypedString(String content) {
  * @return collection of protocols eligible to choose
  */
 public ArrayList<SelectItem> getProtocols() {
-  MessageBroker msgBroker = getContextBroker().extractMessageBroker();
-  ArrayList<SelectItem> protocols = new ArrayList<SelectItem>();
-  for (ProtocolDef pdef : protocolDefs) {
-    if (AGSProcessorConfig.isAvailable() || !pdef.getArcgis()) {
-      SelectItem item = new SelectItem(pdef.getId(), msgBroker.retrieveMessage(pdef.getResource()));
-      protocols.add(item);
-    }
-  }
-  return protocols;
-}
+	  ArrayList<SelectItem> protocols = new ArrayList<SelectItem>();
+	  MessageBroker msgBroker = getContextBroker().extractMessageBroker();
+	  ApplicationContext appCtx = ApplicationContext.getInstance();
+	  ApplicationConfiguration appCfg = appCtx.getConfiguration();
+	  ProtocolFactories protocolFactories = appCfg.getProtocolFactories();
+	  protocols.add(new SelectItem("", msgBroker.retrieveMessage("catalog.harvest.manage.edit.protocol.any")));
+	  for (String key: protocolFactories.getKeys()) {
+	    ProtocolFactory pf = protocolFactories.get(key);
+	    if (pf instanceof AgpProtocolFactory && !AGSProcessorConfig.isAvailable()) continue;
+	    String resourceKey = protocolFactories.getResourceKey(key);
+	    SelectItem item = new SelectItem(key.toLowerCase(), msgBroker.retrieveMessage(resourceKey));
+	    protocols.add(item);
+	  }
+	  return protocols;
+	}
+
 
 /**
  * Handles a metadata management action.
