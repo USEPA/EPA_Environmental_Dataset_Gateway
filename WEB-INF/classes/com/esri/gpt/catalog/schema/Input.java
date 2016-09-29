@@ -523,22 +523,31 @@ public UIComponent makeOutputComponent(UiContext context,
       
     } else {
     
-      // FTP/HTTP/HTTPS/FILE - activate URL links (make sure to escape if turning JSF escaping off)
-      if (sValue.toLowerCase().indexOf("ftp") != -1 || sValue.toLowerCase().indexOf("http") != -1 || sValue.toLowerCase().indexOf("https") != -1 ||
-              sValue.toLowerCase().indexOf("file") != -1) {
-        String exp="\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
-        Pattern pattern = Pattern.compile(exp,Pattern.DOTALL | Pattern.UNIX_LINES | Pattern.CASE_INSENSITIVE);
-        
-        Matcher matcher = pattern.matcher(Val.escapeXmlForBrowser(sValue));
-        if (matcher.find()) {
-          String sReplaced = matcher.replaceAll("<a href=\"$0\" target=\"_blank\">$0</a>");
-          
-          component.setValue(sReplaced);
-          component.setEscape(false);
+    	 // activate URL links (make sure to escape if turning JSF escaping off)
+        if (sValue.toLowerCase().indexOf("http") != -1) {
+          String exp = "(?<![=\"'\\/>;])http(s)?://([\\w+?\\.\\w+])+([a-zA-Z0-9\\~\\!\\@\\#\\$\\%\\^\\&amp;\\*\\(\\)_\\-\\=\\+\\\\\\/\\?\\.\\:\\;\\'\\,]*)?";
+          Pattern pattern = Pattern.compile(exp,Pattern.DOTALL | Pattern.UNIX_LINES | Pattern.CASE_INSENSITIVE);
+          Matcher matcher = pattern.matcher(Val.escapeXmlForBrowser(sValue));
+          if (matcher.find()) {
+            String sReplaced = matcher.replaceAll("<a href=\"$0\" target=\"_blank\">$0</a>");
+            component.setValue(sReplaced);
+            component.setEscape(false);
+          }
         }
+        
+        // FTP - activate URL links (make sure to escape if turning JSF escaping off)
+        if (sValue.toLowerCase().indexOf("ftp") != -1) {
+          String exp = "(?<![=\"'\\/>;])ftp(s)?://([\\w+?\\.\\w+])+([a-zA-Z0-9\\~\\!\\@\\#\\$\\%\\^\\&amp;\\*\\(\\)_\\-\\=\\+\\\\\\/\\?\\.\\:\\;\\'\\,]*)?";
+          Pattern pattern = Pattern.compile(exp,Pattern.DOTALL | Pattern.UNIX_LINES | Pattern.CASE_INSENSITIVE);
+          Matcher matcher = pattern.matcher(Val.escapeXmlForBrowser(sValue));
+          if (matcher.find()) {
+            String sReplaced = matcher.replaceAll("<a href=\"$0\" target=\"_blank\">$0</a>");
+            component.setValue(sReplaced);
+            component.setEscape(false);
+          }
+        }
+        
       }
-      
-    }
     return component;
   }
   return null;
