@@ -314,6 +314,6 @@
       <field name="references" index="dcat.references" type="array" required="false"/>
       <field name="size" index="dcat.size"  required="false"/>
       <field name="landingPage" index="dcat.landingPage"  required="false"/>
-      <field name="isPartOf" index="dcat.isPartOf" required="false" />
+      <field name="isPartOf" index="sys.parentid"  required="false"/>
 	  </fields>
 </dcat>
