@@ -401,8 +401,6 @@
   </property-meaning>  
   <property-meaning name="dcat.downloadUrl" valueType="String" comparisonType="value">
   </property-meaning>  
-  <property-meaning name="dcat.webService" valueType="String" comparisonType="value">
-  </property-meaning> 
    <property-meaning name="dcat.format" valueType="String" comparisonType="value">
   </property-meaning>  
 <!--Added by Torrin Hultgren 2/21/13 to include "Optional" dcat components-->

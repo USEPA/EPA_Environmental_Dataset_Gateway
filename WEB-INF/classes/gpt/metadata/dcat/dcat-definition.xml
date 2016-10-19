@@ -64,7 +64,7 @@
                select="/rdf:RDF/dcat:dataset/dct:description"/>
     </parameter>
 
-    <parameter key="identification.fileIdentifier">
+    <parameter key="identification.fileIdentifier" meaning="fileIdentifier">
       <label resourceKey="catalog.mdParam.general.fileIdentifier"/>
       <input type="text" size="50" maxlength="50" editable="false" 
                defaultValue="#{EditMetadataController.newUuid}"/>

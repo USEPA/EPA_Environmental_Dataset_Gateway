@@ -571,13 +571,13 @@
 	 <ldapAdapter>
      
          <ldapConnectionProperties
-              providerURL="ldaps://oidstg.rtpnc.epa.gov:636"
+              providerURL="ldaps://oidstgsha2.rtpnc.epa.gov"
               initialContextFactoryName="com.sun.jndi.ldap.LdapCtxFactory"
               securityAuthentication="simple"
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="VrXV4hub"
+                  securityCredentials="CtZb5jiv"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
@@ -797,10 +797,10 @@
     <!-- Scheduled Background Threads -->
     <scheduler active="true" corePoolSize="0">
         <!-- Catalog synchronization (sync Lucene index with the database) -->
-        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="08:10"/>
+        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="15:30"/>
         <!--<thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" period='4[HOUR]' delay="30[SECOND]"/>-->
         <!-- Index optimization --> 
-        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="08:30"/>
+        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="15:50"/>
     
 <!-- Innovate's batch thread -->
       <thread class="com.innovateteam.gpt.BatchUpdateWrapper"

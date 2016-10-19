@@ -178,6 +178,9 @@ try{
 <script src="../skins/themes/blue/js/main.js"></script>
 <script src="../skins/themes/blue/js/search.js"</script>
 <script type="text/javascript">
+if (window.location.href == "https://edg-staging.epa.gov/metadata/"){
+    window.location.replace("https://edg-staging.epa.gov/metadata/catalog/main/home.page");
+}
             new WOW(
             ).init();
 			
@@ -688,6 +691,7 @@ $(document).ready(function(){
 										<div class="title wow pulse" data-wow-delay=".5s">
 											<h2>Learn More</h2>
 											<p>Links to the most popular information in the EDG</p>
+											<a href="/metadata/webhelp/en/gptlv10/inno/EDG_FactSheet.pdf" target="_blank">EDG Fact Sheet</a>
 										</div>
 									</div>
 								</div>
@@ -772,6 +776,8 @@ $(document).ready(function(){
                                                         <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_3.wmv" target = "_blank">EDG Search and Discovery Video 3 (Search Results) (WMV)</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video3_Agenda.pdf" target = "_blank">Video Agenda</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation3_SearchResults.pdf" target = "_blank">Slides (PDF)<a/></li>
                                                         <li><a href="../../webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf" target = "_blank">How to Capture and Use RSS Feeds from EDG (PDF)</a> </li> 
                                                         <li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">How to Get Started with EDG Reuse (PDF) </a> </li>
+														<li><a href="../../webhelp/en/gptlv10/inno/EDGSOPV3_1_20151118.pdf" target="_blank">EDG Standard Operating Procedure and Governance Document (PDF)</a></li>
+														<li><a href="../../webhelp/en/gptlv10/inno/PublicDataForumRolesandResponsibilities.pdf" target="_blank">Public Data Forum Roles and Responsibilites (PDF)</a></li>
 													</ul>
 												</div>
 											</div>
