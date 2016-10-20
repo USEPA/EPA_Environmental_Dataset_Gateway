@@ -150,7 +150,7 @@ public class InnoRestServlet extends HttpServlet {
             String xslParm = request.getParameter("xsl");
             
             response.setContentType(contentType);
-            out.println(xmlIn);
+            
             return;            
             /*if (xslParm == null || xslParm.equals("")) {
                 response.setContentType(contentType);
