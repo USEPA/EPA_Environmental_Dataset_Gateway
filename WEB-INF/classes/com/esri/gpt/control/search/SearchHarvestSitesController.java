@@ -229,7 +229,6 @@ public void processFullMetadataUrl() {
 @Override
 protected void processSearchActions(ActionEvent event, RequestContext context) 
 throws AbortProcessingException, Exception {
-	System.out.println("SearchHarvestSitesController:processSearchActions 1");
   context.setViewerExecutesJavascript(true);
   if(this.getEventType(event).equals(
       SearchEvents.Event.EVENT_EXECUTE_SEARCH.toString())) {
@@ -240,7 +239,6 @@ throws AbortProcessingException, Exception {
         (obj != null && (Val.chkBool(obj.toString(), false) == false))) {
       String text = 
         this.getSearchCriteria().getSearchFilterKeyword().getSearchText();
-      System.out.println("SearchHarvestSitesController:processSearchActions 2: "+text);
       this.getSearchCriteria().reset();
       this.getSearchCriteria().getSearchFilterKeyword().setSearchText(text);
       this.doSetDefaultSite(this.getSearchFilterHarvestSites());
@@ -263,15 +261,13 @@ throws AbortProcessingException, Exception {
   if(!SearchEngineLocal.ID.equals(rid)) {
     getContextBroker().extractHttpServletRequest().setAttribute("rid", rid);
   }
-  
-  // Call save search term
+ // Call save search term
   
   String text = 
 	        this.getSearchCriteria().getSearchFilterKeyword().getSearchText();
   ISearchSaveRepository saveRpstry = 
 		    SearchSaveRpstryFactory.getSearchSaveRepository();
   saveRpstry.saveOrUpdateSearchTerm(text.trim());
-
   super.processSearchActions(event, context);
   //this.setNavigationOutcome(null);
 }

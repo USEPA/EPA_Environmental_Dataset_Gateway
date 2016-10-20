@@ -21,12 +21,12 @@ import com.esri.gpt.framework.search.DcList;
 import com.esri.gpt.framework.util.Val;
 import com.esri.gpt.server.csw.client.CswRecord;
 import com.esri.gpt.server.csw.client.CswRecords;
-import com.esri.gpt.server.csw.client.Utils;
-import com.esri.gpt.server.csw.provider.components.IOriginalXmlProvider;
-import com.esri.gpt.server.csw.provider.components.OperationContext;
-import com.esri.gpt.server.csw.provider.components.OperationResponse;
-import com.esri.gpt.server.csw.provider.components.RequestHandler; 
-import com.esri.gpt.server.csw.provider.local.ProviderFactory;
+import com.esri.gpt.server.csw.components.IOriginalXmlProvider;
+import com.esri.gpt.server.csw.components.IRequestHandler;
+import com.esri.gpt.server.csw.components.OperationContext;
+import com.esri.gpt.server.csw.components.OperationResponse;
+import com.esri.gpt.server.csw.components.ProviderFactoryHelper;
+import com.esri.gpt.server.csw.provider3.local.ProviderFactory;
 import com.esri.gpt.framework.security.credentials.UsernamePasswordCredentials;
 
 import com.esri.gpt.framework.security.credentials.Credentials;
@@ -100,13 +100,13 @@ public class SearchEngineLocal extends SearchEngineCSW {
     // send the GetRecordsById request
     RequestContext rc = null;
     try {
-      GetRecordsGenerator generator = new GetRecordsGenerator(this.getRequestContext());
+      GetRecordsGenerator generator = new GetRecordsGenerator();
       rc = this.getRequestContext();
 
       String cswRequest = generator.generateCswByIdRequest(uuid);
       LOGGER.log(Level.FINE, "cswRequest:\n{0}", cswRequest);
 
-      RequestHandler handler = ProviderFactory.newHandler(this.getRequestContext());
+      IRequestHandler handler = ProviderFactoryHelper.newInstance(this.getRequestContext()).newHandler(this.getRequestContext());
       OperationResponse resp = handler.handleXML(cswRequest);
       LOGGER.log(Level.FINE, "resp:\n{0}", resp);
       cswResponse = resp.getResponseXml();
@@ -153,13 +153,20 @@ public class SearchEngineLocal extends SearchEngineCSW {
                     user = rc.getUser().getName();
                 }
             } else {
+                LOGGER.log(Level.INFO,"bji before getLdapConfiguration");
                 creden = rc.getApplicationContext().getConfiguration().getIdentityConfiguration().getLdapConfiguration().getConnectionProperties().getServiceAccountCredentials();
+                LOGGER.log(Level.INFO,"bji after getLdapConfiguration");
                 if ((creden != null) && creden.hasUsernamePasswordCredentials()) {
                     LOGGER.log(Level.FINE,"hasUsernamePasswordCredentials from ldap");
+                    LOGGER.log(Level.INFO,"bji hasUsernamePasswordCredentials from ldap");
                     UsernamePasswordCredentials creds = creden.getUsernamePasswordCredentials();
+                    LOGGER.log(Level.INFO,"bji after UsernamePasswordCredentials");
                     if (creds != null) {
+                        LOGGER.log(Level.INFO,"bji creds is not null");
                         user = creds.getUsername();
+                        LOGGER.log(Level.INFO,"bji user: " + user);
                         pwd = creds.getPassword();
+                        LOGGER.log(Level.INFO,"bji pwd: " + pwd);
                     } else {
                         LOGGER.log(Level.SEVERE, "null UsernamePasswordCredentials from ldap);");
                     }
@@ -180,7 +187,7 @@ public class SearchEngineLocal extends SearchEngineCSW {
         String fullMetadataXml = "";
         try {
 
-          RequestHandler handler = ProviderFactory.newHandler(this.getRequestContext());
+          IRequestHandler handler = ProviderFactoryHelper.newInstance(this.getRequestContext()).newHandler(this.getRequestContext());
           OperationContext ctx = handler.getOperationContext();
           IOriginalXmlProvider oxp = ctx.getProviderFactory().makeOriginalXmlProvider(ctx);
           fullMetadataXml = oxp.provideOriginalXml(ctx,uuid);
@@ -291,19 +298,19 @@ public class SearchEngineLocal extends SearchEngineCSW {
   protected CswRecords sendRequest(String cswRequest) throws SearchException {
     try {
       LOGGER.log(Level.FINER, "Executing local CSW 2.0.2 Discovery request:\n{0}", cswRequest);
-
-      LOGGER.log(Level.FINER, "Baohong :\n{0}", "in side sendRequest: " + cswRequest);
+      
+      //LOGGER.log(Level.INFO, "Executing local CSW 2.0.2 Discovery request:\n{0}", "in side sendRequest, cswRequest: " + cswRequest);
       boolean isSitemapRequest = false;
       Object obj = this.getRequestContext().getObjectMap().get("com.esri.gpt.catalog.search.isSitemapRequest");
       if ((obj != null) && (obj instanceof String)) {
         isSitemapRequest = ((String)obj).equalsIgnoreCase("true");
       }
 
-      RequestHandler handler = ProviderFactory.newHandler(this.getRequestContext());
+      IRequestHandler handler = new com.esri.gpt.server.csw.provider.local.ProviderFactory().newHandler(this.getRequestContext());
       OperationResponse resp = handler.handleXML(cswRequest);
       String cswResponse = resp.getResponseXml();
 
-      LOGGER.log(Level.FINER, "cswResponse:\n{0}", cswResponse);
+      LOGGER.log(Level.INFO, "cswResponse:\n{0}", "in side sendRequest, cswResponse: " + cswResponse);
 
       //return this.parseResponse(cswResponse);
 

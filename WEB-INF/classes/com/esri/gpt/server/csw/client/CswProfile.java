@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.esri.gpt.server.csw.client;       
-  
+package com.esri.gpt.server.csw.client;
+
 import com.esri.gpt.framework.search.DcList;
 import com.esri.gpt.framework.search.SearchXslProfile;
 import com.esri.gpt.framework.util.ResourceXml;
@@ -21,11 +21,11 @@ import com.esri.gpt.framework.util.Val;
 import com.esri.gpt.framework.xml.XmlIoUtil;
 import com.esri.gpt.catalog.search.SearchException;
 import com.esri.gpt.framework.context.RequestContext;
-
-import java.io.IOException;     
-import java.io.InputStream;  
-import java.net.URLEncoder;  
-import java.util.Iterator; 
+import com.esri.gpt.framework.robots.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLEncoder;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,19 +38,20 @@ import javax.xml.xpath.XPathExpressionException;
 import org.apache.axis.utils.XMLUtils;
 import org.xml.sax.SAXException;
 
+ 
 
 /**
  * The Class CswProfile.  Hold the class statically if you intend to use
  * the XSLT templates.
- *
+ * 
  */
-public class CswProfile extends
+public class CswProfile extends 
   SearchXslProfile<CswSearchCriteria, CswRecord, CswRecords, CswResult> {
-
+	
 // class variables =============================================================
 	/** The class logger *. */
 private static Logger LOG = Logger.getLogger(CswProfile.class
-	                                    .getCanonicalName());
+	                                    .getCanonicalName());	
 private static final Pattern XML_TEST_PATTERN = Pattern.compile("^\\p{Space}*(<!--(.|\\p{Space})*?-->\\p{Space}*)+<\\?xml");	
 // instance variables ==========================================================
 
@@ -62,7 +63,7 @@ private boolean            filter_extentsearch;
 private boolean            filter_livedatamap;
 
 /** Used to get element with the metadata document during getElementBy Id. */
-private final static String SCHEME_METADATA_DOCUMENT =
+private final static String SCHEME_METADATA_DOCUMENT = 
   "urn:x-esri:specification:ServiceType:ArcIMS:Metadata:Document";
 
 // constructors ================================================================
@@ -74,7 +75,7 @@ public CswProfile() {
 
 /**
  * The Constructor.
- *
+ * 
  * @param sid the sid
  * @param sname the sname
  * @param sdescription the sdescription
@@ -84,7 +85,7 @@ public CswProfile(String sid, String sname, String sdescription) {
 
 /**
  * The Constructor.
- *
+ * 
  * @param id the id
  * @param name the name
  * @param description the description
@@ -112,19 +113,18 @@ public CswProfile(String id, String name, String description, String kvp,
 
 // properties ==================================================================
 
-
 // methods =====================================================================
 
 /**
  * Generate a CSW request String to get metadata by ID.
  * The CSW request String is built. The request is String is build based
  * on the baseurl and record id
- *
+ * 
  * @param baseURL the base URL
  * @param recordId the record id
- *
+ * 
  * @return The request String
- *
+ * 
  *
  */
 public String generateCSWGetMetadataByIDRequestURL(String baseURL,
@@ -169,18 +169,18 @@ public String generateCSWGetMetadataByIDRequestURL(String baseURL,
  * Generate a CSW request String.
  * First, create a simple common form of request xml
  * Then, transform the request xml into a real request xml using profile specific xslt
- *
+ * 
  * The CSW request String is built. The request is String is build based
  * on the request xslt.
- *
+ * 
  * @param search the search
- *
+ * 
  * @return The request String
- *
+ * 
  * @throws TransformerException the transformer exception
  * @throws IOException Signals that an I/O exception has occurred.
- *
- *
+ * 
+ *  
  */
 public String generateCSWGetRecordsRequest(CswSearchCriteria search)
     throws TransformerException, IOException {
@@ -199,19 +199,17 @@ public String generateCSWGetRecordsRequest(CswSearchCriteria search)
     request += "<MaxX>" + search.getEnvelope().getMaxX() + "</MaxX>";
     request += "<MaxY>" + search.getEnvelope().getMaxY() + "</MaxY>";
     request += "</Envelope>";
-    //added for gpt 1.2.5
     request += "<RecordsFullyWithinEnvelope>"+ search.isEnvelopeContains() +"</RecordsFullyWithinEnvelope>";
     request += "<RecordsIntersectWithEnvelope>"+ search.isEnvelopeIntersects() +"</RecordsIntersectWithEnvelope>";
-
   }
   request += "</GetRecords>";
-
+  
 
   LOG.fine("Internal CSW Request = \n"+ Val.stripControls(request));
 
   //Get an XSL Transformer object
   String requestStr = this.getRequestxsltobj().transform(request);
-
+  
   return requestStr;
 }
 
@@ -412,6 +410,18 @@ public void readCSWGetMetadataByIDResponseLocal(String response, CswRecord recor
  * 
  */
 
+/**
+ * Read a CSW metadata response for search engine local.  
+ * Will populate record referenceList and record metadataResourceUrl
+ * The CSW metadata response is read. The CSw record is updated with the
+ * metadata
+ * 
+ * @param response the response
+ * @param record the record
+ * 
+ * @throws TransformerException the transformer exception
+ * 
+ */
 public void readCSWGetMetadataByIDResponseLocal(String response, CswRecord record)
     throws TransformerException {
   String metadataxslt = this.getMetadataxslt();
@@ -443,6 +453,7 @@ public void readCSWGetMetadataByIDResponseLocal(String response, CswRecord recor
   }
 
 }
+
 
 /**
  * Read a CSW metadata response.  Will populate record referenceList and record metadataResourceUrl
@@ -516,13 +527,15 @@ public void readCSWGetMetadataByIDResponse(CswClient cswClient, String recordByI
 
 }
 
- /* Parse a CSW response.
+
+/**
+ * Parse a CSW response.
  * The CSW response is parsed and the records collection is populated with
  * the result.The reponse is parsed based on the response xslt.
- *
+ * 
  * @param src the src
  * @param recordList the record list
- *
+ * 
  * @throws TransformerException the transformer exception
  * @throws ParserConfigurationException the parser configuration exception
  * @throws IOException Signals that an I/O exception has occurred.
@@ -540,7 +553,7 @@ public void readCSWGetRecordsResponse(String src, CswRecords recordList)
 
 /**
  * Support content type query.
- *
+ * 
  * @return true, if successful
  */
 @Override
@@ -558,7 +571,7 @@ public boolean SupportSpatialBoundary() {
 
 /**
  * Support spatial query.
- *
+ * 
  * @return true, if successful
  */
 @Override
@@ -571,12 +584,12 @@ public boolean SupportSpatialQuery() {
  * Encode special characters (such as &, ", <, >, ') to percent values.
  * </remarks>
  * <param name="data
- *
+ * 
  * @param data the data
- *
+ * 
  * @return the string
- *
- *
+ * 
+ *  
  */
 private String XmlEscape(String data) {
   data = data.replace("&", "&amp;");
@@ -590,7 +603,7 @@ private String XmlEscape(String data) {
 
 /**
  * Checks if is filter_extentsearch.
- *
+ * 
  * @return true, if is filter_extentsearch
  */
 @Override
@@ -600,7 +613,7 @@ public boolean isFilter_extentsearch() {
 
 /**
  * Sets the filter_extentsearch.
- *
+ * 
  * @param filter_extentsearch the new filter_extentsearch
  */
 @Override
@@ -610,7 +623,7 @@ public void setFilter_extentsearch(boolean filter_extentsearch) {
 
 /**
  * Checks if is filter_livedatamap.
- *
+ * 
  * @return true, if is filter_livedatamap
  */
 @Override
@@ -620,7 +633,7 @@ public boolean isFilter_livedatamap() {
 
 /**
  * Sets the filter_livedatamap.
- *
+ * 
  * @param filter_livedatamap the new filter_livedatamap
  */
 @Override
@@ -630,7 +643,7 @@ public void setFilter_livedatamap(boolean filter_livedatamap) {
 
 /**
  * Read get metadata by id response.
- *
+ * 
  * @param response the response
  * @param record the record
  * @throws TransformerException the transformer exception
@@ -640,7 +653,7 @@ public void setFilter_livedatamap(boolean filter_livedatamap) {
 public void readGetMetadataByIDResponse(String response, CswRecord record)
     throws TransformerException {
   // TODO Auto-generated method stub
-
+  
 }
 
 }

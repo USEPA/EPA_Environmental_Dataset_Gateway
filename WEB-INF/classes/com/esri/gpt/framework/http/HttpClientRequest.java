@@ -497,12 +497,19 @@ public class HttpClientRequest {
     }
     
     // set headers, add the retry method
-    for (Map.Entry<String,String> hdr: this.requestHeaders.entrySet()) {
-      method.addRequestHeader(hdr.getKey(),hdr.getValue());
-    }
+    if (method!=null) {
+        // set headers, add the retry method
+        for (Map.Entry<String,String> hdr: this.requestHeaders.entrySet()) {
+          method.addRequestHeader(hdr.getKey(),hdr.getValue());
+        }
 
-    // declare possible gzip handling
-    method.setRequestHeader("Accept-Encoding", "gzip");
+        // declare possible gzip handling
+        method.setRequestHeader("Accept-Encoding", "gzip");
+        if (!parser().getUserAgent().isEmpty()) {
+          method.setRequestHeader("User-Agent", parser().getUserAgent());
+        }
+      }
+
     
     this.addRetryHandler(method);
     return method;

@@ -14,6 +14,7 @@
  */
 package com.esri.gpt.control.georss;
 
+import com.esri.gpt.catalog.discovery.DiscoveryClause;
 import com.esri.gpt.catalog.discovery.SpatialClause;
 import com.esri.gpt.catalog.discovery.rest.RestQuery;
 import com.esri.gpt.catalog.discovery.rest.RestQueryParser;
@@ -42,10 +43,12 @@ import com.esri.gpt.control.georss.dcatcache.DcatCache;
 import com.esri.gpt.control.georss.dcatcache.DcatCacheUpdateRequest;
 import com.esri.gpt.framework.context.BaseServlet;
 import com.esri.gpt.framework.context.RequestContext;
+import com.esri.gpt.framework.geometry.Envelope;
 import com.esri.gpt.framework.jsf.FacesContextBroker;
 import com.esri.gpt.framework.jsf.MessageBroker;
 import com.esri.gpt.framework.util.Val;
-import com.esri.gpt.server.csw.provider.local.CoreQueryables;
+//import com.esri.gpt.server.csw.provider.local.CoreQueryables;
+import com.esri.gpt.server.csw.components.CoreQueryables;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -128,6 +131,16 @@ public class RestQueryServlet extends BaseServlet {
       query = new RestQuery();
     }
 
+ // validate spatial clause
+    for (DiscoveryClause clause: query.getFilter().getRootClause().getClauses()) {
+      if (clause instanceof SpatialClause) {
+        Envelope env = ((SpatialClause)clause).getBoundingEnvelope();
+        if (!env.isEmpty() && !env.isValidWGS84()) {
+          response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+          return;
+        }
+      }
+    }
 
     // establish the response content type, print writer and feed writer
     RestQueryServlet.ResponseFormat format = getResponseFormat(request, query);
@@ -146,34 +159,56 @@ public class RestQueryServlet extends BaseServlet {
     // execute the query, write the response
     try {
       if (format == RestQueryServlet.ResponseFormat.xjson) {
+    	
+          // init query
+          query.setReturnables(new CoreQueryables(context).getFull());
+          toSearchCriteria(request, context, query);
+          
+          IFeedRecords result = JsonSearchEngine.createInstance().search(request, response, context, query);
+          if (result.isEmpty()) {
+              response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+          }
+
         String callback = request.getParameter("callback");
         if (callback != null) {
           printWriter.print(callback + "(");
         }
 
         // init query
-        query.setReturnables(new CoreQueryables(context).getFull());
+       /* query.setReturnables(new CoreQueryables(context).getFull());
         toSearchCriteria(request, context, query);
         
         
-        feedWriter.write(JsonSearchEngine.createInstance().search(request, response, context, query));
+        feedWriter.write(JsonSearchEngine.createInstance().search(request, response, context, query));*/
 
         if (callback != null) {
           printWriter.print(")");
         }
 
       }else if (format == RestQueryServlet.ResponseFormat.dcat) {
+          // The following part of the code has been disabled since DCAT content
+          // is being cached.
+          query.setReturnables(new CoreQueryables(context).getFull());
+          toSearchCriteria(request, context, query);
+          
+          IFeedRecords result = DcatJsonSearchEngine.createInstance().search(request, response, context, query);
+          if (result.isEmpty()) {
+              response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+          }
+
         String callback = request.getParameter("callback");
         if (callback != null) {
           printWriter.print(callback + "(");
         }
+        feedWriter.write(result);
 
-        // init query
+
+       /* // init query
         query.setReturnables(new CoreQueryables(context).getFull());
         toSearchCriteria(request, context, query);
         
         
-        feedWriter.write(DcatJsonSearchEngine.createInstance().search(request, response, context, query));
+        feedWriter.write(DcatJsonSearchEngine.createInstance().search(request, response, context, query));*/
 
         if (callback != null) {
           printWriter.print(")");
@@ -181,6 +216,10 @@ public class RestQueryServlet extends BaseServlet {
 
       } else {
         SearchResult result = executeQuery1(request, context, msgBroker, query);
+        if (!result.getHasRecords() && !Val.chkStr(request.getParameter("uuid")).isEmpty()) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
+
         if (feedWriter instanceof FeedWriter2) {
           ((FeedWriter2) feedWriter).write(result);
         } else if (feedWriter instanceof HtmlAdvancedWriter) {
@@ -309,6 +348,10 @@ public class RestQueryServlet extends BaseServlet {
     OpenSearchProperties osProps = new OpenSearchProperties();
     osProps.setShortName(messageBroker.retrieveMessage("catalog.openSearch.shortName"));
     osProps.setDescriptionURL(osURL);
+    osProps.setRestURL(basePath+"/rest/find/document");
+    osProps.setSearchText(request.getParameter("searchText"));
+    osProps.setBbox(request.getParameter("bbox"));
+    osProps.setClientId(request.getParameter("clientId"));
     osProps.setNumberOfHits(result.getMaxQueryHits());
     osProps.setStartRecord(query.getFilter().getStartRecord());
     osProps.setRecordsPerPage(query.getFilter().getMaxRecords());
@@ -492,11 +535,11 @@ public class RestQueryServlet extends BaseServlet {
 
       // ATOM writer  
     } else if (format.equals(RestQueryServlet.ResponseFormat.atom)) {
-      AtomFeedWriter atomWriter = new AtomFeedWriter(printWriter);
-      atomWriter.setEntryBaseUrl(query.getRssProviderUrl());
-      atomWriter.set_messageBroker(messageBroker);
-      atomWriter.setTarget(target);
-      return atomWriter;
+        AtomFeedWriter atomWriter = new AtomFeedWriter(request, printWriter);
+        atomWriter.setEntryBaseUrl(query.getRssProviderUrl());
+        atomWriter.set_messageBroker(messageBroker);
+        atomWriter.setTarget(target);
+        return atomWriter;
 
       // JSON and PJSON writer
     } else if (format.equals(RestQueryServlet.ResponseFormat.json) || format.equals(RestQueryServlet.ResponseFormat.pjson)) {

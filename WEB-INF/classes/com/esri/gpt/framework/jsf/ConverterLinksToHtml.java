@@ -76,12 +76,21 @@ private void appendLink(StringBuffer sb, String url, String text,
     String target) {
   url = Val.chkStr(url);
   text = Val.chkStr(text);
+  
   if (url.length() > 0) {
-    sb.append("<a href=\"");
-    // for epageoplatform link, remove final "/data" if it exists on "Open" link
-    if (url.contains("epageoplatform") && "Open".equals(text) && url.endsWith("/data")) {
-        url = url.substring(0, url.indexOf("/data"));
+    sb.append("<a ");
+    if(url.toLowerCase().startsWith("javascript:")) {
+     /**
+     href unescapes/decodes some parts of the url and it was interfereing
+     with the add to map url in the search page.  added onclick attribute to
+     prevent this problem
+     **/
+      sb.append(" href=\"javascript:void(0);\"");
+      sb.append(" onclick=\"");
+    } else {
+      sb.append(" href=\"");
     }
+
     sb.append(Val.escapeXmlForBrowser(url));
     // for metadata link, add xsl parm, and generate invisible csv link
     if ("Metadata".equals(text)) {
