@@ -26,8 +26,10 @@ String tab2 = site + baseURL + featuredTab2SearchStr + urlSuffix;
 /**Facility Data URL**/
 String featuredTab3SearchStr = "sys.collection%3a%22%7bD5F39F59-7647-1653-DCCF-1EE6354CE412%7d%22";
 String tab3 = site + baseURL + featuredTab3SearchStr + urlSuffix;
-/**Populat Datasets URL**/
-String popDataUrl = site + popURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
+/**Popular Datasets URL**/
+//String popDataUrl = site + popURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
+String popDataSearchStr = "sys.collection%3a%22%7b9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7d%22";
+String popDataUrl = site + baseURL + popDataSearchStr + urlSuffix;
 
 HttpClientRequest client = new HttpClientRequest();
 
@@ -176,7 +178,7 @@ try{
 
 <script type="text/javascript" src="../js/v1/Utils.js"></script>
 <script src="../skins/themes/blue/js/main.js"></script>
-<script src="../skins/themes/blue/js/search.js"</script>
+<script src="../skins/themes/blue/js/search.js"></script>
 <script type="text/javascript">
 if (window.location.href == "https://edg-staging.epa.gov/metadata/"){
     window.location.replace("https://edg-staging.epa.gov/metadata/catalog/main/home.page");
@@ -677,7 +679,7 @@ $(document).ready(function(){
 									</div>
 												<div class="col-md-12 col-sm-12 text-right">
 										<p>
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('Environmental Dataset Gateway GeoRSS')">See More</a>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=popDataSearchStr%>')">See More</a>
 										</p>
 										<p></p>
 									</div>
