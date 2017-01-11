@@ -269,7 +269,8 @@ function <%=fStartup%>() {
             var elTxt = document.createElement("input");
             elTxt.id = this.anchorTextId;
             elTxt.type = "text"
-            elTxt.size = 30;
+            //elTxt.size = 30;
+            elTxt.style = "width: 160px;"
             elTxt.maxlength = 1024;
             elGrp.appendChild(elTxt);
           

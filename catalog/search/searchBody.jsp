@@ -754,7 +754,7 @@ function uncheckForm() {
 
 							%>
 										   
-									<a  href="https://edg-staging.epa.gov/metadata/rest/find/document?f=searchpage&searchText=keywords:&quot;<%=searchText%>&quot;" style="color: hsl(206,100%,<%=strLightness%>%);" title="<%=frequency%> tags"> <font size="<%=strSize%>"> <%=searchText%> | </font></a>
+									<a  href="/metadata/rest/find/document?f=searchpage&searchText=keywords:&quot;<%=searchText%>&quot;" style="color: hsl(206,100%,<%=strLightness%>%);" title="<%=frequency%> tags"> <font size="<%=strSize%>"> <%=searchText%> | </font></a>
 
 							<%} %>
 

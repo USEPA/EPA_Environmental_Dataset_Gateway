@@ -154,9 +154,9 @@
     <!-- The map viewer configuration for EPA GeoPlatform -->
     <mapViewer>
         <instance 
-            url="http://epa.maps.arcgis.com/home/webmap/viewer.html" 
+            url="https://epa.maps.arcgis.com/home/webmap/viewer.html" 
             className="com.esri.gpt.catalog.search.MapViewerAgsPortal">
-            <parameter key="wmsBaseMapUrl" value="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"/>
+            <parameter key="wmsBaseMapUrl" value="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"/>
         </instance>
     </mapViewer>
     
@@ -205,7 +205,7 @@
                 labelResourceKey="catalog.search.searchSite.epageoplatform"
                 abstractResourceKey="catalog.search.searchSite.epageoplatform.abstract">
                 <parameter key="endPointSearchUrl" 
-                    value="http://epa.maps.arcgis.com/sharing/search?q={searchTerms}%20AND%20accountid:cJ9YHowT8TU7DUyn&amp;start={startIndex}&amp;num={count}&amp;f=json"/>
+                    value="http://www.arcgis.com/sharing/search?q={searchTerms}%20AND%20accountid:cJ9YHowT8TU7DUyn&amp;start={startIndex}&amp;num={count}&amp;f=json"/>
                 <parameter key="defaultParamValues"
                     value="q&#x2714;access:public"/>  
                 <parameter key="profileId" 
@@ -416,7 +416,7 @@
 			      - resourceLinkBuilder.preview.filter: regular expression disabling ‘preview’ link on search result 
 				      for all records having resource URL matching template. 
 		    -->	
-        <parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.zip$|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.gz$|.*\.tgz$|.*\.tar$|.*\.rar$|.*\.shp$|.*\.dbf$|.*\.xls$|.*\.dwg$|.*\.dxf$|.*\.dgn$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*"/>
+        <parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.zip$|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.gz$|.*\.tgz$|.*\.tar$|.*\.rar$|.*\.shp$|.*\.dbf$|.*\.xls$|.*\.dwg$|.*\.dxf$|.*\.dgn$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*/MapServer.*"/>
 		<!--parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.nsf/*|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*/MapServer.*"/-->
 
         <!-- This parameter is used to enable managing user role in ldap identity store. -->
@@ -571,13 +571,13 @@
 	 <ldapAdapter>
      
          <ldapConnectionProperties
-              providerURL="ldaps://oidstg.rtpnc.epa.gov:636"
+              providerURL="ldaps://oidstgsha2.rtpnc.epa.gov"
               initialContextFactoryName="com.sun.jndi.ldap.LdapCtxFactory"
               securityAuthentication="simple"
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="VrXV4hub"
+                  securityCredentials="Vrxn6koc"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
@@ -692,6 +692,45 @@
           name="OEI"
           groupDN="cn=GDG-OEI,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
 	<metadataManagementGroup
+          name="OLEM"
+          groupDN="cn=GDG-OLEM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OCPA"
+          groupDN="cn=GDG-OLEM-CPA,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-FFRRO"
+          groupDN="cn=GDG-OLEM-FFRRO,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OBLR"
+          groupDN="cn=GDG-OLEM-OBLR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OEM"
+          groupDN="cn=GDG-OLEM-OEM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OPM"
+          groupDN="cn=GDG-OLEM-OPM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-ORCR"
+          groupDN="cn=GDG-OLEM-ORCR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OSRTI"
+          groupDN="cn=GDG-OLEM-OSRTI,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OLEM-OUST"
+          groupDN="cn=GDG-OLEM-OUST,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OSWER-OBLR"
+          groupDN="cn=GDG-OSWER-OBLR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
+    <metadataManagementGroup
+          name="OSWER-OPM"
+          groupDN="cn=GDG-OSWER-OPM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
+        <metadataManagementGroup
+          name="OSWER-ORCR"
+          groupDN="cn=GDG-OSWER-ORCR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
+        <metadataManagementGroup
+          name="OSWER-OSRTI"
+          groupDN="cn=GDG-OSWER-OSRTI,cn=GIS,cn=Groups,dc=epa,dc=gov"/>	
+	<metadataManagementGroup
           name="ORD"
           groupDN="cn=GDG-ORD,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
 	<metadataManagementGroup
@@ -719,6 +758,9 @@
           name="ORD-NERL-ESD"
           groupDN="cn=GDG-ORD-NERL-ESD,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
 	<metadataManagementGroup
+          name="ORD-NRMRL"
+          groupDN="cn=GDG-ORD-NRMRL,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
           name="ORD-OSA"
           groupDN="cn=GDG-ORD-OAS,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
 	<metadataManagementGroup
@@ -730,33 +772,6 @@
 	<metadataManagementGroup
           name="OAR-OTAQ"
           groupDN="cn=GDG-OAR-OTAQ,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM"
-          groupDN="cn=GDG-OLEM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM-CPA"
-          groupDN="cn=GDG-OLEM-CPA,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM-FFRRO"
-          groupDN="cn=GDG-OLEM-FFRRO,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM-OBLR"
-          groupDN="cn=GDG-OLEM-OBLR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM-OEM"
-          groupDN="cn=GDG-OLEM-OEM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM-OPM"
-          groupDN="cn=GDG-OLEM-OPM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM-ORCR"
-          groupDN="cn=GDG-OLEM-ORCR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM-OSRTI"
-          groupDN="cn=GDG-OLEM-OSRTI,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
-	<metadataManagementGroup
-          name="OLEM-OUST"
-          groupDN="cn=GDG-OLEM-OUST,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
 	<metadataManagementGroup
           name="OSWER-OBLR"
           groupDN="cn=GDG-OSWER-OBLR,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
@@ -770,6 +785,15 @@
           name="OSWER-OSRTI"
           groupDN="cn=GDG-OSWER-OSRTI,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
         <metadataManagementGroup
+          name="OSWER-CPA"
+          groupDN="cn=GDG-OSWER-CPA,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OSWER-OUST"
+          groupDN="cn=GDG-OSWER-OUST,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OSWER-FFRRO"
+          groupDN="cn=GDG-OSWER-FFRRO,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
+        <metadataManagementGroup
           name="OEI-OIC"
           groupDN="cn=GDG-OEI-OIC,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
         <metadataManagementGroup
@@ -779,8 +803,20 @@
           name="OAR-ORIA"
           groupDN="cn=GDG-OAR-ORIA,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
 	<metadataManagementGroup
+          name="OCSPP-OPPT"
+          groupDN="cn=GDG-OCSPP-OPPT,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
           name="OCSPP-OPP"
           groupDN="cn=GDG-OCSPP-OPP,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OCFO"
+          groupDN="cn=GDG-OCF0,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OGC"
+          groupDN="cn=GDG-OGC,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
+	<metadataManagementGroup
+          name="OARM"
+          groupDN="cn=GDG-OARM,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
 	<metadataManagementGroup
           name="OCSPP-OPPT"
           groupDN="cn=GDG-OCSPP-OPPT,cn=GIS,cn=Groups,dc=epa,dc=gov"/>
@@ -797,10 +833,10 @@
     <!-- Scheduled Background Threads -->
     <scheduler active="true" corePoolSize="0">
         <!-- Catalog synchronization (sync Lucene index with the database) -->
-        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="08:10"/>
+        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="00:10"/>
         <!--<thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" period='4[HOUR]' delay="30[SECOND]"/>-->
         <!-- Index optimization --> 
-        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="08:30"/>
+        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:30"/>
     
 <!-- Innovate's batch thread -->
       <thread class="com.innovateteam.gpt.BatchUpdateWrapper"

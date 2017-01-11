@@ -51,7 +51,7 @@ document.getElementById('frmTertiaryNavigation:openShareFeedback').style.display
 <script type="text/javascript">
 var error = "${error}";
 
-debugger
+//debugger
 
 if(error != ""){
     alert(error);

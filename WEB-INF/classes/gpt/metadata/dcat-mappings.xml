@@ -91,7 +91,7 @@
 	  <field name="publisher" index="publisher" required="true"/>
 	  <field name="contactPoint" index="dcat.person" required="true"/>
 	  <field name="mbox"	index="dcat.mbox" required="true"/>
-	  <field name="identifier" required="true"/>  
+	  <field name="identifier" index="fileIdentifier" required="true"/>  
 	  <field name="accessLevel" index="dcat.accessLevel" required="true">
         <map from="High Confidentiality|Non-public|Secret|Top Secret" to="non-public"/>
         <map from="Medium Confidentiality|Restricted|Confidential|Sensitive" to="restricted public"/>
@@ -99,15 +99,16 @@
         <map from=".*" to="public"/>
       </field>
 	  <field name="accessLevelComment" index="dcat.accessLevelComment" maxChars="255" required="false"/>
-	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
+	  <field name="bureauCode" index="null" type="array" required="true"/>
 	  <field name="programCode" index="programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
 	  <field name="webService" index="resource.url" required="false"/> 
 	  <field name="format" index="dcat.format" required="false"/>
 	  <field name="license" index="dcat.license" required="false">
-        <map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
+        <!--<map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
         <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
-        <!--<map from=".*" to=""/>-->
+        <map from="(.*\n?)*" to=""/>-->
+        <map from=".*" to="https://edg.epa.gov/EPA_Data_License.html"/>
       </field>
 	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
 	  <field name="downloadURL" index="dcat.downloadUrl" required="true"/>
@@ -123,7 +124,7 @@
 	  <field name="publisher" index="publisher" required="true"/>
 	  <field name="contactPoint" index="dcat.person" required="true"/>
 	  <field name="mbox"	index="dcat.mbox" required="true"/>
-	  <field name="identifier" index="apiso:Identifier" required="true"/>  
+	  <field name="identifier" index="fileIdentifier" required="true"/>  
 	  <field name="accessLevel" index="dcat.accessLevel" required="true">
         <map from="High Confidentiality|Non-public|Secret|Top Secret" to="non-public"/>
         <map from="Medium Confidentiality|Restricted|Confidential|Sensitive" to="restricted public"/>
@@ -131,7 +132,7 @@
         <map from=".*" to="public"/>
       </field>
 	  <field name="accessLevelComment" index="dcat.accessLevelComment" maxChars="255" required="false"/>
-	  <field name="bureauCode" index="dcat.bureauCode" type="array" required="true"/>
+	  <field name="bureauCode" index="null" type="array" required="true"/>
 	  <field name="programCode" index="dcat.programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
 	  <field name="webService" index="resource.url" required="false"/> 
@@ -165,7 +166,7 @@
         <map from="asNeeded|notPlanned|unknown" to="irregular"/>
         <map from=".*" to="irregular"/>
       </field>
-      <field name="isPartOf" index="dcat.isPartOf"  required="false"/>
+      <field name="isPartOf" index="dcat.parentIdentifier"  required="false"/>
       <field name="primaryITInvestmentUII" index="dcat.primaryITInvestmentUII"  required="false"/>
       <field name="dataQuality" index="dcat.dataQuality"  required="false"/>
       <field name="describedBy" index="dcat.describedBy"  required="false"/>
@@ -183,7 +184,7 @@
 	  <field name="publisher" index="dcat.publisher;dcat.org.org+dcat.org.per;dcat.per.org+dcat.per.per;dcat.publisher.origin" required="true" joinOperator=" "/>
 	  <field name="contactPoint" index="dcat.org.org+dcat.org.per;dcat.per.org+dcat.per.per;dcat.metc.org.org+dcat.metc.org.per;dcat.metc.per.org+dcat.metc.per.per" required="true" joinOperator=" "/>
 	  <field name="mbox" index="dcat.mbox;dcat.metc.mbox" required="true"/>
-	  <field name="identifier" required="true"/>  
+	  <field name="identifier" index="fileIdentifier" required="true"/>  
 	  <field name="accessLevel" index="dcat.accessLevel" required="true">
         <map from="High Confidentiality|Non-public|Secret|Top Secret" to="non-public"/>
         <map from="Medium Confidentiality|Restricted|Confidential|Sensitive" to="restricted public"/>
@@ -199,7 +200,6 @@
         <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
         <map from=".*" to=""/>
       </field>
-	  <!--<field name="accessURL" index="resource.url" required="false"/>-->
 	  <field name="downloadURL" index="dcat.downloadUrl" required="false">
         <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
         <map from=".*" to=""/>
@@ -216,8 +216,11 @@
         <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
         <map from=".*" to=""/>
       </field>
-      <field name="landingPage" index="dcat.landingPage"  required="false"/>
-      <field name="theme" index="dataTheme" required="false" />
+      <field name="landingPage" index="dcat.landingPage"  required="false">
+        <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
+        <map from=".*" to=""/>
+      </field>
+      <!--<field name="theme" index="dataTheme" required="false" />-->
       <field name="accrualPeriodicity" index="dcat.accrualPeriodicity"  required="false">
         <map from="Decennial" to="R/P10Y"/>
         <map from="Quadrennial" to="R/P4Y"/>
@@ -241,7 +244,7 @@
         <map from="asNeeded|notPlanned|unknown" to="irregular"/>
         <map from=".*" to="irregular"/>
       </field>
-      <field name="isPartOf" index="dcat.isPartOf" required="false" />
+      <field name="isPartOf" index="dcat.parentIdentifier" required="false" />
 	</fields>
 	<fields schema="iso-19115,iso-19119,iso19115-2,gemini-iso-19115,gemini-iso-19119,inspire-iso-19115,inspire-iso-19119"> 
 	  <field name="title" index="title"  required="true"/>  
@@ -259,7 +262,7 @@
         <map from=".*" to="public"/>
       </field>
 	  <field name="accessLevelComment" index="apiso.AccessConstraints;dcat.accessLevelComment" maxChars="255" required="false"/>
-	  <field name="bureauCode" index="dcat.bureauCode" type="array" required="true"/>
+	  <field name="bureauCode" index="null" type="array" required="true"/>
 	  <field name="programCode" index="dcat.programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary" />
 	  <field name="webService" index="resource.url" required="false"/>
@@ -271,7 +274,7 @@
 	  <field name="license" index="dcat.license"  required="false">
         <map from="Although these data have been processed successfully on a computer system at the Environmental Protection Agency, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data to evaluate data set limitations, restrictions or intended use. The U.S. Environmental Protection Agency shall not be held liable for improper or incorrect use of the data described and/or contained herein." to="https://edg.epa.gov/EPA_Data_License.html"/>
         <map from="^(https?|ftp)://[^\s/$.?#].[^\s]*$" to="*"/>
-        <map from=".*" to=""/>
+        <map from=".*" to="https://edg.epa.gov/EPA_Data_License.html"/>
       </field>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
 	  <field name="temporal" index="apiso.TempExtent_begin,apiso.TempExtent_end" required="true" isDate="true" type="date" dateFormat="yyyy-MM-dd" delimiter="/"/>
@@ -314,6 +317,6 @@
       <field name="references" index="dcat.references" type="array" required="false"/>
       <field name="size" index="dcat.size"  required="false"/>
       <field name="landingPage" index="dcat.landingPage"  required="false"/>
-      <field name="isPartOf" index="sys.parentid"  required="false"/>
+      <field name="isPartOf" index="dcat.parentIdentifier" required="false" />
 	  </fields>
 </dcat>
