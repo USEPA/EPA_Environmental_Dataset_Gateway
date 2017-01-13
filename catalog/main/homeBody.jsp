@@ -39,6 +39,7 @@ String region7TabTitle = "Region7";
 String region8TabTitle = "Region8";
 String region9TabTitle = "Region9";
 String region10TabTitle = "Region10";
+
 String epaReg1Url = site + popURL + "owner=Region%201&f=json";
 String epaReg2Url = site + popURL + "owner=Region%202&f=json";
 String epaReg3Url = site + popURL + "owner=Region%203&f=json";
@@ -49,6 +50,7 @@ String epaReg7Url = site + popURL + "owner=Region%207&f=json";
 String epaReg8Url = site + popURL + "owner=Region%208&f=json";
 String epaReg9Url = site + popURL + "owner=Region%209&f=json";
 String epaReg10Url = site + popURL + "owner=Region%2010&f=json";
+
 String region1TabSearchStr = "sys.owner:4";
 String region2TabSearchStr = "sys.owner:9";
 String region3TabSearchStr = "sys.owner:22";
@@ -60,6 +62,7 @@ String region8TabSearchStr = "sys.owner:15";
 String region9TabSearchStr = "sys.owner:11";
 String region10TabSearchStr = "";
 HttpClientRequest client = new HttpClientRequest();
+
 JSONObject cliChobj=null;
 client.setUrl(tab1);
 try{
@@ -69,6 +72,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject ejobj=null;
 client.setUrl(tab2);
 try{
@@ -78,6 +82,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject fDataobj=null;
 client.setUrl(tab3);
 try{
@@ -87,6 +92,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject popobj=null;
 client.setUrl(popDataUrl);
 try{
@@ -96,6 +102,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg1obj=null;
 client.setUrl(epaReg1Url);
 try{
@@ -105,6 +112,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg2obj=null;
 client.setUrl(epaReg2Url);
 try{
@@ -114,6 +122,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg3obj=null;
 client.setUrl(epaReg3Url);
 try{
@@ -123,6 +132,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg4obj=null;
 client.setUrl(epaReg4Url);
 try{
@@ -132,6 +142,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg5obj=null;
 client.setUrl(epaReg5Url);
 try{
@@ -141,6 +152,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg6obj=null;
 client.setUrl(epaReg6Url);
 try{
@@ -150,6 +162,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg7obj=null;
 client.setUrl(epaReg7Url);
 try{
@@ -159,6 +172,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg8obj=null;
 client.setUrl(epaReg8Url);
 try{
@@ -168,6 +182,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg9obj=null;
 client.setUrl(epaReg9Url);
 try{
@@ -177,6 +192,7 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
+
 JSONObject reg10obj=null;
 client.setUrl(epaReg10Url);
 try{
@@ -270,11 +286,13 @@ try{
 	padding-top: 10px;
 	background: url('../skins/themes/blue/images/icon_top.png') no-repeat;
 }
+
 .secondary-nav {
   position: relative;
   z-index: 10;
   height:  0;
 }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -288,11 +306,13 @@ try{
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
 img {
    display: block;
    margin-left: auto;
    margin-right: auto;
 }
+
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
@@ -301,6 +321,7 @@ img {
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
+
 /* The Close Button */
 .close {
     color: #aaa;
@@ -308,13 +329,16 @@ img {
     font-size: 28px;
     font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 </style>
+
 <!-- Js -->
+
 <script src="../skins/themes/blue/js/vendor/modernizr-2.6.2.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -322,6 +346,8 @@ img {
 <script src="../skins/themes/blue/js/bootstrap.min.js"></script>
 <script src="../skins/themes/blue/js/wow.min.js"></script>
 <script src="../skins/themes/blue/js/owl.carousel.min.js"></script>
+
+
 <script type="text/javascript" src="../js/v1/Utils.js"></script>
 <script src="../skins/themes/blue/js/main.js"></script>
 <script src="../skins/themes/blue/js/search.js"></script>
@@ -333,6 +359,7 @@ if (window.location.href == "https://edg-staging.epa.gov/metadata/"){
             ).init();
 			
 	jQuery(document).ready(function () {
+
     jQuery(window).scroll(function () {
         if (jQuery(this).scrollTop() > 100) {
             jQuery('.scrollup').fadeIn();
@@ -340,19 +367,24 @@ if (window.location.href == "https://edg-staging.epa.gov/metadata/"){
             jQuery('.scrollup').fadeOut();
         }
     });
+
     jQuery('.scrollup').click(function () {
         jQuery("html, body").animate({
             scrollTop: 0
         }, 600);
         return false;
     });
+
 });
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+
 </script>
 	
 </f:verbatim>
+
 </head>
 <body class="node-type-page resource-directory wide-template">
 	<!-- Google Tag Manager -->
@@ -362,11 +394,14 @@ $(document).ready(function(){
 	</noscript>
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-L8ZB');</script>
 	<!-- End Google Tag Manager -->
+
+
 	<div class="skip-links">
 		<a href="#main-content"
 			class="skip-link element-invisible element-focusable">Jump to
 			main content</a>
 	</div>
+
 	<header class="masthead clearfix" role="banner">
 		<img class="site-logo"
 			src="https://www2.epa.gov/sites/all/themes/epa/logo.png" alt="" />
@@ -391,6 +426,7 @@ $(document).ready(function(){
       <input type="hidden" name="filter" value="sample4filt.hts" />
     </form> --%>
 	</header>
+
 	<section id="main-content" class="main-content clearfix" role="main">
 		<div class="region-preface clearfix">
 			<div id="block-pane-epa-web-area-connect"
@@ -516,11 +552,13 @@ $(document).ready(function(){
 					   
 				}
 				</script></f:verbatim>
+
 								<!-- <div class="col-md-6 col-sm-6">
                    <div class="app-showcase wow fadeInDown" data-wow-delay=".5s">
 <input type="search" id="search-header" title="" value="" name="q" class="search-field form-control">
 <i class="fa fa-search fa-2x" style=" position: absolute;right: 0px;padding-top:5px;"></i>
 <a href="#">Advanced Search</a>
+
                     </div>
                 </div> -->
 								<!-- JSF Serach Form Added Here  -->
@@ -530,6 +568,7 @@ $(document).ready(function(){
 								<!-- end -->
 							</div>
 						</div>
+
 						<div class="container">
 							<h2>Featured Data Products</h2>
 							<ul class="nav nav-tabs">
@@ -538,6 +577,7 @@ $(document).ready(function(){
 								<li><a data-toggle="tab" href="#envJustice"><%=featuredTab2Title%></a></li>
 								<li><a data-toggle="tab" href="#facData"><%=featuredTab3Title%></a></li>
 							</ul>
+
 							<div class="tab-content">
 								<div id="climateChange" class="tab-pane fade in active">
 									<div class="row" style="padding-top: 22px">
