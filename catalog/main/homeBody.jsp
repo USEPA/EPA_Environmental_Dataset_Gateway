@@ -39,7 +39,6 @@ String region7TabTitle = "Region7";
 String region8TabTitle = "Region8";
 String region9TabTitle = "Region9";
 String region10TabTitle = "Region10";
-
 String epaReg1Url = site + popURL + "owner=Region%201&f=json";
 String epaReg2Url = site + popURL + "owner=Region%202&f=json";
 String epaReg3Url = site + popURL + "owner=Region%203&f=json";
@@ -50,7 +49,6 @@ String epaReg7Url = site + popURL + "owner=Region%207&f=json";
 String epaReg8Url = site + popURL + "owner=Region%208&f=json";
 String epaReg9Url = site + popURL + "owner=Region%209&f=json";
 String epaReg10Url = site + popURL + "owner=Region%2010&f=json";
-
 String region1TabSearchStr = "sys.owner:4";
 String region2TabSearchStr = "sys.owner:9";
 String region3TabSearchStr = "sys.owner:22";
@@ -62,7 +60,6 @@ String region8TabSearchStr = "sys.owner:15";
 String region9TabSearchStr = "sys.owner:11";
 String region10TabSearchStr = "";
 HttpClientRequest client = new HttpClientRequest();
-
 JSONObject cliChobj=null;
 client.setUrl(tab1);
 try{
@@ -72,7 +69,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject ejobj=null;
 client.setUrl(tab2);
 try{
@@ -82,7 +78,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject fDataobj=null;
 client.setUrl(tab3);
 try{
@@ -92,7 +87,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject popobj=null;
 client.setUrl(popDataUrl);
 try{
@@ -102,7 +96,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg1obj=null;
 client.setUrl(epaReg1Url);
 try{
@@ -112,7 +105,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg2obj=null;
 client.setUrl(epaReg2Url);
 try{
@@ -122,7 +114,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg3obj=null;
 client.setUrl(epaReg3Url);
 try{
@@ -132,7 +123,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg4obj=null;
 client.setUrl(epaReg4Url);
 try{
@@ -142,7 +132,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg5obj=null;
 client.setUrl(epaReg5Url);
 try{
@@ -152,7 +141,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg6obj=null;
 client.setUrl(epaReg6Url);
 try{
@@ -162,7 +150,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg7obj=null;
 client.setUrl(epaReg7Url);
 try{
@@ -172,7 +159,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg8obj=null;
 client.setUrl(epaReg8Url);
 try{
@@ -182,7 +168,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg9obj=null;
 client.setUrl(epaReg9Url);
 try{
@@ -192,7 +177,6 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
 JSONObject reg10obj=null;
 client.setUrl(epaReg10Url);
 try{
@@ -286,16 +270,51 @@ try{
 	padding-top: 10px;
 	background: url('../skins/themes/blue/images/icon_top.png') no-repeat;
 }
-
 .secondary-nav {
   position: relative;
   z-index: 10;
   height:  0;
 }
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+img {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 </style>
-
 <!-- Js -->
-
 <script src="../skins/themes/blue/js/vendor/modernizr-2.6.2.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -303,8 +322,6 @@ try{
 <script src="../skins/themes/blue/js/bootstrap.min.js"></script>
 <script src="../skins/themes/blue/js/wow.min.js"></script>
 <script src="../skins/themes/blue/js/owl.carousel.min.js"></script>
-
-
 <script type="text/javascript" src="../js/v1/Utils.js"></script>
 <script src="../skins/themes/blue/js/main.js"></script>
 <script src="../skins/themes/blue/js/search.js"></script>
@@ -316,7 +333,6 @@ if (window.location.href == "https://edg-staging.epa.gov/metadata/"){
             ).init();
 			
 	jQuery(document).ready(function () {
-
     jQuery(window).scroll(function () {
         if (jQuery(this).scrollTop() > 100) {
             jQuery('.scrollup').fadeIn();
@@ -324,24 +340,19 @@ if (window.location.href == "https://edg-staging.epa.gov/metadata/"){
             jQuery('.scrollup').fadeOut();
         }
     });
-
     jQuery('.scrollup').click(function () {
         jQuery("html, body").animate({
             scrollTop: 0
         }, 600);
         return false;
     });
-
 });
-
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
-
 </script>
 	
 </f:verbatim>
-
 </head>
 <body class="node-type-page resource-directory wide-template">
 	<!-- Google Tag Manager -->
@@ -351,14 +362,11 @@ $(document).ready(function(){
 	</noscript>
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-L8ZB');</script>
 	<!-- End Google Tag Manager -->
-
-
 	<div class="skip-links">
 		<a href="#main-content"
 			class="skip-link element-invisible element-focusable">Jump to
 			main content</a>
 	</div>
-
 	<header class="masthead clearfix" role="banner">
 		<img class="site-logo"
 			src="https://www2.epa.gov/sites/all/themes/epa/logo.png" alt="" />
@@ -383,7 +391,6 @@ $(document).ready(function(){
       <input type="hidden" name="filter" value="sample4filt.hts" />
     </form> --%>
 	</header>
-
 	<section id="main-content" class="main-content clearfix" role="main">
 		<div class="region-preface clearfix">
 			<div id="block-pane-epa-web-area-connect"
@@ -509,13 +516,11 @@ $(document).ready(function(){
 					   
 				}
 				</script></f:verbatim>
-
 								<!-- <div class="col-md-6 col-sm-6">
                    <div class="app-showcase wow fadeInDown" data-wow-delay=".5s">
 <input type="search" id="search-header" title="" value="" name="q" class="search-field form-control">
 <i class="fa fa-search fa-2x" style=" position: absolute;right: 0px;padding-top:5px;"></i>
 <a href="#">Advanced Search</a>
-
                     </div>
                 </div> -->
 								<!-- JSF Serach Form Added Here  -->
@@ -525,7 +530,6 @@ $(document).ready(function(){
 								<!-- end -->
 							</div>
 						</div>
-
 						<div class="container">
 							<h2>Featured Data Products</h2>
 							<ul class="nav nav-tabs">
@@ -534,7 +538,6 @@ $(document).ready(function(){
 								<li><a data-toggle="tab" href="#envJustice"><%=featuredTab2Title%></a></li>
 								<li><a data-toggle="tab" href="#facData"><%=featuredTab3Title%></a></li>
 							</ul>
-
 							<div class="tab-content">
 								<div id="climateChange" class="tab-pane fade in active">
 									<div class="row" style="padding-top: 22px">
@@ -572,7 +575,6 @@ $(document).ready(function(){
 										</a>
 										<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
@@ -586,12 +588,10 @@ $(document).ready(function(){
 										<p></p>
 									</div>
 								</div>
-
 								<div id="envJustice" class="tab-pane fade">
 									<div class="row" style="padding-top: 22px">
 										<%
 											try {
-
 													JSONArray arr = ejobj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -604,10 +604,8 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
@@ -626,7 +624,6 @@ $(document).ready(function(){
 										</a>
 										<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
@@ -788,114 +785,88 @@ $(document).ready(function(){
 										<p></p>
 									</div>
 									</div> 
-									<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-				aria-labelledby="ModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<div class="modal-title" id="ModalLabel">Please click
-								on the map to select a region
-							<button type="button" id="mapClose" class="close"
-								data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button></div>
-						</div>
-						<div class="modal-body">
-							<img name="usregions"
-								src="http://www2.epa.gov/sites/production/files/2013-06/us-regions.png"
-								width="450" height="340" border="0" usemap="#m_us-regions"
-								alt="Map of the US, split into EPA regions">
-
-							<map name="m_us-regions">
-
-								<area shape="poly"
-									coords="390,46,362,40,373,3,426,7,449,42,450,96,419,96,412,84,398,91,394,67,392,65"
-									onclick="$('#tab-region1').click(); $('#mapClose').click();"
-									title="Region 1: Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, Vermont"
-									alt="Region 1: Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, Vermont">
-
-								<area shape="poly"
-									coords="351,87,356,74,378,51,389,47,392,66,395,67,399,92,412,85,417,99,433,99,433,302,247,302,246,257,348,257,348,303,433,302,433,109,416,110,394,116,388,106,393,101,390,95,391,90,387,90,385,83,352,90"
-									onclick="$('#tab-region2').click(); $('#mapClose').click();"
-									title="Region 2: New Jersey, New York, Puerto Rico, US Virgin Islands"
-									alt="Region 2: New Jersey, New York, Puerto Rico, US Virgin Islands">
-								<area shape="poly"
-									coords="351,86,345,89,349,105,345,119,340,121,336,131,339,134,342,143,331,150,365,146,396,138,407,152,425,152,426,111,408,111,394,115,388,105,394,99,389,94,392,89,387,89,384,83,352,88"
-									onclick="$('#tab-region3').click(); $('#mapClose').click();"
-									title="Region 3: Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, West Virginia"
-									alt="Region 3: Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, West Virginia">
-
-								<area shape="poly"
-									coords="335,130,319,126,318,133,314,131,308,138,294,142,292,148,289,150,292,152,284,157,276,170,279,174,272,185,270,199,274,205,270,221,282,219,288,225,377,268,387,251,398,145,395,138,363,146,330,151,342,142,340,134"
-									onclick="$('#tab-region4').click(); $('#mapClose').click();"
-									title="Region 4: Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, Tennessee "
-									alt="Region 4: Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, Tennessee ">
-
-								<area shape="poly"
-									coords="220,17,220,39,224,41,222,46,225,68,227,68,227,85,262,84,265,92,271,96,271,105,266,108,269,112,264,117,272,134,275,132,278,138,275,141,282,147,282,154,286,155,292,152,290,149,293,149,294,143,309,139,314,131,319,132,320,127,324,128,335,130,341,120,345,120,348,104,345,89,309,24"
-									onclick="$('#tab-region5').click(); $('#mapClose').click();"
-									title="Region 5: Illinois, Indiana, Michigan, Minnesota, Ohio, Wisconsin"
-									alt="Region 5: Illinois, Indiana, Michigan, Minnesota, Ohio, Wisconsin">
-								<area shape="poly"
-									coords="203,270,217,272,221,256,293,235,282,219,269,221,271,208,273,205,270,198,272,185,279,173,277,169,281,164,274,163,279,160,240,159,239,155,180,155,118,149,107,210,144,234,165,240,190,250"
-									onclick="$('#tab-region6').click(); $('#mapClose').click();"
-									title="Region 6: Arkansas, Louisiana, New Mexico, Oklahoma, Texas"
-									alt="Region 6: Arkansas, Louisiana, New Mexico, Oklahoma, Texas">
-
-								<area shape="poly"
-									coords="180,154,182,113,166,112,168,90,186,91,208,92,226,99,228,84,263,84,264,91,271,95,271,105,266,108,268,112,263,118,272,134,274,132,276,136,275,141,283,148,283,153,286,155,280,163,276,164,278,158,239,159,239,155"
-									onclick="$('#tab-region7').click(); $('#mapClose').click();"
-									title="Region 7: Iowa, Kansas, Missouri, Nebraska"
-									alt="Region 7: Iowa, Kansas, Missouri, Nebraska">
-
-								<area shape="poly"
-									coords="89,8,83,31,88,43,90,44,91,46,88,50,88,54,91,55,97,65,107,67,111,70,107,95,85,90,76,142,117,149,179,152,181,111,165,110,169,90,207,91,226,97,226,84,226,67,224,66,222,48,223,40,219,36,220,32,219,16"
-									onclick="$('#tab-region8').click(); $('#mapClose').click();"
-									title="Region 8: Colorado, Montana, North Dakota, South Dakaota, Utah, Wyoming"
-									alt="Region 8: Colorado, Montana, North Dakota, South Dakaota, Utah, Wyoming">
-
-								<area shape="poly"
-									coords="85,92,10,73,4,86,4,316,86,316,86,244,108,210,117,150,76,142"
-									onclick="$('#tab-region9').click(); $('#mapClose').click();"
-									title="Region 9: Arizona, California, Hawaii, Nevada, Pacific Islands"
-									alt="Region 9: Arizona, California, Hawaii, Nevada, Pacific Islands">
-
-								<area shape="poly"
-									coords="1,1,41,2,87,15,83,31,87,44,89,44,91,47,87,49,87,54,91,55,97,67,111,71,106,96,0,71,1,337,240,337,241,274,94,275,93,337,0,337"
-									onclick="$('#tab-region10').click(); $('#mapClose').click();"
-									title="Region 10: Alaska, Idaho, Oregon, Washington"
-									alt="Region 10: Alaska, Idaho, Oregon, Washington">
-
-							</map>
-						</div>
-					</div>
-				</div>
+			<div id="myModal" class="modal">
+				<span id="mapClose" class="close">&times;</span>
+				<p>
+					<img name="usregions"
+						src="http://www2.epa.gov/sites/production/files/2013-06/us-regions.png"
+						width="450" height="340" border="0" usemap="#m_us-regions"
+						alt="Map of the US, split into EPA regions">
+					<map name="m_us-regions">
+						<area shape="poly"
+							coords="390,46,362,40,373,3,426,7,449,42,450,96,419,96,412,84,398,91,394,67,392,65"
+							onclick="$('#tab-region1').click(); $('#mapClose').click();"
+							title="Region 1: Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, Vermont"
+							alt="Region 1: Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, Vermont">
+						<area shape="poly"
+							coords="351,87,356,74,378,51,389,47,392,66,395,67,399,92,412,85,417,99,433,99,433,302,247,302,246,257,348,257,348,303,433,302,433,109,416,110,394,116,388,106,393,101,390,95,391,90,387,90,385,83,352,90"
+							onclick="$('#tab-region2').click(); $('#mapClose').click();"
+							title="Region 2: New Jersey, New York, Puerto Rico, US Virgin Islands"
+							alt="Region 2: New Jersey, New York, Puerto Rico, US Virgin Islands">
+						<area shape="poly"
+							coords="351,86,345,89,349,105,345,119,340,121,336,131,339,134,342,143,331,150,365,146,396,138,407,152,425,152,426,111,408,111,394,115,388,105,394,99,389,94,392,89,387,89,384,83,352,88"
+							onclick="$('#tab-region3').click(); $('#mapClose').click();"
+							title="Region 3: Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, West Virginia"
+							alt="Region 3: Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, West Virginia">
+						<area shape="poly"
+							coords="335,130,319,126,318,133,314,131,308,138,294,142,292,148,289,150,292,152,284,157,276,170,279,174,272,185,270,199,274,205,270,221,282,219,288,225,377,268,387,251,398,145,395,138,363,146,330,151,342,142,340,134"
+							onclick="$('#tab-region4').click(); $('#mapClose').click();"
+							title="Region 4: Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, Tennessee "
+							alt="Region 4: Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, Tennessee ">
+						<area shape="poly"
+							coords="220,17,220,39,224,41,222,46,225,68,227,68,227,85,262,84,265,92,271,96,271,105,266,108,269,112,264,117,272,134,275,132,278,138,275,141,282,147,282,154,286,155,292,152,290,149,293,149,294,143,309,139,314,131,319,132,320,127,324,128,335,130,341,120,345,120,348,104,345,89,309,24"
+							onclick="$('#tab-region5').click(); $('#mapClose').click();"
+							title="Region 5: Illinois, Indiana, Michigan, Minnesota, Ohio, Wisconsin"
+							alt="Region 5: Illinois, Indiana, Michigan, Minnesota, Ohio, Wisconsin">
+						<area shape="poly"
+							coords="203,270,217,272,221,256,293,235,282,219,269,221,271,208,273,205,270,198,272,185,279,173,277,169,281,164,274,163,279,160,240,159,239,155,180,155,118,149,107,210,144,234,165,240,190,250"
+							onclick="$('#tab-region6').click(); $('#mapClose').click();"
+							title="Region 6: Arkansas, Louisiana, New Mexico, Oklahoma, Texas"
+							alt="Region 6: Arkansas, Louisiana, New Mexico, Oklahoma, Texas">
+						<area shape="poly"
+							coords="180,154,182,113,166,112,168,90,186,91,208,92,226,99,228,84,263,84,264,91,271,95,271,105,266,108,268,112,263,118,272,134,274,132,276,136,275,141,283,148,283,153,286,155,280,163,276,164,278,158,239,159,239,155"
+							onclick="$('#tab-region7').click(); $('#mapClose').click();"
+							title="Region 7: Iowa, Kansas, Missouri, Nebraska"
+							alt="Region 7: Iowa, Kansas, Missouri, Nebraska">
+						<area shape="poly"
+							coords="89,8,83,31,88,43,90,44,91,46,88,50,88,54,91,55,97,65,107,67,111,70,107,95,85,90,76,142,117,149,179,152,181,111,165,110,169,90,207,91,226,97,226,84,226,67,224,66,222,48,223,40,219,36,220,32,219,16"
+							onclick="$('#tab-region8').click(); $('#mapClose').click();"
+							title="Region 8: Colorado, Montana, North Dakota, South Dakaota, Utah, Wyoming"
+							alt="Region 8: Colorado, Montana, North Dakota, South Dakaota, Utah, Wyoming">
+						<area shape="poly"
+							coords="85,92,10,73,4,86,4,316,86,316,86,244,108,210,117,150,76,142"
+							onclick="$('#tab-region9').click(); $('#mapClose').click();"
+							title="Region 9: Arizona, California, Hawaii, Nevada, Pacific Islands"
+							alt="Region 9: Arizona, California, Hawaii, Nevada, Pacific Islands">
+						<area shape="poly"
+							coords="1,1,41,2,87,15,83,31,87,44,89,44,91,47,87,49,87,54,91,55,97,67,111,71,106,96,0,71,1,337,240,337,241,274,94,275,93,337,0,337"
+							onclick="$('#tab-region10').click(); $('#mapClose').click();"
+							title="Region 10: Alaska, Idaho, Oregon, Washington"
+							alt="Region 10: Alaska, Idaho, Oregon, Washington">
+					</map>
+				</p>
 			</div>
-			<div class="container" >
+			<div class="container">
 				<h2 style="display: inline-block;">Regional Datasets</h2>
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#myModal">Find My Region</button>
-				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="region1"
-						id="tab-region1"><%=region1TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region2" id="tab-region2"><%=region2TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region3" id="tab-region3"><%=region3TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region4" id="tab-region4"><%=region4TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region5" id="tab-region5"><%=region5TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region6" id="tab-region6"><%=region6TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region7" id="tab-region7"><%=region7TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region8" id="tab-region8"><%=region8TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region9" id="tab-region9"><%=region9TabTitle%></a></li>
-					<li><a data-toggle="tab" href="#region10" id="tab-region10"><%=region10TabTitle%></a></li>
-				</ul>
-				<div class="tab-content">
-
-					<div id="region1" class="tab-pane fade in active">
-						<div class="row" style="padding-top: 22px">
-							<%
+					<button id="mapBtn" style="background-color:#58b;color:white">Find My Region</button>
+							<ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab"
+									href="region1" id="tab-region1"><%=region1TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region2" id="tab-region2"><%=region2TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region3" id="tab-region3"><%=region3TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region4" id="tab-region4"><%=region4TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region5" id="tab-region5"><%=region5TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region6" id="tab-region6"><%=region6TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region7" id="tab-region7"><%=region7TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region8" id="tab-region8"><%=region8TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region9" id="tab-region9"><%=region9TabTitle%></a></li>
+								<li><a data-toggle="tab" href="#region10" id="tab-region10"><%=region10TabTitle%></a></li>
+							</ul>
+							<div class="tab-content">
+								<div id="region1" class="tab-pane fade in active">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg1obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -908,52 +879,44 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region1TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-
-					<div id="region2" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region1TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+								
+								<div id="region2" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg2obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -966,51 +929,43 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region2TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-					<div id="region3" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region2TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+											<div id="region3" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg3obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -1023,51 +978,43 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region3TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-					<div id="region4" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region3TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+											<div id="region4" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg4obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -1080,51 +1027,43 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region4TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-					<div id="region5" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region4TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+											<div id="region5" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg5obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -1137,51 +1076,43 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region5TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-					<div id="region6" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region5TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+											<div id="region6" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg6obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -1194,51 +1125,43 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region6TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-					<div id="region7" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region6TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+											<div id="region7" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg7obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -1251,51 +1174,43 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region7TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-					<div id="region8" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region7TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+											<div id="region8" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg8obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -1308,51 +1223,43 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region8TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-					<div id="region9" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region8TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+											<div id="region9" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg9obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -1365,51 +1272,43 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region9TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-					<div id="region10" class="tab-pane fade">
-						<div class="row" style="padding-top: 22px">
-							<%
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region9TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+											<div id="region10" class="tab-pane fade">
+									<div class="row" style="padding-top: 22px">
+										<%
 											try {
-
 													JSONArray arr = reg10obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
@@ -1422,51 +1321,67 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
 														}
 														counter++;
 														%>
-							<a
-								href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-								target="_blank">
-								<div class="col-md-2">
-									<div class="thumbnail">
-										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
-											title="<%=title%>">
-										<div class="caption"
-											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
-									</div>
-								</div>
-							</a>
-							<%
+														<a
+															href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+															target="_blank">
+															<div class="col-md-2">
+																<div class="thumbnail">
+																	<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
+																	<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
+																</div>
+															</div>
+														</a>
+														<%
 										}
-
 												} catch (Exception e) {
 													System.out.println("print catch:" + e);
 												}
 										%>
-
-						</div>
-						<div class="col-md-12 col-sm-12 text-right">
-							<p>
-								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region10TabSearchStr%>')">See
-									More</a>
-							</p>
-							<p></p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<section id="feature">
+						
+									</div>
+									<div class="col-md-12 col-sm-12 text-right">
+										<p>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=region10TabSearchStr%>')">See More</a>
+										</p>
+										<p></p>
+									</div>
+								</div>
+								</div>					
+									</div>
+			<f:verbatim>
+				<script type="text/javascript">
+					// Get the modal
+					var modal = document.getElementById('myModal');
+					//Get the button that opens the modal
+					var btn = document.getElementById("mapBtn");
+					//Get the <span> element that closes the modal
+					var span = document.getElementsByClassName("close")[0];
+					//When the user clicks the button, open the modal 
+					btn.onclick = function() {
+						modal.style.display = "block";
+					}
+					//When the user clicks on <span> (x), close the modal
+					span.onclick = function() {
+						modal.style.display = "none";
+					}
+					//When the user clicks anywhere outside of the modal, close it
+					window.onclick = function(event) {
+						if (event.target == modal) {
+							modal.style.display = "none";
+						}
+					}
+				</script>
+	   </f:verbatim>						
+												
+						<section id="feature">
 							<div class="container">
 								<div class="row">
 									<div class="col-md-12">
@@ -1541,9 +1456,7 @@ $(document).ready(function(){
 												</div>
 											</div>
 										</div>
-
 									</div>
-
 									<div class="col-md-6 col-sm-6">
 										<div class="block">
 											<div class="media wow fadeInDown" data-wow-delay="1.1s">
@@ -1594,7 +1507,6 @@ $(document).ready(function(){
 												</div>
 											</div>
 										</div>
-
 									</div>
 								</div>
 							</div>
@@ -1607,7 +1519,6 @@ $(document).ready(function(){
 											<div id="owl-example" class="owl-carousel">
 												<div>
 													<h5>Got a question?</h5>
-
 												</div>
 												<div>
 													<h5>Got a comment?</h5>
@@ -1616,7 +1527,6 @@ $(document).ready(function(){
 													<h5>
 														<a href="https://developer.epa.gov/forums"
 															style="color: #FFF">Visit our Developer Forum!</a>
-
 													</h5>
 												</div>
 											</div>
@@ -1625,9 +1535,7 @@ $(document).ready(function(){
 								</div>
 							</div>
 						</section> --%>
-
 						<a href="#" class="scrollup">Top</a>
-
 					</div>
 				</div>
 			</div>
@@ -1718,7 +1626,6 @@ $(document).ready(function(){
 	function mainOpenHelp() {
 		openHelp("GPT_Help", "toc");
 	}
-
 	function mainOpenInternalLink(oLink,sHref) {
 		if (oLink && oLink.href && sHref) {
 			oLink.href = "<%=request.getContextPath()%>/"+sHref;
