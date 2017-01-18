@@ -766,7 +766,7 @@ $(document).ready(function(){
 						</div>
 						<div class="modal-body">
 							<img name="usregions"
-								src="http://www2.epa.gov/sites/production/files/2013-06/us-regions.png"
+								src="https://www2.epa.gov/sites/production/files/2013-06/us-regions.png"
 								width="450" height="340" border="0" usemap="#m_us-regions"
 								alt="Map of the US, split into EPA regions">
 
@@ -837,8 +837,8 @@ $(document).ready(function(){
 			</div>
 			<div class="container" >
 				<h2 style="display: inline-block;">Regional Datasets</h2>
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#myModal">Find My Region</button>
+				<button type="button" class="btn btn-primary text-left" data-toggle="modal" data-target="#myModal" style="text-align: center;
+    padding-bottom: 24px;">Find My Region</button>
 				<ul class="nav nav-tabs">
 					<li class="active"><a data-toggle="tab" href="region1"
 						id="tab-region1"><%=region1TabTitle%></a></li>
@@ -900,7 +900,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 01 = '+ '<%=region1TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 01')">See
 									More</a>
 							</p>
 							<p></p>
@@ -953,7 +953,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 02 = '+ '<%=region2TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 02')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1005,7 +1005,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 03 = '+ '<%=region3TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 03')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1060,7 +1060,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 04 = '+ '<%=region4TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 04')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1113,7 +1113,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 05 = '+ '<%=region5TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 05')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1165,7 +1165,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 06 = '+ '<%=region6TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 06')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1217,7 +1217,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 07 = '+ '<%=region7TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 07')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1269,7 +1269,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 08 = '+ '<%=region8TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 08')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1321,7 +1321,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('Region 09 = '+ '<%=region9TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 09')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1373,7 +1373,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('<%=region10TabSearchStr%>')">See
+									onclick="javascript:executeSearchAction('owner=Region 10')">See
 									More</a>
 							</p>
 							<p></p>
