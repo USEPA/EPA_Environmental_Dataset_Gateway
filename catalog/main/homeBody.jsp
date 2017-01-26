@@ -900,7 +900,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 01')">See
+									onclick="javascript:executeSearchAction('owner=Region 1')">See
 									More</a>
 							</p>
 							<p></p>
@@ -953,7 +953,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 02')">See
+									onclick="javascript:executeSearchAction('owner=Region 2')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1005,7 +1005,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 03')">See
+									onclick="javascript:executeSearchAction('owner=Region 3')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1060,7 +1060,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 04')">See
+									onclick="javascript:executeSearchAction('owner=Region 4')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1113,7 +1113,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 05')">See
+									onclick="javascript:executeSearchAction('owner=Region 5')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1165,7 +1165,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 06')">See
+									onclick="javascript:executeSearchAction('owner=Region 6')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1217,7 +1217,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 07')">See
+									onclick="javascript:executeSearchAction('owner=Region 7')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1466,9 +1466,9 @@ $(document).ready(function(){
 													<h4 class="media-heading">Training and More</h4>
 													<ul>
                                                         <li><a href="../../webhelp/en/gptlv10/index.html#/How_to_Login_and_Manage_my_Password/00t000000023000000/" target="_blank">Get Help Logging In </a></li>
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_1.wmv" target = "_blank">EDG Search and Discovery Video 1 (Homepage Overview) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video1_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation1_HomepageWalkThrough.pdf" target = "_blank">Slides (PDF)</a></li>
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_2.wmv" target = "_blank">EDG Search and Discovery Video 2 (Advanced Search) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video2_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation2_AdvancedSearch.pdf" target = "_blank">Slides (PDF)</a></li>
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_3.wmv" target = "_blank">EDG Search and Discovery Video 3 (Search Results) (WMV)</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video3_Agenda.pdf" target = "_blank">Video Agenda</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation3_SearchResults.pdf" target = "_blank">Slides (PDF)</a></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_1.wmv" target = "_blank">EDG Search and Discovery Video 1 (Homepage Overview) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video1_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation1_HomepageWalkThrough.pdf" target = "_blank">Slides (PDF)<a/></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_2.wmv" target = "_blank">EDG Search and Discovery Video 2 (Advanced Search) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video2_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation2_AdvancedSearch.pdf" target = "_blank">Slides (PDF)<a/></li>
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_3.wmv" target = "_blank">EDG Search and Discovery Video 3 (Search Results) (WMV)</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video3_Agenda.pdf" target = "_blank">Video Agenda</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation3_SearchResults.pdf" target = "_blank">Slides (PDF)<a/></li>
                                                         <li><a href="../../webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf" target = "_blank">How to Capture and Use RSS Feeds from EDG (PDF)</a> </li> 
                                                         <li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">How to Get Started with EDG Reuse (PDF) </a> </li>
 														<li><a href="../../webhelp/en/gptlv10/inno/EDGSOPV3_1_20151118.pdf" target="_blank">EDG Standard Operating Procedure and Governance Document (PDF)</a></li>
