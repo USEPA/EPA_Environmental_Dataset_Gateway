@@ -27,7 +27,7 @@ String featuredTab3SearchStr = "sys.collection%3a%22%7bD5F39F59-7647-1653-DCCF-1
 String tab3 = site + baseURL + featuredTab3SearchStr + urlSuffix;
 /**Popular Datasets URL**/
 //String popDataUrl = site + popURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
-String popDataSearchStr = "sys.collection%3a%22%7b9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7d%22";
+String popDataSearchStr = "sys.collection%3a%22%7b6EAEF950-03F4-566A-62DA-D597657634AC%7d%22";
 String popDataUrl = site + baseURL + popDataSearchStr + urlSuffix;
 String region1TabTitle = "Region1";
 String region2TabTitle = "Region2";
@@ -840,8 +840,7 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-primary text-left" data-toggle="modal" data-target="#myModal" style="text-align: center;
     padding-bottom: 24px;">Find My Region</button>
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="region1"
-						id="tab-region1"><%=region1TabTitle%></a></li>
+					<li class="active"><a data-toggle="tab" href="#region1" id="tab-region1"><%=region1TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region2" id="tab-region2"><%=region2TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region3" id="tab-region3"><%=region3TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region4" id="tab-region4"><%=region4TabTitle%></a></li>
