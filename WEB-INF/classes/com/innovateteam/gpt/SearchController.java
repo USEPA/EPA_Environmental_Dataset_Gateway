@@ -67,6 +67,7 @@ import com.esri.gpt.framework.jsf.FacesContextBroker;
 import com.esri.gpt.framework.jsf.MessageBroker;
 import com.esri.gpt.framework.jsf.components.UIPagination;
 import com.esri.gpt.framework.request.PageCursor;
+import com.esri.gpt.framework.sql.HttpExpressionBinder;
 import com.esri.gpt.framework.util.Val;
 /**
  * The Class SearchController.  Controller for search operations.  To be
@@ -423,7 +424,14 @@ public String processRequestParams() {
     if (parameterMap.containsKey("uuid")) {
       Object oUuid = parameterMap.get("uuid");
       if (oUuid instanceof String[] && ((String[])oUuid).length>0) {
-        doViewMetadataDetails(context,((String[])oUuid)[0], catalogUrl);
+    	  // build the bound query expression based upon HTTP parameter input
+    	  ISearchSaveRepository saveRpstry = 
+    			    SearchSaveRpstryFactory.getSearchSaveRepository();
+    	  
+    	  //Make UUIDS TO UPPER CASE
+    	  String newuuid=saveRpstry.getDocUUID(((String[])oUuid)[0]);
+    	  request.setAttribute("uuid", newuuid);
+          doViewMetadataDetails(context,newuuid, catalogUrl);
       }
     }
 
@@ -863,6 +871,7 @@ private void doViewMetadataDetails(RequestContext context, String uuid, String c
   if (uuid == null || "".equals(uuid)) {
     throw new SearchException("UUID given for document requested is either null or empty");
   }
+  
   String metadataXml = this.getMetadataText(uuid, catalogUri);
   this.getSearchResult().setCurrentMetadataXmlInView(metadataXml);
   this.setNavigationOutcome(NAV_RESULTS2VIEWDETAILS); 
