@@ -23,8 +23,15 @@
 <%@page import="com.esri.gpt.framework.util.LogUtil" %>
 <%@page import="com.esri.gpt.framework.context.RequestContext" %>
 <%@page import="com.esri.gpt.control.search.browse.TocCollection" %>
+<%@page import="com.esri.gpt.catalog.search.ISearchSaveRepository" %>
+<%@page import="com.esri.gpt.catalog.search.SearchSaveRpstryFactory"%>
 <%
 	String rnpUuid = com.esri.gpt.framework.util.Val.chkStr(request.getParameter("uuid"));
+	
+	ISearchSaveRepository saveRpstry = SearchSaveRpstryFactory.getSearchSaveRepository();
+	String newuuid=saveRpstry.getDocUUID(rnpUuid);
+    request.setAttribute("uuid", newuuid);
+    rnpUuid = newuuid;
 	String rnpContextPath = request.getContextPath();
 	com.esri.gpt.framework.context.RequestContext rnpContext = com.esri.gpt.framework.context.RequestContext.extract(request);
 	com.esri.gpt.catalog.context.CatalogConfiguration rnpCatalogCfg = rnpContext.getCatalogConfiguration();
