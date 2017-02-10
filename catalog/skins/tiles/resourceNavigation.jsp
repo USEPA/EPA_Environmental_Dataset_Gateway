@@ -143,7 +143,8 @@ function rnpInit(){
             	elTitle.style.display = "none";
             }else{
             	//elTitle.appendChild(document.createTextNode(title));
-            	elTitle.innerHTML = title;        
+            	elTitle.innerHTML = title;
+            	document.title = title;
             }
         }
       }
