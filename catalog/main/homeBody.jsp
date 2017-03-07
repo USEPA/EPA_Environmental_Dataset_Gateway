@@ -389,9 +389,9 @@ $(document).ready(function(){
 												onkeypress="javascript:hpSubmitForm(event,this);">
 												<h:inputText id="itxFilterKeywordText" 
 													styleClass="search-field form-control"
-													onkeypress="if (event.keyCode == 13) return false;"
+													onkeypress="if (event.keyCode == 13) return false;javascript:homeSearch();"
 													value="#{SearchFilterKeyword.searchText}" />
-                                                <h:inputHidden id="start" value="1" />
+											    <h:inputHidden id="start" value="1" />
 												<h:inputHidden id="max" value="10" />
 												<h:commandLink id="btnDoSearch"
 													value="#{gptMsg['catalog.search.search.advBtnSearch']}"
@@ -403,6 +403,17 @@ $(document).ready(function(){
 													<!--Added by Netty-->
 													<f:attribute name="f" value="searchpageresults" />
 												</h:commandLink>
+												<!--hidden checkboxes-->
+												<h:selectBooleanCheckbox id="region1" value="#{SearchFilterKeyword.checkMap['Region 01']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region2" value="#{SearchFilterKeyword.checkMap['Region 02']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region3" value="#{SearchFilterKeyword.checkMap['Region 03']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region4" value="#{SearchFilterKeyword.checkMap['Region 04']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region5" value="#{SearchFilterKeyword.checkMap['Region 05']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region6" value="#{SearchFilterKeyword.checkMap['Region 06']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region7" value="#{SearchFilterKeyword.checkMap['Region 07']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region8" value="#{SearchFilterKeyword.checkMap['Region 08']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region9" value="#{SearchFilterKeyword.checkMap['Region 09']}" style="display: none;"></h:selectBooleanCheckbox>
+												<h:selectBooleanCheckbox id="region10" value="#{SearchFilterKeyword.checkMap['Region 10']}" style="display: none;"></h:selectBooleanCheckbox>
 											</h:form>
 										</div>
 									</div>
@@ -480,6 +491,27 @@ $(document).ready(function(){
 					var searchButton = document.getElementById(searchButtonId);
 					searchButton.click();
 					   
+				}
+				
+				function executeRegionSearch(searchText){
+					var regionEle=document.getElementById('hpFrmSearch:'+searchText);
+					regionEle.checked = true;
+					uncheckOtherRegions(searchText);
+					executeSearchAction(searchText);   
+				}
+				
+				function uncheckOtherRegions(region){
+					for(var i=1;i<=10;i++){
+						var otherRegion ="region"+i;
+						if(otherRegion != region){
+							document.getElementById('hpFrmSearch:'+otherRegion).checked =false;
+						}
+					}
+				}
+				
+				function homeSearch()
+				{
+					uncheckOtherRegions("reg");
 				}
 				</script></f:verbatim>
 								<!-- <div class="col-md-6 col-sm-6">
@@ -900,7 +932,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 01')">See
+									onclick="javascript:executeRegionSearch('region1')">See
 									More</a>
 							</p>
 							<p></p>
@@ -953,7 +985,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 02')">See
+									onclick="javascript:executeRegionSearch('region2')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1005,7 +1037,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 03')">See
+									onclick="javascript:executeRegionSearch('region3')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1060,7 +1092,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 04')">See
+									onclick="javascript:executeRegionSearch('region4')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1113,7 +1145,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 05')">See
+									onclick="javascript:executeRegionSearch('region5')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1165,7 +1197,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 06')">See
+									onclick="javascript:executeRegionSearch('region6')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1217,7 +1249,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 07')">See
+									onclick="javascript:executeRegionSearch('region7')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1269,7 +1301,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 08')">See
+									onclick="javascript:executeRegionSearch('region8')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1321,7 +1353,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 09')">See
+									onclick="javascript:executeRegionSearch('region9')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1373,7 +1405,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeSearchAction('owner=Region 10')">See
+									onclick="javascript:executeRegionSearch('region10')">See
 									More</a>
 							</p>
 							<p></p>
