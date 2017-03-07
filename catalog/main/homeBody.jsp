@@ -27,7 +27,7 @@ String featuredTab3SearchStr = "sys.collection%3a%22%7bD5F39F59-7647-1653-DCCF-1
 String tab3 = site + baseURL + featuredTab3SearchStr + urlSuffix;
 /**Popular Datasets URL**/
 //String popDataUrl = site + popURL + "childrenof=%7B9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7D" + urlSuffix;
-String popDataSearchStr = "sys.collection%3a%22%7b9007D9FF-E18F-9A91-564F-5C4FF3FAB904%7d%22";
+String popDataSearchStr = "sys.collection%3a%22%7b6EAEF950-03F4-566A-62DA-D597657634AC%7d%22";
 String popDataUrl = site + baseURL + popDataSearchStr + urlSuffix;
 String region1TabTitle = "Region1";
 String region2TabTitle = "Region2";
@@ -389,9 +389,9 @@ $(document).ready(function(){
 												onkeypress="javascript:hpSubmitForm(event,this);">
 												<h:inputText id="itxFilterKeywordText" 
 													styleClass="search-field form-control"
-													onkeypress="if (event.keyCode == 13) return false;javascript:homeSearch();"
+													onkeypress="if (event.keyCode == 13) return false;"
 													value="#{SearchFilterKeyword.searchText}" />
-											    <h:inputHidden id="start" value="1" />
+                                                <h:inputHidden id="start" value="1" />
 												<h:inputHidden id="max" value="10" />
 												<h:commandLink id="btnDoSearch"
 													value="#{gptMsg['catalog.search.search.advBtnSearch']}"
@@ -403,17 +403,6 @@ $(document).ready(function(){
 													<!--Added by Netty-->
 													<f:attribute name="f" value="searchpageresults" />
 												</h:commandLink>
-												<!--hidden checkboxes-->
-												<h:selectBooleanCheckbox id="region1" value="#{SearchFilterKeyword.checkMap['Region 01']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region2" value="#{SearchFilterKeyword.checkMap['Region 02']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region3" value="#{SearchFilterKeyword.checkMap['Region 03']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region4" value="#{SearchFilterKeyword.checkMap['Region 04']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region5" value="#{SearchFilterKeyword.checkMap['Region 05']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region6" value="#{SearchFilterKeyword.checkMap['Region 06']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region7" value="#{SearchFilterKeyword.checkMap['Region 07']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region8" value="#{SearchFilterKeyword.checkMap['Region 08']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region9" value="#{SearchFilterKeyword.checkMap['Region 09']}" style="display: none;"></h:selectBooleanCheckbox>
-												<h:selectBooleanCheckbox id="region10" value="#{SearchFilterKeyword.checkMap['Region 10']}" style="display: none;"></h:selectBooleanCheckbox>
 											</h:form>
 										</div>
 									</div>
@@ -491,27 +480,6 @@ $(document).ready(function(){
 					var searchButton = document.getElementById(searchButtonId);
 					searchButton.click();
 					   
-				}
-				
-				function executeRegionSearch(searchText){
-					var regionEle=document.getElementById('hpFrmSearch:'+searchText);
-					regionEle.checked = true;
-					uncheckOtherRegions(searchText);
-					executeSearchAction(searchText);   
-				}
-				
-				function uncheckOtherRegions(region){
-					for(var i=1;i<=10;i++){
-						var otherRegion ="region"+i;
-						if(otherRegion != region){
-							document.getElementById('hpFrmSearch:'+otherRegion).checked =false;
-						}
-					}
-				}
-				
-				function homeSearch()
-				{
-					uncheckOtherRegions("reg");
 				}
 				</script></f:verbatim>
 								<!-- <div class="col-md-6 col-sm-6">
@@ -872,8 +840,7 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-primary text-left" data-toggle="modal" data-target="#myModal" style="text-align: center;
     padding-bottom: 24px;">Find My Region</button>
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="region1"
-						id="tab-region1"><%=region1TabTitle%></a></li>
+					<li class="active"><a data-toggle="tab" href="#region1" id="tab-region1"><%=region1TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region2" id="tab-region2"><%=region2TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region3" id="tab-region3"><%=region3TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region4" id="tab-region4"><%=region4TabTitle%></a></li>
@@ -932,7 +899,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region1')">See
+									onclick="javascript:executeSearchAction('owner=Region 1')">See
 									More</a>
 							</p>
 							<p></p>
@@ -985,7 +952,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region2')">See
+									onclick="javascript:executeSearchAction('owner=Region 2')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1037,7 +1004,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region3')">See
+									onclick="javascript:executeSearchAction('owner=Region 3')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1059,10 +1026,9 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
+															
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
@@ -1092,7 +1058,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region4')">See
+									onclick="javascript:executeSearchAction('owner=Region 4')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1145,7 +1111,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region5')">See
+									onclick="javascript:executeSearchAction('owner=Region 5')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1197,7 +1163,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region6')">See
+									onclick="javascript:executeSearchAction('owner=Region 6')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1249,7 +1215,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region7')">See
+									onclick="javascript:executeSearchAction('owner=Region 7')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1301,7 +1267,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region8')">See
+									onclick="javascript:executeSearchAction('owner=Region 08')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1353,7 +1319,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region9')">See
+									onclick="javascript:executeSearchAction('owner=Region 09')">See
 									More</a>
 							</p>
 							<p></p>
@@ -1405,7 +1371,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region10')">See
+									onclick="javascript:executeSearchAction('owner=Region 10')">See
 									More</a>
 							</p>
 							<p></p>
