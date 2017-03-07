@@ -71,7 +71,61 @@
 		rnpRelationshipsUrl = com.esri.gpt.framework.util.Val.escapeXmlForBrowser(url + "/catalog/search/resource/relationships.page?" + queryString);
 	}	
 %>
+<style type="text/css">
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.pageOverlay {
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1001;
+    display: block;
+}
+
+#loadingOverlay {
+    background:  #fff url('http://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/images/loadingAnimation.gif') no-repeat 10px 23px;
+}
+
+.loadingMessage {
+    padding: 25px 40px;
+    color: #999;
+}
+
+</style>
+
 <script>
+var demo;
+require(["dojo/_base/declare","dojo/dom","dojo/dom-style"],
+function(declare, dom, domStyle){
+    var Demo = declare(null, {
+        overlayNode:null,
+        constructor:function(){
+            // save a reference to the overlay
+            this.overlayNode = dom.byId('loadingOverlay');
+        },
+        // called to hide the loading overlay
+        endLoading:function(){
+			this.overlayNode = dom.byId('loadingOverlay');
+            domStyle.set(this.overlayNode,'display','none');
+        },
+        // called to hide the loading overlay
+        startLoading:function(){
+            this.overlayNode = dom.byId('loadingOverlay');
+			domStyle.set(this.overlayNode,'display','block');
+			
+        }
+    });
+    demo = new Demo();
+});
+
 function rnpInit(){
 	var winUrl = window.location.href;
 	var element = document.getElementById("rnpDetails");
@@ -145,6 +199,9 @@ function rnpInit(){
             	//elTitle.appendChild(document.createTextNode(title));
             	elTitle.innerHTML = title;
             	document.title = title;
+				demo.endLoading();
+            	dojo.byId("detailsPanelGroup").style.display="block";
+				
             }
         }
       }
@@ -198,6 +255,7 @@ if (typeof(dojo) != 'undefined') {
 }
 </script>
 <f:verbatim>
+ <div id="loadingOverlay" class="loadingOverlay pageOverlay"></div>
 	<a id="rnpDetails" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
 	<a id="rnpReview" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>
 	<a id="rnpRelationships" style="display:none" href="<%=rnpRelationshipsUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.relationships.title")%></a>
