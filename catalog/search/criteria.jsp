@@ -964,10 +964,33 @@ alert("test");
     node != null && (node.checked == "checked" || node.checked == true)) {
       restParams += "&expandResults=true";
     }
-    
-    return restParams;
+  return restParams;
   }
-
+  
+  function resetSearchText(checkBoxEle){
+	  dojo.byId('frmSearchCriteria:scText').value = "";
+	  }
+  
+ /* function uncheckregions()
+  {
+	 
+	  var allreg = document.getElementById("frmSearchCriteria:j_id_jsp_1804994332_9pc9:0:regions");
+	  if(allreg.checked)
+	  {
+		  for(var i=0;i<=10;i++){
+				dojo.byId("frmSearchCriteria:j_id_jsp_1804994332_9pc9:"+i+":regions").checked = false;
+				
+	  }
+	  
+  }
+  }
+  
+   function uncheckallregions()
+  {
+	  	
+		document.getElementById("frmSearchCriteria:j_id_jsp_1804994332_9pc9:0:regions").checked = false;
+  }*/
+	  
   /**
    *Does a search on the specified page number
    *
@@ -1025,7 +1048,7 @@ alert("test");
       url: urlToSearch,
   
       load: dojo.hitch(this, function (data) {
-        if(typeof(clear) == 'boolean' && clear == true) {
+       if(typeof(clear) == 'boolean' && clear == true) {
           window.location = contextPath + "/catalog/search/search.page";
           return;
         }
@@ -1897,8 +1920,67 @@ alert("test");
 
   </h:panelGrid>
 </h:panelGrid>
-
-
+<!-- Region checkboxes -->
+<div id="chbx">
+	<table width="100%">
+		<tr>
+			<p>
+				<b>Note: Use the checkboxes below to limit the search results to
+					metadata records contributed by specific EPA Regional offices.</b>
+			</p>
+		</tr>
+		<tr>
+			<td><h:selectBooleanCheckbox id="regions1"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 01']}"
+					onclick="javascript:resetSearchText();">Region 01</h:selectBooleanCheckbox>
+			</td>
+			<td><h:selectBooleanCheckbox id="regions2"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 02']}"
+					onclick="javascript:resetSearchText();">Region 02</h:selectBooleanCheckbox>
+			</td>
+		</tr>
+		<tr>
+			<td><h:selectBooleanCheckbox id="regions3"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 03']}"
+					onclick="javascript:resetSearchText();">Region 03</h:selectBooleanCheckbox>
+			</td>
+			<td><h:selectBooleanCheckbox id="regions4"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 04']}"
+					onclick="javascript:resetSearchText();">Region 04</h:selectBooleanCheckbox>
+			</td>
+		</tr>
+		<tr>
+			<td><h:selectBooleanCheckbox id="regions5"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 05']}"
+					onclick="javascript:resetSearchText();">Region 05</h:selectBooleanCheckbox>
+			</td>
+			<td><h:selectBooleanCheckbox id="regions6"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 06']}"
+					onclick="javascript:resetSearchText();">Region 06</h:selectBooleanCheckbox>
+			</td>
+		</tr>
+		<tr>
+			<td><h:selectBooleanCheckbox id="regions7"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 07']}"
+					onclick="javascript:resetSearchText();">Region 07</h:selectBooleanCheckbox>
+			</td>
+			<td><h:selectBooleanCheckbox id="regions8"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 08']}"
+					onclick="javascript:resetSearchText();">Region 08</h:selectBooleanCheckbox>
+			</td>
+		</tr>
+		<tr>
+			<td><h:selectBooleanCheckbox id="regions9"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 09']}"
+					onclick="javascript:resetSearchText();">Region 09</h:selectBooleanCheckbox>
+			</td>
+			<td><h:selectBooleanCheckbox id="regions10"
+					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 10']}"
+					onclick="javascript:resetSearchText();">Region 10</h:selectBooleanCheckbox>
+			</td>
+		</tr>
+	</table>
+</div>
 <h:outputText escape="false" 
               value='<div id="crtAdvOptnsContent" dojoType="dijit.Dialog"
               class="tundra" style="width: 400px; display: none; border: 1px solid #000000; background: #FFFFFF;" title="#{gptMsg["catalog.search.additionalOptions"]}">'/>
@@ -2118,4 +2200,3 @@ alert("test");
                value="#{SearchController.searchFilterHarvestSites.distributedPanelOpen}"/>
 <h:inputHidden id="scSearchUrl" 
                value="#{SearchController.searchFilterHarvestSites.searchUrl}"/>
-               

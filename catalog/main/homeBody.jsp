@@ -1026,10 +1026,10 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-
+														
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-
+															
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}

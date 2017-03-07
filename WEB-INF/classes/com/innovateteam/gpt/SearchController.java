@@ -100,6 +100,9 @@ private String resourceUrl = "";
 /** Flag indicating whether or not result records should be expanded by default. */
 private final boolean expandResultContent = false;
 
+private boolean isRegionChecked = false;
+
+Map<String,Boolean> checkMap = null;
 /** User's saved searches */
 private List<SelectItem> savedSearches = new ArrayList<SelectItem>();
 
@@ -362,11 +365,10 @@ public void prepareView() {
 @Override
 public void processSubAction(ActionEvent event, RequestContext context) 
 throws AbortProcessingException, Exception {
-	String scText="";
   try {
-	scText = this.getSearchCriteria().getSearchFilterKeyword().getSearchText();
-    processSearchActions(event, context);
-  } catch (Exception e) {
+	 isRegionChecked = isRegionChecked();
+	 processSearchActions(event, context);
+	  } catch (Exception e) {
 
     boolean rethrowExcep = false;
     String strMessage = e.getMessage();
@@ -389,15 +391,29 @@ throws AbortProcessingException, Exception {
       message.setSummary(strMessage);
       message.setSeverity(FacesMessage.SEVERITY_ERROR);
       broker.addMessage(message);
-
-
     }
     if(rethrowExcep) {
       throw e;
     }
   }
-  this.getSearchCriteria().getSearchFilterKeyword().setSearchText(scText);
+  if(isRegionChecked){
+	  this.getSearchCriteria().getSearchFilterKeyword().setSearchText("");
+	  this.getSearchCriteria().getSearchFilterKeyword().setCheckMap(new HashMap<String,Boolean>(checkMap));
+  }
 }
+
+private boolean isRegionChecked() {
+	boolean checked = false;
+		List<String> allRegions = this.getSearchCriteria().getSearchFilterKeyword().getRegions();
+		checkMap = new HashMap<String, Boolean>(this.getSearchCriteria().getSearchFilterKeyword().getCheckMap());
+		for (int i = 0; i < allRegions.size(); i++) {
+			if (checkMap.get(allRegions.get(i)).equals(Boolean.TRUE)) {
+				checked = true;
+				break;
+			}
+		}
+		return checked;
+	}
 
 /**
  * Does process request parameters.
@@ -427,7 +443,6 @@ public String processRequestParams() {
     	  // build the bound query expression based upon HTTP parameter input
     	  ISearchSaveRepository saveRpstry = 
     			    SearchSaveRpstryFactory.getSearchSaveRepository();
-    	  
     	  //Make UUIDS TO UPPER CASE
     	  String newuuid=saveRpstry.getDocUUID(((String[])oUuid)[0]);
     	  request.setAttribute("uuid", newuuid);
@@ -454,30 +469,49 @@ public String processRequestParams() {
  * @throws Exception Exception on error
  */
 @SuppressWarnings("unchecked")
-protected void processSearchActions(ActionEvent event, RequestContext context) 
-throws AbortProcessingException, Exception {
-  
-  // Actions will have to set the next navigation
-  this.setNavigationOutcome(null);
-  this.setSavedSearchesPanelStyle("display: none;");
-  
-  String eventType = getEventType(event);
-  String scText= this.getSearchCriteria().getSearchFilterKeyword().getSearchText();
-   
-  Map<String,String> map = new HashMap<String,String>();
-  map.put("owner=Region 01","sys.owner:4");
-  map.put("owner=Region 02","sys.owner:9");
-  map.put("owner=Region 03","sys.owner:22");
-  map.put("owner=Region 04","sys.owner:27");
-  map.put("owner=Region 05","sys.owner:13");
-  map.put("owner=Region 06","sys.owner:26");
-  map.put("owner=Region 07","sys.owner:10");
-  map.put("owner=Region 08","sys.owner:15");
-  map.put("owner=Region 09","sys.owner:11");
-  map.put("owner=Region 10","");
+	protected void processSearchActions(ActionEvent event, RequestContext context)
+			throws AbortProcessingException, Exception {
+		// Actions will have to set the next navigation
+		this.setNavigationOutcome(null);
+		this.setSavedSearchesPanelStyle("display: none;");
 
-  if(map.containsKey(scText))
-	  this.getSearchCriteria().getSearchFilterKeyword().setSearchText(map.get(scText));
+		String eventType = getEventType(event);
+		String scText = this.getSearchCriteria().getSearchFilterKeyword().getSearchText();
+		String regionsScText = "";
+		if (isRegionChecked) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("Region 01", "sys.owner:4");
+			map.put("Region 02", "sys.owner:9");
+			map.put("Region 03", "sys.owner:22");
+			map.put("Region 04", "sys.owner:27");
+			map.put("Region 05", "sys.owner:13");
+			map.put("Region 06", "sys.owner:26");
+			map.put("Region 07", "sys.owner:10");
+			map.put("Region 08", "sys.owner:15");
+			map.put("Region 09", "sys.owner:11");
+			map.put("Region 10", "");
+			// map.put("All Regions",
+			// "sys.owner:4 sys.owner:9 sys.owner:22 sys.owner:27 sys.owner:13
+			// sys.owner:26 sys.owner:10 sys.owner:15 sys.owner:11");
+
+			List<String> allRegions = this.getSearchCriteria().getSearchFilterKeyword().getRegions();
+			Map<String, Boolean> checkMap = this.getSearchCriteria().getSearchFilterKeyword().getCheckMap();
+			for (int i = 0; i < allRegions.size(); i++) {
+				if (checkMap.get(allRegions.get(0)).equals(Boolean.TRUE)) {
+					regionsScText = map.get(allRegions.get(0));
+					break;
+				} else {
+					if (checkMap.get(allRegions.get(i)).equals(Boolean.TRUE)) {
+						if (regionsScText.equals("")) {
+							regionsScText = map.get(allRegions.get(i));
+						} else {
+							regionsScText = regionsScText + " " + map.get(allRegions.get(i));
+						}
+					}
+				}
+			}
+			this.getSearchCriteria().getSearchFilterKeyword().setSearchText(regionsScText);
+		}
 
   // create search URL builder
   HttpServletRequest request = getContextBroker().extractHttpServletRequest();
@@ -871,7 +905,6 @@ private void doViewMetadataDetails(RequestContext context, String uuid, String c
   if (uuid == null || "".equals(uuid)) {
     throw new SearchException("UUID given for document requested is either null or empty");
   }
-  
   String metadataXml = this.getMetadataText(uuid, catalogUri);
   this.getSearchResult().setCurrentMetadataXmlInView(metadataXml);
   this.setNavigationOutcome(NAV_RESULTS2VIEWDETAILS); 
