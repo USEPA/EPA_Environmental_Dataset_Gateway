@@ -3,6 +3,7 @@
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt" %>
 <% // initialize the page %>
 <gpt:page id="catalog.data.home"/>
-<tiles:insert definition=".gptLayout" flush="false" >
+<%-- <tiles:insert definition=".gptLayout" flush="false" >
 	<tiles:put name="body" value="/catalog/data/dataBody.jsp"/>
-</tiles:insert>
+</tiles:insert>--%>
+<jsp:include page="dataBody.jsp"/>
