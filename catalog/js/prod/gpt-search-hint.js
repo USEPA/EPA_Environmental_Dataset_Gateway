@@ -43,7 +43,9 @@ $(document).ready(function(){
 		var sMatches = "";
 		var nMaxMatches = 10;
 		var nCountMatches = 0;
-		
+		for(var i=1;i<=10;i++){
+			   document.getElementById("frmSearchCriteria:regions"+i).checked =false;
+				}
 		if (searchText.length>=2) {
 
 			jQuery.each(Hints, function() {
