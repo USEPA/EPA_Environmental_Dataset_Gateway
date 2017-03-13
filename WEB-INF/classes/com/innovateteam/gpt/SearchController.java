@@ -365,9 +365,11 @@ public void prepareView() {
 @Override
 public void processSubAction(ActionEvent event, RequestContext context) 
 throws AbortProcessingException, Exception {
+	String regionText = "";
   try {
-	 isRegionChecked = isRegionChecked();
-	 processSearchActions(event, context);
+	  regionText = this.getSearchCriteria().getSearchFilterKeyword().getSearchText();
+	  isRegionChecked = isRegionChecked();
+	  processSearchActions(event, context);
 	  } catch (Exception e) {
 
     boolean rethrowExcep = false;
@@ -391,29 +393,34 @@ throws AbortProcessingException, Exception {
       message.setSummary(strMessage);
       message.setSeverity(FacesMessage.SEVERITY_ERROR);
       broker.addMessage(message);
+
+
     }
     if(rethrowExcep) {
       throw e;
     }
   }
   if(isRegionChecked){
-	  this.getSearchCriteria().getSearchFilterKeyword().setSearchText("");
+	
+	  this.getSearchCriteria().getSearchFilterKeyword().setSearchText(regionText);
 	  this.getSearchCriteria().getSearchFilterKeyword().setCheckMap(new HashMap<String,Boolean>(checkMap));
+	  
   }
 }
 
-private boolean isRegionChecked() {
+private boolean isRegionChecked()
+{
 	boolean checked = false;
-		List<String> allRegions = this.getSearchCriteria().getSearchFilterKeyword().getRegions();
-		checkMap = new HashMap<String, Boolean>(this.getSearchCriteria().getSearchFilterKeyword().getCheckMap());
-		for (int i = 0; i < allRegions.size(); i++) {
-			if (checkMap.get(allRegions.get(i)).equals(Boolean.TRUE)) {
-				checked = true;
-				break;
-			}
-		}
-		return checked;
-	}
+	  List<String> allRegions = this.getSearchCriteria().getSearchFilterKeyword().getRegions();
+	  checkMap = new HashMap<String,Boolean>(this.getSearchCriteria().getSearchFilterKeyword().getCheckMap());
+	  for(int i=0;i<allRegions.size();i++){
+		  if(checkMap.get(allRegions.get(i)).equals(Boolean.TRUE)){
+			 checked = true;
+			  break;
+		  }
+	  }
+	 return checked;
+}
 
 /**
  * Does process request parameters.
@@ -469,49 +476,51 @@ public String processRequestParams() {
  * @throws Exception Exception on error
  */
 @SuppressWarnings("unchecked")
-	protected void processSearchActions(ActionEvent event, RequestContext context)
-			throws AbortProcessingException, Exception {
-		// Actions will have to set the next navigation
-		this.setNavigationOutcome(null);
-		this.setSavedSearchesPanelStyle("display: none;");
-
-		String eventType = getEventType(event);
-		String scText = this.getSearchCriteria().getSearchFilterKeyword().getSearchText();
-		String regionsScText = "";
-		if (isRegionChecked) {
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("Region 01", "sys.owner:4");
-			map.put("Region 02", "sys.owner:9");
-			map.put("Region 03", "sys.owner:22");
-			map.put("Region 04", "sys.owner:27");
-			map.put("Region 05", "sys.owner:13");
-			map.put("Region 06", "sys.owner:26");
-			map.put("Region 07", "sys.owner:10");
-			map.put("Region 08", "sys.owner:15");
-			map.put("Region 09", "sys.owner:11");
-			map.put("Region 10", "");
-			// map.put("All Regions",
-			// "sys.owner:4 sys.owner:9 sys.owner:22 sys.owner:27 sys.owner:13
-			// sys.owner:26 sys.owner:10 sys.owner:15 sys.owner:11");
-
-			List<String> allRegions = this.getSearchCriteria().getSearchFilterKeyword().getRegions();
-			Map<String, Boolean> checkMap = this.getSearchCriteria().getSearchFilterKeyword().getCheckMap();
-			for (int i = 0; i < allRegions.size(); i++) {
-				if (checkMap.get(allRegions.get(0)).equals(Boolean.TRUE)) {
-					regionsScText = map.get(allRegions.get(0));
-					break;
-				} else {
-					if (checkMap.get(allRegions.get(i)).equals(Boolean.TRUE)) {
-						if (regionsScText.equals("")) {
-							regionsScText = map.get(allRegions.get(i));
-						} else {
-							regionsScText = regionsScText + " " + map.get(allRegions.get(i));
-						}
-					}
-				}
-			}
-			this.getSearchCriteria().getSearchFilterKeyword().setSearchText(regionsScText);
-		}
+protected void processSearchActions(ActionEvent event, RequestContext context) 
+throws AbortProcessingException, Exception {
+  // Actions will have to set the next navigation
+  this.setNavigationOutcome(null);
+  this.setSavedSearchesPanelStyle("display: none;");
+  
+  String eventType = getEventType(event);
+  String scText= this.getSearchCriteria().getSearchFilterKeyword().getSearchText();
+  String regionsScText = "";
+  if(isRegionChecked){
+	  Map<String,String> map = new HashMap<String,String>();
+	  map.put("Region 01","sys.owner:4");
+	  map.put("Region 02","sys.owner:9");
+	  map.put("Region 03","sys.owner:22");
+	  map.put("Region 04","sys.owner:27");
+	  map.put("Region 05","sys.owner:13");
+	  map.put("Region 06","sys.owner:26"); 
+	  map.put("Region 07","sys.owner:10");
+	  map.put("Region 08","sys.owner:15");
+	  map.put("Region 09","sys.owner:11");
+	  map.put("Region 10","");
+	  //map.put("All Regions",
+			  //"sys.owner:4 sys.owner:9 sys.owner:22 sys.owner:27 sys.owner:13 sys.owner:26 sys.owner:10 sys.owner:15 sys.owner:11");
+	  
+	  List<String> allRegions = this.getSearchCriteria().getSearchFilterKeyword().getRegions();
+	  Map<String,Boolean> checkMap = this.getSearchCriteria().getSearchFilterKeyword().getCheckMap();
+	  for(int i=0;i<allRegions.size();i++){
+		  /*if(checkMap.get(allRegions.get(0)).equals(Boolean.TRUE)){
+			  regionsScText = map.get(allRegions.get(0));
+			  System.out.println("print text in if"+regionsScText);
+			  break;
+		  }else{*/
+			  if(checkMap.get(allRegions.get(i)).equals(Boolean.TRUE)){
+				  if(regionsScText.equals("")){
+				  regionsScText = map.get(allRegions.get(i));
+			  }
+				  else{
+					regionsScText =regionsScText +" "+map.get(allRegions.get(i));
+					  }
+			  }
+		  //}
+	  }
+ } 
+  
+  this.getSearchCriteria().getSearchFilterKeyword().setSearchText(scText+" "+regionsScText);
 
   // create search URL builder
   HttpServletRequest request = getContextBroker().extractHttpServletRequest();

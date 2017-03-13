@@ -389,15 +389,15 @@ $(document).ready(function(){
 												onkeypress="javascript:hpSubmitForm(event,this);">
 												<h:inputText id="itxFilterKeywordText" 
 													styleClass="search-field form-control"
-													onkeypress="if (event.keyCode == 13) return false;javascript:homeSearch();"
+													onkeypress="if (event.keyCode == 13) return false;"
 													value="#{SearchFilterKeyword.searchText}" />
-                                                <h:inputHidden id="start" value="1" />
+											    <h:inputHidden id="start" value="1" />
 												<h:inputHidden id="max" value="10" />
 												<h:commandLink id="btnDoSearch"
 													value="#{gptMsg['catalog.search.search.advBtnSearch']}"
 													action="#{SearchController.getNavigationOutcome}"
 													actionListener="#{SearchController.processAction}"
-													onkeypress="if (event.keyCode == 13) return false;">
+													onkeypress="if (event.keyCode == 13) return false;javascript:homeSearch();">
 													<f:attribute name="#{SearchController.searchEvent.event}"
 														value="#{SearchController.searchEvent.eventExecuteSearch}" />
 													<!--Added by Netty-->
@@ -433,7 +433,7 @@ $(document).ready(function(){
 								<f:verbatim>
 								<script type="text/javascript">
 				function hpSubmitForm(event, form) {
-					
+					homeSearch();
 					  var e = event;
 					  if (!e) e = window.event;
 					  var tgt = (e.srcElement) ? e.srcElement : e.target; 
@@ -480,30 +480,40 @@ $(document).ready(function(){
 				function executeSearchAction(searchText){
 				    searchText=decodeURIComponent(searchText);
 					var textEle=document.getElementById('hpFrmSearch:itxFilterKeywordText');
+					//var startEle=document.getElementById('hpFrmSearch:start');
+					//var maxEle=document.getElementById('hpFrmSearch:max');
+					textEle.value=searchText;
+					/*start and max values will vary*/
+					//startEle.value="7";
+					//maxEle.value="100";
+					//var searchButtonId = "hpFrmSearch:btnDoSearch";
+					//var searchButton = document.getElementById(searchButtonId);
+					//searchButton.click();
+					clickSearchButton();
+					   
+				}
+				
+			 
+				function executeRegionSearch(searchText){
+					
+					var regionEle=document.getElementById('hpFrmSearch:'+searchText);
+					regionEle.checked = true;
+					uncheckOtherRegions(searchText);
+					clickSearchButton();
+				}
+				function clickSearchButton(){
 					var startEle=document.getElementById('hpFrmSearch:start');
 					var maxEle=document.getElementById('hpFrmSearch:max');
-					textEle.value=searchText;
+					
 					/*start and max values will vary*/
 					startEle.value="7";
 					maxEle.value="100";
 					var searchButtonId = "hpFrmSearch:btnDoSearch";
 					var searchButton = document.getElementById(searchButtonId);
 					searchButton.click();
-					   
-				}
-				function executeRegionSearch(searchText){
-					
-					var regionEle=document.getElementById('hpFrmSearch:'+searchText);
-					regionEle.checked = true;
-					executeSearchAction(searchText);   
-				}
-				function executeRegionSearch(searchText){
-				    var regionEle=document.getElementById('hpFrmSearch:'+searchText);
-					regionEle.checked = true;
-					uncheckOtherRegions(searchText);
-					executeSearchAction(searchText);   
 				}
 				function uncheckOtherRegions(region){
+					
 					for(var i=1;i<=10;i++){
 						var otherRegion ="region"+i;
 						if(otherRegion != region){
@@ -511,9 +521,11 @@ $(document).ready(function(){
 						}
 					}
 				}
+				
 				function homeSearch()
 				{
-				uncheckOtherRegions("reg");
+					uncheckOtherRegions("reg");
+					
 				}
 				</script></f:verbatim>
 								<!-- <div class="col-md-6 col-sm-6">
@@ -874,7 +886,7 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-primary text-left" data-toggle="modal" data-target="#myModal" style="text-align: center;
     padding-bottom: 24px;">Find My Region</button>
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#region1" id="tab-region1"><%=region1TabTitle%></a></li>
+					<li class="active"><a data-toggle="tab" href="region1" id="tab-region1"><%=region1TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region2" id="tab-region2"><%=region2TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region3" id="tab-region3"><%=region3TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region4" id="tab-region4"><%=region4TabTitle%></a></li>
@@ -1060,10 +1072,10 @@ $(document).ready(function(){
 														}
 														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
-														
+
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
-															
+
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
 															}
