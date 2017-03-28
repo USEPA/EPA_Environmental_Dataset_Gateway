@@ -35,106 +35,94 @@
 
 <%--Modified to handle the AllowOnlyAuthenticatedUser parameter. If set to true (default is false), then login is required for all users --%>
 <h:form id="frmPrimaryNavigation">
-	<h:commandLink
+		<nav class="nav simple-nav simple-main-nav" role="navigation">
+		<div class="nav__inner">
+			<h2 class="element-invisible">Main menu</h2>
+			<ul class="menu" role="menu">
+				<li class="menu-item" id="menu-learn" role="presentation"><h:commandLink
         id="mainHome" 
         action="#{SearchController.getHomePageAction}"
         value="#{gptMsg['catalog.main.home.menuCaption']}"
-        styleClass="#{PageContext.tabStyleMap['catalog.main.home']}"/>
-<%-- <h:commandLink
-        id="contentAbout"
-        action="catalog.content.about"
-        value="#{gptMsg['catalog.content.about.menuCaption']}"
-      	styleClass="#{PageContext.tabStyleMap['catalog.content.about']}"
-        title="About the EDG" /> --%>
-
-	<%
+       	styleClass="menu-link" /></li>
+		<%
 	com.esri.gpt.framework.context.RequestContext rcx = com.esri.gpt.framework.context.RequestContext.extract(request);
 	String sAllowOnlyAuthenticatedUser=rcx.getApplicationConfiguration().getCatalogConfiguration().getParameters().getValue("AllowOnlyAuthenticatedUser");
 	if("true".equals(sAllowOnlyAuthenticatedUser))
 	{
-	%>        
-		<h:commandLink 
-	        id="searchHome"
-	        rendered="#{PageContext.roleMap['gptRegisteredUser']}"
-	        action="catalog.search.home" 
-	        value="#{gptMsg['catalog.search.home.menuCaption']}"
-	        styleClass="#{PageContext.tabStyleMap['catalog.search.home']}"/>                 
-
-		<h:commandLink 
-		id="browse"
-		action="catalog.browse" 
-		styleClass="#{PageContext.tabStyleMap['catalog.browse']}"
-		value="#{gptMsg['catalog.browse.menuCaption']}"
-        	rendered="#{PageContext.tocsByKey['browseCatalog'] and PageContext.roleMap['gptRegisteredUser']}" />			
-	<%
+	%>  
+				<li class="menu-item" id="menu-learn" role="presentation">
+				
+				<h:commandLink
+						id="searchHome" 
+						rendered="#{PageContext.roleMap['gptRegisteredUser']}"
+						action="catalog.search.home"
+						value="#{gptMsg['catalog.search.home.menuCaption']}"
+						styleClass="menu-link" /></li>
+				<li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
+						id="browse" action="catalog.browse" styleClass="menu-link"
+						value="#{gptMsg['catalog.browse.menuCaption']}"
+						rendered="#{PageContext.tocsByKey['browseCatalog'] and PageContext.roleMap['gptRegisteredUser']}" /></li>
+						<%
 	}
 	else
 	{
 	%>
-		<h:commandLink 
+	<li class="menu-item" id="menu-learn" role="presentation"><h:commandLink 
 	        id="searchHome" 
 	        action="catalog.search.home" 
 	        value="#{gptMsg['catalog.search.home.menuCaption']}"
-	        styleClass="#{PageContext.tabStyleMap['catalog.search.home']}"/>                 
-
+	        styleClass="menu-link"/>                 
+    </li>
+    <li class="menu-item" id="menu-learn" role="presentation">
 		<h:commandLink 
 		id="browse"
 		action="catalog.browse" 
-		styleClass="#{PageContext.tabStyleMap['catalog.browse']}"
+		styleClass="menu-link"
 		value="#{gptMsg['catalog.browse.menuCaption']}"
-		rendered="#{PageContext.tocsByKey['browseCatalog']}" />
+		rendered="#{PageContext.tocsByKey['browseCatalog']}" /></li>
 	<%
 	}
 	%>
-	<h:commandLink
-        id="data"
-        action="catalog.data.home"
-        value="#{gptMsg['catalog.data.home.menuCaption']}"
-      	styleClass="#{PageContext.tabStyleMap['catalog.data']}"
-        title="Data"/>
- 
-   <h:commandLink
-        id="components"
-        action="catalog.components.home"
-        value="#{gptMsg['catalog.components.home.menuBar.menuCaption']}"
-      	styleClass="#{PageContext.tabStyleMap['catalog.components']}"
-        title="Reuse Components of the EDG"/>
- 
-  <h:commandLink
-        id="resources"
-        action="catalog.resources.home"
-        value="#{gptMsg['catalog.resources.home.menuCaption']}"
-      	styleClass="#{PageContext.tabStyleMap['catalog.resources']}"
-        title="Resources"/>
-	
-  <h:commandLink 
-        id="publicationManageMetadata"
-        action="catalog.publication.manageMetadata" 
-        styleClass="#{PageContext.tabStyleMap['catalog.publication']}"
-        value="#{gptMsg['catalog.publication.manageMetadata.menuCaption']}"
-        rendered="#{PageContext.roleMap['gptPublisher']}"
-        actionListener="#{ManageMetadataController.processAction}" />
+				<li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
+						id="data" action="catalog.data.home"
+						value="#{gptMsg['catalog.data.home.menuCaption']}"
+						styleClass="menu-link" title="Data" /></li>
+				<li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
+						id="components" action="catalog.components.home"
+						value="#{gptMsg['catalog.components.home.menuBar.menuCaption']}"
+						styleClass="menu-link" title="Reuse Components of the EDG" /></li>
+				<li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
+						id="resources" action="catalog.resources.home"
+						value="#{gptMsg['catalog.resources.home.menuCaption']}"
+						styleClass="menu-link" title="Resources" /></li>
+				<h:panelGroup rendered="#{PageContext.roleMap['gptPublisher']}">
+				<li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
+							id="publicationManageMetadata"
+							action="catalog.publication.manageMetadata"
+							styleClass="menu-link"
+							value="#{gptMsg['catalog.publication.manageMetadata.menuCaption']}"
+							rendered="#{PageContext.roleMap['gptPublisher']}"
+							actionListener="#{ManageMetadataController.processAction}" /></li>
+				<li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
+							id="collection" action="catalog.collection.home"
+							value="#{gptMsg['catalog.collection.home.menuCaption']}"
+							styleClass="menu-link"
+							rendered="#{PageContext.roleMap['gptPublisher']}" /></li>
+				</h:panelGroup>
+               <li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink
+                          id="validationManageMetadata" 
+                          action="catalog.publication.validateMetadata"
+                          styleClass="menu-link"
+                          value="#{gptMsg['catalog.publication.validateMetadata.menuCaption']}"
+                          rendered="#{PageContext.roleMap['gptRegisteredUser'] and not PageContext.roleMap['gptPublisher']}"/></li>
 
-    <h:commandLink
-        id="collection" 
-        action="catalog.collection.home"
-        value="#{gptMsg['catalog.collection.home.menuCaption']}"
-        styleClass="#{PageContext.tabStyleMap['catalog.collection.home']}"
-        rendered="#{PageContext.roleMap['gptPublisher']}"
-        title="Compilation"/>
-
-	<h:commandLink
-        id="validationManageMetadata" 
-        action="catalog.publication.validateMetadata"
-        styleClass="#{PageContext.tabStyleMap['catalog.publication']}"
-        value="#{gptMsg['catalog.publication.validateMetadata.menuCaption']}"
-        rendered="#{PageContext.roleMap['gptRegisteredUser'] and not PageContext.roleMap['gptPublisher']}"/>
-
-	<h:commandLink 
-        id="extractDownload"
-        action="catalog.download" 
-        styleClass="#{PageContext.tabStyleMap['catalog.download']}"
-        value="#{gptMsg['catalog.download.menuCaption']}"
-        rendered="#{not empty PageContext.applicationConfiguration.downloadDataConfiguration.taskUrl}"/>
-
-</h:form>
+	           <li class="menu-item" id="menu-lawsregs" role="presentation"><h:commandLink 
+                        id="extractDownload"
+                        action="catalog.download" 
+                        styleClass="menu-link"
+                        value="#{gptMsg['catalog.download.menuCaption']}"
+                        rendered="#{not empty PageContext.applicationConfiguration.downloadDataConfiguration.taskUrl}"/></li>
+			</ul>
+		</div>
+		</nav>
+	</h:form>

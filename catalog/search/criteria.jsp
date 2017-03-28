@@ -892,13 +892,13 @@ alert("test");
    
     var scPage = dojo.byId("frmSearchCriteria:scCurrentPage").value;
     var scMaxResultsPerPage = dojo.byId("frmSearchCriteria:scRecordsPerPage").value;
-    var intPage = parseInt(scPage);
+	var intPage = parseInt(scPage);
     var intMaxResultsPerPage = parseInt(scMaxResultsPerPage);
     if(intPage != NaN && intMaxResultsPerPage != NaN) {
       var startPosition = ((intPage - 1) * intMaxResultsPerPage) + 1;
       restParams += "&start=" + encodeURIComponent(startPosition);
       restParams += "&max=" + intMaxResultsPerPage;
-    }
+	 }
    
     var scSort = GptUtils.valChkStr(
     dojo.byId("frmSearchCriteria:scSelSortHidden").value);
@@ -931,6 +931,29 @@ alert("test");
       scThemes = scThemes.replace(/\|/g, ","); 
       restParams += "&dataCategory=" + scThemes; 
     }
+	
+	var regionParams = "";
+	for(i=1; i<=10; i++){
+		var region = document.getElementById("frmSearchCriteria:regions"+i);
+		if(region.checked)
+		{
+			if(regionParams == "")
+			{
+				regionParams = "Region "+i;
+			}else
+			{
+				regionParams = regionParams +",Region "+i;
+				
+			}
+		}
+		
+	}
+	
+	if(regionParams != "")
+	{
+		restParams += "&owner=" + regionParams;
+		
+	}
    
     var outputBbox = false;
     dojo.query("[name=frmSearchCriteria:scSelSpatial]").forEach(
@@ -1042,7 +1065,6 @@ alert("test");
     el.setAttribute("value", urlToSearch);
     //serilizeFormToCookie();
     
-      
     _xhrSearch = dojo.xhrGet({
    
       url: urlToSearch,
@@ -1688,7 +1710,7 @@ alert("test");
         <tbody>
             <tr>
                 <td>
-  <h:outputLabel for="scText" value="#{gptMsg['catalog.search.search.lblSearch']}"/>
+  <h:outputLabel for="scText" style="float:left" value="#{gptMsg['catalog.search.search.lblSearch']}"/>
   <h:inputText id="scText"
                value="#{SearchController.searchCriteria.searchFilterKeyword.searchText}"
                maxlength="4000" styleClass="searchBox"/>
@@ -1871,7 +1893,7 @@ alert("test");
   <% // map %>
   <h:panelGrid id="pnlMap">
     <h:panelGroup id="mapToolbar" styleClass="mapToolbar"  style="display:none">
-      <h:outputLabel for="mapInput-locate" value="#{gptMsg['catalog.search.search.lblLocator']}"/>
+      <h:outputLabel style="float:left" for="mapInput-locate" value="#{gptMsg['catalog.search.search.lblLocator']}" />
       <h:inputText id="mapInput-locate" styleClass="locatorInput"
                    maxlength="1024" onkeypress="return scMap.onLocatorKeyPress(event);"/>
       <h:graphicImage id="mapButton-locate" url="/catalog/images/btn-locate-off.gif"
@@ -1932,51 +1954,51 @@ alert("test");
 		<tr>
 			<td><h:selectBooleanCheckbox id="regions1"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 01']}"
-					onclick="javascript:resetSearchText();">Region 01</h:selectBooleanCheckbox>
+					>Region 01</h:selectBooleanCheckbox>
 			</td>
 			<td><h:selectBooleanCheckbox id="regions2"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 02']}"
-					onclick="javascript:resetSearchText();">Region 02</h:selectBooleanCheckbox>
+					>Region 02</h:selectBooleanCheckbox>
 			</td>
 		</tr>
 		<tr>
 			<td><h:selectBooleanCheckbox id="regions3"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 03']}"
-					onclick="javascript:resetSearchText();">Region 03</h:selectBooleanCheckbox>
+					>Region 03</h:selectBooleanCheckbox>
 			</td>
 			<td><h:selectBooleanCheckbox id="regions4"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 04']}"
-					onclick="javascript:resetSearchText();">Region 04</h:selectBooleanCheckbox>
+					>Region 04</h:selectBooleanCheckbox>
 			</td>
 		</tr>
 		<tr>
 			<td><h:selectBooleanCheckbox id="regions5"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 05']}"
-					onclick="javascript:resetSearchText();">Region 05</h:selectBooleanCheckbox>
+					>Region 05</h:selectBooleanCheckbox>
 			</td>
 			<td><h:selectBooleanCheckbox id="regions6"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 06']}"
-					onclick="javascript:resetSearchText();">Region 06</h:selectBooleanCheckbox>
+					>Region 06</h:selectBooleanCheckbox>
 			</td>
 		</tr>
 		<tr>
 			<td><h:selectBooleanCheckbox id="regions7"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 07']}"
-					onclick="javascript:resetSearchText();">Region 07</h:selectBooleanCheckbox>
+					>Region 07</h:selectBooleanCheckbox>
 			</td>
 			<td><h:selectBooleanCheckbox id="regions8"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 08']}"
-					onclick="javascript:resetSearchText();">Region 08</h:selectBooleanCheckbox>
+					>Region 08</h:selectBooleanCheckbox>
 			</td>
 		</tr>
 		<tr>
 			<td><h:selectBooleanCheckbox id="regions9"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 09']}"
-					onclick="javascript:resetSearchText();">Region 09</h:selectBooleanCheckbox>
+					>Region 09</h:selectBooleanCheckbox>
 			</td>
 			<td><h:selectBooleanCheckbox id="regions10"
 					value="#{SearchController.searchCriteria.searchFilterKeyword.checkMap['Region 10']}"
-					onclick="javascript:resetSearchText();">Region 10</h:selectBooleanCheckbox>
+					>Region 10</h:selectBooleanCheckbox>
 			</td>
 		</tr>
 	</table>
@@ -1994,7 +2016,7 @@ alert("test");
   <h:panelGrid id="scPnlContent">
     <h:selectOneMenu id="scSelContent"
                      value="#{SearchController.searchCriteria.searchFilterContentTypes.selectedContentType}"
-                     onchange="javascript:updateHiddenValue(this)"
+                     onchange="javascript:updateHiddenValue(this)" 
                      >
       <f:selectItem itemValue=""
                     itemLabel="#{gptMsg['catalog.search.filterContentTypes.default']}" />
@@ -2049,7 +2071,7 @@ alert("test");
   <h:outputText escape="false" value='<div style="overflow:auto; height:200px;">'/>
   <h:panelGrid id="scPnlTheme">
     <h:selectManyCheckbox id="scSelTheme" layout="pageDirection"
-                          value="#{SearchController.searchCriteria.searchFilterThemes.selectedThemes}">
+                          value="#{SearchController.searchCriteria.searchFilterThemes.selectedThemes}" styleClass="choices">
       
       <f:selectItem
         itemLabel="#{gptMsg['catalog.mdCode.topic.boundaries']}"

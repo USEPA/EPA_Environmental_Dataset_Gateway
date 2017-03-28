@@ -683,6 +683,8 @@ function scSubmitForm(event, form) {
 */
 
 function checkFormSubmitted(form) {
+	return false;
+	
   // TODO: how did urban do this?
   if(!GptUtils.exists(form)) {
     GptUtils.logl(GptUtils.log.Level.WARNING, 
@@ -754,7 +756,7 @@ function uncheckForm() {
 
 							%>
 										   
-									<a  href="/metadata/rest/find/document?f=searchpage&searchText=keywords:&quot;<%=searchText%>&quot;" style="color: hsl(206,100%,<%=strLightness%>%);" title="<%=frequency%> tags"> <font size="<%=strSize%>"> <%=searchText%> | </font></a>
+									<a  href="/metadata/rest/find/document?f=searchpage&searchText=keywords:&quot;<%=searchText%>&quot;&max=25" style="color: hsl(206,100%,<%=strLightness%>%);" title="<%=frequency%> tags"> <font size="<%=strSize%>"> <%=searchText%> | </font></a>
 
 							<%} %>
 
