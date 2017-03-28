@@ -886,7 +886,7 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-primary text-left" data-toggle="modal" data-target="#myModal" style="text-align: center;
     padding-bottom: 24px;">Find My Region</button>
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="region1" id="tab-region1"><%=region1TabTitle%></a></li>
+					<li class="active"><a data-toggle="tab" href="#region1" id="tab-region1"><%=region1TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region2" id="tab-region2"><%=region2TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region3" id="tab-region3"><%=region3TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region4" id="tab-region4"><%=region4TabTitle%></a></li>
