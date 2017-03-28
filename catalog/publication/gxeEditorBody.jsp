@@ -35,6 +35,20 @@
 <% // interactive map configuration %>
 <% com.esri.gpt.framework.ArcGIS.InteractiveMap imConfig = 
    com.esri.gpt.framework.context.RequestContext.extract(request).getApplicationConfiguration().getInteractiveMap();%>
+<style>
+input[type='checkbox'] {
+    content: '\a0';
+    display: inline-block;
+    height: 1.05882em;
+    line-height: 0.8;
+    margin-right: 0.6em;
+    text-indent: 0.15em;
+    width: 1.05882em;
+    margin-left: 0.6em;
+    position: static;
+    display:none;
+	}
+</style>
 <script type="text/javascript">
   var gptMapConfig = new GptMapConfig();
   gptMapConfig.mapServiceURL = "<%=imConfig.getMapServiceUrl()%>";
