@@ -663,8 +663,8 @@ function rsGetQualityOfService() {
         style="vertical-align: top; #{SearchController.expandResultCheckboxStyle}"/>
 	<h:selectBooleanCheckbox id="srExpandResults"
 	  value="#{SearchController.searchCriteria.expandResultContent}"
-	  style="#{SearchController.expandResultCheckboxStyle}"
-	  onclick="rsExpandAllRecords(this);"/>
+	  style="#{SearchController.expandResultCheckboxStyle}; display:none"
+	  onclick="rsExpandAllRecords(this);" />
 	<h:outputLabel for="srExpandResults" 
 	  value="#{gptMsg['catalog.search.searchResult.lblExpand']}"
         style="vertical-align: top; #{SearchController.expandResultCheckboxStyle}"/>

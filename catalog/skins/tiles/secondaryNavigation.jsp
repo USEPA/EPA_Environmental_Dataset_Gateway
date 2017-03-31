@@ -32,7 +32,7 @@
 	  <h:commandLink action="catalog.publication.manageMetadata" 
 	    id="publicationManageMetadata" 
 	    value="#{gptMsg['catalog.publication.manageMetadata.subMenuCaption']}" 
-	    styleClass="#{PageContext.menuStyleMap['catalog.publication.manageMetadata']}"
+	    style="margin-right:10px;"
 	    actionListener="#{ManageMetadataController.processAction}"/>
 	
 	  <h:commandLink action="catalog.publication.addMetadata"
