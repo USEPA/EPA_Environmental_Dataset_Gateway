@@ -95,10 +95,7 @@
 		</div>
 		<div style="clear: both"></div>
 		<section id="main-content" class="main-content clearfix" role="main">
-		<div class="region-preface clearfix">
-			<div id="block-pane-epa-web-area-connect"
-				class="block block-pane contextual-links-region">
-				<div id="gptBody">
+			<div id="gptBody">
 
 					<div id="gptSecondaryNavigation">
 						<tiles:insert attribute="secondaryNavigation" flush="false" />
@@ -148,9 +145,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		</section>
+			</section>
 		<div style="clear: both"></div>
 		<div id="gptFooter">
 			<tiles:insert attribute="footer" flush="false" />
