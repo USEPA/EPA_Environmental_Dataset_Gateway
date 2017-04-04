@@ -32,12 +32,12 @@
 		id="openShareFeedback" 
 		onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 	</h:outputLink--%>
-	
-	<h:outputLink  styleClass="bigGreen"  value = "#" style="padding-top:0px;border: 0"
-		id="openShareFeedback" 
+	<ul class="menu secondary-menu">
+				<li class="menu-1569 menu-item">
+	<h:outputLink value = "#" id="openShareFeedback" 
 		onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 		<h:outputText value="#{gptMsg['catalog.shareFeedback']}" />
-	</h:outputLink>
+	</h:outputLink></li>
 	
 	<%--h:commandLink 
         id="identityFeedback"
@@ -45,11 +45,11 @@
         styleClass="#{PageContext.tabStyleMap['catalog.identity.feedback']}"
         value="#{gptMsg['catalog.identity.feedback.menuCaption']}" /--%>
         
-	<h:outputLink value="#"
-		id="openHelp" 
+	<li><h:outputLink value="#"
+		id="openHelp"  styleClass="menu-link"
 		onclick="javascript:mainOpenPageHelp()">
 		<h:outputText value="#{gptMsg['catalog.help.menuCaption']}" />
-	</h:outputLink>
+	</h:outputLink></li>
 
 	<%--h:commandLink id="identityMyProfile"
 		action="catalog.identity.myProfile" 
@@ -63,25 +63,25 @@
 		styleClass="#{PageContext.menuStyleMap['catalog.identity.userRegistration']}"
 		rendered="#{PageContext.roleMap['anonymous'] && PageContext.identitySupport.supportsUserRegistration}"/--%>
 
-	<h:commandLink id="identityLogin" action="catalog.identity.login" 
+	<li><h:commandLink id="identityLogin" action="catalog.identity.login" 
 		value="#{gptMsg['catalog.identity.login.menuCaption']}"
-		styleClass="#{PageContext.menuStyleMap['catalog.identity.login']}"
-		rendered="#{PageContext.roleMap['anonymous'] && PageContext.identitySupport.supportsLogin}"/> 
+		styleClass="menu-link"
+		rendered="#{PageContext.roleMap['anonymous'] && PageContext.identitySupport.supportsLogin}"/> </li>
 	
-	<h:outputLink value="/metadata/logout.jsp"
-		id="identityLogoutAE" 
+	<li><h:outputLink value="/metadata/logout.jsp"
+		id="identityLogoutAE" styleClass="menu-link" 
 		rendered="#{not PageContext.roleMap['anonymous'] && not PageContext.identitySupport.supportsLogout}"
 		>
 		<h:outputText value="#{gptMsg['catalog.identity.logout.menuCaption']}" />
-	</h:outputLink>
+	</h:outputLink></li>
 
-  <h:outputText 
-    id="msgAuthenticatedUser"
+  <li><h:commandLink 
+    id="msgAuthenticatedUser" styleClass="menu-link"
     rendered="#{not PageContext.roleMap['anonymous']}"
-    value="#{PageContext.welcomeMessage}"/>
-  <h:outputText 
-    id="msgNonAuthenticatedUser"
+    value="#{PageContext.welcomeMessage}"/></li>
+  <li><h:commandLink 
+    id="msgNonAuthenticatedUser" styleClass="menu-link"
     rendered="#{PageContext.roleMap['anonymous']}"
-    value="#{gptMsg['catalog.site.anonymous']}"/>
+    value="#{gptMsg['catalog.site.anonymous']}"/></li>
 
 </h:form>

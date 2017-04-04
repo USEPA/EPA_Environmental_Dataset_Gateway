@@ -261,6 +261,66 @@ try{
 <link rel="stylesheet" href="../skins/themes/blue/css/main.css">
 <link rel="stylesheet" href="../skins/themes/blue/css/responsive.css">
 <style>
+.region-footer {
+   
+    background-size: 17.6em 13.6em;
+ }
+ .region-footer .epa-menu > .menu-item > .menu-link {
+    margin: 0 1.2em 1.6em;
+    padding: 7.2em 1.4em 0;
+    text-decoration: none;
+}
+.main-content {
+    background-color: #fff;
+    color: black;
+}
+p {
+    margin: 0 0 10px;
+}
+body, button, input, select, textarea {
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+.title p {
+    font-size: 18px;
+    font-weight: 400px;
+    color: #9da8ad;
+}
+.title {
+    text-align: center;
+}
+.title h2 {
+    font-size: 36px;
+    color: #1b1b1b;
+    font-weight: 300;
+}
+.site-slogan {
+    
+    font-size: 87.75%;
+    font-weight: normal;
+    padding: .5em 0 0;
+}
+.secondary-menu > li > a {
+    color: #fff;
+    font-size: 75%;
+    margin: -.3333em;
+    padding: .3333em;
+    text-decoration: none;
+    font-size: 75%;
+   
+}
+.nav {
+	margin: 5px 0;
+	line-height: 2em;
+	font-size: 1.2em;
+}
+.nav a, .nav a:visited, .nav a:active {
+    border: 0px;
+    font-weight: bold;
+    padding: 2px 5px;
+    margin: 0em 0em;
+    text-align: center;
+    text-decoration: none;
+}
 .scrollup {
 	width: 40px;
 	height: 40px;
@@ -1838,7 +1898,7 @@ $(document).ready(function(){
 							</ul>
 							<p class="social-menu-more">
 								<a href="https://www2.epa.gov/home/social-media">More social
-									media at&#160;EPA&#160;»</a>
+									media at&#160;EPA&#160;ï¿½</a>
 							</p>
 						</div>
 					</div>
