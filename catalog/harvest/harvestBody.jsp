@@ -1452,14 +1452,14 @@ value="#{not empty HarvestController.editor.repository.uuid? HarvestController.e
 
 <h:outputText/>
 <h:panelGroup>
-  <h:selectBooleanCheckbox styleClass="autoApprove syncOpt" value="#{HarvestController.editor.autoApprove}" id="autoApprove"/>
+  <h:selectBooleanCheckbox style="display:none;" styleClass="autoApprove syncOpt" value="#{HarvestController.editor.autoApprove}" id="autoApprove"/>
   <h:outputLabel styleClass="autoApprove syncOpt" for="autoApprove" value="#{gptMsg['catalog.harvest.manage.edit.protocol.autoApprove']}"/>
 </h:panelGroup>
 
 <%-- Publish as draft --%>
 <h:outputText/>
 <h:panelGroup>
-  <h:selectBooleanCheckbox styleClass="asDraft syncOpt" value="#{HarvestController.editor.retryAsDraft}" id="asDraft"/>
+  <h:selectBooleanCheckbox style="display:none;" styleClass="asDraft syncOpt" value="#{HarvestController.editor.retryAsDraft}" id="asDraft"/>
   <h:outputLabel styleClass="asDraft syncOpt" for="asDraft" value="#{gptMsg['catalog.harvest.manage.edit.protocol.asDraft']}"/>
 </h:panelGroup>
 

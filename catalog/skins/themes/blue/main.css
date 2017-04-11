@@ -20,7 +20,7 @@ figcaption, small, .archive, .block-user .item-list, .comment-links, .figcaption
     font-size: 100.4706%;
 }
 .region-preface {
-    margin: 0px -3em;
+    margin: 0px 1em;
     padding: 0.5em 1em;
 }
 .main-content {
@@ -41,6 +41,7 @@ body, html {
 	
 	background-repeat: repeat-x;
 }
+
 body {
 	color: #0071bc;
 	font-family: "Lucida Grande",Geneva,Verdana,Arial,Helvetica,sans-serif;
@@ -811,20 +812,7 @@ img.datepicker_trigger {
 .choices input[type='checkbox']{
 		display:none;
 	}
-.main-nav > .menu > .menu-item > .menu-link {
-    background-color: #356;
-    background-image: -moz-linear-gradient(top, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.25) 100%);
-    background-image: -ms-linear-gradient(top, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.25) 100%);
-    background-image: -o-linear-gradient(top, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.25) 100%);
-    background-image: -webkit-linear-gradient(top, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.25) 100%);
-    background-image: linear-gradient(top, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,.25) 100%);
-    color: #fff;
-    font-size: 100%;
-    font-weight: bold;
-    line-height: 1;
-    padding: .7692em 1.2307em;
-    text-decoration: none;
-}
+
 .region-footer {
     background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…05LjIzMyAtNS4xNDIsLTEyLjQwOCB6IiBzdHlsZT0iZmlsbDojMDA1MGI4IiAvPg0KPC9zdmc+) 50% 100% no-repeat;
     background-size: 9.6em 9.6em;
@@ -836,4 +824,44 @@ img.datepicker_trigger {
 .region-footer .col__title {
     font-size: 168.6471%;
     margin: 0 0 1.25em;
+}
+/**
+ * GRID
+ */
+.grid {
+	width: 100%;
+	border: 1px solid #666666;
+}
+.grid th {
+	color: #FFF;
+	margin: 0;
+	padding: 0em;
+	line-height: 1em;
+	font-size: 0.9em;
+	font-weight: bold;
+	background-color: #01568D;
+}
+.grid th a {
+	color: #FFF;
+}
+.grid td {
+	border-top: 1px solid #CCCCCC;
+	text-align: left;
+	vertical-align: top;
+	font-size: 0.8em;
+	padding: 0.1em 0.2em;
+}
+.grid .rowOdd {
+	background-color: #F3F3F3;
+}
+.grid .rowEven {
+	background-color: #FFF;
+}
+.grid .ascending {
+	padding: 2px 5px 2px 15px;
+	background: url(images/sort_asc.gif) no-repeat 4px;
+}
+.grid .descending {
+	padding: 2px 5px 2px 15px;
+	background: url(images/sort_desc.gif) no-repeat 4px;
 }

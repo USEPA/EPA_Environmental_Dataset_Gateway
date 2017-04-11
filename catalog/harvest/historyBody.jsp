@@ -21,7 +21,11 @@
 <gpt:DatePickerConfig/>
 
 <f:verbatim>
-
+<style>
+label {
+    float:left;
+	font-size: 12px;
+}</style>
 <script type="text/javascript">
 $(document).ready(function(){
     var dpCfg = new DatePickerConfig();
