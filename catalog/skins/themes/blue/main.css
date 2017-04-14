@@ -865,3 +865,58 @@ img.datepicker_trigger {
 	padding: 2px 5px 2px 15px;
 	background: url(images/sort_desc.gif) no-repeat 4px;
 }
+/**
+ * Rest response snippets
+ */
+
+.browse-results {padding: 4px}
+
+.browse-results .browse-results-header {
+	white-space: nowrap;
+}
+
+.snippet {
+  margin: 4px 0px 4px 0px;
+  border: 1px solid #CCC;
+  background: #FFF url(images/small_bg.gif) repeat-x;
+}
+.snippet .title {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 1px;
+  color: #AE4F0C;
+  cursor: hand; cursor: pointer;
+}
+.snippet .title img {
+  margin-right: 0.5em;
+  padding: 1px;
+  vertical-align: text-bottom;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+.snippet .abstract {
+  margin: 4px 0px 4px 12px;
+  font-size:0.9em;
+}
+.snippet .links {
+  xdisplay: none;
+  margin: 4px 0px 4px 12px;
+}
+
+.snippet .links a:link, .snippet .links a:visited {
+  margin: 0 3px;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-bottom: 1px dotted;
+  color: #AE4F0C;
+  text-decoration: none;
+}
+
+.snippet .links a:hover, .snippet .links a:focus {
+  margin: 0 3px;
+  font-size:0.9em;
+  font-weight: bold;
+  border-bottom-style: solid;
+  color: #D03900;
+}

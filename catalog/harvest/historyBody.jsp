@@ -23,8 +23,7 @@
 <f:verbatim>
 <style>
 label {
-    float:left;
-	font-size: 12px;
+    display: inline-block;
 }</style>
 <script type="text/javascript">
 $(document).ready(function(){
