@@ -261,13 +261,20 @@ try{
 <link rel="stylesheet" href="../skins/themes/blue/css/main.css">
 <link rel="stylesheet" href="../skins/themes/blue/css/responsive.css">
 <style>
+body, .box.special > .pane-content, .box.special > .pane-content {
+    font-size: 98%;
+   
+}
+.media-left, .media>.pull-left {
+    padding-right: 24px;
+}
 .region-footer {
    
     background-size: 17.6em 13.6em;
  }
  .region-footer .epa-menu > .menu-item > .menu-link {
     margin: 0 1.2em 1.6em;
-    padding: 7.2em 1.4em 0;
+    padding: 4.2em 1.4em 0;
     text-decoration: none;
 }
 .main-content {
@@ -301,18 +308,14 @@ body, button, input, select, textarea {
 }
 .secondary-menu > li > a {
     color: #fff;
-    font-size: 75%;
+    font-size: 100%;
     margin: -.3333em;
     padding: .3333em;
     text-decoration: none;
-    font-size: 75%;
+    
    
 }
-.nav {
-	margin: 5px 0;
-	line-height: 2em;
-	font-size: 1.2em;
-}
+
 .nav a, .nav a:visited, .nav a:active {
     border: 0px;
     font-weight: bold;
@@ -336,6 +339,10 @@ body, button, input, select, textarea {
   position: relative;
   z-index: 10;
   height:  0;
+}
+.secondary-nav > .menu {
+    float: right;
+    margin-top: .875em;
 }
 .bigGreen {
     -webkit-appearance: none;
