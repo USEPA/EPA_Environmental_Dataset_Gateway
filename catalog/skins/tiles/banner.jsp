@@ -16,25 +16,24 @@
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
-
 <div id="gptTitle">
 	<%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%>
 </div>
 
 <h:form id="frmTertiaryNavigation">
-
-    <f:verbatim
+<ul class="menu secondary-menu">
+    <li><f:verbatim
         rendered="#{not PageContext.roleMap['anonymous']}">
         <a href="/metrics/" target="_blank">EDG Inventory</a>
-    </f:verbatim>
+    </f:verbatim></li>
 
 	<%--h:outputLink value="#" styleClass="bigGreen" value = "#{gptMsg['catalog.shareFeedback']}"
 		id="openShareFeedback" 
 		onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 	</h:outputLink--%>
-	<ul class="menu secondary-menu">
-				<li class="menu-1569 menu-item">
-	<h:outputLink value = "#" id="openShareFeedback" 
+	
+				<li>
+	<h:outputLink styleClass="bigGreen"  value = "#" style="padding-top:0px;border: 0" id="openShareFeedback" 
 		onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 		<h:outputText value="#{gptMsg['catalog.shareFeedback']}" />
 	</h:outputLink></li>
@@ -65,7 +64,7 @@
 
 	<li><h:commandLink id="identityLogin" action="catalog.identity.login" 
 		value="#{gptMsg['catalog.identity.login.menuCaption']}"
-		styleClass="menu-link"
+		
 		rendered="#{PageContext.roleMap['anonymous'] && PageContext.identitySupport.supportsLogin}"/> </li>
 	
 	<li><h:outputLink value="/metadata/logout.jsp"
@@ -75,12 +74,12 @@
 		<h:outputText value="#{gptMsg['catalog.identity.logout.menuCaption']}" />
 	</h:outputLink></li>
 
-  <li><h:commandLink 
-    id="msgAuthenticatedUser" styleClass="menu-link"
+  <li><h:outputText styleClass="username" 
+    id="msgAuthenticatedUser" 
     rendered="#{not PageContext.roleMap['anonymous']}"
     value="#{PageContext.welcomeMessage}"/></li>
-  <li><h:commandLink 
-    id="msgNonAuthenticatedUser" styleClass="menu-link"
+  <li><h:outputText 
+    id="msgNonAuthenticatedUser" 
     rendered="#{PageContext.roleMap['anonymous']}"
     value="#{gptMsg['catalog.site.anonymous']}"/></li>
 

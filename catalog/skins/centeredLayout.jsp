@@ -68,8 +68,10 @@
 		})(window, document, 'script', 'dataLayer', 'GTM-L8ZB');
 	</script>
 	<div id="gptMainWrap" style="position: static;">
-
-		<div class="skip-links">
+	<div id="gptBanner" title="EDG Banner">
+			<tiles:insert attribute="banner" flush="false" />
+		</div>
+	<div class="skip-links">
 			<a href="#main-content" class="skip-link element-invisible element-focusable">Jump to main content</a>
 		</div>
 		<header class="masthead clearfix" role="banner"> 
@@ -84,11 +86,15 @@
 		  </h1>
 		<div class="site-slogan">United States Environmental Protection	Agency</div>
 		</hgroup>
-		<div id="gptBanner" title="EDG Banner">
-			<tiles:insert attribute="banner" flush="false" />
-		</div>
+         
+		
+		<div id="gptTertiaryNavigation">
+				<tiles:insert attribute="tertiaryNavigation" flush="false"/>
+			</div>
 		</header>
-
+		
+		
+ 
 		<div style="clear: both"></div>
 		<div id="gptPrimaryNavigation">
 			<tiles:insert attribute="primaryNavigation" flush="false" />
