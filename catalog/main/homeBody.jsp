@@ -1,133 +1,15 @@
 <% // homeBody.jsp - Home page (JSF body) %>
 <%@page import="org.json.JSONObject" %>
 <%@page import="org.json.JSONArray" %>
-<%@page import="java.util.Random" %>
-<%@page import="java.net.URLEncoder"%>
 <%@page import="com.esri.gpt.framework.http.HttpClientRequest" %>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%@page import="com.esri.gpt.framework.util.Val"%>  
-<%!
-	static class ThumbnailsData{
-		static JSONObject imgObject = new JSONObject();
-	static{
-    imgObject.put("climate","ac");
-	imgObject.put("trees","br");
-    imgObject.put("climatologymeteorologyatmosphere","ac");
-	
-	imgObject.put("environment","hb");
-	imgObject.put("health","hh");
-	imgObject.put("human well-being","hh");
-	imgObject.put("public health","hh");
-	imgObject.put("human","pd");
-	imgObject.put("society","pd");
-	imgObject.put("risk","nz");
-	imgObject.put("impact","am");
-	
-    imgObject.put("location","ad");
-	imgObject.put("buildings","bu");
-	imgObject.put("cleanup","am");
-	imgObject.put("compliance","am");
-	imgObject.put("contaminant","am");
-	imgObject.put("facilities","pf");
-	imgObject.put("facility","pf");
-	imgObject.put("facility site","pf");
-	imgObject.put("regulatory","am");
-	imgObject.put("remediation","am");
-	imgObject.put("sites","ad");
-    imgObject.put("remediation","am");
-	imgObject.put("resources","ps");
-	imgObject.put("emergency response","nz");
-	imgObject.put("air","ac");
-	imgObject.put("air quality","ac");
-	imgObject.put("emergency","nz");
-	imgObject.put("energy","er");
-	imgObject.put("response","nz");
-    imgObject.put("drinking water","hy");
-	imgObject.put("agriculture","af");
-	imgObject.put("hazards","nz");
-	imgObject.put("monitoring","ef");
-	imgObject.put("permits","am");
-	imgObject.put("boundaries","gg");
-	imgObject.put("navigation","gg");
-	imgObject.put("roadmap","gg");
-	imgObject.put("routing","gg");
-	imgObject.put("ecology","sd");
-	imgObject.put("ecosystem","hb");
-	imgObject.put("land","so");
-	imgObject.put("natural resources","ps");
-	imgObject.put("conservation","ps");
-	imgObject.put("economy","ss");
-	imgObject.put("habitat","hb");
-	imgObject.put("water","of");
-	imgObject.put("land cover","lc");
-	imgObject.put("modeling","su");
-	imgObject.put("recreation","pd");
-	imgObject.put("oceans","of");
-	imgObject.put("surface water","hy");
-	imgObject.put("air quality","ac");
-	imgObject.put("inlandwaters","hy");
-	imgObject.put("wetlands","hy");
-	imgObject.put("estuary","hy");
-	
-	imgObject.put("census block groups","cp");
-	imgObject.put("transportation","tn");
-	imgObject.put("exposure","ef");
-	imgObject.put("indicator","ef");
-	imgObject.put("riparian","hy");
-	imgObject.put("geoscientificinformation","gg");
-	imgObject.put("biodiversity and ecosystems","hb");
-	imgObject.put("green space","lc");
-	imgObject.put("regulated sites","pf");
-	imgObject.put("toxic release","am");
-	imgObject.put("demographics","pd");
-	imgObject.put("biota","sd");
-	imgObject.put("biodiversity","sd");
-	imgObject.put("geocoding","sd");
-	}
-	}
-	
-%>
-<%!
-public String getThumbnail(String uuid)
-{
-	String thumbnailResponseBody = "";
-	String url = "https://edg.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
-		
-	HttpClientRequest thumbnailClient = new HttpClientRequest();
-    JSONObject thumbnailObj = null;
-    thumbnailClient.setUrl(url);
-		
-    try{
-		thumbnailResponseBody =  thumbnailClient.readResponseAsCharacters();
-		thumbnailObj = new JSONObject(thumbnailResponseBody);
-   
-    }catch(Exception e){
-		//e.printStackTrace();
-		return "gg";
-	}
-	String keyword = "";
-	try{
-	
-	thumbnailObj = thumbnailObj.getJSONArray("dataset").getJSONObject(0);
-	JSONArray keywordsArray = thumbnailObj.getJSONArray("keyword");
-	Random random = new Random();
-	keyword = keywordsArray.getString(random.nextInt(keywordsArray.length()));
-	
-	}catch(Exception ex){
-		ex.printStackTrace();
-	}
-	
-	String thumnailCss = ThumbnailsData.imgObject.has(keyword)?ThumbnailsData.imgObject.getString(keyword):"gg";
-	return thumnailCss;
-	
-}
-	%>
 <%
 String responseBody = "";
 //String site = "http://localhost:8080";
-String site = "https://edg.epa.gov";
+String site = "https://edg-staging.epa.gov";
 String featuredTab1Title = "Climate Change";
 String featuredTab2Title = "Environmental Justice";
 String featuredTab3Title = "Facility Data";
@@ -377,49 +259,8 @@ try{
 <link rel="stylesheet" href="../skins/themes/blue/css/owl.theme.css">
 <link rel="stylesheet" href="../skins/themes/blue/css/animate.css">
 <link rel="stylesheet" href="../skins/themes/blue/css/main.css">
-<link rel="stylesheet" href="../skins/themes/blue/css/inspire-themes.css">
 <link rel="stylesheet" href="../skins/themes/blue/css/responsive.css">
 <style>
-.inspire-themes-icons-box, .iti-box {
-    border-radius: 6px;
-    width: 34px;
-    height: 34px;
-    float: left;
-    margin-right: 6px;
-    border: 0px;
-}
-.x50 .iti-box {
-   width: 132px;
-   height: 121px;
-   margin-right: 20px;
-}
-.x50 .iti-box .icon {
-  border-radius: 14px;
-  border-width: 2px;
-  font-size: 140px;
- }
-.x50 .iti-box.acr {
-  width: 300px;
- }
-.x50 .iti-box.full {
-  width: 1000px;
- }
-.x50 .iti-box .label,
-.x50 .iti-box .label:before {
-  margin-left: 15px;
- }
-.x50 .iti-box.acr .label {
-  font-size: 110px;
-  margin-top: 30px;
- }
-.x50 .iti-box.full .label {
-  font-size: 46px;
-  margin-top: 46px;
-  width: 808px;
- }
-.x50 .iti-box.full .label.two {
-  margin-top: 20px;
- }
 body, .box.special > .pane-content, .box.special > .pane-content {
     font-size: 98%;
    
@@ -858,7 +699,6 @@ $(document).ready(function(){
 													JSONArray arr = cliChobj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -866,29 +706,22 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
-														}
-														System.out.println("print href"+hrefDet);
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
 														}
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<%=imageHtml%>
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -915,7 +748,6 @@ $(document).ready(function(){
 													JSONArray arr = ejobj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -923,34 +755,26 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
-														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
 														}
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<%=imageHtml%>
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
 										</a>
-										
 										<%
 										}
 												} catch (Exception e) {
@@ -969,12 +793,11 @@ $(document).ready(function(){
 							
 								<div id="facData" class="tab-pane fade">
 		                        <div class="row" style="padding-top: 22px">
-								<%
+										<%
 											try {
 													JSONArray arr = fDataobj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -982,34 +805,26 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
-														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
 														}
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<%=imageHtml%>
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
 										</a>
-										
 										<%
 										}
 												} catch (Exception e) {
@@ -1081,7 +896,6 @@ $(document).ready(function(){
 													JSONArray arr = popobj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1089,29 +903,22 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
-														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
 														}
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
-													<%=imageHtml%>
+													<img src="<%=hrefDet%>" data-toggle="tooltip" alt="" title="<%=title%>">
 													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
 												</div>
 											</div>
@@ -1220,7 +1027,7 @@ $(document).ready(function(){
 				<button type="button" class="btn btn-primary text-left" data-toggle="modal" data-target="#myModal" style="text-align: center;
     padding-bottom: 24px;">Find My Region</button>
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="region1" id="tab-region1"><%=region1TabTitle%></a></li>
+					<li class="active"><a data-toggle="tab" href="#region1" id="tab-region1"><%=region1TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region2" id="tab-region2"><%=region2TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region3" id="tab-region3"><%=region3TabTitle%></a></li>
 					<li><a data-toggle="tab" href="#region4" id="tab-region4"><%=region4TabTitle%></a></li>
@@ -1235,12 +1042,11 @@ $(document).ready(function(){
 
 					<div id="region1" class="tab-pane fade in active">
 						<div class="row" style="padding-top: 22px">
-						<%
+							<%
 											try {
 													JSONArray arr = reg1obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1248,34 +1054,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
-						
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1295,12 +1095,11 @@ $(document).ready(function(){
 
 					<div id="region2" class="tab-pane fade">
 						<div class="row" style="padding-top: 22px">
-						<%
+							<%
 											try {
 													JSONArray arr = reg2obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1308,34 +1107,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
-							
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1359,7 +1152,6 @@ $(document).ready(function(){
 													JSONArray arr = reg3obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1367,33 +1159,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1417,7 +1204,6 @@ $(document).ready(function(){
 													JSONArray arr = reg4obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1425,33 +1211,30 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
+
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
+
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1476,7 +1259,6 @@ $(document).ready(function(){
 													JSONArray arr = reg5obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1484,33 +1266,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1535,7 +1312,6 @@ $(document).ready(function(){
 													JSONArray arr = reg6obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1543,33 +1319,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1593,7 +1364,6 @@ $(document).ready(function(){
 													JSONArray arr = reg7obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1601,33 +1371,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1651,7 +1416,6 @@ $(document).ready(function(){
 													JSONArray arr = reg8obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1659,33 +1423,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1709,7 +1468,6 @@ $(document).ready(function(){
 													JSONArray arr = reg9obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1717,33 +1475,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
@@ -1767,7 +1520,6 @@ $(document).ready(function(){
 													JSONArray arr = reg10obj.getJSONArray("records");
 													int counter = 0;
 													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
 														JSONObject record = arr.getJSONObject(i);
 														JSONArray links = record.getJSONArray("links");
 														String title = record.getString("title");
@@ -1775,33 +1527,28 @@ $(document).ready(function(){
 														if (counter == 6) {
 															break;
 														}
-														String hrefDet = null;
+														String hrefDet="../skins/themes/blue/images/generalicon100x120.png";
 														for (int j = 0; j < links.length(); j++) {
 															JSONObject details = links.getJSONObject(j);
 															String typeDet = details.getString("type");
 															if ("thumbnail".equalsIgnoreCase(typeDet)) {
 																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
 															}
 														}
-														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
 														counter++;
-										%>
-										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
-											target="_blank">
-											<div class="col-md-2">
-												<div class="thumbnail">
-													<%=imageHtml%>
-													<div class="caption" style="word-wrap: break-word; font-size:14px;"><%=title%></div>
-												</div>
-											</div>
-										</a>
+														%>
+							<a
+								href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+								target="_blank">
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<img src="<%=hrefDet%>" data-toggle="tooltip" alt=""
+											title="<%=title%>">
+										<div class="caption"
+											style="word-wrap: break-word; font-size: 14px;"><%=title%></div>
+									</div>
+								</div>
+							</a>
 							<%
 										}
 												} catch (Exception e) {
