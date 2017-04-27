@@ -15,6 +15,7 @@
  blockquote, body, caption, div, dl, dt, dd, form, fieldset, h1, h2, h3, h4, h5, h6, html, li, ul, ol, p, pre, textarea, table, th {
 	margin: 0pt;
 	padding: 0pt;
+	margin-bottom: 0.6em;
 }
 figcaption, small, .archive, .block-user .item-list, .comment-links, .figcaption, .filter-help, .form-item .description, .more-link, .node-links, .progress .message, .progress .percentage, .search-results .search-info, .submitted, .vertical-tab-button .summary, #block-pane-epa-web-area-connect, #block-pane-social-sharing, #block-epa-og-footer {
     font-size: 100.4706%;
@@ -307,10 +308,7 @@ label {
 .nav .result {
     margin: 0 1em 0 0;
 }
-blockquote, body, caption, div, dl, dt, dd, form, fieldset, h1, h2, h3, h4, h5, h6, html, li, ul, ol, p, pre, textarea, table, th {
-    margin: 0pt;
-    padding: 0pt;
-}
+
 table[Attributes Style] {
     width: 100%;
 }
