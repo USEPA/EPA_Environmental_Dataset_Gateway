@@ -564,7 +564,7 @@ public String getDocUUID(String uuid)
 	  ResultSet rs = null;
 	  String docuuid = null;
 	  try {
-	    String sql = "SELECT DOCUUID FROM " + GPT_RESOURCE + " WHERE UPPER(DOCUUID) = ? ";
+	    String sql = "SELECT DOCUUID FROM " + GPT_RESOURCE + " WHERE UPPER(DOCUUID) = ?";
 	        
 	    connection = this.getConnection();
 	    ps = connection.prepareStatement(sql);
@@ -574,6 +574,17 @@ public String getDocUUID(String uuid)
 	   
 	    if (rs.next()) {
 	    	docuuid = Val.chkStr(rs.getString(1));	     
+	    }
+	    if(docuuid == null){
+	    ps.close();
+	    rs.close();
+	    sql = "SELECT fileidentifier FROM " + GPT_RESOURCE + " WHERE UPPER(fileidentifier) = ? ";
+	    ps = connection.prepareStatement(sql);
+	    ps.setString(1, uuid.toUpperCase());
+	    rs = ps.executeQuery();
+	    if (rs.next()) {
+	    	docuuid = Val.chkStr(rs.getString(1));	     
+	    } 
 	    }
 	    
 	    if(docuuid == null)
