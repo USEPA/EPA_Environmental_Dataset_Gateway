@@ -94,7 +94,7 @@
 public String getThumbnail(String uuid)
 {
 	String thumbnailResponseBody = "";
-	String url = "https://edg.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
+	String url = "https://edg-staging.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
 		
 	HttpClientRequest thumbnailClient = new HttpClientRequest();
     JSONObject thumbnailObj = null;
@@ -115,16 +115,12 @@ public String getThumbnail(String uuid)
 	JSONArray keywordsArray = thumbnailObj.getJSONArray("keyword");
 	Random random = new Random();
 	keyword = keywordsArray.getString(random.nextInt(keywordsArray.length()));
-	
 	}catch(Exception ex){
 		ex.printStackTrace();
 	}
 	
 	String thumnailCss = ThumbnailsData.imgObject.has(keyword)?ThumbnailsData.imgObject.getString(keyword):"hb";
-	
 	return thumnailCss;
-	
-	
 }
 	%>
 <%
@@ -310,6 +306,7 @@ try{
     e.printStackTrace();
 }
 %>
+
 <f:view>
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 	<!--[if IEMobile 7]><html class="iem7 no-js" lang="en" dir="ltr"><![endif]-->
@@ -383,6 +380,11 @@ try{
 <link rel="stylesheet" href="../skins/themes/blue/css/inspire-themes.css">
 <link rel="stylesheet" href="../skins/themes/blue/css/responsive.css">
 <style>
+blockquote, body, caption, div, dl, dt, dd, form, fieldset, h1, h2, h3, h4, h5, h6, html, ol, p, pre, textarea, table, th {
+    margin: 0pt;
+    padding: 0pt;
+	margin-bottom: 0.6em;
+}
 .inspire-themes-icons-box, .iti-box {
     border-radius: 6px;
     width: 34px;
@@ -392,9 +394,9 @@ try{
     border: 0px;
 }
 .x50 .iti-box {
-   width: 132px;
-  height: 121px;
-  margin-right: 20px;
+    width: 132px;
+    height: 121px;
+    margin-right: 20px;
 }
 .x50 .iti-box .icon {
   border-radius: 14px;
@@ -403,7 +405,6 @@ try{
 }
 .x50 .iti-box.acr {
   width: 300px;
-
 }
 .x50 .iti-box.full {
   width: 1000px;
@@ -415,7 +416,7 @@ try{
 .x50 .iti-box.acr .label {
   font-size: 110px;
   margin-top: 30px;
- }
+}
 .x50 .iti-box.full .label {
   font-size: 46px;
   margin-top: 46px;
@@ -426,15 +427,13 @@ try{
 }
 body, .box.special > .pane-content, .box.special > .pane-content {
     font-size: 98%;
-   
 }
 .media-left, .media>.pull-left {
     padding-right: 24px;
 }
 .region-footer {
-   
-    background-size: 17.6em 13.6em;
- }
+     background-size: 17.6em 13.6em;
+}
  .region-footer .epa-menu > .menu-item > .menu-link {
     margin: 0 1.2em 1.6em;
     padding: 4.2em 1.4em 0;
@@ -475,8 +474,6 @@ body, button, input, select, textarea {
     margin: -.3333em;
     padding: .3333em;
     text-decoration: none;
-    
-   
 }
 
 .nav a, .nav a:visited, .nav a:active {
@@ -846,6 +843,7 @@ $(document).ready(function(){
 								<!-- end -->
 							</div>
 						</div>
+						
 						<div class="container">
 							<h2>Featured Data Products</h2>
 							<ul class="nav nav-tabs">
@@ -880,7 +878,6 @@ $(document).ready(function(){
 																
 															}
 														}
-														
 														if(hrefDet == null){
 															hrefDet = getThumbnail(uuid);
 															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
