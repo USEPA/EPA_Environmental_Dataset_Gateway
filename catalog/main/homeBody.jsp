@@ -8,88 +8,8 @@
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%@page import="com.esri.gpt.framework.util.Val"%>  
-<%!
-	static class ThumbnailsData{
-		static JSONObject imgObject = new JSONObject();
-	static{
-    imgObject.put("climate","ac");
-	imgObject.put("trees","br");
-    imgObject.put("climatologymeteorologyatmosphere","ac");
-	
-	imgObject.put("environment","hb");
-	imgObject.put("health","hh");
-	imgObject.put("human well-being","hh");
-	imgObject.put("public health","hh");
-	imgObject.put("human","pd");
-	imgObject.put("society","pd");
-	imgObject.put("risk","nz");
-	imgObject.put("impact","am");
-	
-    imgObject.put("location","ad");
-	imgObject.put("buildings","bu");
-	imgObject.put("cleanup","am");
-	imgObject.put("compliance","am");
-	imgObject.put("contaminant","am");
-	imgObject.put("facilities","pf");
-	imgObject.put("facility","pf");
-	imgObject.put("facility site","pf");
-	imgObject.put("regulatory","am");
-	imgObject.put("remediation","am");
-	imgObject.put("sites","ad");
-    imgObject.put("remediation","am");
-	imgObject.put("resources","ps");
-	imgObject.put("emergency response","nz");
-	imgObject.put("air","ac");
-	imgObject.put("air quality","ac");
-	imgObject.put("emergency","nz");
-	imgObject.put("energy","er");
-	imgObject.put("response","nz");
-    imgObject.put("drinking water","hy");
-	imgObject.put("agriculture","af");
-	imgObject.put("hazards","nz");
-	imgObject.put("monitoring","ef");
-	imgObject.put("permits","am");
-	imgObject.put("boundaries","hb");
-	imgObject.put("navigation","hb");
-	imgObject.put("roadmap","hb");
-	imgObject.put("routing","hb");
-	imgObject.put("ecology","sd");
-	imgObject.put("ecosystem","hb");
-	imgObject.put("land","so");
-	imgObject.put("natural resources","ps");
-	imgObject.put("conservation","ps");
-	imgObject.put("economy","ss");
-	imgObject.put("habitat","hb");
-	imgObject.put("water","of");
-	imgObject.put("land cover","lc");
-	imgObject.put("modeling","su");
-	imgObject.put("recreation","pd");
-	imgObject.put("oceans","of");
-	imgObject.put("surface water","hy");
-	imgObject.put("air quality","ac");
-	imgObject.put("inlandwaters","hy");
-	imgObject.put("wetlands","hy");
-	imgObject.put("estuary","hy");
-	
-	imgObject.put("census block groups","cp");
-	imgObject.put("transportation","tn");
-	imgObject.put("exposure","ef");
-	imgObject.put("indicator","ef");
-	imgObject.put("riparian","hy");
-	imgObject.put("geoscientificinformation","hb");
-	imgObject.put("biodiversity and ecosystems","hb");
-	imgObject.put("green space","lc");
-	imgObject.put("regulated sites","pf");
-	imgObject.put("toxic release","am");
-	imgObject.put("demographics","pd");
-	imgObject.put("biota","sd");
-	imgObject.put("biodiversity","sd");
-	imgObject.put("geocoding","sd");
-	}
-	}
+<%@page import="com.esri.gpt.framework.util.ThumbnailsData" %>
 
-	
-%>
 <%!
 public String getThumbnail(String uuid)
 {
