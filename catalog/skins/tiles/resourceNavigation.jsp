@@ -198,8 +198,8 @@ if (typeof(dojo) != 'undefined') {
 }
 </script>
 <f:verbatim>
-	<a id="rnpDetails" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
-	<a id="rnpReview" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>
+	<a id="rnpDetails" style="margin: 0 1em 0 0" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
+	<a id="rnpReview" style="margin: 0 1em 0 0" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>
 	<a id="rnpRelationships" style="display:none" href="<%=rnpRelationshipsUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.relationships.title")%></a>
 	<a id="rnpLinkDevelop" href="" style="float:right;" target="_blank"></a>
 	<a id="rnpPreview" style="display:none" href="<%=rnpPreviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.liveData.title")%></a>	
