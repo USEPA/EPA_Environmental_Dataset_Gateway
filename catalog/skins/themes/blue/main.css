@@ -456,6 +456,7 @@ h1 {
 .parameterLabel {
 	text-align: right;
 	vertical-align: top;
+	width: 126px;
 }
 .parameterInput {text-align: left;}
 /**
