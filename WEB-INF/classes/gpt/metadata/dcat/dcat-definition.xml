@@ -163,7 +163,7 @@
   <section key="pod.access">
 	<label resourceKey="catalog.mdParam.constraint.caption"/>
 	<parameter key="accessLevel">
-		<label resourceKey="catalog.mdParam.schema.dcat.accessLevel"/>
+		<label resourceKey="catalog.mdParam.schema.dcat.accessLevelLabel"/>
 		<input type="selectOneMenu" defaultValue="Public" />
 		<validation required="true"/>
 		<content useSelectForUpdate="true" deleteIfEmpty="false"
@@ -176,14 +176,14 @@
 		</content>
 	</parameter>
 	<parameter key="pod.rights">
-		<label resourceKey="catalog.mdParam.schema.dcat.rights"/>
+		<label resourceKey="catalog.mdParam.schema.dcat.rightsLabel"/>
 		<input type="textArea"/>
 		<validation required="false"/>
 		<content useSelectForUpdate="true" deleteIfEmpty="true"
 			   select="/rdf:RDF/dcat:dataset/dct:rights"/>
 	</parameter>
 	<parameter key="pod.license">
-      <label resourceKey="catalog.mdParam.schema.dcat.license"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.licenseLabel"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="true" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="false"
@@ -195,7 +195,7 @@
 	<label resourceKey="catalog.fgdc.metainfo.section.dates"/>
     <!-- Modified Date -->
     <parameter key="pod.modifiedDate"> 
-      <label resourceKey="catalog.gxe.dc.modified"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.modifiedDateLabel"/>
       <input type="text" size="20" maxlength="10" 
              hintResourceKey="catalog.general.inputDateFormat"
              defaultValue="#{EditMetadataController.now}"/>
@@ -205,7 +205,7 @@
     </parameter> 
     <!-- Issued Date -->
     <parameter key="pod.issuedDate"> 
-      <label resourceKey="catalog.gxe.dc.issued"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.issuedDateLabel"/>
       <input type="text" size="20" maxlength="10" 
              hintResourceKey="catalog.general.inputDateFormat"
              defaultValue="#{EditMetadataController.now}"/>
