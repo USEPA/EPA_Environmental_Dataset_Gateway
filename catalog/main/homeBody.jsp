@@ -8,10 +8,12 @@
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%@page import="com.esri.gpt.framework.util.Val"%>  
+<%@page import="com.esri.gpt.framework.util.ThumbnailsData" %>
 <%!
-	static class ThumbnailsData{
-		static JSONObject imgObject = new JSONObject();
-	static{
+	public String getThumbnail(String uuid)
+{
+	JSONObject imgObject = new JSONObject();
+	
     imgObject.put("climate","ac");
 	imgObject.put("trees","br");
     imgObject.put("climatologymeteorologyatmosphere","ac");
@@ -85,14 +87,7 @@
 	imgObject.put("biota","sd");
 	imgObject.put("biodiversity","sd");
 	imgObject.put("geocoding","sd");
-	}
-	}
 
-	
-%>
-<%!
-public String getThumbnail(String uuid)
-{
 	String thumbnailResponseBody = "";
 	String url = "https://edg-staging.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
 		
@@ -119,7 +114,7 @@ public String getThumbnail(String uuid)
 		ex.printStackTrace();
 	}
 	
-	String thumnailCss = ThumbnailsData.imgObject.has(keyword)?ThumbnailsData.imgObject.getString(keyword):"hb";
+	String thumnailCss = imgObject.has(keyword)?imgObject.getString(keyword):"hb";
 	return thumnailCss;
 }
 	%>
