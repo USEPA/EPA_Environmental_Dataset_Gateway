@@ -8,88 +8,89 @@
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%@page import="com.esri.gpt.framework.util.Val"%>  
-<%@page import="com.esri.gpt.framework.util.ThumbnailsData" %>
+<%@page import="java.util.HashMap"%> 
+<%@page import="java.util.Map"%>
 <%!
-	public String getThumbnail(String uuid)
+public String getThumbnail(String uuid)
 {
-	JSONObject imgObject = new JSONObject();
-	
-    imgObject.put("climate","ac");
-	imgObject.put("trees","br");
-    imgObject.put("climatologymeteorologyatmosphere","ac");
-	
-	imgObject.put("environment","hb");
-	imgObject.put("health","hh");
-	imgObject.put("human well-being","hh");
-	imgObject.put("public health","hh");
-	imgObject.put("human","pd");
-	imgObject.put("society","pd");
-	imgObject.put("risk","nz");
-	imgObject.put("impact","am");
-	
-    imgObject.put("location","ad");
-	imgObject.put("buildings","bu");
-	imgObject.put("cleanup","am");
-	imgObject.put("compliance","am");
-	imgObject.put("contaminant","am");
-	imgObject.put("facilities","pf");
-	imgObject.put("facility","pf");
-	imgObject.put("facility site","pf");
-	imgObject.put("regulatory","am");
-	imgObject.put("remediation","am");
-	imgObject.put("sites","ad");
-    imgObject.put("remediation","am");
-	imgObject.put("resources","ps");
-	imgObject.put("emergency response","nz");
-	imgObject.put("air","ac");
-	imgObject.put("air quality","ac");
-	imgObject.put("emergency","nz");
-	imgObject.put("energy","er");
-	imgObject.put("response","nz");
-    imgObject.put("drinking water","hy");
-	imgObject.put("agriculture","af");
-	imgObject.put("hazards","nz");
-	imgObject.put("monitoring","ef");
-	imgObject.put("permits","am");
-	imgObject.put("boundaries","hb");
-	imgObject.put("navigation","hb");
-	imgObject.put("roadmap","hb");
-	imgObject.put("routing","hb");
-	imgObject.put("ecology","sd");
-	imgObject.put("ecosystem","hb");
-	imgObject.put("land","so");
-	imgObject.put("natural resources","ps");
-	imgObject.put("conservation","ps");
-	imgObject.put("economy","ss");
-	imgObject.put("habitat","hb");
-	imgObject.put("water","of");
-	imgObject.put("land cover","lc");
-	imgObject.put("modeling","su");
-	imgObject.put("recreation","pd");
-	imgObject.put("oceans","of");
-	imgObject.put("surface water","hy");
-	imgObject.put("air quality","ac");
-	imgObject.put("inlandwaters","hy");
-	imgObject.put("wetlands","hy");
-	imgObject.put("estuary","hy");
-	
-	imgObject.put("census block groups","cp");
-	imgObject.put("transportation","tn");
-	imgObject.put("exposure","ef");
-	imgObject.put("indicator","ef");
-	imgObject.put("riparian","hy");
-	imgObject.put("geoscientificinformation","hb");
-	imgObject.put("biodiversity and ecosystems","hb");
-	imgObject.put("green space","lc");
-	imgObject.put("regulated sites","pf");
-	imgObject.put("toxic release","am");
-	imgObject.put("demographics","pd");
-	imgObject.put("biota","sd");
-	imgObject.put("biodiversity","sd");
-	imgObject.put("geocoding","sd");
+	 Map<String, String> imgObject = new HashMap<String, String>();
+        imgObject.put("climate", "ac");
+		imgObject.put("trees", "br");
+		imgObject.put("climatologymeteorologyatmosphere", "ac");
 
+		imgObject.put("environment", "hb");
+		imgObject.put("health", "hh");
+		imgObject.put("human well-being", "hh");
+		imgObject.put("public health", "hh");
+		imgObject.put("human", "pd");
+		imgObject.put("society", "pd");
+		imgObject.put("risk", "nz");
+		imgObject.put("impact", "am");
+
+		imgObject.put("location", "ad");
+		imgObject.put("buildings", "bu");
+		imgObject.put("cleanup", "am");
+		imgObject.put("compliance", "am");
+		imgObject.put("contaminant", "am");
+		imgObject.put("facilities", "pf");
+		imgObject.put("facility", "pf");
+		imgObject.put("facility site", "pf");
+		imgObject.put("regulatory", "am");
+		imgObject.put("remediation", "am");
+		imgObject.put("sites", "ad");
+		imgObject.put("remediation", "am");
+		imgObject.put("resources", "ps");
+		imgObject.put("emergency response", "nz");
+		imgObject.put("air", "ac");
+		imgObject.put("air quality", "ac");
+		imgObject.put("emergency", "nz");
+		imgObject.put("energy", "er");
+		imgObject.put("response", "nz");
+		imgObject.put("drinking water", "hy");
+		imgObject.put("agriculture", "af");
+		imgObject.put("hazards", "nz");
+		imgObject.put("monitoring", "ef");
+		imgObject.put("permits", "am");
+		imgObject.put("boundaries", "gg");
+		imgObject.put("navigation", "gg");
+		imgObject.put("roadmap", "gg");
+		imgObject.put("routing", "gg");
+		imgObject.put("ecology", "sd");
+		imgObject.put("ecosystem", "hb");
+		imgObject.put("land", "so");
+		imgObject.put("natural resources", "ps");
+		imgObject.put("conservation", "ps");
+		imgObject.put("economy", "ss");
+		imgObject.put("habitat", "hb");
+		imgObject.put("water", "of");
+		imgObject.put("land cover", "lc");
+		imgObject.put("modeling", "su");
+		imgObject.put("recreation", "pd");
+		imgObject.put("oceans", "of");
+		imgObject.put("surface water", "hy");
+		imgObject.put("air quality", "ac");
+		imgObject.put("inlandwaters", "hy");
+		imgObject.put("wetlands", "hy");
+		imgObject.put("estuary", "hy");
+
+		imgObject.put("census block groups", "cp");
+		imgObject.put("transportation", "tn");
+		imgObject.put("exposure", "ef");
+		imgObject.put("indicator", "ef");
+		imgObject.put("riparian", "hy");
+		imgObject.put("geoscientificinformation", "gg");
+		imgObject.put("biodiversity and ecosystems", "hb");
+		imgObject.put("green space", "lc");
+		imgObject.put("regulated sites", "pf");
+		imgObject.put("toxic release", "am");
+		imgObject.put("demographics", "pd");
+		imgObject.put("biota", "sd");
+		imgObject.put("biodiversity", "sd");
+		imgObject.put("geocoding", "gg");
+		
+	//ThumbnailsData data = new ThumbnailsData();
 	String thumbnailResponseBody = "";
-	String url = "https://edg-staging.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
+	String url = "https://edg.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
 		
 	HttpClientRequest thumbnailClient = new HttpClientRequest();
     JSONObject thumbnailObj = null;
@@ -114,14 +115,14 @@
 		ex.printStackTrace();
 	}
 	
-	String thumnailCss = imgObject.has(keyword)?imgObject.getString(keyword):"hb";
+	String thumnailCss = imgObject.containsKey(keyword)?imgObject.get(keyword):"hb";
 	return thumnailCss;
 }
 	%>
 <%
 String responseBody = "";
 //String site = "http://localhost:8080";
-String site = "https://edg-staging.epa.gov";
+String site = "https://edg.epa.gov";
 String featuredTab1Title = "Climate Change";
 String featuredTab2Title = "Environmental Justice";
 String featuredTab3Title = "Facility Data";
@@ -586,10 +587,11 @@ body, button, input, select, textarea {
 <script src="../skins/themes/blue/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="../js/v1/Utils.js"></script>
 <script src="../skins/themes/blue/js/main.js"></script>
+<link rel="stylesheet" href="../skins/themes/blue/css/inspire-themes.css">
 <script src="../skins/themes/blue/js/search.js"></script>
 <script type="text/javascript">
-if (window.location.href == "https://edg-staging.epa.gov/metadata/"){
-    window.location.replace("https://edg-staging.epa.gov/metadata/catalog/main/home.page");
+if (window.location.href == "https://edg.epa.gov/metadata/"){
+    window.location.replace("https://edg.epa.gov/metadata/catalog/main/home.page");
 }
             new WOW(
             ).init();
@@ -880,7 +882,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -937,7 +939,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -996,7 +998,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1103,7 +1105,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1262,7 +1264,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1322,7 +1324,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1381,7 +1383,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1439,7 +1441,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1498,7 +1500,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1557,7 +1559,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1615,7 +1617,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1673,7 +1675,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1731,7 +1733,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1789,7 +1791,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
