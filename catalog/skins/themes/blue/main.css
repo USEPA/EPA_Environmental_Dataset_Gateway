@@ -15,7 +15,6 @@
  blockquote, body, caption, div, dl, dt, dd, form, fieldset, h1, h2, h3, h4, h5, h6, html, li, ul, ol, p, pre, textarea, table, th {
 	margin: 0pt;
 	padding: 0pt;
-	margin-bottom: 0.6em;
 }
 figcaption, small, .archive, .block-user .item-list, .comment-links, .figcaption, .filter-help, .form-item .description, .more-link, .node-links, .progress .message, .progress .percentage, .search-results .search-info, .submitted, .vertical-tab-button .summary, #block-pane-epa-web-area-connect, #block-pane-social-sharing, #block-epa-og-footer {
     font-size: 100.4706%;
@@ -239,6 +238,7 @@ table.nostyle td {
     font-weight: 500;
     line-height: 1;
     position: relative;
+	padding-top: 0.7272em;
 }
 
 a:hover, a:focus {
@@ -400,6 +400,7 @@ h1 {
 
 .sectionCaption {
 	margin: 0 0.5em;
+	font-weight: bold;
 }
 
 .mandatorySectionHeader {
@@ -454,9 +455,10 @@ h1 {
 
 .parameters {}
 .parameterLabel {
-	text-align: right;
-	vertical-align: top;
-	width: 126px;
+    text-align: left;
+    vertical-align: top;
+    font-weight: bold;
+    width: 203px;
 }
 .parameterInput {text-align: left;}
 /**

@@ -132,7 +132,7 @@ table.nostyle td {
     padding-top: 0.5em;
     text-decoration: none;
     float: right;
-	margin-top: 1.6em;
+	margin-top: 0em;
 }
 
 /**
@@ -232,12 +232,13 @@ table.nostyle td {
 }
 
 .site-slogan {
-    color: #0071bc;
+    color: #fff;
     font-family: Arial, sans-serif;
-    font-size: 0.7471rem;
-    font-weight: 500;
+    font-size: 68.75%;
+    font-weight: normal;
     line-height: 1;
     position: relative;
+	white-space: nowrap;
 }
 
 a:hover, a:focus {
@@ -284,8 +285,7 @@ label {
   }
   .nav {
 	margin: 5px 0;
-	line-height: 2em;
-	font-size: 0.9em;
+	
 }
 
 .nav a, .nav a:visited, .nav a:active {

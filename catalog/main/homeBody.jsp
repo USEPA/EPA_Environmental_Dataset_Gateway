@@ -2,121 +2,47 @@
 <%@page import="org.json.JSONObject" %>
 <%@page import="org.json.JSONArray" %>
 <%@page import="java.util.Random" %>
-<%@page import="java.net.URLEncoder"%>
 <%@page import="com.esri.gpt.framework.http.HttpClientRequest" %>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%@page import="com.esri.gpt.framework.util.Val"%>  
-<%@page import="java.util.HashMap"%> 
-<%@page import="java.util.Map"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%!
 public String getThumbnail(String uuid)
 {
-	 Map<String, String> imgObject = new HashMap<String, String>();
-        imgObject.put("climate", "ac");
-		imgObject.put("trees", "br");
-		imgObject.put("climatologymeteorologyatmosphere", "ac");
-
-		imgObject.put("environment", "hb");
-		imgObject.put("health", "hh");
-		imgObject.put("human well-being", "hh");
-		imgObject.put("public health", "hh");
-		imgObject.put("human", "pd");
-		imgObject.put("society", "pd");
-		imgObject.put("risk", "nz");
-		imgObject.put("impact", "am");
-
-		imgObject.put("location", "ad");
-		imgObject.put("buildings", "bu");
-		imgObject.put("cleanup", "am");
-		imgObject.put("compliance", "am");
-		imgObject.put("contaminant", "am");
-		imgObject.put("facilities", "pf");
-		imgObject.put("facility", "pf");
-		imgObject.put("facility site", "pf");
-		imgObject.put("regulatory", "am");
-		imgObject.put("remediation", "am");
-		imgObject.put("sites", "ad");
-		imgObject.put("remediation", "am");
-		imgObject.put("resources", "ps");
-		imgObject.put("emergency response", "nz");
-		imgObject.put("air", "ac");
-		imgObject.put("air quality", "ac");
-		imgObject.put("emergency", "nz");
-		imgObject.put("energy", "er");
-		imgObject.put("response", "nz");
-		imgObject.put("drinking water", "hy");
-		imgObject.put("agriculture", "af");
-		imgObject.put("hazards", "nz");
-		imgObject.put("monitoring", "ef");
-		imgObject.put("permits", "am");
-		imgObject.put("boundaries", "gg");
-		imgObject.put("navigation", "gg");
-		imgObject.put("roadmap", "gg");
-		imgObject.put("routing", "gg");
-		imgObject.put("ecology", "sd");
-		imgObject.put("ecosystem", "hb");
-		imgObject.put("land", "so");
-		imgObject.put("natural resources", "ps");
-		imgObject.put("conservation", "ps");
-		imgObject.put("economy", "ss");
-		imgObject.put("habitat", "hb");
-		imgObject.put("water", "of");
-		imgObject.put("land cover", "lc");
-		imgObject.put("modeling", "su");
-		imgObject.put("recreation", "pd");
-		imgObject.put("oceans", "of");
-		imgObject.put("surface water", "hy");
-		imgObject.put("air quality", "ac");
-		imgObject.put("inlandwaters", "hy");
-		imgObject.put("wetlands", "hy");
-		imgObject.put("estuary", "hy");
-
-		imgObject.put("census block groups", "cp");
-		imgObject.put("transportation", "tn");
-		imgObject.put("exposure", "ef");
-		imgObject.put("indicator", "ef");
-		imgObject.put("riparian", "hy");
-		imgObject.put("geoscientificinformation", "gg");
-		imgObject.put("biodiversity and ecosystems", "hb");
-		imgObject.put("green space", "lc");
-		imgObject.put("regulated sites", "pf");
-		imgObject.put("toxic release", "am");
-		imgObject.put("demographics", "pd");
-		imgObject.put("biota", "sd");
-		imgObject.put("biodiversity", "sd");
-		imgObject.put("geocoding", "gg");
-		
-	//ThumbnailsData data = new ThumbnailsData();
-	String thumbnailResponseBody = "";
-	String url = "https://edg.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
-		
-	HttpClientRequest thumbnailClient = new HttpClientRequest();
-    JSONObject thumbnailObj = null;
-    thumbnailClient.setUrl(url);
-		
-    try{
-		thumbnailResponseBody =  thumbnailClient.readResponseAsCharacters();
-		thumbnailObj = new JSONObject(thumbnailResponseBody);
-   
-    }catch(Exception e){
-		//e.printStackTrace();
-		return "hb";
-	}
-	String keyword = "";
-	try{
-	
-	thumbnailObj = thumbnailObj.getJSONArray("dataset").getJSONObject(0);
-	JSONArray keywordsArray = thumbnailObj.getJSONArray("keyword");
 	Random random = new Random();
-	keyword = keywordsArray.getString(random.nextInt(keywordsArray.length()));
-	}catch(Exception ex){
-		ex.printStackTrace();
-	}
 	
-	String thumnailCss = imgObject.containsKey(keyword)?imgObject.get(keyword):"hb";
-	return thumnailCss;
+	 List<String> imgObject = new ArrayList<String>();
+        imgObject.add("ac");
+		imgObject.add("br");
+		imgObject.add("hh");
+		imgObject.add("pd");
+		imgObject.add("nz");
+		imgObject.add("am");
+		imgObject.add("ad");
+		imgObject.add("bu");
+		imgObject.add("pf");
+		imgObject.add("ps");
+		imgObject.add("er");
+		imgObject.add("hy");
+		imgObject.add("af");
+		imgObject.add("ef");
+		imgObject.add("sd");
+		imgObject.add("hb");
+		imgObject.add("so");
+		imgObject.add("su");
+		imgObject.add("of");
+		imgObject.add("lc");
+		imgObject.add("su");
+		imgObject.add("cp");
+		imgObject.add("tn");
+		imgObject.add("el");
+		imgObject.add("gg");
+		
+	String thumbnailImg = imgObject.get(random.nextInt(imgObject.size())).toString();
+	return thumbnailImg;
 }
 	%>
 <%
@@ -428,7 +354,12 @@ body, .box.special > .pane-content, .box.special > .pane-content {
     padding-right: 24px;
 }
 .region-footer {
-     background-size: 17.6em 13.6em;
+   
+    background-size: 9.6em 9.6em;
+    font-size: 62.5%;
+    font-weight: bold;
+    min-height: 9.6em;
+    padding-bottom: 11.6em;
 }
  .region-footer .epa-menu > .menu-item > .menu-link {
     margin: 0 1.2em 1.6em;
@@ -459,19 +390,24 @@ body, button, input, select, textarea {
     font-weight: 300;
 }
 .site-slogan {
-    
-    font-size: 87.75%;
+    padding-top: 1.7272em;
+    font-size: 68.75%;
     font-weight: normal;
-    padding: .5em 0 0;
+   
+}
+.masthead {
+    color: #fff;
+    padding-bottom: 0em;
+    padding-top: 1.2em;
+    position: relative;
 }
 .secondary-menu > li > a {
     color: #fff;
-    font-size: 100%;
+    font-size: 75%;
     margin: -.3333em;
     padding: .3333em;
     text-decoration: none;
 }
-
 .nav a, .nav a:visited, .nav a:active {
     border: 0px;
     font-weight: bold;
