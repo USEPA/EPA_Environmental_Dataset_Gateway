@@ -197,6 +197,13 @@ if (typeof(dojo) != 'undefined') {
 	  dojo.addOnLoad(rnpInit);
 }
 </script>
+<style>
+table {
+    background-color: inherit;
+    color: #212121;
+    margin-bottom: 1.5em;
+}
+</style>
 <f:verbatim>
 	<a id="rnpDetails" style="margin: 0 1em 0 0" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
 	<a id="rnpReview" style="margin: 0 1em 0 0" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>

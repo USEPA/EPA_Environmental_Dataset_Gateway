@@ -9,46 +9,143 @@
 <%@page import="com.esri.gpt.framework.util.Val"%>  
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%> 
+<%@page import="java.util.Map"%>
+<%@page import="java.net.URLEncoder"%>
 <%!
 public String getThumbnail(String uuid)
 {
-	Random random = new Random();
-	
-	 List<String> imgObject = new ArrayList<String>();
-        imgObject.add("ac");
-		imgObject.add("br");
-		imgObject.add("hh");
-		imgObject.add("pd");
-		imgObject.add("nz");
-		imgObject.add("am");
-		imgObject.add("ad");
-		imgObject.add("bu");
-		imgObject.add("pf");
-		imgObject.add("ps");
-		imgObject.add("er");
-		imgObject.add("hy");
-		imgObject.add("af");
-		imgObject.add("ef");
-		imgObject.add("sd");
-		imgObject.add("hb");
-		imgObject.add("so");
-		imgObject.add("su");
-		imgObject.add("of");
-		imgObject.add("lc");
-		imgObject.add("su");
-		imgObject.add("cp");
-		imgObject.add("tn");
-		imgObject.add("el");
-		imgObject.add("gg");
+	Map<String, String> imgObject = new HashMap<String, String>();
+        imgObject.put("climate", "ac");
+		imgObject.put("biophysical", "br");
+		imgObject.put("trees", "br");
+		imgObject.put("climatologymeteorologyatmosphere", "ac");
+		imgObject.put("environment", "ps");
+		imgObject.put("health", "hh");
+		imgObject.put("human well-being", "hh");
+		imgObject.put("public health", "hh");
+		imgObject.put("human", "pd");
+		imgObject.put("society", "pd");
+		imgObject.put("risk", "nz");
+		imgObject.put("disaster", "nz");
+		imgObject.put("spills", "nz");
+		imgObject.put("impact", "am");
+		imgObject.put("toxics", "am");
+		imgObject.put("waste", "am");
+		imgObject.put("location", "ad");
+		imgObject.put("buildings", "bu");
+		imgObject.put("structure", "bu");
+		imgObject.put("cleanup", "am");
+		imgObject.put("compliance", "am");
+		imgObject.put("contaminant", "am");
+		imgObject.put("pollutants & contaminants", "am");
+		imgObject.put("management", "am");
+		imgObject.put("facilities", "pf");
+		imgObject.put("facility", "pf");
+		imgObject.put("facility site", "pf");
+		imgObject.put("regulatory", "am");
+		imgObject.put("remediation", "am");
+		imgObject.put("sites", "ad");
+		imgObject.put("remediation", "am");
+		imgObject.put("resources", "ps");
+		imgObject.put("emergency response", "nz");
+		imgObject.put("air", "ac");
+		imgObject.put("air quality", "ac");
+		imgObject.put("emergency", "nz");
+		imgObject.put("energy", "er");
+		imgObject.put("response", "nz");
+		imgObject.put("drinking water", "hy");
+		imgObject.put("ground water", "hy");
+		imgObject.put("agriculture", "af");
+		imgObject.put("hazards", "nz");
+		imgObject.put("hazardous air pollutants", "nz");
+		imgObject.put("monitoring", "ef");
+		imgObject.put("permits", "am");
+		imgObject.put("boundaries", "gg");
+		imgObject.put("navigation", "gg");
+		imgObject.put("roadmap", "gg");
+		imgObject.put("routing", "gg");
+		imgObject.put("ecology", "sd");
+		imgObject.put("biology", "sd");
+		imgObject.put("ecosystem", "hb");
+		imgObject.put("land", "so");
+		imgObject.put("natural resources", "ps");
+		imgObject.put("conservation", "br");
+		imgObject.put("economy", "su");
+		imgObject.put("ecosystem", "hb");
+		imgObject.put("habitat", "hb");
+		imgObject.put("water", "of");
+		imgObject.put("land cover", "lc");
+		imgObject.put("modeling", "su");
+		imgObject.put("recreation", "pd");
+		imgObject.put("oceans", "of");
+		imgObject.put("surface water", "hy");
+		imgObject.put("air quality", "ac");
+		imgObject.put("inlandwaters", "hy");
+		imgObject.put("wetlands", "hy");
+		imgObject.put("estuary", "hy");
+		imgObject.put("census block groups", "cp");
+		imgObject.put("transportation", "tn");
+		imgObject.put("exposure", "ef");
+		imgObject.put("indicator", "ef");
+		imgObject.put("riparian", "hy");
+		imgObject.put("geoscientificinformation", "gg");
+		imgObject.put("biodiversity and ecosystems", "hb");
+		imgObject.put("green space", "lc");
+		imgObject.put("regulated sites", "pf");
+		imgObject.put("toxic release", "am");
+		imgObject.put("demographics", "pd");
+		imgObject.put("biota", "sd");
+		imgObject.put("biodiversity", "sd");
+		imgObject.put("geocoding", "gg");
+		imgObject.put("elevation", "el");
 		
-	String thumbnailImg = imgObject.get(random.nextInt(imgObject.size())).toString();
-	return thumbnailImg;
+	String thumbnailResponseBody = "";
+	String url = "https://edg-staging.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
+		
+	HttpClientRequest thumbnailClient = new HttpClientRequest();
+    JSONObject thumbnailObj = null;
+    thumbnailClient.setUrl(url);
+		
+    try{
+		thumbnailResponseBody =  thumbnailClient.readResponseAsCharacters();
+		thumbnailObj = new JSONObject(thumbnailResponseBody);
+   
+    }catch(Exception e){
+		//e.printStackTrace();
+		return "br";
+	}
+	String keyword = "";
+	try{
+	
+	thumbnailObj = thumbnailObj.getJSONArray("dataset").getJSONObject(0);
+	JSONArray keywordsArray = thumbnailObj.getJSONArray("keyword");
+	Random random = new Random();
+	keyword = keywordsArray.getString(random.nextInt(keywordsArray.length()));
+	
+	if(keyword.equals("united states") || keyword.equals("connecticut") || keyword.equals("maine") || keyword.equals("massachusetts") || keyword.equals("new hampshire") || keyword.equals("rhode island") || keyword.equals("vermont") ||	keyword.equals("environment") || 
+			keyword.equals("pennsylvania") || keyword.equals("new jersey") || keyword.equals("virgin islands") || keyword.equals("washington dc") || keyword.equals("washington") || keyword.equals("illinois") || keyword.equals("north dakota") || keyword.equals("south dakota") ||
+			keyword.equals("wisconsin") || keyword.equals("ohio") || keyword.equals("michigan") || keyword.equals("iowa") || keyword.equals("nebraska") || keyword.equals("missouri") || keyword.equals("utah") || keyword.equals("montana") || keyword.equals("colorado") ||
+			keyword.equals("new mexico") || keyword.equals("delaware") || keyword.equals("virginia") || keyword.equals("west virginia") || keyword.equals("kentucky") || keyword.equals("arizona") || keyword.equals("minnesota") || keyword.equals("kansas") || 
+			keyword.equals("california") || keyword.equals("alaska") || keyword.equals("hawaii") || keyword.equals("district of columbia") || keyword.equals("puerto rico") || keyword.equals("alabama") || keyword.equals("arkansas") || keyword.equals("florida") || 
+			keyword.equals("georgia") || keyword.equals("idaho") || keyword.equals("indiana") || keyword.equals("louisiana") || keyword.equals("maryland") || keyword.equals("massachusetts") || keyword.equals("mississippi") || keyword.equals("nevada") || 
+			keyword.equals("new york") || keyword.equals("north carolina") || keyword.equals("oklahoma") || keyword.equals("oregon") || keyword.equals("south carolina") || keyword.equals("tennessee") || keyword.equals("texas") || keyword.equals("wyoming")){
+		
+		keyword = keywordsArray.getString(random.nextInt(keywordsArray.length()));
+	}
+	}catch(Exception ex){
+		ex.printStackTrace();
+	}
+	
+	String thumnailCss = imgObject.containsKey(keyword)?imgObject.get(keyword):"ps";
+	return thumnailCss;
 }
 	%>
+
 <%
 String responseBody = "";
 //String site = "http://localhost:8080";
-String site = "https://edg.epa.gov";
+String site = "https://edg-staging.epa.gov";
 String featuredTab1Title = "Climate Change";
 String featuredTab2Title = "Environmental Justice";
 String featuredTab3Title = "Facility Data";
@@ -228,7 +325,6 @@ try{
     e.printStackTrace();
 }
 %>
-
 <f:view>
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 	<!--[if IEMobile 7]><html class="iem7 no-js" lang="en" dir="ltr"><![endif]-->
@@ -411,7 +507,6 @@ body, button, input, select, textarea {
 .nav a, .nav a:visited, .nav a:active {
     border: 0px;
     font-weight: bold;
-    padding: 2px 5px;
     margin: 0em 0em;
     text-align: center;
     text-decoration: none;
@@ -526,8 +621,8 @@ body, button, input, select, textarea {
 <link rel="stylesheet" href="../skins/themes/blue/css/inspire-themes.css">
 <script src="../skins/themes/blue/js/search.js"></script>
 <script type="text/javascript">
-if (window.location.href == "https://edg.epa.gov/metadata/"){
-    window.location.replace("https://edg.epa.gov/metadata/catalog/main/home.page");
+if (window.location.href == "https://edg-staging.epa.gov/metadata/"){
+    window.location.replace("https://edg-staging.epa.gov/metadata/catalog/main/home.page");
 }
             new WOW(
             ).init();
@@ -818,7 +913,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -875,7 +970,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -934,7 +1029,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1041,7 +1136,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1200,7 +1295,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1260,7 +1355,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1319,7 +1414,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1377,7 +1472,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1436,7 +1531,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1495,7 +1590,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1553,7 +1648,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1611,7 +1706,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1669,7 +1764,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1727,7 +1822,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
