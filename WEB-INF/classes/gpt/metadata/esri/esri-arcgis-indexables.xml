@@ -19,7 +19,7 @@
 
  	  <property meaning="title" xpath="/metadata/dataIdInfo/idCitation/resTitle"/>
 	  <property meaning="abstract" xpath="/metadata/dataIdInfo/idAbs"/>
-	  <property meaning="keywords" xpath="/metadata/dataIdInfo/descKeys/keyword"/>
+	  <property meaning="keywords" xpath="/metadata/dataIdInfo/descKeys/keyword | /metadata/dataIdInfo/themeKeys/keyword | /metadata/dataIdInfo/placeKeys/keyword"/>
 	  <property meaning="fileIdentifier" xpath="/metadata/mdFileID"/>  
       
 	  <property meaning="envelope" xpath="/metadata/dataIdInfo/dataExt/geoEle/GeoBndBox">

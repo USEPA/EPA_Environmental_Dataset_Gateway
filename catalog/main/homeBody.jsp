@@ -47,7 +47,7 @@ public String getThumbnail(String uuid)
 		imgObject.put("remediation", "am");
 		imgObject.put("sites", "ad");
 		imgObject.put("remediation", "am");
-		imgObject.put("resources", "ps");
+		imgObject.put("resources", "lc");
 		imgObject.put("emergency response", "nz");
 		imgObject.put("air", "ac");
 		imgObject.put("air quality", "ac");
@@ -69,7 +69,7 @@ public String getThumbnail(String uuid)
 		imgObject.put("biology", "sd");
 		imgObject.put("ecosystem", "hb");
 		imgObject.put("land", "so");
-		imgObject.put("natural resources", "ps");
+		imgObject.put("natural resources", "lc");
 		imgObject.put("conservation", "br");
 		imgObject.put("economy", "su");
 		imgObject.put("ecosystem", "hb");
@@ -120,23 +120,23 @@ public String getThumbnail(String uuid)
 	
 	thumbnailObj = thumbnailObj.getJSONArray("dataset").getJSONObject(0);
 	JSONArray keywordsArray = thumbnailObj.getJSONArray("keyword");
-	Random random = new Random();
-	keyword = keywordsArray.getString(random.nextInt(keywordsArray.length()));
-	
-	if(keyword.equals("united states") || keyword.equals("connecticut") || keyword.equals("maine") || keyword.equals("massachusetts") || keyword.equals("new hampshire") || keyword.equals("rhode island") || keyword.equals("vermont") ||	keyword.equals("environment") || 
-			keyword.equals("pennsylvania") || keyword.equals("new jersey") || keyword.equals("virgin islands") || keyword.equals("washington dc") || keyword.equals("washington") || keyword.equals("illinois") || keyword.equals("north dakota") || keyword.equals("south dakota") ||
-			keyword.equals("wisconsin") || keyword.equals("ohio") || keyword.equals("michigan") || keyword.equals("iowa") || keyword.equals("nebraska") || keyword.equals("missouri") || keyword.equals("utah") || keyword.equals("montana") || keyword.equals("colorado") ||
-			keyword.equals("new mexico") || keyword.equals("delaware") || keyword.equals("virginia") || keyword.equals("west virginia") || keyword.equals("kentucky") || keyword.equals("arizona") || keyword.equals("minnesota") || keyword.equals("kansas") || 
-			keyword.equals("california") || keyword.equals("alaska") || keyword.equals("hawaii") || keyword.equals("district of columbia") || keyword.equals("puerto rico") || keyword.equals("alabama") || keyword.equals("arkansas") || keyword.equals("florida") || 
-			keyword.equals("georgia") || keyword.equals("idaho") || keyword.equals("indiana") || keyword.equals("louisiana") || keyword.equals("maryland") || keyword.equals("massachusetts") || keyword.equals("mississippi") || keyword.equals("nevada") || 
-			keyword.equals("new york") || keyword.equals("north carolina") || keyword.equals("oklahoma") || keyword.equals("oregon") || keyword.equals("south carolina") || keyword.equals("tennessee") || keyword.equals("texas") || keyword.equals("wyoming")){
-		
-		keyword = keywordsArray.getString(random.nextInt(keywordsArray.length()));
+	ArrayList<String> matchArray = new ArrayList<String>();
+	for(int i=0; i<keywordsArray.length(); i++){
+		String jsonkeyword = keywordsArray.getString(i).toLowerCase();
+		if(!matchArray.contains(jsonkeyword) && imgObject.containsKey(jsonkeyword) && jsonkeyword!="environment"){
+			matchArray.add(jsonkeyword);
+		}
 	}
+	if (matchArray.size()==0) {
+		matchArray.add("environment");
+	}
+	
+	Random random = new Random();
+	keyword = matchArray.get(random.nextInt(matchArray.size()));
+		
 	}catch(Exception ex){
 		ex.printStackTrace();
 	}
-	
 	String thumnailCss = imgObject.containsKey(keyword)?imgObject.get(keyword):"ps";
 	return thumnailCss;
 }
@@ -325,6 +325,7 @@ try{
     e.printStackTrace();
 }
 %>
+
 <f:view>
 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 	<!--[if IEMobile 7]><html class="iem7 no-js" lang="en" dir="ltr"><![endif]-->

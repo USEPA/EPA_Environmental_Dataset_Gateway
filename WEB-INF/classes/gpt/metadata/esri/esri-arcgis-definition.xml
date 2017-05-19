@@ -214,18 +214,18 @@
                 resourceKey="catalog.mdCode.dataType.vector"/>
                     <code key="002"        
                 resourceKey="catalog.mdCode.dataType.grid"/>
-                    <code key="003"
+                    <code key="003"   
                 resourceKey="catalog.mdCode.dataType.textTable"/>
-                    <code key="004"
+                    <code key="004"         
                 resourceKey="catalog.mdCode.dataType.tin"/>
-                    <code key="005"
+                    <code key="005" 
                 resourceKey="catalog.mdCode.dataType.stereoModel"/>
-                    <code key="006"
+                    <code key="006"       
                 resourceKey="catalog.mdCode.dataType.video"/>
-                </codes>
-            </content>
-        </parameter>
-
+                </codes> 
+            </content>       
+        </parameter> 
+        
         <parameter key="identification.equivalentScale"> 
             <label resourceKey="catalog.mdParam.identification.equivalentScale"/>
             <input type="text" size="20" maxlength="24"/>
@@ -234,7 +234,7 @@
                delete="/metadata/dataIdInfo/dataScale"
                select="/metadata/dataIdInfo/dataScale/equScale/rfDenom"/>
         </parameter>
-
+        
         <parameter key="referenceSystemInfo.code">
             <label resourceKey="catalog.mdParam.referenceSystemInfo.code" />
             <input type="text" editable="true" maxlength="4" defaultValue="4326" />
@@ -486,7 +486,7 @@
             <content useSelectForUpdate="true" deleteIfEmpty="true" 
                select="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd"/>
         </parameter>
-
+        
         <parameter key="contact.address">
             <label resourceKey="catalog.mdParam.contact.address.address"/>
             <input type="text" defaultValue="#{EditMetadataController.userProfile['street'].value}"/>
@@ -568,7 +568,7 @@
             <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/metadata/mdFileID"/> 
         </parameter>
-
+        
         <!-- Language used in the dataset -->
         <parameter key="identification.datasetInfo.datasetLanguage"> 
             <label resourceKey="catalog.mdParam.datasetInfo.datasetLanguage"/>
