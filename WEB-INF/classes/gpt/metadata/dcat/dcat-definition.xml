@@ -384,7 +384,7 @@
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/rdf:RDF/dcat:dataset/dct:references" />
-    </parameter> 
+    </parameter>   
 	<parameter key="pod.describedBy">
       <label resourceKey="fgdc.entiAndAttrInfo.overDesc.entiAndAttrDetaCita"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>

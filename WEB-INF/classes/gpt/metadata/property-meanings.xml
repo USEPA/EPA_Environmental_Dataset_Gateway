@@ -443,4 +443,4 @@
   <property-meaning name="dcat.downloadUrl8" valueType="String" comparisonType="value"/>  
   <property-meaning name="dcat.downloadUrl9" valueType="String" comparisonType="value"/>  
   <property-meaning name="dcat.downloadUrl10" valueType="String" comparisonType="value"/>  
-  </property-meanings>
+</property-meanings>
