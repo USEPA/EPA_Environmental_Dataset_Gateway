@@ -588,7 +588,8 @@ public String getDocUUID(String uuid)
 	    }
 	    
 	    if(docuuid == null)
-	    	throw new SearchException("Unable to return the document associated with the supplied identifier.");	
+	    	return "invalid";
+	    	//throw new SearchException("Unable to return the document associated with the supplied identifier.");	
 	  } catch (Exception e) {
 	    throw new SearchException(e);
 	  } finally {

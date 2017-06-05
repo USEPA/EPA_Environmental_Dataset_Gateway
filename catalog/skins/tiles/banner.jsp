@@ -15,7 +15,14 @@
 --%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-
+<style>
+.username {
+    float: right;
+    margin-bottom: 1.6em;
+    padding-top: 1.6em;
+    margin-right: .8em;
+}
+</style>
 <div id="gptTitle">
 	<%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%>
 </div>
