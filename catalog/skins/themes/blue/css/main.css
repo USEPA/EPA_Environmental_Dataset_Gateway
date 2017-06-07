@@ -132,7 +132,8 @@ table.nostyle td {
     padding-top: 0.5em;
     text-decoration: none;
     float: right;
-	margin-top: 0em;
+	margin-top: 2.3em;
+	margin-left: 0.2em;
 }
 
 /**
@@ -232,7 +233,6 @@ table.nostyle td {
 }
 
 .site-slogan {
-    color: #fff;
     font-family: Arial, sans-serif;
     font-size: 68.75%;
     font-weight: normal;

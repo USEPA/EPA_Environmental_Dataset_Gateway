@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -93,11 +94,11 @@ h1, h2, h3, h4, h5, h6, legend, caption {
   
   <h2>We want to help you find what you are looking for:</h2>
 
-<ul><li><a href="../main/home.page">Go to our Home page</a></li>
-	<li><a href="../search/search.page">Search Page</a></li>
-	<li><a href="../search/browse/browse.page">Browse</a></li>
-	<li><a href="../data/data.page">Data</a></li>
-	<li><a href="../identity/feedback.page">Contact Us</a></li>
+<ul><li><a href="https://edg.epa.gov/metadata/catalog/main/home.page">Go to our Home page</a></li>
+	<li><a href="https://edg.epa.gov/metadata/catalog/search/search.page">Search Page</a></li>
+	<li><a href="https://edg.epa.gov/metadata/catalog/search/browse/browse.page">Browse</a></li>
+	<li><a href="https://edg.epa.gov/metadata/catalog/data/data.page">Data</a></li>
+	<li><a href="https://edg.epa.gov/metadata/catalog/identity/feedback.page">Contact Us</a></li>
 </ul></div>
   </div>
   
@@ -110,10 +111,10 @@ h1, h2, h3, h4, h5, h6, legend, caption {
     <div class="nav__inner">
       <h2 class="element-invisible">Main menu</h2>
       <ul class="menu" role="menu">
-        <li class="menu-item" id="menu-learn" role="presentation"><a href="../main/home.page" class="menu-link" role="menuitem">Home</a></li>
-        <li class="menu-item" id="menu-lawsregs" role="presentation"><a href="../search/search.page" title="Search" class="menu-link" role="menuitem">Search</a></li>
-        <li class="menu-item" id="menu-about" role="presentation"><a href="../search/browse/browse.page" title="Browse." class="menu-link" role="menuitem">Browse</a></li>
-		<li class="menu-item" id="menu-about" role="presentation"><a href="../data/data.page" title="Data." class="menu-link" role="menuitem">Data</a></li>
+        <li class="menu-item" id="menu-learn" role="presentation"><a href="https://edg.epa.gov/metadata/catalog/main/home.page" class="menu-link" role="menuitem">Home</a></li>
+        <li class="menu-item" id="menu-lawsregs" role="presentation"><a href="https://edg.epa.gov/metadata/catalog/search/search.page" title="Search" class="menu-link" role="menuitem">Search</a></li>
+        <li class="menu-item" id="menu-about" role="presentation"><a href="https://edg.epa.gov/metadata/catalog/search/browse/browse.page" title="Browse." class="menu-link" role="menuitem">Browse</a></li>
+		<li class="menu-item" id="menu-about" role="presentation"><a href="https://edg.epa.gov/metadata/catalog/data/data.page" title="Data." class="menu-link" role="menuitem">Data</a></li>
       </ul>
     </div>
   </nav>
