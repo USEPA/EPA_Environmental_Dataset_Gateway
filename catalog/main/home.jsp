@@ -16,10 +16,15 @@
 <% // home.jsp - Home page (tiles definition) %>
 <%@taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt" %>
+<%@page import="org.json.JSONObject" %>
+<%@page import="org.json.JSONArray" %>
+<%@page import="com.esri.gpt.framework.http.HttpClientRequest" %>
+<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
+<%@page import="com.esri.gpt.framework.util.Val"%>
 <% // initialize the page %>
 <gpt:page id="catalog.main.home"/>
-<%--<tiles:insert definition=".gptLayout" flush="false" >
+<tiles:insert definition=".gptLayout" flush="false" >
 	<tiles:put name="body" value="/catalog/main/homeBody.jsp"/>
-</tiles:insert>--%>
-<jsp:include page="homeBody.jsp"/>
+</tiles:insert>
