@@ -257,7 +257,7 @@
       <input type="text" maxlength="255" />
       <validation required="true"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
-               select="/rdf:RDF/dcat:dataset/dcat:contactPoint/vcard:hasEmail"/>
+               select="substring(/rdf:RDF/dcat:dataset/dcat:contactPoint/vcard:hasEmail,7)"/>
     </parameter>
   </section>
   
@@ -379,14 +379,14 @@
                select="/rdf:RDF/dcat:dataset/dcat:landingPage" />
     </parameter> 
 	<parameter key="pod.References">
-      <label resourceKey="catalog.mdParam.basic.referenceForTechnicalDocumentation"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.referencesLabel"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/rdf:RDF/dcat:dataset/dct:references" />
-    </parameter>   
+    </parameter> 
 	<parameter key="pod.describedBy">
-      <label resourceKey="fgdc.entiAndAttrInfo.overDesc.entiAndAttrDetaCita"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.datadictionaryLabel"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
