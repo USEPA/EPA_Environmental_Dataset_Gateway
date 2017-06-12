@@ -133,15 +133,14 @@ public String getThumbnail(String uuid)
 	
 	Random random = new Random();
 	keyword = matchArray.get(random.nextInt(matchArray.size()));
-		
-	}catch(Exception ex){
-		ex.printStackTrace();
+
+ 	}catch(Exception ex){
+ 		ex.printStackTrace();
 	}
 	String thumnailCss = imgObject.containsKey(keyword)?imgObject.get(keyword):"ps";
 	return thumnailCss;
 }
 	%>
-
 <%
 String responseBody = "";
 //String site = "http://localhost:8080";
@@ -331,7 +330,7 @@ try{
 		src="../../catalog/js/jquery-ui/js/jquery.js"></script>
 	<script type="text/javascript"
 		src="../../catalog/js/jquery-ui/js/jquery-ui.js"></script>
-
+		
 
 
 <!-- CSS -->
@@ -406,7 +405,7 @@ body, .box.special > .pane-content, .box.special > .pane-content {
 .region-footer {
    
     background-size: 9.6em 9.6em;
-    font-size: 62.5%;
+    /*font-size: 62.5%;*/
     font-weight: bold;
     min-height: 9.6em;
     padding-bottom: 11.6em;
@@ -626,7 +625,7 @@ $(document).ready(function(){
 </script>
 	
 </f:verbatim>
-<div class="region-preface clearfix">
+		<!--<div class="region-preface clearfix">
 			<div id="block-pane-epa-web-area-connect"
 				class="block block-pane contextual-links-region">
 				<ul class="menu utility-menu">
@@ -634,8 +633,8 @@ $(document).ready(function(){
 						class="menu-link contact-us">Contact Us</a></li>
 				</ul>
 			</div>
-		</div>
-		
+		</div>-->
+			
 						<div class="container"
 							style="background-color: #efefef; width: 100%; padding-top: 10px;">
 							<div class="row">
@@ -989,7 +988,7 @@ $(document).ready(function(){
 								</div>
 									</div>
 								</div>
-								<div class="container">
+				<div class="container">
 						<h2>Popular Datasets</h2>
 									<div class="row" style="padding-top: 22px">
 										<%
@@ -1047,7 +1046,7 @@ $(document).ready(function(){
 										<p></p>
 									</div>
 									</div> 
-					<!-- Modal -->
+									<!-- Modal -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 				aria-labelledby="ModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -1736,7 +1735,7 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>
-<section id="feature">
+			<section id="feature">
 							<div class="container">
 								<div class="row">
 									<div class="col-md-12">
@@ -1865,4 +1864,4 @@ $(document).ready(function(){
 									</div>
 								</div>
 							</div>
-					</section>			
+					</section>
