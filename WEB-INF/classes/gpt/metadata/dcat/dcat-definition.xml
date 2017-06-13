@@ -257,7 +257,7 @@
       <input type="text" maxlength="255" />
       <validation required="true"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
-               select="substring(/rdf:RDF/dcat:dataset/dcat:contactPoint/vcard:hasEmail,7)"/>
+               select="substring(/rdf:RDF/dcat:dataset/dcat:contactPoint/vcard:hasEmail,8)"/>
     </parameter>
   </section>
   
