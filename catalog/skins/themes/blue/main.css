@@ -897,14 +897,6 @@ img.datepicker_trigger {
 		display:none;
 	}
 
-.region-footer {
-    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…05LjIzMyAtNS4xNDIsLTEyLjQwOCB6IiBzdHlsZT0iZmlsbDojMDA1MGI4IiAvPg0KPC9zdmc+) 50% 100% no-repeat;
-    background-size: 9.6em 9.6em;
-    font-size: 93%;
-    font-weight: bold;
-    min-height: 9.6em;
-    padding-bottom: 11.6em;
-}
 .region-footer .col__title {
     font-size: 168.6471%;
     margin: 0 0 1.25em;
