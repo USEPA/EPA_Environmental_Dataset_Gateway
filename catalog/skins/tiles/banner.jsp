@@ -15,44 +15,58 @@
 --%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
 <style>
-#share .on + ul {
-  display: block;
-  pointer-events:none;
+.btn-group.open .dropdown-toggle {
+    background-image: none;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-#share li a {
-    display: inline-block;
-    vertical-align: top;
+.btn:hover, .btn:focus, .btn.focus {
+    color: #0071bc;
     text-decoration: none;
+	background-color:#fff;
 }
-#share li:before {
-  background-repeat: no-repeat;
-  content: '';
-  display: inline-block;
-  height: 20px;
-  margin-right: 0.25em;
-  vertical-align: top;
-  width: 20px;
+.btn-group>.btn:first-child {
+    margin-left: -14.7px;
+    color: #0071bc;
 }
-#share ul {
-    background: #fff;
-    border: 1px solid #0071bc;
-    display: none;
-    list-style: none;
-    width: 9em;
-    padding: 0.25em;
-    position: absolute;
-    top: 1.4em;
-    z-index: 3;
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
-#share li {
-    margin: 0.5em 0.25em;
+button{
+background-color: #FFF;}
+.links, .menu, .pipeline, .tabs {
+    list-style: none !important;
+    margin: 0px;
+    padding: 0;
 }
 .username {
     float: right;
     margin-bottom: 1.6em;
-    padding-top: 1.6em;
+    padding-top: 1.9em;
     margin-right: .8em;
+    text-transform: uppercase;
+    font-size: 12px;
 }
 .share-button {
     background: transparent;
@@ -83,15 +97,42 @@
     margin-top: -0.7em;
     margin-left: -0.4em;
 }
-.caret {
+#share {
+    float: right;
+	position: absolute;
+}
+#share .on + ul {
+  display: block;
+  pointer-events:none;
+}
+#share li a {
     display: inline-block;
-    width: 0;
-    height: 0;
     vertical-align: top;
-    border-top: 4px solid #000000;
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
-    content: "";
+    text-decoration: none;
+	margin-top: -0.4em;
+}
+#share li:before {
+  background-repeat: no-repeat;
+  content: '';
+  display: inline-block;
+  height: 20px;
+  margin-right: 0.25em;
+  vertical-align: top;
+  width: 20px;
+}
+#share ul {
+    background: #fff;
+    border: 1px solid #0071bc;
+    display: none;
+    list-style: none;
+    width: 9em;
+    padding: 0.25em;
+    position: absolute;
+    top: 1.4em;
+    z-index: 3;
+}
+#share li {
+    margin: 0.5em 0.25em;
 }
 </style>
 <div id="gptTitle">
@@ -124,22 +165,25 @@
 		<li><h:outputLink value="../identity/feedback.page"
 		styleClass="menu-link" id="contactus">Contact Us	
 	</h:outputLink></li>
-	<%--<li>
-	
-			<div class="btn-group" style="float:right;">
-                <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">Share <span class="caret"></span></button>
-                <ul id="share" class="dropdown-menu">
-                  <li class="share-facebook"><a class="share-link" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;t=%7BPAGE%20NAME%7D%20%7C%20%7BWEB%20AREA%20NAME%7D%20%7C%20US%20EPA" title="Share this page">Facebook</a></li>
-				  <li class="share-twitter"><a class="share-link" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;text=%7BPAGE%20NAME%7D%20%7C%20%7BWEB%20AREA%20NAME%7D%20%7C%20US%20EPA&amp;url=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;via=EPA&amp;count=none&amp;lang=en" title="Tweet this page">Twitter</a></li>
-				  <li class="share-googleplus"><a class="share-link" href="https://plus.google.com/share?url=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html" title="Plus 1 this page">Google+</a></li>
-				  <li class="share-pinterest"><a class="share-link" href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;description=%7BPAGE%20NAME%7D%20%7C%20%7BWEB%20AREA%20NAME%7D%20%7C%20US%20EPAmedia=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Fthemes%2Fepa%2Fimg%2Fepa-seal.png" title="Pin this page">Pinterest</a></li>
-                </ul>
-              </div>
-		
-	</li><%--
-				
-   
-	<li><h:outputLink value="#"
+	<li><div class="btn-group" style="float: right; padding-top: 1.5em; font-size: 12pt;">
+
+				<button class="btn btn-inverse dropdown-toggle"
+					data-toggle="dropdown">SHARE</button>
+				<ul id="share" class="dropdown-menu">
+					<li class="share-facebook"><a
+						href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;t=%7BPAGE%20NAME%7D%20%7C%20%7BWEB%20AREA%20NAME%7D%20%7C%20US%20EPA">Facebook</a></li>
+					<li class="share-twitter"><a
+						href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;text=%7BPAGE%20NAME%7D%20%7C%20%7BWEB%20AREA%20NAME%7D%20%7C%20US%20EPA&amp;url=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;via=EPA&amp;count=none&amp;lang=en">Twitter</a></li>
+					<li class="share-googleplus"><a
+						href="https://plus.google.com/share?url=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html"
+						title="Plus 1 this page">Google+</a></li>
+
+					<li class="share-pinterest"><a
+						href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;description=%7BPAGE%20NAME%7D%20%7C%20%7BWEB%20AREA%20NAME%7D%20%7C%20US%20EPAmedia=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Fthemes%2Fepa%2Fimg%2Fepa-seal.png">Pinterest</a></li>
+				</ul>
+		</div></li>
+
+		<li><h:outputLink value="#"
 		id="openHelp"  styleClass="menu-link"
 		onclick="javascript:mainOpenPageHelp()">
 		<h:outputText value="#{gptMsg['catalog.help.menuCaption']}" />
@@ -161,6 +205,8 @@
 		value="#{gptMsg['catalog.identity.login.menuCaption']}"
 		
 		rendered="#{PageContext.roleMap['anonymous'] && PageContext.identitySupport.supportsLogin}"/> </li>
+		
+	
 	
 	<li><h:outputLink value="/metadata/logout.jsp"
 		id="identityLogoutAE" styleClass="menu-link" 
@@ -170,7 +216,7 @@
 	</h:outputLink></li>
 
   <li><h:outputText styleClass="username" 
-    id="msgAuthenticatedUser" 
+    id="msgAuthenticatedUser"
     rendered="#{not PageContext.roleMap['anonymous']}"
     value="#{PageContext.welcomeMessage}"/></li>
   <li><h:outputText 

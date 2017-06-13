@@ -133,14 +133,15 @@ public String getThumbnail(String uuid)
 	
 	Random random = new Random();
 	keyword = matchArray.get(random.nextInt(matchArray.size()));
-
- 	}catch(Exception ex){
- 		ex.printStackTrace();
+		
+	}catch(Exception ex){
+		ex.printStackTrace();
 	}
 	String thumnailCss = imgObject.containsKey(keyword)?imgObject.get(keyword):"ps";
 	return thumnailCss;
 }
 	%>
+
 <%
 String responseBody = "";
 //String site = "http://localhost:8080";
@@ -326,23 +327,19 @@ try{
 %>
 
 <f:verbatim>
-	<script type="text/javascript"
-		src="../../catalog/js/jquery-ui/js/jquery.js"></script>
-	<script type="text/javascript"
-		src="../../catalog/js/jquery-ui/js/jquery-ui.js"></script>
-		
+	<!-- CSS -->
 
+	<link rel="stylesheet" href="../skins/themes/blue/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../skins/themes/blue/css/owl.carousel.css">
+	<link rel="stylesheet" href="../skins/themes/blue/css/owl.theme.css">
+	<link rel="stylesheet" href="../skins/themes/blue/css/animate.css">
+	<style>
+.thumbnail .caption {
+    padding: 9px;
+    color: #333;
+    font-weight: bold;
+}
 
-<!-- CSS -->
-<link rel="stylesheet" href="../skins/themes/blue/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="../skins/themes/blue/css/font-awesome.min.css">
-<link rel="stylesheet" href="../skins/themes/blue/css/owl.carousel.css">
-<link rel="stylesheet" href="../skins/themes/blue/css/owl.theme.css">
-<link rel="stylesheet" href="../skins/themes/blue/css/animate.css">
-<link rel="stylesheet" href="../skins/themes/blue/css/main.css">
-<link rel="stylesheet" href="../skins/themes/blue/css/responsive.css">
-<style>
 .site-name span {
     background: url(https://www.epa.gov/sites/all/themes/epa/img/svg/epa-logo.svg) no-repeat;
     color: transparent;
@@ -350,6 +347,9 @@ try{
     font: 0/0 a;
     height: 31px;
     text-shadow: none;
+}
+thumbnail caption div {
+  font-weight:bold;
 }
 caption, div {
     margin: 0pt;
@@ -403,17 +403,12 @@ body, .box.special > .pane-content, .box.special > .pane-content {
     padding-right: 24px;
 }
 .region-footer {
-   
-    background-size: 9.6em 9.6em;
-    /*font-size: 62.5%;*/
+    background-position: 0 0;
+    background-size: 5.8824em 5.8824em;
+    font-family: "Merriweather","Georgia","Cambria","Times New Roman","Times",serif;
     font-weight: bold;
-    min-height: 9.6em;
-    padding-bottom: 11.6em;
-}
- .region-footer .epa-menu > .menu-item > .menu-link {
-    margin: 0 1.2em 1.6em;
-    padding: 4.2em 1.4em 0;
-    text-decoration: none;
+    min-height: 5.8824em;
+    padding-top: 0em;
 }
 .main-content {
     background-color: #fff;
@@ -474,80 +469,7 @@ body, button, input, select, textarea {
     float: right;
     margin-top: .875em;
 }
-.bigGreen {
-    -webkit-appearance: none;
-    -webkit-rtl-ordering: logical;
-    -webkit-user-select: none;
-    background-color: rgb(118, 182, 108);
-    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.14902) 100%);
-    background-image: -ms-linear-gradient(top,rgba(255,255,255,.2) 0%,rgba(0,0,0,.15) 100%);
-    background-image:-moz-linear-gradient(top,rgba(255,255,255,.2) 0%,rgba(0,0,0,.15) 100%);
-    background-image: linear-gradient(top,rgba(255,255,255,.2) 0%,rgba(0,0,0,.15) 100%);
-    border-bottom-color: rgb(118, 182, 108);
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-image-outset: 0px;
-    border-image-repeat: stretch;
-    border-image-slice: 100%;
-    border-image-source: none;
-    border-image-width: 1;
-    border-left-color: rgb(118, 182, 108);
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-right-color: rgb(118, 182, 108);
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-top-color: rgb(118, 182, 108);
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-radius: 4px;
-	border: 0;
-    box-sizing: border-box;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    display: inline-block;
-    font-family: Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-    font-stretch: normal;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: bold;
-    height: 24px;
-    letter-spacing: normal;
-    line-height: 22px;
-    max-width: 100%;
-    outline-color: rgb(255, 255, 255);
-    outline-style: none;
-    outline-width: 0px;
-    padding-bottom: 0px;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 0px;
-    text-align: center;
-    text-decoration: none;
-    text-indent: 0px;
-    text-rendering: auto;
-    text-shadow: none;
-    text-transform: none;
-    transition-delay: 0s, 0s, 0s, 0s, 0s, 0s, 0s;
-    transition-duration: 0.25s, 0.25s, 0.25s, 0.25s, 0.25s, 0.25s, 0.25s;
-    transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform;
-    transition-timing-function: linear, linear, linear, linear, linear, linear, linear;
-    vertical-align: baseline;
-    word-spacing: 0px;
-    word-wrap: break-word;
-    writing-mode: lr-tb;
-    -webkit-writing-mode: horizontal-tb;
-}
-.bigGreen:hover{
-    background-color: #85cf7a;
-    border-color: #85cf7a;
-    outline: 0;
-}
+
 .page-title {
     padding-top: 0.25em;
 	visibility: hidden;
@@ -585,12 +507,11 @@ body, button, input, select, textarea {
 
 <!-- Js -->
 <!-- Js -->
-
+<script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery.js"></script>
+<script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery-ui.js"></script>
 <script src="../skins/themes/blue/js/vendor/modernizr-2.6.2.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../skins/themes/blue/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="../skins/themes/blue/js/bootstrap.min.js"></script>
 <script src="../skins/themes/blue/js/wow.min.js"></script>
 <script src="../skins/themes/blue/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="../js/v1/Utils.js"></script>
@@ -625,16 +546,7 @@ $(document).ready(function(){
 </script>
 	
 </f:verbatim>
-		<!--<div class="region-preface clearfix">
-			<div id="block-pane-epa-web-area-connect"
-				class="block block-pane contextual-links-region">
-				<ul class="menu utility-menu">
-					<li class="menu-item"><a href="../identity/feedback.page"
-						class="menu-link contact-us">Contact Us</a></li>
-				</ul>
-			</div>
-		</div>-->
-			
+	
 						<div class="container"
 							style="background-color: #efefef; width: 100%; padding-top: 10px;">
 							<div class="row">
@@ -686,7 +598,7 @@ $(document).ready(function(){
                                         <a href="/metrics/"> 
                                         <i class="fa fa-bar-chart fa-2x"></i> Metrics</a> </p>
                                     <p>
-                                        <a href="../../webhelp/en/gptlv10/inno/Stewards/Stewards.html">
+                                        <a href="../../webhelp/en/gptlv10/inno/Stewards/Stewards.html" target="_blank">
                                         <i class="fa fa-users fa-2x"></i> Stewards</a>
 									</p>
 								</div>
@@ -1864,4 +1776,4 @@ $(document).ready(function(){
 									</div>
 								</div>
 							</div>
-					</section>
+					</section>			
