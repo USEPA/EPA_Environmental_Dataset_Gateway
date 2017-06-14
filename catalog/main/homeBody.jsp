@@ -101,7 +101,7 @@ public String getThumbnail(String uuid)
 		imgObject.put("elevation", "el");
 		
 	String thumbnailResponseBody = "";
-	String url = "https://edg-staging.epa.gov/metadata/rest/find/document?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1";
+	String url = "https://edg-staging.epa.gov/metadata/RestQueryServlet?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1&max=1";
 		
 	HttpClientRequest thumbnailClient = new HttpClientRequest();
     JSONObject thumbnailObj = null;
@@ -150,8 +150,8 @@ String featuredTab1Title = "Climate Change";
 String featuredTab2Title = "Environmental Justice";
 String featuredTab3Title = "Facility Data";
 String urlSuffix = "&start=1&max=6&f=json";
-String baseURL = "/metadata/rest/find/document?searchText=";
-String popURL = "/metadata/rest/find/document?";
+String baseURL = "/metadata/RestQueryServlet?searchText=";
+String popURL = "/metadata/RestQueryServlet?";
 /**Climate Change URL**/
 String featuredTab1SearchStr = "sys.collection%3a%22%7b9B7778AC-DE79-287A-2A79-F05863C8A212%7d%22";
 String tab1 = site + baseURL + featuredTab1SearchStr + urlSuffix;
@@ -175,28 +175,28 @@ String region7TabTitle = "Region7";
 String region8TabTitle = "Region8";
 String region9TabTitle = "Region9";
 String region10TabTitle = "Region10";
+String region1TabSearchStr = "owner:4";
+String region2TabSearchStr = "owner:9";
+String region3TabSearchStr = "owner:22";
+String region4TabSearchStr = "owner:27";
+String region5TabSearchStr = "owner:13";
+String region6TabSearchStr = "owner:26";
+String region7TabSearchStr = "owner:10";
+String region8TabSearchStr = "owner:15";
+String region9TabSearchStr = "owner:11";
+String region10TabSearchStr = "owner:14";
+String epaReg1Url = site + popURL + region1TabSearchStr + urlSuffix;
+String epaReg2Url = site + popURL + region2TabSearchStr + urlSuffix;
+String epaReg3Url = site + popURL + region3TabSearchStr + urlSuffix;
+String epaReg4Url = site + popURL + region4TabSearchStr + urlSuffix;
+String epaReg5Url = site + popURL + region5TabSearchStr + urlSuffix;
+String epaReg6Url = site + popURL + region6TabSearchStr + urlSuffix;
+String epaReg7Url = site + popURL + region7TabSearchStr + urlSuffix;
+String epaReg8Url = site + popURL + region8TabSearchStr + urlSuffix;
+String epaReg9Url = site + popURL + region9TabSearchStr + urlSuffix;
+String epaReg10Url = site + popURL + region10TabSearchStr+ urlSuffix;
 
-String epaReg1Url = site + popURL + "owner=Region%201&f=json";
-String epaReg2Url = site + popURL + "owner=Region%202&f=json";
-String epaReg3Url = site + popURL + "owner=Region%203&f=json";
-String epaReg4Url = site + popURL + "owner=Region%204&f=json";
-String epaReg5Url = site + popURL + "owner=Region%205&f=json";
-String epaReg6Url = site + popURL + "owner=Region%206&f=json";
-String epaReg7Url = site + popURL + "owner=Region%207&f=json";
-String epaReg8Url = site + popURL + "owner=Region%208&f=json";
-String epaReg9Url = site + popURL + "owner=Region%209&f=json";
-String epaReg10Url = site + popURL + "owner=Region%2010&f=json";
 
-String region1TabSearchStr = "sys.owner:4";
-String region2TabSearchStr = "sys.owner:9";
-String region3TabSearchStr = "sys.owner:22";
-String region4TabSearchStr = "sys.owner:27";
-String region5TabSearchStr = "sys.owner:13";
-String region6TabSearchStr = "sys.owner:26";
-String region7TabSearchStr = "sys.owner:10";
-String region8TabSearchStr = "sys.owner:15";
-String region9TabSearchStr = "sys.owner:11";
-String region10TabSearchStr = "";
 HttpClientRequest client = new HttpClientRequest();
 JSONObject cliChobj=null;
 client.setUrl(tab1);
