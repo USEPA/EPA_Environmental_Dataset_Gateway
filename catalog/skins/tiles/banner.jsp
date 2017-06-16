@@ -29,14 +29,13 @@
 	background-color:#fff;
 }
 .btn-group>.btn:first-child {
-    margin-left: -14.7px;
-    color: #0071bc;
+     color: #0071bc;
 }
 .btn {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.42857143;
     text-align: center;
@@ -62,12 +61,24 @@ background-color: #FFF;}
 }
 .username {
     float: right;
-    margin-bottom: 1.6em;
-    padding-top: 1.9em;
-    margin-right: .8em;
+    /* margin-bottom: 1.6em; */
+    margin-top: 14px;
+    padding-top: 9px;
+    margin-right: 16px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 14px;
 }
+
+.sharebtn {
+    float: right;
+    /* margin-bottom: 1.6em; */
+    margin-top: 14px;
+    padding-top: 7px;
+    margin-right: 16px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
 .share-button {
     background: transparent;
     border: 0;
@@ -152,7 +163,7 @@ background-color: #FFF;}
 	</h:outputLink--%>
 	
 				<li>
-	<h:outputLink styleClass="bigGreen"  value = "#" style="padding-top:0px;border: 0" id="openShareFeedback" 
+	<h:outputLink styleClass="bigGreen"  value = "#" style="padding-top:0px;border: 0;margin-top: 26px;" id="openShareFeedback" 
 		onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 		<h:outputText value="#{gptMsg['catalog.shareFeedback']}" />
 	</h:outputLink></li>
@@ -165,8 +176,7 @@ background-color: #FFF;}
 		<li><h:outputLink value="../identity/feedback.page"
 		styleClass="menu-link" id="contactus">Contact Us	
 	</h:outputLink></li>
-	<li><div class="btn-group" style="float: right; padding-top: 1.5em; font-size: 12pt;">
-
+	<li><div class="btn-group sharebtn">
 				<button class="btn btn-inverse dropdown-toggle"
 					data-toggle="dropdown">SHARE</button>
 				<ul id="share" class="dropdown-menu">
@@ -182,7 +192,6 @@ background-color: #FFF;}
 						href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;description=%7BPAGE%20NAME%7D%20%7C%20%7BWEB%20AREA%20NAME%7D%20%7C%20US%20EPAmedia=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Fthemes%2Fepa%2Fimg%2Fepa-seal.png">Pinterest</a></li>
 				</ul>
 		</div></li>
-
 		<li><h:outputLink value="#"
 		id="openHelp"  styleClass="menu-link"
 		onclick="javascript:mainOpenPageHelp()">

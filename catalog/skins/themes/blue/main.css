@@ -128,11 +128,12 @@ table.nostyle td {
 
 #gptBanner a, #gptBanner a:hover {
     color: #0071bc;
-    margin-right: 1em;
-    padding-top: 0.5em;
+    margin-right: 16px;
+    padding-top: 12px;
     text-decoration: none;
     float: right;
-	margin-top: 1.6em;
+    margin-top: 14px;
+
 }
 
 /**
@@ -257,7 +258,7 @@ a:link, a:visited {
 }
 .secondary-menu > li > a {
    
-    font-size: 86.4706%;
+    font-size: 14px;
    
 }
 .main-nav > .nav__inner > .menu > .menu-item > .menu-link {
