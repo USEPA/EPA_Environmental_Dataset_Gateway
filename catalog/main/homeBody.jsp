@@ -757,7 +757,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -814,7 +814,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -873,7 +873,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -934,7 +934,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1093,7 +1093,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1153,7 +1153,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1212,7 +1212,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1270,7 +1270,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1329,7 +1329,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1388,7 +1388,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1446,7 +1446,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1504,7 +1504,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1562,7 +1562,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1620,7 +1620,7 @@ $(document).ready(function(){
 														counter++;
 										%>
 										<a
-											href="https://edg-staging.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
