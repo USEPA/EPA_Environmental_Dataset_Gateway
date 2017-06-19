@@ -198,132 +198,35 @@ String epaReg10Url = site + popURL + region10TabSearchStr+ urlSuffix;
 
 
 HttpClientRequest client = new HttpClientRequest();
-JSONObject cliChobj=null;
-client.setUrl(tab1);
+
+//data reading from file
+JSONObject dataObject=null;
+String dataUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/catalog/json/cached_json/metadata_json.json";
+client.setUrl(dataUrl);
 try{
     responseBody =  client.readResponseAsCharacters();
-    cliChobj = new JSONObject(responseBody);
+    dataObject = new JSONObject(responseBody);
    
    }catch(Exception e){
     e.printStackTrace();
 }
-JSONObject ejobj=null;
-client.setUrl(tab2);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    ejobj = new JSONObject(responseBody);
-   
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject fDataobj=null;
-client.setUrl(tab3);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    fDataobj = new JSONObject(responseBody);
-   
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject popobj=null;
-client.setUrl(popDataUrl);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    popobj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg1obj=null;
-client.setUrl(epaReg1Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg1obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg2obj=null;
-client.setUrl(epaReg2Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg2obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg3obj=null;
-client.setUrl(epaReg3Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg3obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg4obj=null;
-client.setUrl(epaReg4Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg4obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg5obj=null;
-client.setUrl(epaReg5Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg5obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg6obj=null;
-client.setUrl(epaReg6Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg6obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg7obj=null;
-client.setUrl(epaReg7Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg7obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg8obj=null;
-client.setUrl(epaReg8Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg8obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg9obj=null;
-client.setUrl(epaReg9Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg9obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
-JSONObject reg10obj=null;
-client.setUrl(epaReg10Url);
-try{
-    responseBody =  client.readResponseAsCharacters();
-    reg10obj = new JSONObject(responseBody);
-    
-   }catch(Exception e){
-    e.printStackTrace();
-}
+
+
+JSONObject cliChobj= dataObject.getJSONObject("climateChange");
+JSONObject ejobj= dataObject.getJSONObject("environmentalJustice");
+JSONObject fDataobj= dataObject.getJSONObject("facilityData");
+JSONObject popobj= dataObject.getJSONObject("popularDatasets");
+JSONObject reg1obj= dataObject.getJSONObject("region1");
+JSONObject reg2obj= dataObject.getJSONObject("region2");
+JSONObject reg3obj= dataObject.getJSONObject("region3");
+JSONObject reg4obj= dataObject.getJSONObject("region4");
+JSONObject reg5obj= dataObject.getJSONObject("region5");
+JSONObject reg6obj= dataObject.getJSONObject("region6");
+JSONObject reg7obj= dataObject.getJSONObject("region7");
+JSONObject reg8obj= dataObject.getJSONObject("region8");
+JSONObject reg9obj= dataObject.getJSONObject("region9");
+JSONObject reg10obj= dataObject.getJSONObject("region10");
+
 %>
 
 <f:verbatim>
@@ -506,7 +409,7 @@ body, button, input, select, textarea {
 </style>
 
 <!-- Js -->
-<!-- Js -->
+
 <script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery.js"></script>
 <script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery-ui.js"></script>
 <script src="../skins/themes/blue/js/vendor/modernizr-2.6.2.min.js"></script>
