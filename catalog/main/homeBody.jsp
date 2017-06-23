@@ -231,11 +231,11 @@ JSONObject reg10obj= dataObject.getJSONObject("region10");
 
 <f:verbatim>
 	<!-- CSS -->
-
 	<link rel="stylesheet" href="../skins/themes/blue/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../skins/themes/blue/css/owl.carousel.css">
 	<link rel="stylesheet" href="../skins/themes/blue/css/owl.theme.css">
 	<link rel="stylesheet" href="../skins/themes/blue/css/animate.css">
+
 	<style>
 .thumbnail .caption {
     padding: 9px;
@@ -414,6 +414,8 @@ body, button, input, select, textarea {
 <script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery-ui.js"></script>
 <script src="../skins/themes/blue/js/vendor/modernizr-2.6.2.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../skins/themes/blue/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../skins/themes/blue/css/bootstrap.min.css">
 <script>window.jQuery || document.write('<script src="../skins/themes/blue/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="../skins/themes/blue/js/wow.min.js"></script>
 <script src="../skins/themes/blue/js/owl.carousel.min.js"></script>
