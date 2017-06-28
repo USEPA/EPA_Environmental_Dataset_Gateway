@@ -13,7 +13,7 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.net.URLEncoder"%>
 <%!
-public String getThumbnail(String uuid)
+public String getThumbnail(JSONArray keywordsArray)
 {
 	Map<String, String> imgObject = new HashMap<String, String>();
         imgObject.put("climate", "ac");
@@ -100,26 +100,8 @@ public String getThumbnail(String uuid)
 		imgObject.put("geocoding", "gg");
 		imgObject.put("elevation", "el");
 		
-	String thumbnailResponseBody = "";
-	String url = "https://edg-staging.epa.gov/metadata/RestQueryServlet?uuid="+URLEncoder.encode(uuid)+"&f=dcat&start=1&max=1";
-		
-	HttpClientRequest thumbnailClient = new HttpClientRequest();
-    JSONObject thumbnailObj = null;
-    thumbnailClient.setUrl(url);
-		
-    try{
-		thumbnailResponseBody =  thumbnailClient.readResponseAsCharacters();
-		thumbnailObj = new JSONObject(thumbnailResponseBody);
-   
-    }catch(Exception e){
-		//e.printStackTrace();
-		return "br";
-	}
 	String keyword = "";
 	try{
-	
-	thumbnailObj = thumbnailObj.getJSONArray("dataset").getJSONObject(0);
-	JSONArray keywordsArray = thumbnailObj.getJSONArray("keyword");
 	ArrayList<String> matchArray = new ArrayList<String>();
 	for(int i=0; i<keywordsArray.length(); i++){
 		String jsonkeyword = keywordsArray.getString(i).toLowerCase();
@@ -634,32 +616,20 @@ $(document).ready(function(){
 									<div class="row" style="padding-top: 22px">
 										<%
 											try {
-													JSONArray arr = cliChobj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < cliChobj.length(); i++) {
+													JSONObject record = cliChobj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 															}
-														}
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -690,33 +660,20 @@ $(document).ready(function(){
 									<div class="row" style="padding-top: 22px">
 										<%
 											try {
-													JSONArray arr = ejobj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < ejobj.length(); i++) {
+													JSONObject record = ejobj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
-																
-															}
-														}
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -749,33 +706,21 @@ $(document).ready(function(){
 		                        <div class="row" style="padding-top: 22px">
 								<%
 											try {
-													JSONArray arr = fDataobj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < fDataobj.length(); i++) {
+													JSONObject record = fDataobj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -810,33 +755,21 @@ $(document).ready(function(){
 									<div class="row" style="padding-top: 22px">
 										<%
 											try {
-													JSONArray arr = popobj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < popobj.length(); i++) {
+													JSONObject record = popobj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -969,33 +902,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 						<%
 											try {
-													JSONArray arr = reg1obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg1obj.length(); i++) {
+													JSONObject record = reg1obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1029,33 +950,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 						<%
 											try {
-													JSONArray arr = reg2obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg2obj.length(); i++) {
+													JSONObject record = reg2obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1088,33 +997,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 							<%
 											try {
-													JSONArray arr = reg3obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg3obj.length(); i++) {
+													JSONObject record = reg3obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1146,33 +1043,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 							<%
 											try {
-													JSONArray arr = reg4obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg4obj.length(); i++) {
+													JSONObject record = reg4obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1205,33 +1090,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 							<%
 											try {
-													JSONArray arr = reg5obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg5obj.length(); i++) {
+													JSONObject record = reg5obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1264,33 +1137,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 							<%
 											try {
-													JSONArray arr = reg6obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg6obj.length(); i++) {
+													JSONObject record = reg6obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1322,33 +1183,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 							<%
 											try {
-													JSONArray arr = reg7obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg7obj.length(); i++) {
+													JSONObject record = reg7obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1380,33 +1229,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 							<%
 											try {
-													JSONArray arr = reg8obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg8obj.length(); i++) {
+													JSONObject record = reg8obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1438,33 +1275,21 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 							<%
 											try {
-													JSONArray arr = reg9obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg9obj.length(); i++) {
+													JSONObject record = reg9obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
 											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
@@ -1496,36 +1321,24 @@ $(document).ready(function(){
 						<div class="row" style="padding-top: 22px">
 							<%
 											try {
-													JSONArray arr = reg10obj.getJSONArray("records");
-													int counter = 0;
-													for (int i = 0; i < arr.length(); i++) {
-														String imageHtml = "";
-														JSONObject record = arr.getJSONObject(i);
-														JSONArray links = record.getJSONArray("links");
+										
+													for (int i = 0; i < reg10obj.length(); i++) {
+													JSONObject record = reg10obj.getJSONObject(i);
+													String thumbnailUrl = record.getString("thumbnail");
 														String title = record.getString("title");
 														String uuid = record.getString("id");
-														if (counter == 6) {
-															break;
-														}
-														String hrefDet = null;
-														for (int j = 0; j < links.length(); j++) {
-															JSONObject details = links.getJSONObject(j);
-															String typeDet = details.getString("type");
-															if ("thumbnail".equalsIgnoreCase(typeDet)) {
-																hrefDet = details.getString("href");
-																imageHtml = "<img src=\""+hrefDet+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
+													String imageHtml = "";	
+													if (thumbnailUrl == null || thumbnailUrl.equals("")) {
+															thumbnailUrl = getThumbnail(record.getJSONArray("keywords"));
+															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+thumbnailUrl+"\"></span></div></div></div>";												
 																
-															}
+															}else{
+																imageHtml = "<img src=\""+thumbnailUrl+"\" data-toggle=\"tooltip\" alt=\"\" title=\""+title+"\">";
 														}
 														
-														if(hrefDet == null){
-															hrefDet = getThumbnail(uuid);
-															imageHtml = "<div class=\"clearfix bshadow0 pbs x50\"><div class=\"iti-box\"><div class=\"icon\"><span class=\"iti-"+hrefDet+"\"></span></div></div></div>";
-														}
-														counter++;
 										%>
 										<a
-											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
@@ -1682,3 +1495,5 @@ $(document).ready(function(){
 								</div>
 							</div>
 					</section>			
+	
+	<!--[if lt IE 9]><script src="https://www2.epa.gov/sites/all/themes/epa/js/ie.js"></script><![endif]-->
