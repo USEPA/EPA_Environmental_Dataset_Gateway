@@ -177,10 +177,7 @@ String epaReg7Url = site + popURL + region7TabSearchStr + urlSuffix;
 String epaReg8Url = site + popURL + region8TabSearchStr + urlSuffix;
 String epaReg9Url = site + popURL + region9TabSearchStr + urlSuffix;
 String epaReg10Url = site + popURL + region10TabSearchStr+ urlSuffix;
-
-
 HttpClientRequest client = new HttpClientRequest();
-
 //data reading from file
 JSONObject dataObject=null;
 String dataUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/catalog/json/cached_json/metadata_json.json";
@@ -192,23 +189,20 @@ try{
    }catch(Exception e){
     e.printStackTrace();
 }
-
-
-JSONObject cliChobj= dataObject.getJSONObject("climateChange");
-JSONObject ejobj= dataObject.getJSONObject("environmentalJustice");
-JSONObject fDataobj= dataObject.getJSONObject("facilityData");
-JSONObject popobj= dataObject.getJSONObject("popularDatasets");
-JSONObject reg1obj= dataObject.getJSONObject("region1");
-JSONObject reg2obj= dataObject.getJSONObject("region2");
-JSONObject reg3obj= dataObject.getJSONObject("region3");
-JSONObject reg4obj= dataObject.getJSONObject("region4");
-JSONObject reg5obj= dataObject.getJSONObject("region5");
-JSONObject reg6obj= dataObject.getJSONObject("region6");
-JSONObject reg7obj= dataObject.getJSONObject("region7");
-JSONObject reg8obj= dataObject.getJSONObject("region8");
-JSONObject reg9obj= dataObject.getJSONObject("region9");
-JSONObject reg10obj= dataObject.getJSONObject("region10");
-
+JSONArray cliChobj= dataObject.getJSONArray("climateChange");
+JSONArray ejobj= dataObject.getJSONArray("environmentalJustice");
+JSONArray fDataobj= dataObject.getJSONArray("facilityData");
+JSONArray popobj= dataObject.getJSONArray("popularDatasets");
+JSONArray reg1obj= dataObject.getJSONArray("region1");
+JSONArray reg2obj= dataObject.getJSONArray("region2");
+JSONArray reg3obj= dataObject.getJSONArray("region3");
+JSONArray reg4obj= dataObject.getJSONArray("region4");
+JSONArray reg5obj= dataObject.getJSONArray("region5");
+JSONArray reg6obj= dataObject.getJSONArray("region6");
+JSONArray reg7obj= dataObject.getJSONArray("region7");
+JSONArray reg8obj= dataObject.getJSONArray("region8");
+JSONArray reg9obj= dataObject.getJSONArray("region9");
+JSONArray reg10obj= dataObject.getJSONArray("region10");
 %>
 
 <f:verbatim>
@@ -224,7 +218,6 @@ JSONObject reg10obj= dataObject.getJSONObject("region10");
     color: #333;
     font-weight: bold;
 }
-
 .site-name span {
     background: url(https://www.epa.gov/sites/all/themes/epa/img/svg/epa-logo.svg) no-repeat;
     color: transparent;
@@ -344,7 +337,6 @@ body, button, input, select, textarea {
     text-align: center;
     text-decoration: none;
 }
-
 .secondary-nav {
   position: relative;
   z-index: 10;
@@ -354,12 +346,10 @@ body, button, input, select, textarea {
     float: right;
     margin-top: .875em;
 }
-
 .page-title {
     padding-top: 0.25em;
 	visibility: hidden;
 }
-
 .main-column, .region-highlighted {
     clear: left;
     margin-top: -4.4em;
@@ -1338,7 +1328,7 @@ $(document).ready(function(){
 														
 										%>
 										<a
-											href="https://edg.epa.gov/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
+											href="/metadata/catalog/search/resource/details.page?uuid=<%=uuid%>"
 											target="_blank">
 											<div class="col-md-2">
 												<div class="thumbnail">
