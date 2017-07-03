@@ -38,10 +38,6 @@
 	<f:loadBundle basename="gpt.resources.gpt" var="gptMsg" />
 	<gpt:prepareView />
 	<html>
-<script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery.js"></script>
-<script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/catalog/skins/themes/blue/css/bootstrap.min.css"/>
-<script type="text/javascript" src="<%=request.getContextPath()%>/catalog/skins/themes/blue/js/bootstrap.min.js"></script>
 <head>
 <title><%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%></title>
 <jsp:include page="/catalog/skins/lookAndFeel.jsp" />
