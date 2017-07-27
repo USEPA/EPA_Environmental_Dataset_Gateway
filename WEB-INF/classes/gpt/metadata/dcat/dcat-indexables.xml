@@ -31,7 +31,7 @@
   <namespace prefix="skos" uri="http://www.w3.org/2004/02/skos/core#" />
   <namespace prefix="vcard" uri="http://www.w3.org/2006/vcard/ns#" />
 
-  <property meaning="apiso:Identifier" xpath="/rdf:RDF/dcat:dataset/dct:identifier"/>
+  <property meaning="fileIdentifier" xpath="/rdf:RDF/dcat:dataset/dct:identifier"/>
 
   <property meaning="title" xpath="/rdf:RDF/dcat:dataset/dct:title"/>
   <property meaning="abstract" xpath="/rdf:RDF/dcat:dataset/dct:description"/>
@@ -87,5 +87,6 @@
   <property meaning="dcat.references" xpath="/rdf:RDF/dcat:dataset/dct:references"/>
   <property meaning="dcat.isPartOf" xpath="/rdf:RDF/dcat:dataset/pod:isPartOf"/>  
   <property meaning="metadataFormat" xpathType="STRING" xpath="'dcat'"/>
-</indexables>
+  
+  </indexables>
 

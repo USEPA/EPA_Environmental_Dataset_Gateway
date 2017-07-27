@@ -23,7 +23,8 @@
   <interrogation count="count(/metadata/dataIdInfo/*[node()])"/>
   
   <!-- indexables -->
-	<indexables>
+  <indexables fileName="gpt/metadata/esri/esri-arcgis-indexables.xml"/>
+  <!--<indexables>
 	 
 	  <property meaning="title" xpath="/metadata/dataIdInfo/idCitation/resTitle"/>
 	  <property meaning="abstract" xpath="/metadata/dataIdInfo/idAbs"/>
@@ -43,7 +44,7 @@
 	  <property meaning="contentType" xpath="/metadata/Esri/resourceType | /metadata/distInfo/distributor/distorTran/onLineSrc/orDesc"/>
 	  <property meaning="dataTheme" xpath="/metadata/dataIdInfo/tpCat/TopicCatCd/@value"/>
 	  
-	</indexables>
+	</indexables>-->
   
   <!-- identification section -->
   <section key="general">

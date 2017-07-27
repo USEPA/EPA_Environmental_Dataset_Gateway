@@ -17,8 +17,8 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"  %>
-<%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt" %>
+<%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
+<%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%-- <%
   String cl_jsapi = "";
   String cl_pageId = com.esri.gpt.framework.jsf.PageContext.extract().getPageId();
@@ -33,87 +33,130 @@
   }
 %> --%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <f:view>
-<f:loadBundle basename="gpt.resources.gpt" var="gptMsg"/>
-<gpt:prepareView/>
-<html>
+	<f:loadBundle basename="gpt.resources.gpt" var="gptMsg" />
+	<gpt:prepareView />
+	<html>
 <head>
-	<title><%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%></title>
-  <jsp:include page="/catalog/skins/lookAndFeel.jsp"/>
-	<tiles:insert attribute="head" flush="false"/>
-	<%-- <%=cl_jsapi%> --%>
+<title><%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%></title>
+<jsp:include page="/catalog/skins/lookAndFeel.jsp" />
+<tiles:insert attribute="head" flush="false" />
+<%-- <%=cl_jsapi%> --%>
+
 </head>
+
 <body>
+	<!-- Google Tag Manager -->
+	<noscript>
+		<iframe src="//www.googletagmanager.com/ns.html?id=GTM-L8ZB"
+			height="0" width="0" style="display: none; visibility: hidden"></iframe>
+	</noscript>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start' : new Date().getTime(),
+				event : 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l='
+					+ l
+					: '';
+			j.async = true;
+			j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-L8ZB');
+	</script>
 	<div id="gptMainWrap" style="position: static;">
-	   
-		<div id="gptTopBar">
-			<div id="gptSkip">
-				<ul>
-					<li><a href="#gptBody"><h:outputText id="txtSkipToContent" value="#{gptMsg['catalog.site.skipToContent']}"/></a></li>
-				</ul>
-			</div>
-			<div id="gptTertiaryNavigation">
+	<div id="gptBanner" title="EDG Banner">
+			<tiles:insert attribute="banner" flush="false" />
+		</div>
+	<div class="skip-links">
+			<a href="#main-content" class="skip-link element-invisible element-focusable">Jump to main content</a>
+		</div>
+		<header class="masthead clearfix" role="banner"> 
+		<img
+			class="site-logo"
+			src="https://www.epa.gov/sites/all/themes/epa/logo.png" alt="" /> 
+		<hgroup
+			class="site-name-and-slogan">
+		  <h1 class="site-name">
+			<a href="https://www.epa.gov/" title="Go to the home page" rel="home"><span>US
+					EPA</span></a>
+		  </h1>
+		<div class="site-slogan">United States Environmental Protection	Agency</div>
+		</hgroup>
+         
+		
+		<div id="gptTertiaryNavigation">
 				<tiles:insert attribute="tertiaryNavigation" flush="false"/>
 			</div>
-		</div>
+		</header>
 		
-		<div id="gptBanner" title="EDG Banner">
-			<tiles:insert attribute="banner" flush="false"/>
-		</div>
-		<div style="clear:both"></div>
-		<div id="gptPrimaryNavigation">
-			<tiles:insert attribute="primaryNavigation" flush="false"/>
-		</div>
-		<div style="clear:both"></div>
-		<div id="gptBody">
 		
-			<div id="gptSecondaryNavigation">
-				<tiles:insert attribute="secondaryNavigation" flush="false"/>
-			</div>
-  
-			<h1><h:outputText id="cmPlPcCaption" value="#{PageContext.caption}"/></h1>
-
-  <% // page content - navigation menu and main body %>
-  <h:panelGrid id="cmPlPgdNavMenuAndMainBody" styleClass="pageContent"
-    columns="1" cellpadding="0" cellspacing="0" 
-    summary="#{gptMsg['catalog.general.designOnly']}">
-
-
-    
-    <% // page content right - page caption, messages and page body  %>
-    <h:panelGrid id="cmPlPgdPageContentBody" styleClass="pageContentRight"
-      columns="1" cellpadding="0" cellspacing="0" 
-      summary="#{gptMsg['catalog.general.designOnly']}">
-      
-      
-      <% // messages %>
-      <h:panelGroup id="cmPlPgpGptMessages">
-        <h:messages id="cmPlMsgsPageMessages" layout="list" 
-          infoClass="successMessage" 
-          errorClass="errorMessage"/>
-      </h:panelGroup>
-        
-      <% // page body %>
-      <h:panelGrid id="cmPlPgdPageBody" styleClass="pageBody" 
-        columns="1" cellpadding="0" cellspacing="0" 
-        summary="#{gptMsg['catalog.general.designOnly']}">
-        <h:panelGroup id="cmPlPgpPageBody" >
-          <tiles:insert attribute="body" flush="false"/>
-        </h:panelGroup>
-      </h:panelGrid>
-    </h:panelGrid>
-    
-  </h:panelGrid>
-      
-		</div>
-		<div style="clear:both"></div>
-		<div id="gptFooter">
-			<tiles:insert attribute="footer" flush="false"/>
-		</div>
-		
-	</div> <!-- gptMainWrap -->
  
+		<div style="clear: both"></div>
+		<div id="gptPrimaryNavigation">
+			<tiles:insert attribute="primaryNavigation" flush="false" />
+		</div>
+		<div style="clear: both"></div>
+		<section id="main-content" class="main-content clearfix" role="main">
+			<div id="gptBody">
+
+					<div id="gptSecondaryNavigation">
+						<tiles:insert attribute="secondaryNavigation" flush="false" />
+					</div>
+					<div class="main-column clearfix">
+						<h1 class="page-title">
+							<h:outputText id="cmPlPcCaption" value="#{PageContext.caption}" />
+						</h1>
+						<div class="panel-pane pane-node-content">
+							<div class="pane-content">
+								<div class="node node-page clearfix view-mode-full">
+									<% // page content - navigation menu and main body %>
+									<h:panelGrid id="cmPlPgdNavMenuAndMainBody"
+										styleClass="pageContent" columns="1" cellpadding="0"
+										cellspacing="0"
+										summary="#{gptMsg['catalog.general.designOnly']}">
+
+
+
+										<% // page content right - page caption, messages and page body  %>
+										<h:panelGrid id="cmPlPgdPageContentBody"
+											styleClass="pageContentRight" columns="1" cellpadding="0"
+											cellspacing="0"
+											summary="#{gptMsg['catalog.general.designOnly']}">
+
+
+											<% // messages %>
+											<h:panelGroup id="cmPlPgpGptMessages">
+												<h:messages id="cmPlMsgsPageMessages" layout="list"
+													infoClass="successMessage" errorClass="errorMessage" />
+											</h:panelGroup>
+
+											<% // page body %>
+											<h:panelGrid id="cmPlPgdPageBody" styleClass="pageBody"
+												columns="1" cellpadding="0" cellspacing="0"
+												summary="#{gptMsg['catalog.general.designOnly']}">
+												<h:panelGroup id="cmPlPgpPageBody">
+													<tiles:insert attribute="body" flush="false" />
+												</h:panelGroup>
+											</h:panelGrid>
+										</h:panelGrid>
+
+									</h:panelGrid>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		<div style="clear: both"></div>
+		<div id="gptFooter">
+			<tiles:insert attribute="footer" flush="false" />
+		</div>
+	</div>
 </body>
 </html>
 </f:view>

@@ -16,14 +16,15 @@
 -->
 
 <schemas>
+    
 <!-- JSS 20090318 Disable esri- profiles so that records do not get treated differently 
 between that and the fgdc-bestpractice. Resort so fgdc, dg, ...
-
-  <schema fileName="gpt/metadata/esri/esri-arcgis-definition.xml"/>
   <schema fileName="gpt/metadata/esri/esri-fgdc-definition.xml"/>  
-  <schema fileName="gpt/metadata/esri/esri-iso-definition.xml"/>
+<schema fileName="gpt/metadata/esri/esri-iso-definition.xml"/>
 -->    
+<!--By listing this first, do we ensure records are FGDC unless FGDC sections have been purged?-->
   <schema fileName="gpt/metadata/fgdc/fgdc-definition.xml"/>
+  <schema fileName="gpt/metadata/esri/esri-arcgis-definition.xml"/>
   <schema fileName="gpt/metadata/data-gov/data-gov-definition.xml"/>
   <!-- AE 20120731 New metadata format based on DC but used only internally as virtual members of collections -->
   <schema fileName="gpt/metadata/virtual/virtual-definition.xml"/>

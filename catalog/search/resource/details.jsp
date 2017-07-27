@@ -16,7 +16,28 @@
 <% // viewMetadataSummary.jsp - View Metadata Details page(tiles definition) %>
 <%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
 <%@taglib prefix="gpt" uri="http://www.esri.com/tags-gpt"%>
+<%@page import="com.esri.gpt.framework.util.Val"%>
+<%@page import="com.esri.gpt.catalog.search.ISearchSaveRepository" %>
+<%@page import="com.esri.gpt.catalog.search.SearchSaveRpstryFactory"%>
+<%
+String dUuid = com.esri.gpt.framework.util.Val.chkStr(request.getParameter("uuid"));
+	
+	ISearchSaveRepository saveRpstry = SearchSaveRpstryFactory.getSearchSaveRepository();
+	String contextPath =request.getContextPath();
+	String requestUrl = request.getRequestURL().toString();
+    String redirectUrl = requestUrl.substring(0, requestUrl.indexOf(contextPath) + contextPath.length() + 1)+"catalog/error/error.jsp";
+		
+	String newuuid = saveRpstry.getDocUUID(dUuid);
+	if(newuuid == "invalid"){
+	response.setStatus(response.SC_NOT_FOUND);	
+	//response.sendRedirect(redirectUrl);
+		
+	String scriptUrl = "<SCRIPT>var win = window; if(window.parent) win = window.parent.window; win.location.href ='"+redirectUrl+"'; </SCRIPT>";
+	out.println(scriptUrl);
+	return;
 
+	}
+	%>
 <% // initialize the page %>
 <gpt:page id="catalog.search.resource.details" prepareView="#{SearchController.processRequestParams}"/>
 <tiles:insert definition=".gptLayout" flush="false" >

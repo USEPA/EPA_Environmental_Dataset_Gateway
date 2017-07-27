@@ -23,8 +23,15 @@
 <%@page import="com.esri.gpt.framework.util.LogUtil" %>
 <%@page import="com.esri.gpt.framework.context.RequestContext" %>
 <%@page import="com.esri.gpt.control.search.browse.TocCollection" %>
+<%@page import="com.esri.gpt.catalog.search.ISearchSaveRepository" %>
+<%@page import="com.esri.gpt.catalog.search.SearchSaveRpstryFactory"%>
 <%
 	String rnpUuid = com.esri.gpt.framework.util.Val.chkStr(request.getParameter("uuid"));
+	
+	ISearchSaveRepository saveRpstry = SearchSaveRpstryFactory.getSearchSaveRepository();
+	String newuuid=saveRpstry.getDocUUID(rnpUuid);
+    request.setAttribute("uuid", newuuid);
+    rnpUuid = newuuid;
 	String rnpContextPath = request.getContextPath();
 	com.esri.gpt.framework.context.RequestContext rnpContext = com.esri.gpt.framework.context.RequestContext.extract(request);
 	com.esri.gpt.catalog.context.CatalogConfiguration rnpCatalogCfg = rnpContext.getCatalogConfiguration();
@@ -136,7 +143,8 @@ function rnpInit(){
             	elTitle.style.display = "none";
             }else{
             	//elTitle.appendChild(document.createTextNode(title));
-            	elTitle.innerHTML = title;        
+            	elTitle.innerHTML = title;
+            	document.title = title;
             }
         }
       }
@@ -189,9 +197,16 @@ if (typeof(dojo) != 'undefined') {
 	  dojo.addOnLoad(rnpInit);
 }
 </script>
+<style>
+table {
+    background-color: inherit;
+    color: #212121;
+    margin-bottom: 1.5em;
+}
+</style>
 <f:verbatim>
-	<a id="rnpDetails" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
-	<a id="rnpReview" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>
+	<a id="rnpDetails" style="margin: 0 1em 0 0" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
+	<!-- <a id="rnpReview" style="margin: 0 1em 0 0" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>-->
 	<a id="rnpRelationships" style="display:none" href="<%=rnpRelationshipsUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.relationships.title")%></a>
 	<a id="rnpLinkDevelop" href="" style="float:right;" target="_blank"></a>
 	<a id="rnpPreview" style="display:none" href="<%=rnpPreviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.liveData.title")%></a>	

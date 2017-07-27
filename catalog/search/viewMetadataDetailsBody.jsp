@@ -14,6 +14,8 @@
  limitations under the License.
 --%>
 <%@page import="com.esri.gpt.framework.util.Val"%>
+<%@page import="com.esri.gpt.catalog.search.ISearchSaveRepository" %>
+<%@page import="com.esri.gpt.catalog.search.SearchSaveRpstryFactory"%>
 <% // viewMetadataDetails.jsp - view metadata details(JSF body) %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core" %>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html" %>
@@ -24,6 +26,11 @@
   com.esri.gpt.framework.ArcGIS.InteractiveMap imConfig = 
      com.esri.gpt.framework.context.RequestContext.extract(request).getApplicationConfiguration().getInteractiveMap();
   String vmdUuid = Val.chkStr(request.getParameter("uuid"));
+  ISearchSaveRepository saveRpstry = SearchSaveRpstryFactory.getSearchSaveRepository();
+  String newuuid=saveRpstry.getDocUUID(vmdUuid);
+  request.setAttribute("uuid", newuuid);
+  vmdUuid = newuuid;
+  
   String sRestUrl = request.getContextPath()+"/rest/document?&xsl=metadata_to_html_full&f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
   if ((request.getParameter("redirected"))!= null){  
        if ((request.getParameter("redirected")).equals("true")) {
@@ -51,7 +58,7 @@ document.getElementById('frmTertiaryNavigation:openShareFeedback').style.display
 <script type="text/javascript">
 var error = "${error}";
 
-debugger
+//debugger
 
 if(error != ""){
     alert(error);

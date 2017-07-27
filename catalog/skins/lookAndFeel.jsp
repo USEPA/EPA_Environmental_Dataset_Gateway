@@ -20,13 +20,14 @@
 <%
 String PROD = "prod";
 %>
-
+<link rel="shortcut icon" href="https://www.epa.gov/sites/all/themes/epa/favicon.ico" type="image/vnd.microsoft.icon" />
 <link rel="stylesheet" type="text/css" href="https://serverapi.arcgisonline.com/jsapi/arcgis/2.0/js/dojo/dijit/themes/tundra/tundra.css">
+<link type="text/css" rel="stylesheet" href="https://www.epa.gov/sites/all/libraries/template2/s.css" media="all" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/catalog/skins/themes/blue/main.css"  />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/catalog/skins/themes/blue/preview.css"  />
 <link rel="icon" type="image/x-icon"   href="<%=request.getContextPath()%>/catalog/images/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath()%>/catalog/images/favicon.ico" />
 <link rel="stylesheet" href="https://js.arcgis.com/3.17/esri/css/esri.css">
+<link rel="stylesheet" type="text/css"href="<%=request.getContextPath()%>/catalog/skins/themes/blue/css/responsive.css">
 
 <script type="text/javascript">djConfig = {parseOnLoad: true};</script>
 <script type="text/javascript" src="<%=com.esri.gpt.framework.context.RequestContext.extract(request).getApplicationConfiguration().getInteractiveMap().getJsapiUrl()%>"></script>
@@ -38,4 +39,9 @@ String PROD = "prod";
 <script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/livedata.js"%>"></script>
 <script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/gpt-asn.js"%>"></script>
 <script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/gpt-browse.js"%>"></script>
-
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/catalog/skins/themes/blue/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/catalog/skins/themes/blue/css/bootstrap.min.css"/>
+<script src="https://www.epa.gov/sites/all/libraries/template2/jquery.js"></script>
+<script src="https://www.epa.gov/sites/all/libraries/template2/js.js"></script>
+<script src="https://www.epa.gov/sites/all/modules/custom/epa_core/js/alert.js"></script>

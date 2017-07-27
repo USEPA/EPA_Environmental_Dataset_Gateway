@@ -38,6 +38,9 @@ option[value='Duplicate'] {
 <%
   }
 %>
+label {
+    display: inline-block;
+}
 </style>
 <script type="text/javascript" language="Javascript">
 
@@ -469,7 +472,7 @@ function mmdClearAclSelection(){
 
 <% // query criteria section %>
 <h:panelGrid columns="2" summary="#{gptMsg['catalog.general.designOnly']}"
-  styleClass="formTable" columnClasses="formLabelColumn,formInputColumn">
+  styleClass="formTable" columnClasses="formLabelColumn,formInputColumn" cellpadding = "10" cellspacing = "1">
 
   <% // document title %>
   <h:outputLabel for="mmdTitle"
@@ -526,7 +529,8 @@ function mmdClearAclSelection(){
   <% // approval status  and publication method%>
   <h:outputLabel for="mmdStatus"
     value="#{gptMsg['catalog.publication.manageMetadata.label.status']}"/>
-  <h:panelGroup>
+  <h:panelGroup >
+	 
 	  <h:selectOneMenu id="mmdStatus"
 	    value="#{ManageMetadataController.queryCriteria.approvalStatus}">
 	    <f:selectItem

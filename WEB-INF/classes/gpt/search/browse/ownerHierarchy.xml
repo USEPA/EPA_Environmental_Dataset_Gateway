@@ -40,24 +40,8 @@
         <OEI-OIC name="OEI-OIC"/>
     </OEI>
     <OCFO name="OCFO"/>
-    <ORD name="ORD">
-	<ORD-NCEA name="ORD-NCEA"/>
-    <ORD-NCEA-ESD name="ORD-NERL-ESD"/>
-	<ORD-NERL-ESD-REVA name="ORD-NERL-ESD-REVA"/>
-	<ORD-NHEERL-WED name="ORD-NHEERL-WED"/>
-	<ORD-NHEERL-AED name="ORD-NHEERL-AED"/>
-    <ORD-OSA name="ORD-OSA"/>
-    </ORD>
-    <OSWER name="OSWER">
-	<OSWER-OEM name="OSWER-OEM"/>
-	<OSWER-ORCR name="OSWER-ORCR"/>
-	<OSWER-CPA name="OSWER-CPA"/>
-	<OSWER-OBLR name="OSWER-OBLR"/>
-	<OSWER-OSRTI name="OSWER-OSRTI"/>
-	<OSWER-OUST name="OSWER-OUST"/>
-    </OSWER>
 	<OLEM name="OLEM">
-	<OLEM-CPA name="OLEM-CPA"/>
+	<OLEM-OCPA name="OLEM-OCPA"/>
 	<OLEM-FFRRO name="OLEM-FFRRO"/>
 	<OLEM-OBLR name="OLEM-OBLR"/>
 	<OLEM-OEM name="OLEM-OEM"/>
@@ -66,6 +50,14 @@
 	<OLEM-OSRTI name="OLEM-OSRTI"/>
 	<OLEM-OUST name="OLEM-OUST"/>
     </OLEM>
+    <ORD name="ORD">
+	<ORD-NCEA name="ORD-NCEA"/>
+    <ORD-NCEA-ESD name="ORD-NERL-ESD"/>
+	<ORD-NERL-ESD-REVA name="ORD-NERL-ESD-REVA"/>
+	<ORD-NHEERL-WED name="ORD-NHEERL-WED"/>
+	<ORD-NHEERL-AED name="ORD-NHEERL-AED"/>
+    <ORD-OSA name="ORD-OSA"/>
+    </ORD>	
     <OW name="OW"/>
     <REGIONS name="REGIONS" noQuery="true">
         <Region_1 name="Region 1"/>

@@ -381,11 +381,11 @@
   </property-meaning>  
   <property-meaning name="dcat.accessLevel" valueType="String" comparisonType="value">
   </property-meaning>  
-  <property-meaning name="dcat.accessLevelComment" valueType="String" comparisonType="value">
+  <property-meaning name="dcat.accessLevelComment" valueType="String" comparisonType="terms">
   </property-meaning>
   <property-meaning name="dcat.mbox" valueType="String" comparisonType="value">
   </property-meaning>
-  <property-meaning name="dcat.person" valueType="String" comparisonType="value">
+  <property-meaning name="dcat.person" valueType="String" comparisonType="terms">
   </property-meaning>
   <property-meaning name="dcat.license" valueType="String" comparisonType="value">
   </property-meaning>
@@ -401,8 +401,6 @@
   </property-meaning>  
   <property-meaning name="dcat.downloadUrl" valueType="String" comparisonType="value">
   </property-meaning>  
-  <property-meaning name="dcat.webService" valueType="String" comparisonType="value">
-  </property-meaning> 
    <property-meaning name="dcat.format" valueType="String" comparisonType="value">
   </property-meaning>  
 <!--Added by Torrin Hultgren 2/21/13 to include "Optional" dcat components-->
@@ -423,17 +421,26 @@
     <property-meaning name="metadataFormat" valueType="String" comparisonType="value">
   </property-meaning>   
   <property-meaning name="dcat.metc.mbox" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.org.org" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.org.per" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.per.org" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.per.per" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.metc.org.org" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.metc.org.per" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.metc.per.org" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.metc.per.per" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.publisher.origin" valueType="String" comparisonType="value"/>
+  <property-meaning name="dcat.org.org" valueType="String" comparisonType="terms"/>
+  <property-meaning name="dcat.org.per" valueType="String" comparisonType="terms"/>
+  <property-meaning name="dcat.per.org" valueType="String" comparisonType="terms"/>
+  <property-meaning name="dcat.per.per" valueType="String" comparisonType="terms"/>
+  <property-meaning name="dcat.metc.org.org" valueType="String" comparisonType="terms"/>
+  <property-meaning name="dcat.metc.org.per" valueType="String" comparisonType="terms"/>
+  <property-meaning name="dcat.metc.per.org" valueType="String" comparisonType="terms"/>
+  <property-meaning name="dcat.metc.per.per" valueType="String" comparisonType="terms"/>
+  <property-meaning name="dcat.publisher.origin" valueType="String" comparisonType="terms"/>
   <property-meaning name="dcat.parentIdentifier" valueType="String" comparisonType="value"/>
   <property-meaning name="dcat.primaryITInvestmentUII" valueType="String" comparisonType="value"/>
   <property-meaning name="dcat.describedBy" valueType="String" comparisonType="value"/>
   <property-meaning name="dcat.describedByType" valueType="String" comparisonType="value"/>
+  <property-meaning name="dcat.downloadUrl2" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadUrl3" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadUrl4" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadUrl5" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadUrl6" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadUrl7" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadUrl8" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadUrl9" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadUrl10" valueType="String" comparisonType="value"/>  
 </property-meanings>

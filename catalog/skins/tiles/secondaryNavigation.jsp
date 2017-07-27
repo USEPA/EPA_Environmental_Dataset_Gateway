@@ -32,7 +32,7 @@
 	  <h:commandLink action="catalog.publication.manageMetadata" 
 	    id="publicationManageMetadata" 
 	    value="#{gptMsg['catalog.publication.manageMetadata.subMenuCaption']}" 
-	    styleClass="#{PageContext.menuStyleMap['catalog.publication.manageMetadata']}"
+	    style="margin-right:10px;"
 	    actionListener="#{ManageMetadataController.processAction}"/>
 	
 	  <h:commandLink action="catalog.publication.addMetadata"
@@ -40,11 +40,11 @@
 	    value="#{gptMsg['catalog.publication.addMetadata.subMenuCaption']}"
 	    styleClass="#{PageContext.menuStyleMap['catalog.publication.addMetadata']}"/>
 	    
-	  <h:commandLink action="catalog.publication.manage.user.role"
+	  <%--<h:commandLink action="catalog.publication.manage.user.role"
 	    id="publicationManageUserRole"
 	    rendered="#{PageContext.roleMap['gptAdministrator'] and PageContext.manageUser}"
 	    value="#{gptMsg['catalog.publication.manage.user.role.subMenuCaption']}"
-	    styleClass="#{PageContext.menuStyleMap['catalog.publication.manage.user.role']}"/>
+	    styleClass="#{PageContext.menuStyleMap['catalog.publication.manage.user.role']}"/>--%>
 	 	    
 	  <f:subview id="svLinks">
 	            <jsp:include page="/catalog/tc/suite_links.jsp"/>

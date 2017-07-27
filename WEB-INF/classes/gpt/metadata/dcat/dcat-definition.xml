@@ -64,7 +64,7 @@
                select="/rdf:RDF/dcat:dataset/dct:description"/>
     </parameter>
 
-    <parameter key="identification.fileIdentifier">
+    <parameter key="identification.fileIdentifier" meaning="fileIdentifier">
       <label resourceKey="catalog.mdParam.general.fileIdentifier"/>
       <input type="text" size="50" maxlength="50" editable="false" 
                defaultValue="#{EditMetadataController.newUuid}"/>
@@ -78,12 +78,75 @@
   <!-- Distribution Section -->
   <section key="pod.distribution">
     <label resourceKey="catalog.mdParam.distribution.caption"/>
-    <parameter key="identification.downloadURL">
+    <parameter key="dcat.downloadURL">
       <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
-               select="/rdf:RDF/dcat:dataset/dcat:distribution/dcat:downloadURL" />
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[1]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL2">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[2]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL3">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[3]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL4">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[4]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL5">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[5]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL6">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[6]/dcat:downloadURL" />
+    </parameter> 
+     <parameter key="dcat.downloadURL7">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[7]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL8">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[8]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL9">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[9]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL10">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[10]/dcat:downloadURL" />
     </parameter> 
     
     <parameter key="identification.accessURL">
@@ -100,7 +163,7 @@
   <section key="pod.access">
 	<label resourceKey="catalog.mdParam.constraint.caption"/>
 	<parameter key="accessLevel">
-		<label resourceKey="catalog.mdParam.schema.dcat.accessLevel"/>
+		<label resourceKey="catalog.mdParam.schema.dcat.accessLevelLabel"/>
 		<input type="selectOneMenu" defaultValue="Public" />
 		<validation required="true"/>
 		<content useSelectForUpdate="true" deleteIfEmpty="false"
@@ -113,14 +176,14 @@
 		</content>
 	</parameter>
 	<parameter key="pod.rights">
-		<label resourceKey="catalog.mdParam.schema.dcat.rights"/>
+		<label resourceKey="catalog.mdParam.schema.dcat.rightsLabel"/>
 		<input type="textArea"/>
 		<validation required="false"/>
 		<content useSelectForUpdate="true" deleteIfEmpty="true"
 			   select="/rdf:RDF/dcat:dataset/dct:rights"/>
 	</parameter>
 	<parameter key="pod.license">
-      <label resourceKey="catalog.mdParam.schema.dcat.license"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.licenseLabel"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="true" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="false"
@@ -132,7 +195,7 @@
 	<label resourceKey="catalog.fgdc.metainfo.section.dates"/>
     <!-- Modified Date -->
     <parameter key="pod.modifiedDate"> 
-      <label resourceKey="catalog.gxe.dc.modified"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.modifiedDateLabel"/>
       <input type="text" size="20" maxlength="10" 
              hintResourceKey="catalog.general.inputDateFormat"
              defaultValue="#{EditMetadataController.now}"/>
@@ -142,7 +205,7 @@
     </parameter> 
     <!-- Issued Date -->
     <parameter key="pod.issuedDate"> 
-      <label resourceKey="catalog.gxe.dc.issued"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.issuedDateLabel"/>
       <input type="text" size="20" maxlength="10" 
              hintResourceKey="catalog.general.inputDateFormat"
              defaultValue="#{EditMetadataController.now}"/>
@@ -194,7 +257,7 @@
       <input type="text" maxlength="255" />
       <validation required="true"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
-               select="/rdf:RDF/dcat:dataset/dcat:contactPoint/vcard:hasEmail"/>
+               select="substring(/rdf:RDF/dcat:dataset/dcat:contactPoint/vcard:hasEmail,8)"/>
     </parameter>
   </section>
   
@@ -316,14 +379,14 @@
                select="/rdf:RDF/dcat:dataset/dcat:landingPage" />
     </parameter> 
 	<parameter key="pod.References">
-      <label resourceKey="catalog.mdParam.basic.referenceForTechnicalDocumentation"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.referencesLabel"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/rdf:RDF/dcat:dataset/dct:references" />
     </parameter> 
 	<parameter key="pod.describedBy">
-      <label resourceKey="fgdc.entiAndAttrInfo.overDesc.entiAndAttrDetaCita"/>
+      <label resourceKey="catalog.mdParam.schema.dcat.datadictionaryLabel"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
