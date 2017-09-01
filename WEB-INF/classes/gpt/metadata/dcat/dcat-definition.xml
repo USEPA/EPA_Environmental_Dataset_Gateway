@@ -149,6 +149,292 @@
                select="/rdf:RDF/dcat:dataset/dcat:distribution[10]/dcat:downloadURL" />
     </parameter> 
     
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.downloadURL11">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[11]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL12">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[12]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL13">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[13]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL14">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[14]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL15">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[15]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL16">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[16]/dcat:downloadURL" />
+    </parameter> 
+     <parameter key="dcat.downloadURL17">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[17]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL18">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[18]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL19">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution19]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL20">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[20]/dcat:downloadURL" />
+    </parameter> 
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.downloadURL21">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[21]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL22">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[22]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL23">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[23]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL24">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[24]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL25">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[25]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL26">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[26]/dcat:downloadURL" />
+    </parameter> 
+     <parameter key="dcat.downloadURL27">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[27]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL28">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[28]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL29">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[29]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL30">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[30]/dcat:downloadURL" />
+    </parameter> 
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.downloadURL31">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[31]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL32">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[32]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL33">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[33]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL34">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[34]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL35">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[35]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL36">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[36]/dcat:downloadURL" />
+    </parameter> 
+     <parameter key="dcat.downloadURL37">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[37]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL38">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[38]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL39">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[39]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL40">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[40]/dcat:downloadURL" />
+    </parameter> 
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.downloadURL41">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[41]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL42">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[42]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL43">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[43]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL44">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[44]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL45">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[45]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL46">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[46]/dcat:downloadURL" />
+    </parameter> 
+     <parameter key="dcat.downloadURL47">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[47]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL48">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[48]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL49">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[49]/dcat:downloadURL" />
+    </parameter>  
+    <parameter key="dcat.downloadURL50">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[50]/dcat:downloadURL" />
+    </parameter> 
+
+    
     <parameter key="identification.accessURL">
       <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
@@ -381,8 +667,8 @@
 	<parameter key="pod.References">
       <label resourceKey="catalog.mdParam.schema.dcat.referencesLabel"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
-      <validation required="false" valueType="string"/>
-      <content useSelectForUpdate="true" deleteIfEmpty="true"
+      <validation required="false" valueType="array"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true" nodeType="list"
                select="/rdf:RDF/dcat:dataset/dct:references" />
     </parameter> 
 	<parameter key="pod.describedBy">

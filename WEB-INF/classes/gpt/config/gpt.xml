@@ -338,7 +338,7 @@
         <parameter key="webharvester.autoSelectFrequency" value="2[HOUR]"/>
         <parameter key="webharvester.autoSelectSuspendPeriod" value=""/>
         <parameter key="webharvester.watchDogFrequency" value="2[HOUR]"/>
-        <parameter key="webharvester.baseContextPath" value=""/>
+        <parameter key="webharvester.baseContextPath" value="https://edg-staging.epa.gov/metadata"/>
         <parameter key="webharvester.maxRepRecords" value="10000"/> 
         <parameter key="webharvester.maxRepErrors" value="5000"/> 
         <parameter key="webharvester.resource.autoApprove" value="false"/>     
@@ -567,7 +567,6 @@
         -->
 	
          
-	 
 	 <ldapAdapter>
      
          <ldapConnectionProperties
@@ -825,7 +824,6 @@
           groupDN="cn=GDG-OP,cn=GIS,cn=Groups,dc=epa,dc=gov"/>		
           </groups>
         </ldapAdapter>
-	
 
  </identity>
     

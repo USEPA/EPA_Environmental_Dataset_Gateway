@@ -278,7 +278,7 @@ body, .box.special > .pane-content, .box.special > .pane-content {
     font-size: 98%;
 }
 .media-left, .media>.pull-left {
-    padding-right: 24px;
+    padding-right: 24px !important;
 }
 .region-footer {
     background-position: 0 0;
@@ -381,7 +381,13 @@ body, button, input, select, textarea {
 </style>
 
 <!-- Js -->
+
+<script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery.js"></script>
+<script type="text/javascript" src="../../catalog/js/jquery-ui/js/jquery-ui.js"></script>
 <script src="../skins/themes/blue/js/vendor/modernizr-2.6.2.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../skins/themes/blue/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../skins/themes/blue/css/bootstrap.min.css">
 <script>window.jQuery || document.write('<script src="../skins/themes/blue/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="../skins/themes/blue/js/wow.min.js"></script>
 <script src="../skins/themes/blue/js/owl.carousel.min.js"></script>
@@ -1390,10 +1396,10 @@ $(document).ready(function(){
 															href="../../webhelp/en/gptlv10/inno/EDG_Metadata_Recommendations.pdf">EPA
 																Recommendations for Metadata Documentation</a></li>
 														<li><a
-															href="https://www2.epa.gov/geospatial/epa-geospatial-metadata-technical-specification">Geospatial
+															href="https://www.epa.gov/geospatial/epa-metadata-technical-specification">Geospatial
 																Metadata Technical Specifications</a></li>
 														<li><a
-															href="../../webhelp/en/gptlv10/inno/GenericMetadataGuide.pdf">Metadata
+															href="https://www.epa.gov/geospatial/epa-metadata-style-guide-geospatial-and-non-geospatial-data">Metadata
 																Style Guide</a></li>
 														<li><a
 															href="https://project-open-data.cio.gov/schema/">Project
