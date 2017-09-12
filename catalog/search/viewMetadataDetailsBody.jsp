@@ -31,7 +31,7 @@
   request.setAttribute("uuid", newuuid);
   vmdUuid = newuuid;
   
-  String sRestUrl = request.getContextPath()+"/rest/document?&xsl=metadata_to_html_full&f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
+  String sRestUrl = request.getContextPath()+"/rest/document?f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
   if ((request.getParameter("redirected"))!= null){  
        if ((request.getParameter("redirected")).equals("true")) {
         sRestUrl = request.getContextPath()+"/rest/document?&xsl=metadata_to_html_full&redirected=true&f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
@@ -51,6 +51,17 @@ document.getElementById('frmTertiaryNavigation:openShareFeedback').style.display
   gptMapConfig.locatorSingleFieldParameter = "<%=imConfig.getLocatorSingleFieldParameter()%>";
   gptMapConfig.locatorGraphicURL = "<%=request.getContextPath()%>/catalog/images/pushpin_red.gif";
   gptMapConfig.mapVisibleLayers = "<%=imConfig.getMapVisibleLayers()%>";
+    require(["dojo/query","dojo/domReady!"],function(djQuery){
+    djQuery(".parameterValue > span").forEach(function(node){
+      var START = '&lt;DIV STYLE="text-align:Left;"&gt;&lt;DIV&gt;&lt;DIV&gt;&lt;P&gt;&lt;SPAN&gt;';
+      var END = '&lt;/SPAN&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;';
+      var t = node.innerHTML;
+      if (t.indexOf(START)===0) {
+        t = t.replace(START,"").replace(END,"");
+        node.innerHTML = t;
+      }
+    });
+  });
 </script>
 
 <h:form id="mdDetails" styleClass="mdDetails">
