@@ -31,7 +31,7 @@
   request.setAttribute("uuid", newuuid);
   vmdUuid = newuuid;
   
-  String sRestUrl = request.getContextPath()+"/rest/document?f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
+  String sRestUrl = request.getContextPath()+"/rest/document?&xsl=metadata_to_html_full&f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");
   if ((request.getParameter("redirected"))!= null){  
        if ((request.getParameter("redirected")).equals("true")) {
         sRestUrl = request.getContextPath()+"/rest/document?&xsl=metadata_to_html_full&redirected=true&f=html&id="+java.net.URLEncoder.encode(vmdUuid,"UTF-8");

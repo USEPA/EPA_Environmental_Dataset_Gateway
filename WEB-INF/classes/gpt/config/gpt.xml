@@ -437,10 +437,10 @@
             - servicechecker.checkUrl: service checker URL
             - servicechecker.infoUrl: service info URL
         -->
-        <parameter key="servicechecker.enabled" value="false"/>
+        <parameter key="servicechecker.enabled" value="true"/>
         <parameter key="servicechecker.token" value=""/>
-        <parameter key="servicechecker.checkUrl" value="http://registry.fgdc.gov/statuschecker/api/v2/results"/>
-        <parameter key="servicechecker.infoUrl" value="http://registry.fgdc.gov/statuschecker/ServiceDetail.php"/>
+        <parameter key="servicechecker.checkUrl" value="https://statuschecker.fgdc.gov/api/v2/results"/>
+        <parameter key="servicechecker.infoUrl" value="https://registry.fgdc.gov/statuschecker/ServiceDetail.php"/>
 
         <!--
         Item cart parameters: 
@@ -576,7 +576,7 @@
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="Vrxn6koc"
+                  securityCredentials="Cido73pz"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
