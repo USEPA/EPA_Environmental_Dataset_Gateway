@@ -76,7 +76,7 @@ public class InnoRestQueryServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setContentType("application/json;charset=UTF-8");
-    
+    	
     	response.setCharacterEncoding("UTF-8");
     	PrintWriter out = response.getWriter();
         
@@ -212,7 +212,19 @@ public class InnoRestQueryServlet extends HttpServlet {
 
             int statusCode = client.executeMethod(method);
             if (statusCode == HttpStatus.SC_OK)
-                xmlIn =  new String(method.getResponseBody());
+            {
+                String s;
+            	Reader reader = new InputStreamReader(method.getResponseBodyAsStream(), "utf-8");
+                BufferedReader br = new BufferedReader(reader);
+
+                //br = new BufferedReader(new InputStreamReader(c.getInputStream()));
+
+
+                while ((s = br.readLine()) != null) {
+                	xmlIn += s + "\n";
+                }
+               // xmlIn =  new String(method.getResponseBody());
+                }
             else
                 log.severe("HttpClient Method failed: " + method.getStatusLine());
             //end of use httpClient instead
@@ -239,7 +251,7 @@ public class InnoRestQueryServlet extends HttpServlet {
 
             // if no xsl, return xmlIn and done
             if (xslParm == null) {
-            	xmlIn = xmlIn.replace("–", "-");
+            	response.setContentType(c.getContentType());
             	out.println(xmlIn);//display here 
                 return;                
             }
