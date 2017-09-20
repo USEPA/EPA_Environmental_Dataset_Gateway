@@ -211,7 +211,7 @@
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
-               select="/rdf:RDF/dcat:dataset/dcat:distribution19]/dcat:downloadURL" />
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[19]/dcat:downloadURL" />
     </parameter>  
     <parameter key="dcat.downloadURL20">
       <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
@@ -441,6 +441,354 @@
       <validation required="false" valueType="string"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/rdf:RDF/dcat:dataset/dcat:distribution/dcat:accessURL" />
+    </parameter> 
+    <parameter key="dcat.accessURL2">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[2]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL3">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[3]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL4">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[4]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL5">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[5]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL6">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[6]/dcat:accessURL" />
+    </parameter> 
+     <parameter key="dcat.accessURL7">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[7]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL8">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[8]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL9">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[9]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL10">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[10]/dcat:accessURL" />
+    </parameter> 
+    
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.accessURL11">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[11]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL12">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[12]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL13">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[13]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL14">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[14]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL15">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[15]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL16">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[16]/dcat:accessURL" />
+    </parameter> 
+     <parameter key="dcat.accessURL17">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[17]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL18">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[18]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL19">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[19]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL20">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[20]/dcat:accessURL" />
+    </parameter> 
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.accessURL21">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[21]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL22">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[22]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL23">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[23]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL24">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[24]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL25">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[25]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL26">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[26]/dcat:accessURL" />
+    </parameter> 
+     <parameter key="dcat.accessURL27">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[27]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL28">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[28]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL29">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[29]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL30">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[30]/dcat:accessURL" />
+    </parameter> 
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.accessURL31">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[31]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL32">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[32]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL33">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[33]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL34">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[34]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL35">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[35]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL36">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[36]/dcat:accessURL" />
+    </parameter> 
+     <parameter key="dcat.accessURL37">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[37]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL38">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[38]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL39">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[39]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL40">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[40]/dcat:accessURL" />
+    </parameter> 
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.accessURL41">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[41]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL42">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[42]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL43">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[43]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL44">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[44]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL45">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[45]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL46">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[46]/dcat:accessURL" />
+    </parameter> 
+     <parameter key="dcat.accessURL47">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[47]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL48">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[48]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL49">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[49]/dcat:accessURL" />
+    </parameter>  
+    <parameter key="dcat.accessURL50">
+      <label resourceKey="catalog.mdParam.identification.service.connectPoint"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[50]/dcat:accessURL" />
     </parameter> 
   
   </section>

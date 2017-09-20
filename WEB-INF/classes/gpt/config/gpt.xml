@@ -834,7 +834,7 @@
         <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="00:10"/>
         <!--<thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" period='4[HOUR]' delay="30[SECOND]"/>-->
         <!-- Index optimization --> 
-        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:30"/>
+        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:40"/>
     
 <!-- Innovate's batch thread -->
       <thread class="com.innovateteam.gpt.BatchUpdateWrapper"

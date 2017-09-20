@@ -6,7 +6,8 @@
               url="jdbc:postgresql://localhost:5432/postgres"
               username="gptlv10"
               password="EDGuser!"
-              maxActive="20"
-              maxIdle="10"
-              maxWait="-1" />
+              maxActive="100"
+              maxIdle="50"
+              maxWait="-1" 
+              validationQuery="select 1"/>
 </Context>

@@ -1477,6 +1477,7 @@ $(document).ready(function(){
 															href="https://project-open-data.cio.gov/schema/">Project
 																Open Data Metadata Schema</a></li>
                                                         <li><a href="https://www.epa.gov/open/digital-strategy">EPA Digital Strategy for Open Data</a></li>
+                                                        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/funder/epa/">EPA Research Publications</a></li>
 													</ul>
 												</div>
 											</div>
