@@ -148,8 +148,9 @@ public class InnoRestServlet extends HttpServlet {
             }
             String fParm = request.getParameter("f");
             String xslParm = request.getParameter("xsl");
-            
+            xmlIn = xmlIn.replace("–", "-");
             response.setContentType(contentType);
+   
             out.println(xmlIn);
             return;            
             /*if (xslParm == null || xslParm.equals("")) {

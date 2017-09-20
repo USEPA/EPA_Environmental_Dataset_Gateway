@@ -75,7 +75,11 @@ public class InnoRestQueryServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
+    	response.setContentType("application/json;charset=UTF-8");
+    
+    	response.setCharacterEncoding("UTF-8");
+    	PrintWriter out = response.getWriter();
+        
 
         try {
             /* If there is no xsl parm, simply return the output from the ESRI RestQueryServlet. Otherwise,
@@ -235,7 +239,8 @@ public class InnoRestQueryServlet extends HttpServlet {
 
             // if no xsl, return xmlIn and done
             if (xslParm == null) {
-                out.println(xmlIn);//display here 
+            	xmlIn = xmlIn.replace("–", "-");
+            	out.println(xmlIn);//display here 
                 return;                
             }
             // there is an xsl parm, so process text and return that
