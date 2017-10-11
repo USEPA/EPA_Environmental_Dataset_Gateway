@@ -37,7 +37,7 @@
 <f:view>
 	<f:loadBundle basename="gpt.resources.gpt" var="gptMsg" />
 	<gpt:prepareView />
-	<html>
+	<html lang="<%=request.getLocale().getLanguage()%>">
 <head>
 <title><%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%></title>
 <jsp:include page="/catalog/skins/lookAndFeel.jsp" />
@@ -69,7 +69,7 @@
 	</script>
 	<div id="gptMainWrap" style="position: static;">
 	<div id="gptBanner" title="EDG Banner">
-			<tiles:insert attribute="banner" flush="false" />
+			<tiles:insertAttribute name="banner" flush="false" />
 		</div>
 	<div class="skip-links">
 			<a href="#main-content" class="skip-link element-invisible element-focusable">Jump to main content</a>
@@ -89,7 +89,7 @@
          
 		
 		<div id="gptTertiaryNavigation">
-				<tiles:insert attribute="tertiaryNavigation" flush="false"/>
+				<tiles:insertAttribute name="tertiaryNavigation" flush="false"/>
 			</div>
 		</header>
 		
@@ -97,14 +97,14 @@
  
 		<div style="clear: both"></div>
 		<div id="gptPrimaryNavigation">
-			<tiles:insert attribute="primaryNavigation" flush="false" />
+			<tiles:insertAttribute name="primaryNavigation" flush="false" />
 		</div>
 		<div style="clear: both"></div>
 		<section id="main-content" class="main-content clearfix" role="main">
 			<div id="gptBody">
 
 					<div id="gptSecondaryNavigation">
-						<tiles:insert attribute="secondaryNavigation" flush="false" />
+						<tiles:insertAttribute name="secondaryNavigation" flush="false" />
 					</div>
 					<div class="main-column clearfix">
 						<h1 class="page-title">
@@ -139,7 +139,7 @@
 												columns="1" cellpadding="0" cellspacing="0"
 												summary="#{gptMsg['catalog.general.designOnly']}">
 												<h:panelGroup id="cmPlPgpPageBody">
-													<tiles:insert attribute="body" flush="false" />
+													<tiles:insertAttribute name="body" flush="false" />
 												</h:panelGroup>
 											</h:panelGrid>
 										</h:panelGrid>
