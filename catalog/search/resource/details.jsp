@@ -14,7 +14,7 @@
  limitations under the License.
 --%>
 <% // viewMetadataSummary.jsp - View Metadata Details page(tiles definition) %>
-<%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="gpt" uri="http://www.esri.com/tags-gpt"%>
 <%@page import="com.esri.gpt.framework.util.Val"%>
 <%@page import="com.esri.gpt.catalog.search.ISearchSaveRepository" %>
@@ -40,7 +40,7 @@ String dUuid = com.esri.gpt.framework.util.Val.chkStr(request.getParameter("uuid
 	%>
 <% // initialize the page %>
 <gpt:page id="catalog.search.resource.details" prepareView="#{SearchController.processRequestParams}"/>
-<tiles:insert definition=".gptLayout" flush="false" >
-  <tiles:put name="secondaryNavigation" value="/catalog/skins/tiles/resourceNavigation.jsp"/>
-  <tiles:put name="body" value="/catalog/search/viewMetadataDetailsBody.jsp"/>
-</tiles:insert>
+<tiles:insertDefinition name=".gptLayout" flush="false" >
+  <tiles:putAttribute name="secondaryNavigation" value="/catalog/skins/tiles/resourceNavigation.jsp"/>
+  <tiles:putAttribute name="body" value="/catalog/search/viewMetadataDetailsBody.jsp"/>
+</tiles:insertDefinition>

@@ -17,7 +17,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%-- <%
   String cl_jsapi = "";
@@ -45,7 +45,7 @@
 <head>
 <title><%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%></title>
 <jsp:include page="/catalog/skins/lookAndFeel.jsp" />
-<tiles:insert attribute="head" flush="false" />
+<tiles:insertAttribute name="head" flush="false"/>
 <%-- <%=cl_jsapi%> --%>
 
 </head>
@@ -158,7 +158,7 @@
 			</section>
 		<div style="clear: both"></div>
 		<div id="gptFooter">
-			<tiles:insert attribute="footer" flush="false" />
+			<tiles:insertAttribute name="footer" flush="false"/>
 		</div>
 	</div>
 </body>
