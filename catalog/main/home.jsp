@@ -14,7 +14,7 @@
  limitations under the License.
 --%>
 <% // home.jsp - Home page (tiles definition) %>
-<%@taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt" %>
 <%@page import="org.json.JSONObject" %>
 <%@page import="org.json.JSONArray" %>
@@ -25,6 +25,6 @@
 <%@page import="com.esri.gpt.framework.util.Val"%>
 <% // initialize the page %>
 <gpt:page id="catalog.main.home"/>
-<tiles:insert definition=".gptLayout" flush="false" >
-	<tiles:put name="body" value="/catalog/main/homeBody.jsp"/>
-</tiles:insert>
+<tiles:insertDefinition name=".gptLayout" flush="false" >
+	<tiles:putAttribute name="body" value="/catalog/main/homeBody.jsp"/>
+</tiles:insertDefinition>
