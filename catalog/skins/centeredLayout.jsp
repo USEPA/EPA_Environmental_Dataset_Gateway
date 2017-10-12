@@ -17,7 +17,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt"%>
 <%-- <%
   String cl_jsapi = "";
@@ -45,7 +45,7 @@
 <head>
 <title><%=com.esri.gpt.framework.jsf.PageContext.extract().getSiteTitle()%></title>
 <jsp:include page="/catalog/skins/lookAndFeel.jsp" />
-<tiles:insert attribute="head" flush="false" />
+<tiles:insertAttribute name="head" flush="false" />
 <%-- <%=cl_jsapi%> --%>
 
 </head>
@@ -73,7 +73,7 @@
 	</script>
 	<div id="gptMainWrap" style="position: static;">
 	<div id="gptBanner" title="EDG Banner">
-			<tiles:insert attribute="banner" flush="false" />
+			<tiles:insertAttribute name="banner" flush="false" />
 		</div>
 	<div class="skip-links">
 			<a href="#main-content" class="skip-link element-invisible element-focusable">Jump to main content</a>
@@ -93,7 +93,7 @@
          
 		
 		<div id="gptTertiaryNavigation">
-				<tiles:insert attribute="tertiaryNavigation" flush="false"/>
+				<tiles:insertAttribute name="tertiaryNavigation" flush="false"/>
 			</div>
 		</header>
 		
@@ -101,14 +101,14 @@
  
 		<div style="clear: both"></div>
 		<div id="gptPrimaryNavigation">
-			<tiles:insert attribute="primaryNavigation" flush="false" />
+			<tiles:insertAttribute name="primaryNavigation" flush="false" />
 		</div>
 		<div style="clear: both"></div>
 		<section id="main-content" class="main-content clearfix" role="main">
 			<div id="gptBody">
 
 					<div id="gptSecondaryNavigation">
-						<tiles:insert attribute="secondaryNavigation" flush="false" />
+						<tiles:insertAttribute name="secondaryNavigation" flush="false" />
 					</div>
 					<div class="main-column clearfix">
 						<h1 class="page-title">
@@ -143,7 +143,7 @@
 												columns="1" cellpadding="0" cellspacing="0"
 												summary="#{gptMsg['catalog.general.designOnly']}">
 												<h:panelGroup id="cmPlPgpPageBody">
-													<tiles:insert attribute="body" flush="false" />
+													<tiles:insertAttribute name="body" flush="false" />
 												</h:panelGroup>
 											</h:panelGrid>
 										</h:panelGrid>
@@ -158,7 +158,7 @@
 			</section>
 		<div style="clear: both"></div>
 		<div id="gptFooter">
-			<tiles:insert attribute="footer" flush="false" />
+			<tiles:insertAttribute name="footer" flush="false" />
 		</div>
 	</div>
 </body>
