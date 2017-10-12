@@ -1,6 +1,6 @@
 <% // components.jsp - Link pages (tiles definition) %>
 
-<%@taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt" %> 
 
@@ -8,10 +8,10 @@
 
 <gpt:page id="catalog.components.home"/>
 
-<tiles:insert definition=".gptLayout" flush="false" >
+<tiles:insertDefinition name=".gptLayout" flush="false" >
 
-<tiles:put name="body" value="/catalog/components/componentsBody.jsp"/>
+<tiles:putAttribute name="body" value="/catalog/components/componentsBody.jsp"/>
 
-</tiles:insert> 
+</tiles:insertDefinition> 
 
 
