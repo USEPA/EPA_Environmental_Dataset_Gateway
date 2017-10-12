@@ -150,9 +150,9 @@ public class InnoRestServlet extends HttpServlet {
             response.setContentType(contentType);
             out.println(xmlIn);
             return;            
-           /* if (xslParm == null || xslParm.equals("")) {
+            /*if (xslParm == null || xslParm.equals("")) {
                 response.setContentType(contentType);
-               // out.println(xmlIn);
+                out.println(xmlIn);
                 return;
             } else {
                 log.fine("xslStyleSheets: " + xslStyleSheets.toString());
