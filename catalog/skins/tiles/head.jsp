@@ -15,13 +15,12 @@
 --%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"  %>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"  %>
 <%@taglib uri="http://www.esri.com/tags-gpt" prefix="gpt" %>
 
 <gpt:jscriptVariable quoted="true" value="#{SearchFilterSpatial.mvsUrl}" variableName="mainGptMvsUrl" id="cmPlGptMvsUrl"/>
 
 <f:verbatim>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <link rel="search" type="application/opensearchdescription+xml" 
@@ -97,6 +96,7 @@ function mainOpenDefaultMapViewer() {
 
 </script>
 <script type="text/javascript" src="/metadata/catalog/js/epa-core-v4.js"></script>
+
 <!-- Google Tag Manager 
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-L8ZB"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

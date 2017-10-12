@@ -17,7 +17,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"  %>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"  %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 
@@ -38,29 +38,23 @@
 <% // page container %>
 <h:panelGrid columns="1" styleClass="gptPage" 
   cellpadding="0" cellspacing="0" summary="#{gptMsg['catalog.general.designOnly']}">
-
   <% // page content - caption, and body  %>
   <h:panelGrid columns="1" styleClass="pageContentRight"
     cellpadding="0" cellspacing="0" summary="#{gptMsg['catalog.general.designOnly']}">
-
     <% // caption %>
     <h:panelGroup id="gptPopupCaption" styleClass="pageCaption">
       <h:outputText value="#{PageContext.caption}"/>
     </h:panelGroup>
-
     <% // body %>
     <h:panelGrid columns="2" styleClass="pageBody"
       cellpadding="0" cellspacing="0" summary="#{gptMsg['catalog.general.designOnly']}">
       <h:panelGroup>
-        <tiles:insert attribute="body" flush="false"/>
+        <tiles:insertAttribute name="body" flush="false"/>
       </h:panelGroup>
     </h:panelGrid>
-
   </h:panelGrid>
       
 </h:panelGrid>
 </body>
-
 </html>
-
 </f:view>
