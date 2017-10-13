@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 import java.net.URL;
@@ -79,12 +78,12 @@ public class InnoRestServlet extends HttpServlet {
             String id = request.getParameter("id");
             String xml = request.getParameter("xml");
          
-            if (id != null) {
+            /*if (id != null) {
                 if (id.contains("/")) {
                     log.fine("returning because id contains /");
                     return;
                 }
-            }
+            }*/
 //            String xmlUrl = request.getScheme() + "://" + request.getServerName();
             String xmlUrl = request.getScheme()+"://"+ request.getServerName()+":"+request.getServerPort();
             log.info("print server url:"+xmlUrl);
@@ -150,7 +149,7 @@ public class InnoRestServlet extends HttpServlet {
             }
             String fParm = request.getParameter("f");
             String xslParm = request.getParameter("xsl");
-           // xmlIn = xmlIn.replace("â€“", "-");
+           // xmlIn = xmlIn.replace("–", "-");
             response.setContentType(contentType);
             
             out.println(xmlIn);
