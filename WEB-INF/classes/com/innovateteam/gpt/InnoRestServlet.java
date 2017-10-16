@@ -150,9 +150,9 @@ public class InnoRestServlet extends HttpServlet {
             response.setContentType(contentType);
             out.println(xmlIn);
             return;            
-            /*if (xslParm == null || xslParm.equals("")) {
+           /* if (xslParm == null || xslParm.equals("")) {
                 response.setContentType(contentType);
-                out.println(xmlIn);
+               // out.println(xmlIn);
                 return;
             } else {
                 log.fine("xslStyleSheets: " + xslStyleSheets.toString());
@@ -260,7 +260,7 @@ public class InnoRestServlet extends HttpServlet {
         URL u;
         URLConnection c = null;
         InputStream is = null;
-        BufferedReader br;
+        //BufferedReader br;
         String content = "";
         String s;
 
@@ -292,7 +292,9 @@ public class InnoRestServlet extends HttpServlet {
            
             //is = u.openStream();
 
-            br = new BufferedReader(new InputStreamReader(c.getInputStream()));
+            Reader reader = new InputStreamReader(c.getInputStream(), "utf-8");
+            BufferedReader br = new BufferedReader(reader);
+            //br = new BufferedReader(new InputStreamReader(c.getInputStream()));
 
 
             while ((s = br.readLine()) != null) {
