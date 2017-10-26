@@ -1396,8 +1396,8 @@ $(document).ready(function(){
 															href="../../webhelp/en/gptlv10/inno/EDG_Metadata_Recommendations.pdf">EPA
 																Recommendations for Metadata Documentation</a></li>
 														<li><a
-															href="https://www.epa.gov/geospatial/epa-metadata-technical-specification">Geospatial
-																Metadata Technical Specifications</a></li>
+															href="https://www.epa.gov/geospatial/epa-metadata-technical-specification">EPA
+																Metadata Technical Specification</a></li>
 														<li><a
 															href="https://www.epa.gov/geospatial/epa-metadata-style-guide-geospatial-and-non-geospatial-data">Metadata
 																Style Guide</a></li>

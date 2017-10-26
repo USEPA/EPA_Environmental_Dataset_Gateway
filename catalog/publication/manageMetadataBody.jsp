@@ -650,6 +650,9 @@ function mmdClearAclSelection(){
       itemValue="delete"
       itemLabel="#{gptMsg['catalog.publication.manageMetadata.action.delete']}"/>
     <f:selectItem
+      itemValue="transfer"
+      itemLabel="#{gptMsg['catalog.publication.manageMetadata.action.transfer']}"/>
+    <f:selectItem
        itemValue="assignAcl"
        itemLabel="#{gptMsg['catalog.publication.manageMetadata.action.acl']}" 
        itemDisabled="#{ManageMetadataController.metadataAccessPolicyConfig.policyUnrestricted}"/>
@@ -712,10 +715,10 @@ function mmdClearAclSelection(){
 
   <% // transfer to owner %>
   <h:outputLabel id="mmdTransferLabel" for="mmdTransfer"
-    rendered="#{PageContext.roleMap['gptAdministrator']}"
+    rendered="#{(PageContext.roleMap['gptAdministrator'] || PageContext.roleMap['gptPublisher'])}"
     value="#{gptMsg['catalog.publication.manageMetadata.label.transfer']}"/>
   <h:selectOneMenu id="mmdTransfer"
-    rendered="#{PageContext.roleMap['gptAdministrator']}"
+    rendered="#{(PageContext.roleMap['gptAdministrator'] || PageContext.roleMap['gptPublisher'])}"
     value="#{ManageMetadataController.actionCriteria.transferToOwner}">
     <f:selectItem itemValue=""
       itemLabel="#{gptMsg['catalog.publication.manageMetadata.prompt.transfer']}"/>
