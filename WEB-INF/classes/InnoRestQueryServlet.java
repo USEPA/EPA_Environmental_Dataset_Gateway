@@ -75,7 +75,11 @@ public class InnoRestQueryServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
+    	response.setContentType("application/json;charset=UTF-8");
+    	
+    	response.setCharacterEncoding("UTF-8");
+    	PrintWriter out = response.getWriter();
+        
 
         try {
             /* If there is no xsl parm, simply return the output from the ESRI RestQueryServlet. Otherwise,
@@ -208,7 +212,19 @@ public class InnoRestQueryServlet extends HttpServlet {
 
             int statusCode = client.executeMethod(method);
             if (statusCode == HttpStatus.SC_OK)
-                xmlIn =  new String(method.getResponseBody());
+            {
+                String s;
+            	Reader reader = new InputStreamReader(method.getResponseBodyAsStream(), "utf-8");
+                BufferedReader br = new BufferedReader(reader);
+
+                //br = new BufferedReader(new InputStreamReader(c.getInputStream()));
+
+
+                while ((s = br.readLine()) != null) {
+                	xmlIn += s + "\n";
+                }
+               // xmlIn =  new String(method.getResponseBody());
+                }
             else
                 log.severe("HttpClient Method failed: " + method.getStatusLine());
             //end of use httpClient instead
@@ -235,7 +251,8 @@ public class InnoRestQueryServlet extends HttpServlet {
 
             // if no xsl, return xmlIn and done
             if (xslParm == null) {
-                out.println(xmlIn);//display here 
+            	response.setContentType(c.getContentType());
+            	out.println(xmlIn);//display here 
                 return;                
             }
             // there is an xsl parm, so process text and return that

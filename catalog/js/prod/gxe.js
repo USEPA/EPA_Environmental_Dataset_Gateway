@@ -13,15 +13,16 @@
  * limitations under the License.
  */
 /**
- * gxe.js (v1.2)
+ * gxe.js (v1.2.2)
  * Geoportal XML editor.
  */
 
 dojo.require("dijit.Dialog");
 
+
 /**
  * @fileOverview Geoportal XML Editor (GXE).
- * @version 1.2
+ * @version 1.2.2
  */
 
 /**
@@ -47,7 +48,7 @@ dojo.require("dijit.Dialog");
  * @static
  * @name gxe
  */
-var gxe = {
+window.gxe = {
 
   /**
    * @class Static utilities for processing JSON based configuration objects associated
@@ -64,6 +65,7 @@ var gxe = {
    *   <br/>(="http://www.esri.com/geoportal/gxe/html")
    */
   cfg: {
+    considerGML3andGML32: true,
     pfxGxe: "g",
     pfxHtml: "h",
     uriGxe: "http://www.esri.com/geoportal/gxe",
@@ -533,9 +535,12 @@ dojo.declare("gxe.Client",null,{
     if ((id != null) && (id.length > 0)) u += "&id="+encodeURIComponent(id);
     if (asDraft) u += "&asDraft=true";
    
+    var nd = document.createElement("p");
+    nd.appendChild(document.createTextNode("..."));
     var dialog = new dijit.Dialog({
       title: context.getI18NString("client.saving.title"),
-      style: "width: 300px; display: none;"
+      style: "width: 300px; display: none;",
+      content: nd
     });
     dojo.addClass(dialog.domNode,"tundra");
     dialog.show();
@@ -546,13 +551,19 @@ dojo.declare("gxe.Client",null,{
       url: u,
       putData: sXml,
       error: dojo.hitch(this,function(errorObject,ioArgs) {
-        dialog.hide();
-        dialog.destroy();
+          var destr = function() {
+            dialog.destroy();
+          };
+          dialog.hide().then(destr,destr);
         this.onError(errorObject,ioArgs);
       }),
       load: dojo.hitch(this,function(responseObject,ioArgs) {
-        dialog.hide();
-        dialog.destroy();
+        setTimeout(function(){
+          var destr = function() {
+            dialog.destroy();
+          };
+          dialog.hide().then(destr,destr);
+        },2000);
         try {
           if (responseObject!=null) {
             jErr = null;
@@ -1144,7 +1155,21 @@ dojo.declare("gxe.xml.DomProcessor",null,{
     var targetNS = sNamespaceUri;
     if ((targetNS != null) && (targetNS.length == 0)) targetNS = null;
     this.forEachElementNode(domParentNode,dojo.hitch(this,function(domChildNode) {
-      if ((domChildNode.namespaceURI == targetNS) || (targetNS == "*")) {
+      
+      var bCheckGML = gxe.cfg.considerGML3andGML32;
+      var bNSMatches = (targetNS == "*");
+      if (!bNSMatches) {
+        bNSMatches = (domChildNode.namespaceURI == targetNS);
+      }
+      if (!bNSMatches && bCheckGML) {
+        if (targetNS == "http://www.opengis.net/gml/3.2") {
+          bNSMatches = (domChildNode.namespaceURI == "http://www.opengis.net/gml");
+        } else if (targetNS == "http://www.opengis.net/gml") {
+          bNSMatches = (domChildNode.namespaceURI == "http://www.opengis.net/gml/3.2");
+        }
+      }
+      
+      if (bNSMatches) {
         var pfxPlusLocal = this.splitQualifiedName(domChildNode.nodeName);
         if ((pfxPlusLocal.localName == sLocalName) || (sLocalName == "*")) {
           var _ret = callback(domChildNode);
@@ -1234,7 +1259,17 @@ dojo.declare("gxe.xml.DomProcessor",null,{
       if (targetNS == null) targetNS = "";
     } 
     
-    if (domNode.namespaceURI == targetNS) {
+    var bCheckGML = gxe.cfg.considerGML3andGML32;
+    var bNSMatches = (domNode.namespaceURI == targetNS);
+    if (!bNSMatches && bCheckGML) {
+      if (targetNS == "http://www.opengis.net/gml/3.2") {
+        bNSMatches = (domNode.namespaceURI == "http://www.opengis.net/gml");
+      } else if (targetNS == "http://www.opengis.net/gml") {
+        bNSMatches = (domNode.namespaceURI == "http://www.opengis.net/gml/3.2");
+      }
+    }
+    
+    if (bNSMatches) {
       var targetName = gxe.cfg.getTargetName(cfgObject);
       var nodeName = domNode.nodeName;
       var prefix = null;
@@ -1889,7 +1924,12 @@ dojo.declare("gxe.xml.XmlNode",null,{
       }
       
     } else if ((sType == "dateTime") || (sType == "xs:dateTime") || (sType == "xsd:dateTime")) {
-      // TODO not handled
+      // ISO 8601
+      regexp = /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])T(2[0-3]|[0-1][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](?:2[0-3]|[0-1][0-9]):[0-5][0-9])?$/;
+      if (!regexp.test(value)) {
+        status.isValid = false;
+        status.message = this.formatValidationMessage(inputControl, "validate.iso8601");
+      } 
       
     } else if (sType == "fgdc:date") {
 
@@ -2089,10 +2129,6 @@ dojo.declare("gxe.xml.XmlAttribute",gxe.xml.XmlNode,{
     var bSerializeIfEmpty = (this.getSerializeIfEmpty() || !bValidating);
 
     var sNodeValue = this.nodeInfo.nodeValue;
-    if (sNodeValue=="${auto}") {
-      sNodeValue = xmlGenerator.context.generateUniqueId();
-    }
-    
     var inputControl = this.getInputControl();
     if (inputControl != null) {
       this.nodeInfo.nodeValue = inputControl.getInputValue();
@@ -2876,8 +2912,12 @@ dojo.declare("gxe.control.Control",null,{
     if ((domProcessor != null) && (domNode != null)) {
       domMatch = domProcessor.findMatchingChildAttribute(domNode,cfgAttribute);
     } else {
-      if (sDefault != null) xmlAttribute.nodeInfo.nodeValue = sDefault;
+      if (sDefault != null) xmlAttribute.nodeInfo.nodeValue = sDefault;      
     }
+    
+    if(sTargetName == "gml:id" && xmlAttribute){
+	  xmlAttribute.nodeInfo.nodeValue = "Temporal-" + (Math.floor((Math.random()*100000)+1)).toString();
+	}
 
     var ctl = this.context.makeXhtmlControl(cfgAttribute,this,true);
     ctl.xmlNode = xmlAttribute;
@@ -4185,11 +4225,36 @@ dojo.declare("gxe.control.MessageArea",gxe.control.Control,{
    * @param {DOMNode} elItem the clicked item
    */
   scrollOnClick: function(elItem) {
+    //var elWrapper = this.ul.parentNode;
+    //var nItemOffset = elItem.offsetTop - this.ul.offsetTop;
+    //var nItemHeight = elItem.offsetHeight;
+    //var nClientHeight = elWrapper.clientHeight;
+    //elWrapper.scrollTop = nItemOffset - (nClientHeight / 2) + (nItemHeight / 2);
+
     var elWrapper = this.ul.parentNode;
     var nItemOffset = elItem.offsetTop - this.ul.offsetTop;
     var nItemHeight = elItem.offsetHeight;
     var nClientHeight = elWrapper.clientHeight;
-    elWrapper.scrollTop = nItemOffset - (nClientHeight / 2) + (nItemHeight / 2);
+    var nScrollHeight = elWrapper.scrollHeight;
+    var nScrollTop = elWrapper.scrollTop;
+    if (nScrollHeight == 0) return;
+
+    var nItemTop = nItemOffset - nScrollTop;
+    var nNewTop = nScrollTop + nItemHeight;
+    //console.log("nItemHeight", nItemHeight);
+    //console.log("nItemOffset", nItemOffset);
+    //console.log("nScrollTop", nScrollTop);
+    //console.log("nItemTop", nItemTop);
+    //console.log("nNewTop", nNewTop);
+    //console.log("nClientHeight", nClientHeight);
+    //console.log("nScrollHeight", nScrollHeight);
+    if (nItemTop > (nItemHeight * 2)) {
+        //console.log("checking max top");
+        if (nScrollTop < (nScrollHeight - nClientHeight - nItemHeight)) {
+            //console.log("setting top", nNewTop);
+            elWrapper.scrollTop = nNewTop;
+        }
+    }
   }
 
 });
@@ -4306,10 +4371,10 @@ dojo.declare("gxe.control.Section",gxe.control.Control,{
    */
   initializeLabelEvents: function(xmlNode,ctlMenu,ctlIndexedIabArray,domProcessor,domNode) {
     
-    var ctlHeader = this.findFirstChildControl(">[gxename='header']");
+    var ctlHeader = this.findFirstChildControl("> [gxename='header']");
     if (ctlHeader != null) {
       
-      var ctlLabel = ctlHeader.findFirstChildControl(">[gxename='label']");
+      var ctlLabel = ctlHeader.findFirstChildControl("> [gxename='label']");
       if (ctlLabel != null) {
         
         var cn = ctlLabel.htmlElement.childNodes;
@@ -4650,7 +4715,7 @@ dojo.declare("gxe.control.Element",gxe.control.Section,{
     var ctlMenu = null;
     var ctlIndexedIabArray = null;
     var sImages = this.context.contextPath+"/catalog/images/";
-    var ctlHeader = this.findFirstChildControl(">[gxename='header']");
+    var ctlHeader = this.findFirstChildControl("> [gxename='header']");
     if (ctlHeader != null) {
       
       var bBuildRepeatables = false;
@@ -5611,6 +5676,8 @@ dojo.provide("gxe.control.InputGemetKeyword");
 dojo.declare("gxe.control.InputGemetKeyword",gxe.control.InputText,{
   supportsMultipleValues: false,
   _gemetTool: null,
+
+  _isThemeSearch: false,
   
   /**
    * Utility to enable/disable the anchor that launches the GEMET dialog.
@@ -5620,10 +5687,10 @@ dojo.declare("gxe.control.InputGemetKeyword",gxe.control.InputText,{
    * @memberOf gxe.control.InputGemetKeyword#
    */
   _enableDisable: function() {
-    var bOk = false;
+    /*var bOk = false;
     if (this._gemetTool != null) bOk = (dojo.trim(this.htmlElement.value).length > 0);
     if (bOk) this._gemetTool.style.display = "inline";
-    else this._gemetTool.style.display = "none";
+    else this._gemetTool.style.display = "none";*/
   },
   
   /** Override gxe.control.InputBase.onInputChanged() */
@@ -5631,7 +5698,14 @@ dojo.declare("gxe.control.InputGemetKeyword",gxe.control.InputText,{
 
   /** Override gxe.control.Control.onHtmlChildrenCreated() */
   onHtmlChildrenCreated: function(domProcessor,domNode) {
-    this.inherited(arguments);
+	  
+   this.inherited(arguments);
+   
+   
+   
+    
+ 
+    
     var elLink = document.createElement("a");
     elLink.setAttribute("href","javascript:void(0);");
     elLink.className = "gxeInputTool";
@@ -5639,6 +5713,7 @@ dojo.declare("gxe.control.InputGemetKeyword",gxe.control.InputText,{
     this.htmlElement.parentNode.appendChild(elLink);
     
     var gemet = new Gemet();
+    gemet.isThemeSearch = this._isThemeSearch;
     gemet.lblHelp = this.context.getI18NString("gemet.dialogHelp");
     gemet.lblDialogTitle = this.context.getI18NString("gemet.dialogTitle");
     gemet.lblWordNotFound = this.context.getI18NString("gemet.wordNotFound");
@@ -5646,22 +5721,13 @@ dojo.declare("gxe.control.InputGemetKeyword",gxe.control.InputText,{
     gemet.lblOk = this.context.getI18NString("gemet.ok");
     gemet.lblErrorKeywordEmpty = this.context.getI18NString("gemet.lblErrorKeywordEmpty");
     gemet.lblLoadingMessage = this.context.getI18NString("gemet.connectingMessage");
-    gemet.proxyUrl = this.context.contextPath+"/catalog/download/proxy.jsp?{0}";
+    gemet.lblSearch =  this.context.getI18NString("gemet.search");
     gemet.imgLoading = this.context.contextPath+"/catalog/images/loading.gif";
     
     dojo.connect(elLink,"onclick",this,dojo.hitch(this,function(e) {
-      var sValue = dojo.trim(this.htmlElement.value);
-      if (sValue.length > 0) {
-        gemet.findConcepts(sValue,null,dojo.hitch(this,function(sGemetText) {
-          if ((typeof(sGemetText) != "undefined") && (sGemetText != null)) {
-            sGemetText = dojo.trim(sGemetText);
-            if (sGemetText.length > 0) {
-              this.htmlElement.value = sGemetText;
-              //this.htmlElement.disabled = true;
-            }
-          }
-        })); 
-      }
+    	
+      gemet.initFind(this.htmlElement);
+      
     }));
     
     this._gemetTool = elLink;
@@ -5669,6 +5735,46 @@ dojo.declare("gxe.control.InputGemetKeyword",gxe.control.InputText,{
   }
   
 });
+
+dojo.provide("gxe.control.InputGemetTheme");
+dojo.declare("gxe.control.InputGemetTheme", gxe.control.InputDelimitedTextArea,{
+	
+	onHtmlChildrenCreated: function(domProcessor,domNode) {
+        
+		this._isThemeSearch = true;
+		this.inherited(arguments);
+		
+
+	    var elLink = document.createElement("a");
+	    elLink.setAttribute("href","javascript:void(0);");
+	    elLink.className = "gxeInputTool";
+	    elLink.appendChild(document.createTextNode(this.context.getI18NString("gemet.find")));
+	    this.htmlElement.parentNode.appendChild(elLink);
+	    
+	    var gemet = new Gemet();
+	    gemet.isThemeSearch = this._isThemeSearch;
+	    gemet.lblHelp = this.context.getI18NString("gemet.dialogHelp");
+	    gemet.lblDialogTitle = this.context.getI18NString("gemet.dialogTitle");
+	    gemet.lblWordNotFound = this.context.getI18NString("gemet.wordNotFound");
+	    gemet.lblCancel = this.context.getI18NString("gemet.cancel");
+	    gemet.lblOk = this.context.getI18NString("gemet.ok");
+	    gemet.lblErrorKeywordEmpty = this.context.getI18NString("gemet.lblErrorKeywordEmpty");
+	    gemet.lblLoadingMessage = this.context.getI18NString("gemet.connectingMessage");
+	    gemet.lblSearch =  this.context.getI18NString("gemet.search");
+	    gemet.imgLoading = this.context.contextPath+"/catalog/images/loading.gif";
+	    
+	    dojo.connect(elLink,"onclick",this,dojo.hitch(this,function(e) {
+	    	
+	      gemet.initFind(this.htmlElement);
+	      
+	    }));
+	    
+	    /*this._gemetTool = elLink;
+	    this._enableDisable();*/
+	}
+});
+
+
 
 /**
  * @class Provides an interactive map control for the definition of a bounding spatial envelope.
@@ -5769,6 +5875,8 @@ dojo.declare("gxe.control.Map",gxe.control.Control,{
     elMapContainer.appendChild(elMapCanvas);
     
     var config = this.context.gptMapConfig;
+    if (config == null) return;
+    config = this._mapcfg = dojo.clone(this.context.gptMapConfig);  // fix for multiple maps
     config.mapElementId = idPfx+"interactiveMap";
     config.mapToolName = "drawInputEnvelope";
     config.mapToolbarId = idPfx+"mapToolbar";
@@ -5877,6 +5985,7 @@ dojo.declare("gxe.control.Map",gxe.control.Control,{
     
     this.htmlElement.style.display = "block";
     var config = this.context.gptMapConfig;
+    config = this._mapcfg; // fix for multiple maps
     
     this.gptMap = new GptMap();
     dojo.connect(this.gptMap,"onMapLoaded",this,"onMapLoaded");
@@ -5989,20 +6098,23 @@ dojo.declare("fgdc.control.KeywordSelector",gxe.control.Control,{
               this._appendCheckBox(elList,sLabel,sValue,bSelected);
             }));
           }
-                    
+          
+          var elDialogContent = document.createElement("div");
+          dojo.addClass(elDialogContent,"gxePopupDialog");
           var sTitle = this.htmlTextContent;
           if (sTitle == null) sTitle = "?Select";
           var dialog = new dijit.Dialog({
+            content: elDialogContent,
             title: sTitle,
             style: "display: none; border: 1px solid #000000; background: #FFFFFF;",
             autofocus: false
           });
           dojo.addClass(dialog.domNode,"tundra");
-          dialog.domNode.appendChild(elListDiv);
+          elDialogContent.appendChild(elListDiv);
           
           var elButtonDiv = document.createElement("div");
           dojo.style(elButtonDiv,{marginLeft:"auto",marginRight:"auto",width:"50%",padding:"5px"});
-          dialog.domNode.appendChild(elButtonDiv);
+          elDialogContent.appendChild(elButtonDiv);
           var elOk = document.createElement("button");
           elOk.appendChild(document.createTextNode(this.context.getI18NString("dialog.ok")));
           elButtonDiv.appendChild(elOk);
@@ -6012,7 +6124,7 @@ dojo.declare("fgdc.control.KeywordSelector",gxe.control.Control,{
           
           dojo.connect(elOk,"onclick",this,dojo.hitch(this,function(e) {
             var sCheckedValues = "";
-            dojo.query("[type='checkbox']",dialog.domNode).forEach(dojo.hitch(this,function(item) {
+            dojo.query("[type='checkbox']",elDialogContent).forEach(dojo.hitch(this,function(item) {
               if (item.checked) {
                 if (sCheckedValues.length > 0) sCheckedValues += delimitedTextArea.delimiter;
                 sCheckedValues += item.value;
@@ -6024,13 +6136,17 @@ dojo.declare("fgdc.control.KeywordSelector",gxe.control.Control,{
             this.xmlNode.getInputControl().fireInputChanged();
             delimitedTextArea.htmlElement.value = sCheckedValues;
             delimitedTextArea.fireInputChanged();
-            dialog.hide();
-            dialog.destroy();
+            var destr = function() {
+              dialog.destroy();
+            };
+            dialog.hide().then(destr,destr);
           }));
           
           dojo.connect(elCancel,"onclick",this,dojo.hitch(this,function(e) {
-            dialog.hide();
-            dialog.destroy();
+            var destr = function() {
+              dialog.destroy();
+            };
+            dialog.hide().then(destr,destr);
           }));
           dialog.show(); 
         }
@@ -6039,4 +6155,3 @@ dojo.declare("fgdc.control.KeywordSelector",gxe.control.Control,{
   }
   
 });
-

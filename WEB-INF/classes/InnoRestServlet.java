@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 import java.net.URL;
@@ -79,12 +78,12 @@ public class InnoRestServlet extends HttpServlet {
             String id = request.getParameter("id");
             String xml = request.getParameter("xml");
          
-            if (id != null) {
+            /*if (id != null) {
                 if (id.contains("/")) {
                     log.fine("returning because id contains /");
                     return;
                 }
-            }
+            }*/
 //            String xmlUrl = request.getScheme() + "://" + request.getServerName();
             String xmlUrl = request.getScheme()+"://"+ request.getServerName()+":"+request.getServerPort();
             log.info("print server url:"+xmlUrl);
@@ -137,8 +136,10 @@ public class InnoRestServlet extends HttpServlet {
                 log.info("queryStr: " + queryStr);
                 if (!queryStr.contains("&redirected=true") & xmlIn.contains("Unable to return the document associated with the supplied identifier.")) {
                     String contextPath = request.getContextPath();
-                    String redirectUrl = requestUrl.substring(0, requestUrl.indexOf(contextPath) + contextPath.length() + 1);
-                    out.println("<SCRIPT>var win = window; if(window.parent) win = window.parent.window; win.location.href = win.location.href.replace(\"" + redirectUrl + "\", \"" + sso.getProperty("IntranetAdapterServletUrl") + "\") + '&redirected=true'; </SCRIPT>");
+                    //String redirectUrl = requestUrl.substring(0, requestUrl.indexOf(contextPath) + contextPath.length() + 1);
+                    String redirectUrl = requestUrl.substring(0, requestUrl.indexOf(contextPath) + contextPath.length() + 1)+"catalog/error/error.jsp";
+                    out.println("<SCRIPT>var win = window; if(window.parent) win = window.parent.window; win.location.href = '"+ redirectUrl + "'; </SCRIPT>");
+
                     return;
                 }
             } catch (Exception e) {
@@ -147,8 +148,9 @@ public class InnoRestServlet extends HttpServlet {
             }
             String fParm = request.getParameter("f");
             String xslParm = request.getParameter("xsl");
-            
+           // xmlIn = xmlIn.replace("–", "-");
             response.setContentType(contentType);
+            
             out.println(xmlIn);
             return;            
            /* if (xslParm == null || xslParm.equals("")) {
@@ -261,7 +263,7 @@ public class InnoRestServlet extends HttpServlet {
         URL u;
         URLConnection c = null;
         InputStream is = null;
-        BufferedReader br;
+        //BufferedReader br;
         String content = "";
         String s;
 
@@ -292,8 +294,10 @@ public class InnoRestServlet extends HttpServlet {
             log.info("getContentType: " + contentType);
            
             //is = u.openStream();
+            Reader reader = new InputStreamReader(c.getInputStream(), "utf-8");
+            BufferedReader br = new BufferedReader(reader);
 
-            br = new BufferedReader(new InputStreamReader(c.getInputStream()));
+            //br = new BufferedReader(new InputStreamReader(c.getInputStream()));
 
 
             while ((s = br.readLine()) != null) {

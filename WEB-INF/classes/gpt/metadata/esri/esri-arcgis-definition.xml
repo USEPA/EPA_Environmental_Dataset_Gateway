@@ -123,13 +123,15 @@
             <label resourceKey="fgdc.citation.onlineLinkage.references"/>
             <input type="text" maxlength="4000" defaultValue=""/>
             <validation required="false" valueType="string"/>
-            <content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='information']" deleteIfEmpty="false"/>
+            <!--<content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='information']" deleteIfEmpty="false"/>-->
+            <content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='002']]" deleteIfEmpty="false"/>
         </parameter>	
         <parameter key="distinfo.website">
             <label resourceKey="fgdc.citation.onlineLinkage.website"/>
             <input type="text" maxlength="4000" defaultValue=""/>
             <validation required="false" valueType="string"/>
-            <content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='browsing']" deleteIfEmpty="false"/>
+            <!--<content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='browsing']" deleteIfEmpty="false"/>-->
+            <content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='009']]" deleteIfEmpty="false"/>
         </parameter>
        
         <parameter key="distribution.format.name">
@@ -311,7 +313,7 @@
             <input type="text" maxlength="4000" defaultValue=""/>
             <!-- Changed to required="false" for relaxed FGDC harvesting; 11/16/2011 -->
             <validation required="false" valueType="string"/>
-            <content useSelectForUpdate="true" select="/metadata/dataIdInfo/resConst/LegConsts/useLimit" deleteIfEmpty="false"/>
+            <content useSelectForUpdate="true" select="/metadata/dataIdInfo/resConst/LegConsts/othConsts" deleteIfEmpty="false"/>
         </parameter>
         
         <!-- Access_Constraints  accconst -->
