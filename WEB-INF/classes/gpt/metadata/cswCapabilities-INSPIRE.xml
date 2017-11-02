@@ -280,9 +280,13 @@
     <ows:Constraint name="PostEncoding">
       <ows:Value>XML</ows:Value>
     </ows:Constraint>
+    <ows:Constraint name="IsoProfiles">
+      <ows:Value>http://www.isotc211.org/2005/gmd</ows:Value>
+    </ows:Constraint>
+    
     <inspire_ds:ExtendedCapabilities>
       <inspire_common:ResourceLocator>
-        <inspire_common:URL></inspire_common:URL>
+      <inspire_common:URL>http://mygeoportaldomain/geoportal/csw</inspire_common:URL>
       </inspire_common:ResourceLocator> 
       <inspire_common:ResourceType>service</inspire_common:ResourceType>
       <inspire_common:TemporalReference>
