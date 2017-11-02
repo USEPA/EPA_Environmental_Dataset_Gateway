@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <description>
+      WAF interface for metadata stored in various sources.
+    </description>
+    <display-name>WAFer</display-name>
+
+    <!-- GetConfig servlet can be used to read configuration file locally or from elsewhere.
+	 Think about security if reading from elsewhere. -->
+
+    <servlet>
+        <servlet-name>GetConfig</servlet-name>
+        <servlet-class>GetConfig</servlet-class>
+        <init-param>
+	    <!-- leave this parameter's value empty to read config from local file -->
+            <param-name>CoreGFEUrl</param-name>
+	    <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>handling</param-name>
+            <param-value>WAFer</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DefaultServlet</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetConfig</servlet-name>
+	<url-pattern>/internal/wafconfig.xml</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DefaultServlet</servlet-name>
+	<url-pattern>/internal/waf.xsl</url-pattern>
+    </servlet-mapping>
+
+    <!-- APICompatibilityFilter consumes requests to non-existent sub-folders essentially implementing virtual folders. -->
+    <filter>
+        <filter-name>APICompatibilityFilter</filter-name>
+        <filter-class>APICompatibilityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>APICompatibilityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Protected WAF: GDG_ALL</web-resource-name>
+			<url-pattern>/GDG_ALL/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>WAFerRole</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-role>
+		<role-name>WAFerRole</role-name>
+	</security-role>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>WAFer</realm-name>
+	</login-config>
+
+</web-app>

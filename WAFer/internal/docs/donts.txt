@@ -1,0 +1,8 @@
+Harvesting Tool Don'ts
+
+- Don't use URL query parqameters in WAF folder URLs (but you can use them in WAF file URLs)
+- Don't use absolute paths or folder level modifiers (e.g. ../ ) in WAF file URLs
+
+
+Ayhan Ergul
+<aergul@innovateteam.com>

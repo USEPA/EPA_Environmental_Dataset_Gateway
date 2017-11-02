@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ Esri Inc. licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    
+    <servlet>
+        <servlet-name>OntologyServlet</servlet-name>
+        <jsp-file>/query.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OntologyServlet</servlet-name>
+        <url-pattern>/query</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+	<context-param>
+        <param-name>WEIGHT_DECIMAL_PRECISION</param-name>
+        <param-value>2</param-value>
+    </context-param>
+    <context-param>
+        <param-name>SY_WEIGHT</param-name>
+        <param-value>0.95</param-value>
+    </context-param>
+    <context-param>
+        <param-name>AF_WEIGHT</param-name>
+        <param-value>0.95</param-value>
+    </context-param>
+    <context-param>
+        <param-name>AB_WEIGHT</param-name>
+        <param-value>0.95</param-value>
+    </context-param>
+    <context-param>
+        <param-name>CF_WEIGHT</param-name>
+        <param-value>0.95</param-value>
+    </context-param>
+    <context-param>
+        <param-name>CB_WEIGHT</param-name>
+        <param-value>0.95</param-value>
+    </context-param>
+    <context-param>
+        <param-name>USE_WEIGHT</param-name>
+        <param-value>0.90</param-value>
+    </context-param>
+    <context-param>
+        <param-name>UF_WEIGHT</param-name>
+        <param-value>0.90</param-value>
+    </context-param>
+    <context-param>
+        <param-name>BT_WEIGHT</param-name>
+        <param-value>0.75</param-value>
+    </context-param>
+    <context-param>
+        <param-name>NT_WEIGHT</param-name>
+        <param-value>0.75</param-value>
+    </context-param>
+    <context-param>
+        <param-name>RT_WEIGHT</param-name>
+        <param-value>0.60</param-value>
+    </context-param>
+    <context-param>
+        <param-name>ATT_WEIGHT</param-name>
+        <param-value>0.00</param-value>
+    </context-param>
+    <context-param>
+        <param-name>FNTT_WEIGHT</param-name>
+        <param-value>0.00</param-value>
+    </context-param>
+	<context-param>
+        <param-name>driverClass</param-name>
+        <param-value>jdbc:postgresql://localhost:5432/postgres</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>gptlv10</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>EDGuser!</param-value>
+    </context-param>	
+    </web-app>

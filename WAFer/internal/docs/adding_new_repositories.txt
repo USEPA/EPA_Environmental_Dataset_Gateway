@@ -1,0 +1,41 @@
+WAFer makes a number of metadata repositories available as Web-Accessible Folders (WAF). WAF interface is provided dynamically without any pre or post processing. No intermediate files are created. 
+
+Supported metadata repositories include:
+- ESRI ArcSDE databases and geodatabases
+- ESRI ARCIMS Metadata Server
+- ESRI GIS Portal Toolkit
+- ESRI ArcGIS Server Geoportal Extension
+- Web Accessible Folder (WAF)
+- FTP folder
+
+
+How to add new metadata repositories
+
+- Modify [Tomcat_dir]\webapps\WAFer\internal\waf_config.xml file as follows:
+	- Make a new <SOURCE> entry.
+	- Modify <SOURCE> attributes to reflect new repository's information as follows:
+		- type: Type of metadata repository. One of WAF/ARCIMS/GEODB/FTP. Use GEODB if source metadata will be served directly from a table/view in a database. Mandatory.
+		- shortName: Use an abbreviated name for the repository (alphanumeric, no spaces). Mandatory.
+		- longName: Not used by the application currently, for reference only. 
+		- metadataTable fully qualified name of the metadata table or view. Usually "sde.dbo.GDB_USERMETADATA" for SQLServer, "sde.GDB_USERMETADATA" for Oracle. A view can be used to filter records that will be served. Table or view must include the columns ID (unique id), NAME (preferably unique name), XML (metadata in XML format). GEODB only.
+		- jdbcDriver: The formal name of the JDBC driver as used in Java environment. E.g. "com.microsoft.jdbc.sqlserver.SQLServerDriver"  GEODB only.
+		- jdbcUrl: JDBC connection string such as "jdbc:microsoft:sqlserver://127.0.0.1:1433" GEODB only.
+		- serviceUrl: URL of the ArcIMS metadata service or WAF. ARCIMS/WAF/FTP only.
+		- user: User name to connect as. GEODB/WAF/FTP only. For public FTP, use "anonymous".
+		- pwd: Password for the user provided. GEODB/WAF/FTP only. For public FTP, you may have to use a contact email address.
+		- xmlReadMethod: One of string/binary/bytes(default). Try and see which value displays metadata records correctly. Optional.
+		- characterEncoding: Typically UTF-8 or ISO8859_1 (default). Must match the charater encoding of the metadata record for proper interpretation of non-ASCII characters. Optional.
+		- hrefStylesheet: The URL of a stylesheet to use. When blank, metadata records are displayed as XML. Otherwise, the provided stylesheet is used to transform records for display. Optional.
+		- recurse: If set to "1", recursively collects metadata in subfolders. FTP only.
+	- Save the file. Changes will take effect immediately.
+- New repository is now available for harvesting. Go to http://host:port/WAFer/ to see all configured repositories.
+
+
+Additional Notes:
+
+- As of this writing, WAFer has been tested with SQLServer, Oracle, PostgreSQL databases. If a new repository is using a different database/version that is not supported by the existing JDBC drivers, you will need to acquire and place appropriate JDBC drivers and place them under [Tomcat_dir]\webapps\WAFer\WEB-INF\lib and restart Tomcat. You will also need to use the appropriate JDBC driver name and URL in wafconfig.xml file. 
+
+20100920
+Ayhan Ergul
+<aergul@innovateteam.com>
+

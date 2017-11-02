@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<SOURCES>
+	<SOURCE type="GEODB" shortName="EDG" longName="U.S. EPA test Environmental Dataset Gateway Public (Unrestricted)" metadataTable="gptlv10.vw_public_metadata" jdbcDriver="org.postgresql.Driver" jdbcUrl="jdbc:postgresql://localhost:5432/postgres" user="postgres" pwd="Innovate4fun!" characterEncoding="UTF-8" />
+	<SOURCE type="GEODB" shortName="EDG_ALL" longName="U.S. EPA Environmental Dataset Gateway All (Restricted and Unrestricted)" metadataTable="gptlv10.vw_all_metadata" jdbcDriver="org.postgresql.Driver" jdbcUrl="jdbc:postgresql://localhost:5432/postgres" user="postgres" pwd="Innovate4fun!" characterEncoding="UTF-8" />
+</SOURCES>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>Data</servlet-name>
+        <servlet-class>com.innovateteam.Data</servlet-class>
+        <init-param>
+            <description>Full path to the public/restricted data is.
+            </description>
+            <param-name>dataLoc</param-name>
+             <param-value>http://134.67.221.55/data/</param-value>
+        </init-param>
+        <init-param>
+            <description>Where to find credentials. Accepted values:
+                header.uid - If a header named uid is present and the value is not the
+                    value of the anonymous user (specified in another parameter), allow restricted access.
+                fixed.public - Only public access allowed
+                fixed.restricted - all access allowed
+            </description>
+            <param-name>authenLoc</param-name>
+            <param-value>header.uid</param-value>
+        </init-param>
+        <init-param>
+            <description>
+                The value of the anonymous user, as described in "authenLoc", above.
+            </description>
+            <param-name>anonymousUser</param-name>
+            <param-value>OblixAnonymous</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Data</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
