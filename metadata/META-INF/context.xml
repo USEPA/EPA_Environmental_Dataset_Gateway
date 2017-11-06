@@ -36,7 +36,7 @@
           jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
             org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
           username="gptlv10"
-          password="EDGuser!"
+          password="***PASSWORD***"
           driverClassName="org.postgresql.Driver"
           url="jdbc:postgresql://localhost:5432/postgres"  />            
 </Context>

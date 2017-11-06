@@ -1,10 +1,10 @@
 # Files with saved credentials
 metrics/WEB-INF/web.xml
-OntologyService/WEB-INF/web.xml
-wafconfig.xml
-context.xml
-gpt.xml
 metrics/db.jsp
+OntologyService/WEB-INF/web.xml
+WAFer/internal/wafconfig.xml
+metadata/META-INF/context.xml
+metadata/WEB-INF/classe/gpt/config/gpt.xml
 
 #################
 ## Eclipse
