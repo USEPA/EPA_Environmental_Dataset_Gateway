@@ -1,3 +1,10 @@
+# Files with saved credentials
+web.xml
+wafconfig.xml
+context.xml
+gpt.xml
+metrics/db.jsp
+
 #################
 ## Eclipse
 #################
