@@ -133,7 +133,7 @@ class jsonDataProvider {
             ArrayList params = new ArrayList();
 
             String sql = new String();
-            sql = "SELECT DISTINCT ON (gres.docuuid) gres.title,gusr.username,gres.docuuid";
+            sql = "SELECT DISTINCT ON (gres.docuuid) gres.title,gusr.username,gres.docuuid,gres.fileidentifier";
             sql += ",coalesce(linkage.val,'unknown') as pri_linkage";
             if (forExport) {
                 sql += ", coalesce(metadata.val,'unknown') as abstract";
