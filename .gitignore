@@ -1,5 +1,6 @@
 # Files with saved credentials
-web.xml
+metrics/WEB-INF/web.xml
+OntologyService/WEB-INF/web.xml
 wafconfig.xml
 context.xml
 gpt.xml
