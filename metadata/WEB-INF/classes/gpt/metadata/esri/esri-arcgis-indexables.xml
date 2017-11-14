@@ -60,7 +60,7 @@
     <property meaning="metadataFormat" xpathType="STRING" xpath="'arcgis'"/>
     <property meaning="dcat.accessLevelComment" xpath="/metadata/dataIdInfo/resConst/SecConsts/userNote" xpathType="STRING"/>
     <property meaning="dcat.ParentIdentifier" xpath="/metadata/dataIdInfo/aggrInfo/aggrDSIdent/identCode"/>
-    <property meaning="dcat.license" xpath="/metadata/dataIdInfo/resConst/LegConsts/othConsts"/>
+    <property meaning="dcat.license" xpath="/metadata/dataIdInfo/resConst/LegConsts/othConsts[not(contains(.,' '))]"/>
 	
     <property meaning="metadataFormat" xpathType="STRING" xpath="'esri-arcgis'"/>  
 </indexables>

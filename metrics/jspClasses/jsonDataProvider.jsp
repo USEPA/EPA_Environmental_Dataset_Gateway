@@ -135,9 +135,9 @@ class jsonDataProvider {
             String sql = new String();
             sql = "SELECT DISTINCT ON (gres.docuuid) gres.title,gusr.username,gres.docuuid,gres.fileidentifier";
             sql += ",coalesce(linkage.val,'unknown') as pri_linkage";
-            if (forExport) {
+            //if (forExport) {
                 sql += ", coalesce(metadata.val,'unknown') as abstract";
-            }
+            //}
             sql += ",(CASE WHEN gres.pubmethod='upload' THEN ";
             sql += " (CASE WHEN (gres.sourceuri IS NULL OR trim(gres.sourceuri)='') THEN ";
             sql += " 'Metadata file \"unknown\" uploaded by \"'||gusr.username||'\"' ";
@@ -158,8 +158,8 @@ class jsonDataProvider {
             sql += ",coalesce(initcap(publisher.val),'') as publisher";
             sql += ",(CASE WHEN ((publisher.val LIKE 'U.S.%' OR publisher.val like 'US%' OR publisher.val like 'Environmental Protection Agency') AND (publisher.val LIKE '%Environmental%' OR publisher.val like '%EPA%') AND NOT (publisher.val LIKE '%Extract%')) THEN 'U.S. EPA' ELSE 'Non-EPA' END) as epapub";
             sql += ",(CASE WHEN lower(podAccessLevel.val) IN ('high confidentiality','non-public','non-public','secret','top secret') THEN 'non-public' WHEN lower(podAccessLevel.val) IN ('medium confidentiality','restricted','confidential','sensitive') THEN 'restricted public' ELSE 'public' END) as accesslevel";
-            sql += ",(CASE WHEN lower(licenseField.val) LIKE '%edg.epa.gov/epa_data_license.htm%' THEN 'EPA Standard License' ELSE 'Other' END) as licensestatus";
-            sql += ",coalesce(left(lower(licenseField.val),42),'') as licenseurl";
+            sql += ",(CASE WHEN lower(REGEXP_REPLACE(licenseField.val, '[\\n\\r\\s]+', '','g')) IN ('http://edg.epa.gov/epa_data_license.htm','http://edg.epa.gov/epa_data_license.html','https://edg.epa.gov/epa_data_license.htm','https://edg.epa.gov/epa_data_license.html') THEN 'EPA Standard License' ELSE 'Other' END) as licensestatus";
+            sql += ",coalesce(left(lower(licenseField.val),48),'') as licenseurl";
             sql += ",(CASE WHEN left(lower(rightsField.val),13) = 'epa category:' THEN 'Valid EPA CUI Statement' ELSE 'Other' END) as rightsstatus";
             sql += ",coalesce(left(rightsField.val,42),'') as rightsnote";
             sql += ",coalesce(left(progress.val,42),'') as progressstatus";
@@ -179,7 +179,7 @@ class jsonDataProvider {
 	    sql += " LEFT OUTER JOIN ( SELECT uuid, val FROM gptlv10.metrics_md_summary WHERE xpath like '%/southbc[1]%' OR xpath like '%/southBL[1]%' ) sbc ON (gres.docuuid=sbc.uuid)";
         sql += " LEFT OUTER JOIN (select uuid, val FROM metrics_md_summary WHERE xpath LIKE '/metadata[_]/idinfo[_]/citation[_]/citeinfo[_]/pubinfo[_]/publish[_]' OR xpath LIKE '%/gmd:MD_DataIdentification[_]/gmd:pointOfContact[_]/gmd:CI_ResponsibleParty[_]/gmd:organisationName[_]/gco:CharacterString[_]' OR xpath LIKE '%agencyName%' OR xpath LIKE '%foaf:name%' or xpath LIKE '/metadata[1]/dataIdInfo[1]/idPoC[1]/rpOrgName[1]') publisher ON (gres.docuuid=publisher.uuid)";
         sql += " LEFT OUTER JOIN (select uuid, val FROM metrics_md_summary WHERE xpath like '%secclass%' OR xpath like '%/gmd:MD_DataIdentification[_]/gmd:resourceConstraints[_]/gmd:MD_SecurityConstraints[_]/gmd:useLimitation[_]/gco:CharacterString[_]' or xpath LIKE '%pod:accessLevel%' OR xpath LIKE '%SecConsts[_]/class[_]/ClasscationCd%') podAccessLevel ON (gres.docuuid=podAccessLevel.uuid)";  
-        sql += " LEFT OUTER JOIN (select uuid, val FROM metrics_md_summary WHERE xpath LIKE '%distliab%' OR xpath like '%/gmd:MD_DataIdentification[_]/gmd:resourceConstraints[_]/gmd:MD_LegalConstraints[_]/gmd:otherConstraints[_]/gco:CharacterString[_]' OR xpath LIKE '%dct:license%' OR xpath LIKE '/metadata[_]/dataIdInfo[_]/resConst[_]/LegConsts[_]/othConsts[_]') licenseField ON (gres.docuuid=licenseField.uuid)"; 
+        sql += " LEFT OUTER JOIN (select uuid, val FROM metrics_md_summary WHERE xpath LIKE '%distliab%' OR xpath like '%/gmd:MD_DataIdentification[_]/gmd:resourceConstraints[_]/gmd:MD_LegalConstraints[_]/gmd:otherConstraints[_]/gco:CharacterString[_]' OR xpath LIKE '%dct:license%' OR (xpath LIKE '/metadata[_]/dataIdInfo[_]/resConst[_]/LegConsts[_]/othConsts[_]' and val like 'http%')) licenseField ON (gres.docuuid=licenseField.uuid)"; 
         sql += " LEFT OUTER JOIN (select uuid, val FROM metrics_md_summary WHERE xpath LIKE '%accconst%' OR xpath like '%/gmd:MD_DataIdentification[_]/gmd:resourceConstraints[_]/gmd:MD_LegalConstraints[_]/gmd:otherConstraints[_]/gco:CharacterString[_]' OR xpath LIKE '%dct:rights%' OR xpath LIKE '/metadata[_]/dataIdInfo[_]/resConst[_]/SecConsts[_]/userNote[_]') rightsField ON (gres.docuuid=rightsField.uuid)"; 
         sql += " LEFT OUTER JOIN (select uuid, val FROM metrics_md_summary WHERE xpath LIKE '/metadata[_]/idinfo[_]/status[_]/progress[_]') progress ON (gres.docuuid=progress.uuid)"; 
         sql += " LEFT OUTER JOIN (SELECT inno_collection_member.child_docuuid childuuid, gpt_resource.title parenttitle FROM gptlv10.inno_collection_member, gptlv10.gpt_resource WHERE gpt_resource.docuuid = inno_collection_member.docuuid) compilation ON (gres.docuuid=compilation.childuuid)"; 

@@ -25,6 +25,7 @@
     HashMap hint = new HashMap();
     hint.put("zip_code", "STRING");
     hint.put("uid", "STRING");
+    hint.put("progressstatus", "STRING");
     obj.setHint(hint);
     
     if(rs!=null){
