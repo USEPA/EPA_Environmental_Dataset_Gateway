@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ Esri Inc. licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<tree>
+  <label>name</label>
+  <identifier>name</identifier>
+  
+  <!-- Catalog -->
+  <item>
+    <id>0</id>
+    <name resourceKey="catalog.browse.toc.browseCatalog"></name>
+    <query>searchText=*:*</query>
+    
+    <!-- Content types -->
+		<item>
+		  <id>1</id>
+		  <name resourceKey="catalog.search.filterContentTypes.title"></name>
+			<query>contentType=application,clearinghouse,document,downloadableData,geographicActivities,geographicService,liveData,mapFiles,offlineData,staticMapImage</query>
+			<item>
+			  <id>2</id>
+				<name resourceKey="catalog.search.filterContentTypes.application"></name>
+                    <query>contentType=application&amp;xsl=metadata_to_html_full</query>
+			</item>
+			<item>
+			  <id>5</id>
+				<name resourceKey="catalog.search.filterContentTypes.downloadableData"></name>
+                    <query>contentType=downloadableData&amp;xsl=metadata_to_html_full</query>
+			</item>		
+			<item>
+			  <id>8</id>
+				<name resourceKey="catalog.search.filterContentTypes.liveData"></name>
+                    <query>contentType=liveData&amp;xsl=metadata_to_html_full</query>
+			</item>
+
+			<item>
+			  <id>9</id>
+				<name resourceKey="catalog.search.filterContentTypes.mapFiles"></name>
+                    <query>contentType=mapFiles&amp;xsl=metadata_to_html_full</query>
+			</item>			
+			<item>
+			  <id>10</id>
+				<name resourceKey="catalog.search.filterContentTypes.offlineData"></name>
+                    <query>contentType=offlineData&amp;xsl=metadata_to_html_full</query>
+			</item>
+			<item>
+			  <id>4</id>
+				<name resourceKey="catalog.search.filterContentTypes.document"></name>
+                    <query>contentType=document&amp;xsl=metadata_to_html_full</query>
+			</item>
+			
+										
+			<item>
+			  <id>3</id>
+				<name resourceKey="catalog.search.filterContentTypes.clearinghouse"></name>
+                    <query>contentType=clearinghouse&amp;xsl=metadata_to_html_full</query>
+			</item>
+
+			<item>
+			  <id>6</id>
+				<name resourceKey="catalog.search.filterContentTypes.geographicActivities"></name>
+                    <query>contentType=geographicActivities&amp;xsl=metadata_to_html_full</query>
+			</item>
+			<item>
+			  <id>7</id>
+				<name resourceKey="catalog.search.filterContentTypes.geographicService"></name>
+                    <query>contentType=geographicService&amp;xsl=metadata_to_html_full</query>
+			</item>
+
+
+			<item>
+			  <id>11</id>
+				<name resourceKey="catalog.search.filterContentTypes.staticMapImage"></name>
+                    <query>contentType=staticMapImage&amp;xsl=metadata_to_html_full</query>
+			</item>
+		</item>
+		
+    <!-- Data categories -->
+    <item>
+        <name resourceKey="catalog.search.filterCategories.title"></name>
+	<query></query>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.agriculture"></name>
+            <query>searchText=agriculture&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.air"></name>
+            <query>searchText=air&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.boundaries_base"></name>
+            <query>searchText=" boundaries IGD"&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.climate_change"></name>
+            <query>searchText="climate change"&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.ecological"></name>
+            <query>searchText=ecological&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.emergency_response"></name>
+            <query>searchText="emergency response"&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.energy"></name>
+            <query>searchText=energy&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.enforcement"></name>
+            <query>searchText=enforcement&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.environmental_justice"></name>
+            <query>searchText="environmental justice"&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.grants"></name>
+            <query>searchText=grants&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.health_risk"></name>
+            <query>searchText=risk&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.land_cleanup"></name>
+            <query>searchText="superfund"&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.pesticides_chemicals_toxics"></name>
+            <query>searchText="toxics"&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.regulated_facilities"></name>
+            <query>searchText="regulated facilities"&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.sustainability"></name>
+            <query>searchText=sustainability&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.waste"></name>
+            <query>searchText=waste&amp;xsl=metadata_to_html_full</query>
+	</item>
+	<item>
+            <name resourceKey="catalog.search.filterCategories.water"></name>
+            <query>searchText=water&amp;xsl=metadata_to_html_full</query>
+	</item>
+    </item>
+                
+     <!-- Owners -->
+     <!-- InsertOwnersHere - do not change this comment, it will be replaced by the owners -->            
+        
+  </item>
+</tree>

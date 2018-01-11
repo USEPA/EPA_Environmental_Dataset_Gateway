@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ Esri Inc. licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- dc-indexables.xml -->
+<indexables>
+
+  <property meaning="title" xpath="/dataGov/basic/title"/>
+  <property meaning="abstract" xpath="/dataGov/basic/description"/>
+  <property meaning="dataTheme" xpath="/dataGov/basic/keywords"/>
+  <property meaning="uuid" xpath="/dataGov/gdg/id"/>
+  <property meaning="resource.type" xpath="/dataGov/gdg/contentType"/>
+  <property meaning="body" xpath="/dataGov/*"/>
+  <property meaning="publisher" xpath="/dataGov/basic/agencyName"/>
+  <property meaning="dcat.publisher" xpath="/dataGov/basic/agencyName"/>
+  <property meaning="dcat.person"         xpath="/dataGov/basic/contactName" />
+  <property meaning="dcat.mbox"           xpath="/dataGov/basic/contactEmailAddress"/>
+  <property meaning="dcat.license"        xpath="/dataGov/basic/datasetLicenseAgreementUrl" />
+  <property meaning="dcat.dataDictionary" xpath="/dataGov/basic/dataDictionaryVariableList" />
+  <property meaning="dcat.accessUrl" xpath="/dataGov/basic/agencyDataSeriesUrl"/>
+  <property meaning="dcat.downloadUrl" xpath="/dataGov/downloadableFile/accessPoint"/>
+  <property meaning="dcat.accrualPeriodicity" xpath="/dataGov/basic/frequency"/>
+  <property meaning="dcat.modified" xpath="/dataGov/basic/dateUpdated"/>
+  <property meaning="dcat.issued" xpath="/dataGov/basic/dateReleased"/>
+  <property meaning="dcat.landingPage" xpath="/dataGov/basic/agencyProgramUrl"/>
+  <property meaning="metadataFormat" xpathType="STRING" xpath="'dataGov'"/>
+</indexables>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ Esri Inc. licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- esri-arcgis-indexables.xml -->
+<indexables>
+
+ 	  <property meaning="title" xpath="/metadata/dataIdInfo/idCitation/resTitle"/>
+	  <property meaning="abstract" xpath="/metadata/dataIdInfo/idAbs"/>
+	  <property meaning="keywords" xpath="/metadata/dataIdInfo/descKeys/keyword | /metadata/dataIdInfo/themeKeys/keyword | /metadata/dataIdInfo/placeKeys/keyword"/>
+	  <property meaning="fileIdentifier" xpath="/metadata/mdFileID"/>  
+      
+	  <property meaning="envelope" xpath="/metadata/dataIdInfo/dataExt/geoEle/GeoBndBox">
+	    <property meaning="envelope.west" xpath="westBL"/>
+	    <property meaning="envelope.south" xpath="southBL"/>
+	    <property meaning="envelope.east" xpath="eastBL"/>
+	    <property meaning="envelope.north" xpath="northBL"/>
+	  </property> 
+      
+	  <!--<property meaning="resource.url" xpath="/metadata/distInfo/distributor/distorTran/onLineSrc/linkage"/>
+	  <property meaning="website.url" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntOnlineRes/linkage"/>-->
+      <property meaning="resource.url" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='webservice']"/>
+	  <property meaning="website.url" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='download']"/>
+	  <property meaning="thumbnail.url" xpath="/metadata/dataIdInfo/graphOver/bgFileName"/>
+	    
+	  <property meaning="contentType" xpath="/metadata/Esri/resourceType | /metadata/distInfo/distributor/distorTran/onLineSrc/orDesc"/>
+	  <property meaning="dataTheme" xpath="/metadata/dataIdInfo/tpCat/TopicCatCd/@value"/>
+	  <property meaning="body" xpathType="STRING" xpath="//*"/>
+<!-- dcat-specific -->
+    <property meaning="dcat.publisher" xpath="/metadata/dataIdInfo/idPoC/rpOrgName"/>
+    <property meaning="dcat.person" xpath="/metadata/dataIdInfo/idPoC/rpIndName"/>
+    <property meaning="dcat.mbox" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd"/> 
+    <property meaning="dcat.accessLevel" xpath="/metadata/dataIdInfo/resConst/SecConsts/class/ClasscationCd/@value"/>
+    <property meaning="dcat.programCode" xpath="/metadata/dataIdInfo/subTopicCatKeys/keyword[../thesaName/resTitle='Federal Program Inventory']"/>   
+    <property meaning="dcat.dataDictionary" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='information']"/>
+    
+    <property meaning="dcat.downloadUrl" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='download']"/>
+
+    <property meaning="dcat.accessUrl" 
+      xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='webservice']"/>
+    
+<!--Added by Torrin Hultgren 2/21/13 to include "Optional" dcat components-->
+    <property meaning="dcat.issued" xpath="/metadata/dataIdInfo/idCitation/date/pubDate"/>
+    <property meaning="dcat.accrualPeriodicity" xpath="/metadata/dataIdInfo/resMaint/maintFreq/MaintFreqCd"/>
+    <property meaning="dcat.language" xpath="/metadata/dataIdInfo/dataLang/languageCode/@value"/>
+    <property meaning="dcat.references" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='information']"/>
+    <property meaning="dcat.landingPage" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='browsing']"/>
+    <property meaning="metadataFormat" xpathType="STRING" xpath="'arcgis'"/>
+    <property meaning="dcat.accessLevelComment" xpath="/metadata/dataIdInfo/resConst/SecConsts/userNote" xpathType="STRING"/>
+    <property meaning="dcat.ParentIdentifier" xpath="/metadata/dataIdInfo/aggrInfo/aggrDSIdent/identCode"/>
+    <property meaning="dcat.license" xpath="/metadata/dataIdInfo/resConst/LegConsts/othConsts[not(contains(.,' '))]"/>
+	
+    <property meaning="metadataFormat" xpathType="STRING" xpath="'esri-arcgis'"/>  
+</indexables>
+

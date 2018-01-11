@@ -1,0 +1,47 @@
+
+* html .visualIEFloatFix { height: 0.01%; }
+ 
+BODY {
+	font-size: 10pt;
+	font-family: Tahoma, Geneva, Verdana, sans-serif;
+	margin: 5;
+	padding: 5;
+	text-align: left;
+}
+div.title {
+	font-size: 10pt;
+    font-weight: bold;
+	PADDING: 1px;
+    margin-top: 2px;
+}
+div.abstract {
+	font-size: 9pt;
+	color: #000000;
+	opacity: ".5";
+	PADDING: 2px;
+}
+div.links {
+	font-size: 9pt;
+	BACKGROUND-COLOR: #454545;
+	color: #FFFFFF;
+	PADDING: 2px;
+	BORDER-BOTTOM: #808080 1px dashed;
+
+
+}
+
+a:link { 
+         color: #FFFFFF;
+         }
+a:visited { 
+         color: #FF0000;
+         }
+a:hover { 
+         color: #FF0000;
+         background-color: #F1F58F;
+         text-decoration: none;
+         }
+a:active { 
+         color: #FF0000;
+         }
+

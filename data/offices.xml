@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : offices.xml
+    Created on : September 13, 2011, 3:39 PM
+    Author     : jsievel
+    Description:
+        This file maps office ids to full office names.
+-->
+<offices>
+    <o id="OECA" dir="OECA">EPA Office of Compliance and Enforcement</o>
+    <o id="OEI" dir="OEI">EPA Office of Environmental Information</o>
+    <o id="OEI/OIC/" dir="OIC">EPA Office of Information Collection</o>
+    <o id="OP" dir="OP">EPA Office of Policy</o>
+    <o id="OCSPP" dir="OCSPP">EPA Office of Chemical Safety and Pollution Prevention</o>
+<o id="OCSPP/OPP/" dir="OPP">EPA Office of Pesticide Programs</o>
+    <o id="ORD" dir="ORD">EPA Office of Research and Development</o>
+    <o id="ORD/NCEA/" dir="NCEA">EPA Office of Research and Development, National Center for Environmental Assessment</o>
+    <o id="ORD/NERL/" dir="NERL">EPA Office of Research and Development, National Exposure Research Laboratory</o>
+    <o id="ORD/NERL/ReVA" dir="ReVA">EPA Office of Research and Development, National Exposure Research Laboratory, Regional Environmental Vulnerability Assessment</o>
+    <o id="ORD/EnviroAtlas" dir="EnviroAtlas">EPA Office of Research and Development, Sustainable and Healthy Communities Research Program, EnviroAtlas</o>
+    <o id="OSWER" dir="OSWER">EPA Office of Solid Waste and Emergency Response</o>
+    <o id="OSWER/OEM/" dir="OEM">EPA Office of Solid Waste and Emergency Response, Office of Emergency Management</o>
+    <o id="OW" dir="OW">EPA Office of Water</o>
+    <o id="R1" dir="R1">EPA Region 1</o>
+    <o id="R2" dir="R2">EPA Region 2</o>
+    <o id="R3" dir="R3">EPA Region 3</o>
+    <o id="R4" dir="R4">EPA Region 4</o>
+    <o id="R5" dir="R5">EPA Region 5</o>
+    <o id="R6" dir="R6">EPA Region 6</o>
+    <o id="R7" dir="R7">EPA Region 7</o>
+    <o id="R8" dir="R8">EPA Region 8</o>
+    <o id="R9" dir="R9">EPA Region 9</o>
+    <o id="R10" dir="R10">EPA Region 10</o>
+</offices>

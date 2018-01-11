@@ -1,0 +1,429 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>metadata</groupId>
+  <artifactId>metadata</artifactId>
+  <version>1.2.7</version>
+  <packaging>war</packaging>
+ <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+  <dependencies>
+   <!-- http://mvnrepository.com/artifact/javax.activation/activation -->
+<dependency>
+    <groupId>javax.activation</groupId>
+    <artifactId>activation</artifactId>
+    <version>1.1.1</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.apache.axis/axis -->
+<dependency>
+    <groupId>org.apache.axis</groupId>
+    <artifactId>axis</artifactId>
+    <version>1.4</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.axis/axis-saaj -->
+<dependency>
+    <groupId>org.apache.axis</groupId>
+    <artifactId>axis-saaj</artifactId>
+    <version>1.4</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.axis/axis-jaxrpc -->
+<dependency>
+    <groupId>org.apache.axis</groupId>
+    <artifactId>axis-jaxrpc</artifactId>
+    <version>1.4</version>
+</dependency>
+
+<!-- http://mvnrepository.com/artifact/batik/batik-util -->
+<dependency>
+    <groupId>batik</groupId>
+    <artifactId>batik-util</artifactId>
+    <version>1.6-1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-anim -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-anim</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-awt-util -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-awt-util</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-bridge -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-bridge</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-codec -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-codec</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-css -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-css</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-dom -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-dom</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-ext -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-ext</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-gvt -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-gvt</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-js -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-js</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-parser -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-parser</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-script -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-script</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-svg-dom -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-svg-dom</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-svggen -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-svggen</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-transcoder -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-transcoder</artifactId>
+    <version>1.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-xml -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>batik-xml</artifactId>
+    <version>1.7</version>
+</dependency>
+
+<!-- http://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+<dependency>
+    <groupId>commons-beanutils</groupId>
+    <artifactId>commons-beanutils</artifactId>
+    <version>1.9.2</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-chain/commons-chain -->
+<dependency>
+    <groupId>commons-chain</groupId>
+    <artifactId>commons-chain</artifactId>
+    <version>1.2</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-codec/commons-codec -->
+<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.10</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-collections/commons-collections -->
+<dependency>
+    <groupId>commons-collections</groupId>
+    <artifactId>commons-collections</artifactId>
+    <version>3.2.2</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-digester/commons-digester -->
+<dependency>
+    <groupId>commons-digester</groupId>
+    <artifactId>commons-digester</artifactId>
+    <version>2.1</version>
+</dependency>
+
+<!-- http://mvnrepository.com/artifact/commons-discovery/commons-discovery -->
+<dependency>
+    <groupId>commons-discovery</groupId>
+    <artifactId>commons-discovery</artifactId>
+    <version>0.4</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.2</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+<dependency>
+    <groupId>commons-httpclient</groupId>
+    <artifactId>commons-httpclient</artifactId>
+    <version>3.1</version>
+</dependency>
+
+<!-- http://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>1.3.2</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.4</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-logging/commons-logging -->
+<dependency>
+    <groupId>commons-logging</groupId>
+    <artifactId>commons-logging</artifactId>
+    <version>1.1.1</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/commons-net/commons-net -->
+<dependency>
+    <groupId>commons-net</groupId>
+    <artifactId>commons-net</artifactId>
+    <version>3.0.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+<dependency>
+    <groupId>commons-validator</groupId>
+    <artifactId>commons-validator</artifactId>
+    <version>1.3.1</version>
+</dependency>
+
+<!-- http://mvnrepository.com/artifact/com.google.code.gson/gson -->
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.2.4</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.glassfish/javax.json -->
+<dependency>
+    <groupId>org.glassfish</groupId>
+    <artifactId>javax.json</artifactId>
+    <version>1.0.2</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.2.12</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-impl</artifactId>
+    <version>2.2.11</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.expressme/JOpenId -->
+<dependency>
+    <groupId>org.expressme</groupId>
+    <artifactId>JOpenId</artifactId>
+    <version>1.08</version>
+</dependency>
+<dependency>
+    <groupId>org.expressme</groupId>
+    <artifactId>JOpenId</artifactId>
+    <version>1.08</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/javax.faces/jsf-api -->
+<!-- <dependency>
+    <groupId>javax.faces</groupId>
+    <artifactId>jsf-api</artifactId>
+    <version>2.1</version>
+</dependency> -->
+<dependency>
+    <groupId>javax</groupId>
+    <artifactId>javaee-web-api</artifactId>
+    <version>7.0</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+  <groupId>com.sun.faces</groupId>
+  <artifactId>jsf-api</artifactId>
+  <version>2.1.13</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
+<dependency>
+    <groupId>com.sun.faces</groupId>
+    <artifactId>jsf-impl</artifactId>
+    <version>2.2.9</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.glassfish/javax.faces -->
+<dependency>
+    <groupId>org.glassfish</groupId>
+    <artifactId>javax.faces</artifactId>
+    <version>2.2.0</version>
+</dependency>
+
+<!-- http://mvnrepository.com/artifact/jstl/jstl -->
+<dependency>
+    <groupId>jstl</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
+<dependency>
+    <groupId>org.apache.lucene</groupId>
+    <artifactId>lucene-core</artifactId>
+    <version>3.0.3</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/javax.mail/mail -->
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4.7</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20160212</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/javax.xml.soap/saaj-api -->
+<dependency>
+    <groupId>javax.xml.soap</groupId>
+    <artifactId>saaj-api</artifactId>
+    <version>1.3.5</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/taglibs/standard -->
+<dependency>
+    <groupId>taglibs</groupId>
+    <artifactId>standard</artifactId>
+    <version>1.1.2</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.apache.struts/struts-core -->
+<dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts-core</artifactId>
+    <version>1.3.10</version>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.apache.struts/struts-tiles -->
+<dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts-tiles</artifactId>
+    <version>1.3.10</version>
+    <exclusions>
+      <exclusion>
+        <groupId>antlr</groupId>
+        <artifactId>antlr</artifactId>
+      </exclusion>
+    </exclusions>
+</dependency>
+<!-- http://mvnrepository.com/artifact/org.twitter4j/twitter4j-core -->
+<dependency>
+    <groupId>org.twitter4j</groupId>
+    <artifactId>twitter4j-core</artifactId>
+    <version>2.1.0</version>
+</dependency>
+
+<!-- http://mvnrepository.com/artifact/wsdl4j/wsdl4j -->
+<dependency>
+    <groupId>wsdl4j</groupId>
+    <artifactId>wsdl4j</artifactId>
+    <version>1.5.1</version>
+</dependency>
+<dependency>
+    <groupId>com.esri.arcgisws</groupId>
+    <artifactId>arcgis_agsws_stubs</artifactId>
+    <version>1.0</version>
+    </dependency>
+<dependency>
+    <groupId>com.esri.arcgisws</groupId>
+    <artifactId>arcgis_ws_runtime</artifactId>
+    <version>1.0</version>
+    
+</dependency>
+<!-- http://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+<dependency>
+    <groupId>javax.servlet.jsp</groupId>
+    <artifactId>jsp-api</artifactId>
+    <version>2.1</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>com.esri.gpt</groupId>
+    <artifactId>gpt</artifactId>
+    <version>1.2.7</version>
+ </dependency>
+ <!-- https://mvnrepository.com/artifact/org.apache.avalon.framework/avalon-framework-api -->
+<dependency>
+    <groupId>org.apache.avalon.framework</groupId>
+    <artifactId>avalon-framework-api</artifactId>
+    <version>4.3.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.avalon.framework/avalon-framework-impl -->
+<dependency>
+    <groupId>org.apache.avalon.framework</groupId>
+    <artifactId>avalon-framework-impl</artifactId>
+    <version>4.3.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/javax.xml.stream/stax-api -->
+<dependency>
+    <groupId>javax.xml.stream</groupId>
+    <artifactId>stax-api</artifactId>
+    <version>1.0-2</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/xalan/xalan -->
+<dependency>
+    <groupId>xalan</groupId>
+    <artifactId>xalan</artifactId>
+    <version>2.6.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/xml-apis/xml-apis -->
+<dependency>
+    <groupId>xml-apis</groupId>
+    <artifactId>xml-apis</artifactId>
+    <version>1.3.04</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/xml-apis/xml-apis-ext -->
+<dependency>
+    <groupId>xml-apis</groupId>
+    <artifactId>xml-apis-ext</artifactId>
+    <version>1.3.04</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.xmlgraphics/xmlgraphics-commons -->
+<dependency>
+    <groupId>org.apache.xmlgraphics</groupId>
+    <artifactId>xmlgraphics-commons</artifactId>
+    <version>1.2</version>
+</dependency>
+</dependencies>
+</project>
