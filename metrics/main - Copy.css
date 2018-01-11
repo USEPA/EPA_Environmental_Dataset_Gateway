@@ -12,14 +12,14 @@ body {
     font-weight: normal;
     line-height: 1.5;
     padding: 0pt;
-    /*background-color: #4A5B63;*/
-    font-size:12pt;
+    background-color: #4A5B63;
+    font-size:10pt;
     font-style:bold;
     margin: 0;
 }
 
 a:link, a:visited {
-    /*border-bottom: 1px dotted;*/
+    border-bottom: 1px dotted;
     color: #3D5E84;
     font-weight: normal;
     text-decoration: none;
@@ -45,17 +45,14 @@ h1 {
 table {
     text-align: left;
     background-color: #FFF;
-    color: #212121;
+    color: #777777;
     border-top-style: none;
     border-right-style: none;
     border-bottom-style: none;
     border-left-style: none;
     font-size: xx-small;
     vertical-align:text-top;
-	border-collapse: collapse;
 }
-
-
 
 /**
  * helper classes (IE Fix)
@@ -194,12 +191,12 @@ legend{
     float:left;
 }
 
-#facet {
-    padding-top: 70px;
-    width: 360px;
-    float: left;
-    padding-right: 35px;
-    padding-left: 25px;
+#facet{
+    padding-top : 70px;
+    width:360px; 
+    float:right;
+    padding-right:30px;
+
 }
 
 #view .box{
@@ -214,27 +211,25 @@ legend{
 }
 
 #view .public{
-    background-color: #fff;
-    border: 1px solid #fff;
-	color: black;
-    font-size: 14px;
+    background-color: #ACD372;
+    border: 2px solid #8BA446;
 }
 
 #view .restricted{
-    background-color: #eee;
-    border: 2px solid #eee;
+    background-color: #FFF467;
+    border: 2px solid #FFA824;
 }
 
 #view .public  .box_header, #view .public  .box_header div{
-    background-color: #eee;
+    background-color: #8BA446;
 }
 
 #view .restricted  .box_header, #view .restricted  .box_header div{
-    background-color:  #eee;
+    background-color:  #FFA824;
 }
 
 #view .public .box_content{
-    background-color: #eee;
+    background-color: #ACD372;
 }
 
 #view .restricted .box_content{
@@ -251,12 +246,11 @@ legend{
 }
 
 .box .box_header,.box .box_header div{
-    background-color: #eee;
+    background-color: #CCC;
     padding-left:2px; 
     line-height: 24px;
     font-weight: bold;
     margin-left: -1px;
-	font-size:14px;
 }
 
 .box .box_content{
@@ -339,30 +333,11 @@ fieldset div{
 ol.exhibit-tileView-body{
     margin-top:0px;
     list-style-position: outside;
-    list-style: none;
+    list-style: decimal;
    
    
 }
 
 ol.exhibit-tileView-body li{
     vertical-align: text-top;
-}
-
-div.exhibit-text-facet input {
-    width: 250px;
-}
-.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
-    padding: 8px;
-    line-height: 1.128571;
-    vertical-align: top;
-    border-top: 1px solid #ddd;
-	font-size: 12px;
-   
-}
-td, th {
-    border: 1px solid #ccc;
-}
-th{
-	background-color:#f1f1f1;
-	font-weight:700;
 }

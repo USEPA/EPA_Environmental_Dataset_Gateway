@@ -297,28 +297,28 @@ public String getLuceneIndexDir(HttpServletRequest request){
             HashMap items = new HashMap();
 
             items = new HashMap();
-            items.put("label", "Introduction");
+           /* items.put("label", "Introduction");
             items.put("link", "/metrics/introduction.jsp");
-            //menuItems.add(items);
+            menuItems.add(items);*/
 
             items = new HashMap();
             items.put("label", "EDG Inventory");
             items.put("link", "/metrics/inventory.jsp");
             menuItems.add(items);
 
-            items = new HashMap();
+           /* items = new HashMap();
             items.put("label", "Detailed Inventory");
             items.put("link", "/metrics/detailedInventory.jsp");
-            //menuItems.add(items);
+            menuItems.add(items);*/
 
             items = new HashMap();
-            items.put("label", "Access Metrics");
+            items.put("label", "Resource Access Metrics");
             items.put("link", "/metrics/resourceAccess.jsp");
             menuItems.add(items);
             try {
                 URL url = new URL(this.request.getRequestURL().toString());
                 curPage = url.getFile().toString();
-                curPage = curPage.trim().equals("/metrics/") ? "/metrics/inventory.jsp" : curPage;
+                curPage = curPage.trim().equals("/metrics/") ? "/metrics/introduction.jsp" : curPage;
 
                 ret.append("<div id=\"menu\">");
                 ret.append("<ul>");
