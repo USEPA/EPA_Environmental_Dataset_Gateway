@@ -100,6 +100,12 @@ function toggleSign(obj){
     }
 }
 
+function hideorshow(obj){
+	var display=obj.nextElementSibling.style.display;
+	
+	obj.nextElementSibling.style.display=(display=='block')?'none':'block';
+}
+
 /*
  *This function collapses all the box view in view panel 
  */
@@ -138,7 +144,8 @@ function expandAll(){
         
         if(contains($(obj).attr("src"),"images/bullet-toggle-plus-icon.png")){
             parent = obj.parentNode.parentNode.parentNode;
-            $(parent).find(".box_content").show(1000);
+			console.log(parent);
+            /*$(parent).find(".box_content").show(1000);*/
             $(obj).attr("src","images/bullet-toggle-minus-icon.png");
             
             abstractField = $(parent).find('span[class|="abstract_content"]');
@@ -154,9 +161,12 @@ function expandAll(){
 
 function callAjax(docuuid){
     if(docuuid!="undefined"){
+		console.log("docuuid"+docuuid);
         $.ajax({
-            url: 'tools/getGptResourceData.jsp?field=abstract&docuuid='+docuuid,
+            url: encodeURI('tools/getGptResourceData.jsp?field=abstract&docuuid='+docuuid),
+			//console.log("print data"+data);
             success: function( data ) {
+				console.log("print data"+data);
                 document.getElementById("abs_"+docuuid).innerHTML = data;
             }
         });
@@ -225,7 +235,6 @@ $(document).ready(function() {
  //DISABLE REPORTING WHEN USER MOVES FROM ONE PAGE TO ANOTHER WITHOUT COMPLETELY LOADING THE CONTENT
     Exhibit.UI.showJsonFileValidation = function(message, url) {return null;};
 });
-
 
 function refreshGraph(){
     
@@ -376,7 +385,7 @@ function showItem(elmt) {
     var heading = elmt.getElementsByTagName("span");
     heading = heading[0].innerHTML;
     itemID = '<b>'+heading+'</b><br>'+itemID;
-
+	console.log(itemID);
     //Exhibit.UI.showItemInPopup(itemID, elmt, exhibit.getUIContext());
     Exhibit.UI.showItemInPopup = function(itemID, elmt, uiContext, opts) {
         SimileAjax.WindowManager.popAllLayers();
@@ -386,7 +395,13 @@ function showItem(elmt) {
 
         var itemLensDiv = document.createElement("div");
         itemLensDiv.innerHTML=itemID;
-
+		 var close = function() { 
+       
+            document.body.removeChild(bubble._div);
+            
+    };
+    
+    var layer = SimileAjax.WindowManager.pushLayer(close, true, itemLensDiv);
         var lensOpts = {
             inPopup: true,
             coords: opts.coords
@@ -409,6 +424,40 @@ function showItem(elmt) {
             uiContext.getSetting("bubbleWidth")
             );
     }(itemID, elmt, exhibit.getUIContext());
+	/*Exhibit.UI.showItemInPopup = function(itemID, elmt, uiContext, opts) {
+    var itemLensDiv, lensOpts;
+
+    $(document).trigger("closeAllModeless.exhibit");
+
+    opts = opts || {};
+    opts.coords = opts.coords || Exhibit.UI.calculatePopupPosition(elmt);
+    
+    //itemLensDiv = $("<div>");
+	var itemLensDiv = document.createElement("div");
+	itemLensDiv.innerHTML=itemID;
+	console.log("in show item popup"+itemID);
+    lensOpts = {
+        inPopup: true,
+        coords: opts.coords
+    };
+
+    if (opts.lensType === "normal") {
+        lensOpts.lensTemplate = uiContext.getLensRegistry().getNormalLens(itemID, uiContext);
+    } else if (opts.lensType === "edit") {
+        lensOpts.lensTemplate = uiContext.getLensRegistry().getEditLens(itemID, uiContext);
+    } else if (opts.lensType) {
+        Exhibit.Debug.warn(Exhibit._("%general.error.unknownLensType", opts.lensType));
+    }
+
+    uiContext.getLensRegistry().createLens(itemID, itemLensDiv, uiContext, lensOpts);
+    
+    $.simileBubble("createBubbleForContentAndPoint",
+        itemLensDiv, 
+        opts.coords.x,
+        opts.coords.y, 
+        uiContext.getSetting("bubbleWidth")
+    );
+}(itemID, elmt, exhibit.getUIContext());*/
 } 
 
 function showDetails(docuuid){
