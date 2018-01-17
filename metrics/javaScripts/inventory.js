@@ -1,7 +1,7 @@
 var dataForGraph = [
 {
-    "renderInDiv":"chart_div_pub_res",
-    "graphTitle":"Access Level",
+    "renderInDiv":"chart_div_epa_nonepa",
+    "graphTitle":"EPA/Non-EPA",
     "data":null
 }
 ,{
@@ -10,13 +10,13 @@ var dataForGraph = [
     "data":null
 }
 ,{
-    "renderInDiv":"chart_div_content_type",
-    "graphTitle":"Content Type",
+    "renderInDiv":"chart_div_aclvl",
+    "graphTitle":"Data.gov Access Level",
     "data":null
 }
 ,{
-    "renderInDiv":"chart_div_owner",
-    "graphTitle":"Owner",
+    "renderInDiv":"chart_div_license-status",
+    "graphTitle":"License Status",
     "data":null
 }
 ];
@@ -238,10 +238,10 @@ $(document).ready(function() {
 
 function refreshGraph(){
     
-    var datasByAccessLevel      = {};
+    var datasByEpaNonEpa      = {};
     var datasByMetadataStandard = {};
-    var datasByContentType      = {};
-    var datasByOwner            = {};
+    var datasByDataGovAcLvl      = {};
+    var datasByLicenseStatus            = {};
     
     var set = exhibit.getDefaultCollection().getRestrictedItems();
     var db = exhibit._uiContext.getDatabase();
@@ -249,15 +249,15 @@ function refreshGraph(){
     
     
     set.visit(function(itemID) {
-        values = db.getObjects(itemID, "acl_opt");
+        values = db.getObjects(itemID, "epapub");
         valStr = values.toArray().join(",");
         valStr = Exhibit.CSVExporter._cleanData(valStr);
         
         
-        if(datasByAccessLevel[valStr]){
-            datasByAccessLevel[valStr]++;
+        if(datasByEpaNonEpa[valStr]){
+            datasByEpaNonEpa[valStr]++;
         }else{
-            datasByAccessLevel[valStr]=1;
+            datasByEpaNonEpa[valStr]=1;
         }
         
         values = db.getObjects(itemID, "schema_key");
@@ -270,23 +270,23 @@ function refreshGraph(){
             datasByMetadataStandard[valStr]=1;
         }
         
-        values = db.getObjects(itemID, "content_type");
+        values = db.getObjects(itemID, "accesslevel");
         valStr = values.toArray().join(",");
         valStr = Exhibit.CSVExporter._cleanData(valStr);
         
-        if(datasByContentType[valStr]){
-            datasByContentType[valStr]++;
+        if(datasByDataGovAcLvl[valStr]){
+            datasByDataGovAcLvl[valStr]++;
         }else{
-            datasByContentType[valStr]=1;
+            datasByDataGovAcLvl[valStr]=1;
         }
         
-        values = db.getObjects(itemID, "username");
+        values = db.getObjects(itemID, "licensestatus");
         valStr = values.toArray().join(",");
         valStr = Exhibit.CSVExporter._cleanData(valStr);
-        if(datasByOwner[valStr]){
-            datasByOwner[valStr]++;
+        if(datasByLicenseStatus[valStr]){
+            datasByLicenseStatus[valStr]++;
         }else{
-            datasByOwner[valStr]=1;
+            datasByLicenseStatus[valStr]=1;
         }
    
     });
@@ -298,14 +298,14 @@ function refreshGraph(){
         var tmpArr = new Array();
         var keys = new Array();
         
-        if(dataForGraph[i].renderInDiv=='chart_div_pub_res'){
-            data = datasByAccessLevel;
+        if(dataForGraph[i].renderInDiv=='chart_div_epa_nonepa'){
+            data = datasByEpaNonEpa;
         }else if(dataForGraph[i].renderInDiv=='chart_div_metadata'){
             data = datasByMetadataStandard;
-        }else if(dataForGraph[i].renderInDiv=='chart_div_content_type'){
-            data = datasByContentType;
-        }else if(dataForGraph[i].renderInDiv=='chart_div_owner'){
-            data = datasByOwner;
+        }else if(dataForGraph[i].renderInDiv=='chart_div_aclvl'){
+            data = datasByDataGovAcLvl;
+        }else if(dataForGraph[i].renderInDiv=='chart_div_license-status'){
+            data = datasByLicenseStatus;
         }
         
         for (var key in data) {

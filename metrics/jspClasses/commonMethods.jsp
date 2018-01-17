@@ -46,31 +46,30 @@
         }
 
         public String getAccessControlMetricsJsonSQL(HashMap params, String filter) {
+				System.out.println("entering AccessControlMetricsJsonSQL");
             String portion = "";
 
             String sql = "SELECT ";
-            if (filter == "acl") {
-                portion = "CASE WHEN (gres.acl IS NULL OR trim(gres.acl)='') THEN 'public' ELSE 'restricted' END";
+        	sql += ",coalesce(initcap(publisher.val),'') as publisher";
+            if (filter == "epapub") {
+               	portion = ",(CASE WHEN ((publisher.val LIKE 'U.S.%' OR publisher.val like 'US%' OR publisher.val like 'Environmental Protection Agency') AND (publisher.val LIKE '%Environmental%' OR publisher.val like '%EPA%') AND NOT (publisher.val LIKE '%Extract%')) THEN 'U.S. EPA' ELSE 'Non-EPA' END) as epapub";
+                //portion = "CASE WHEN (gres.acl IS NULL OR trim(gres.acl)='') THEN 'public' ELSE 'restricted' END";
             } else if (filter == "schema_key") {
                 portion = "(CASE WHEN gres.schema_key='bestpractice' THEN 'FGDC best practice' WHEN gres.schema_key='dataGov' THEN 'data.gov' WHEN gres.schema_key='dc' THEN 'Dublin Core' WHEN gres.schema_key='fgdc' THEN 'FGDC' ELSE coalesce(gres.schema_key,'unknown') END)";
-            } else if (filter == "content_type") {
-                portion = "coalesce(lower(gres.content_type),'unknown')";
-            } else if (filter == "username") {
-                portion = " coalesce(lower(gusr.username),'unknown') ";
-            } else if (filter == "cntry_name") {
-                portion = " coalesce(lower(cntr.cntry_name),'unknown') ";
-            } else if (filter == "rgn_name") {
-                portion = " coalesce(lower(rgn.rgn_name),'unknown') ";
-            }
+            } else if (filter == "accesslevel") {
+                portion = ",(CASE WHEN lower(podAccessLevel.val) IN ('high confidentiality','non-public','non-public','secret','top secret') THEN 'non-public' WHEN lower(podAccessLevel.val) IN ('medium confidentiality','restricted','confidential','sensitive') THEN 'restricted public' ELSE 'public' END) as accesslevel";
+            } else if (filter == "licensestatus") {
+                portion = ",(CASE WHEN lower(REGEXP_REPLACE(licenseField.val, '[\\n\\r\\s]+', '','g')) IN ('http://edg.epa.gov/epa_data_license.htm','http://edg.epa.gov/epa_data_license.html','https://edg.epa.gov/epa_data_license.htm','https://edg.epa.gov/epa_data_license.html') THEN 'EPA Standard License' ELSE 'Other' END) as licensestatus";
+            } 
             sql += portion;
             sql += " ,count(*)";
             sql += " FROM metrics_raw mraw LEFT OUTER JOIN gpt_resource gres  ON (mraw.uuid = gres.docuuid)";
-            sql += " LEFT OUTER JOIN countries cntr ON (mraw.cntry_code=cntr.cntry_code)";
-            sql += " LEFT OUTER JOIN regions rgn ON (mraw.cntry_code=rgn.cntry_code AND mraw.rgn_code=rgn.rgn_code)";
+            //sql += " LEFT OUTER JOIN countries cntr ON (mraw.cntry_code=cntr.cntry_code)";
+            //sql += " LEFT OUTER JOIN regions rgn ON (mraw.cntry_code=rgn.cntry_code AND mraw.rgn_code=rgn.rgn_code)";
             sql += " LEFT OUTER JOIN gpt_user gusr  ON (gres.owner = gusr.userid)";
             sql += " WHERE 1=1 ";
 
-            String key = null;
+            /*String key = null;
             String value = null;
             Set s = params.keySet();
             Iterator it = s.iterator();
@@ -85,7 +84,7 @@
                 } else if (value != null && key.equalsIgnoreCase("acl")) {
                     sql += " AND (CASE WHEN (gres.acl IS NULL OR trim(gres.acl)='') THEN 'public' ELSE 'restricted' END)='" + params.get(key) + "'";
                 }
-            }
+            }*/
             sql += " GROUP BY " + portion + " ORDER BY count(*) DESC";
             return sql;
         }
@@ -94,16 +93,17 @@
          */
 
         public String getJsonForAccessControlMetrics(HashMap params) {
+			System.out.println("entering jsonforaccess");
             String jsonForGraph, tmpData, sql;
             ResultSet rs;
 
-            jsonForGraph = "[{\"renderInDiv\":\"chart_div_pub_res\"";
-            jsonForGraph += ",\"graphTitle\":\"Access Level\"";
+            jsonForGraph = "[{\"renderInDiv\":\"chart_div_epa_nonepa\"";
+            jsonForGraph += ",\"graphTitle\":\"EPA and NonEPA\"";
             jsonForGraph += ",\"data\":[";
             tmpData = "";
 
 
-            sql = this.getAccessControlMetricsJsonSQL(params, "acl");
+            sql = this.getAccessControlMetricsJsonSQL(params, "epapub");
             rs = this.jsonServerObj.executeQuery(sql);
 
             try {
@@ -138,12 +138,12 @@
             }
             jsonForGraph += "]}";
 
-            jsonForGraph += ",{\"renderInDiv\":\"chart_div_content_type\"";
-            jsonForGraph += ",\"graphTitle\":\"Content Type\"";
+            jsonForGraph += ",{\"renderInDiv\":\"chart_div_aclvl\"";
+            jsonForGraph += ",\"graphTitle\":\"Data.gov Access Level\"";
             jsonForGraph += ",\"data\":[";
             tmpData = "";
 
-            sql = this.getAccessControlMetricsJsonSQL(params, "content_type");
+            sql = this.getAccessControlMetricsJsonSQL(params, "accesslevel");
             rs = this.jsonServerObj.executeQuery(sql);
             try {
                 while (rs.next()) {
@@ -157,12 +157,12 @@
             }
             jsonForGraph += "]}";
 
-            jsonForGraph += ",{\"renderInDiv\":\"chart_div_owner\"";
-            jsonForGraph += ",\"graphTitle\":\"Owner\"";
+            jsonForGraph += ",{\"renderInDiv\":\"chart_div_license-status\"";
+            jsonForGraph += ",\"graphTitle\":\"License Status\"";
             jsonForGraph += ",\"data\":[";
             tmpData = "";
 
-            sql = this.getAccessControlMetricsJsonSQL(params, "username");
+            sql = this.getAccessControlMetricsJsonSQL(params, "licensestatus");
             rs = this.jsonServerObj.executeQuery(sql);
             try {
                 while (rs.next()) {
@@ -180,20 +180,6 @@
             return jsonForGraph;
         }
 
-public String getLuceneIndexDir(HttpServletRequest request){
-            String host, luceneIndexDir=null;
-            
-            host = request.getHeader("host");
-
-            if (host.equalsIgnoreCase("dev.innovateteam.com")/*dev.innovateteam.com*/ || host.equalsIgnoreCase("localhost:8080")/*localhost*/) {
-                luceneIndexDir = "C:\\PTKV10\\LuceneIndex";
-            } else {
-                luceneIndexDir = "D:\\Public\\Server\\apps\\PTKV10\\LuceneIndex";
-            } 
-
-            return luceneIndexDir;
-        }
-		
         public String getJsonAccessResourceMetrics(HashMap params) {
 
             String jsonForGraph, tmpData, sql;
@@ -297,19 +283,19 @@ public String getLuceneIndexDir(HttpServletRequest request){
             HashMap items = new HashMap();
 
             items = new HashMap();
-           /* items.put("label", "Introduction");
+            items.put("label", "Introduction");
             items.put("link", "/metrics/introduction.jsp");
-            menuItems.add(items);*/
+            menuItems.add(items);
 
             items = new HashMap();
             items.put("label", "EDG Inventory");
             items.put("link", "/metrics/inventory.jsp");
             menuItems.add(items);
 
-           /* items = new HashMap();
+            items = new HashMap();
             items.put("label", "Detailed Inventory");
             items.put("link", "/metrics/detailedInventory.jsp");
-            menuItems.add(items);*/
+            menuItems.add(items);
 
             items = new HashMap();
             items.put("label", "Resource Access Metrics");

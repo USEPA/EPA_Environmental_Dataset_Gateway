@@ -104,10 +104,10 @@
 				<div class="box_content">
 					<table border="0" width="100%">
 						<tr>
-							<td id="chart_div_pub_res"></td>
+							<td id="chart_div_epa_nonepa"></td>
 							<td id="chart_div_metadata"></td>
-							<td id="chart_div_content_type"></td>
-							<td id="chart_div_owner"></td>
+							<td id="chart_div_aclvl"></td>
+							<td id="chart_div_license-status"></td>
 						</tr>
 						<tr>
 							<td colspan="4" class="title">Total no of records : <span

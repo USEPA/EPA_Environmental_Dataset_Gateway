@@ -128,7 +128,7 @@ $(document).ready(function() {
         return function(){
             retValue = fn.call(this);
             toggleTimeComponent();
-            refreshGraph();
+            //refreshGraph();
             return retValue;
         }
     })(Exhibit.TileView.prototype._reconstruct );
