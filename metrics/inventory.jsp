@@ -34,9 +34,9 @@
 <!--<script src="/simile_new/exhibit/api/exhibit-api.js?bundle=false&js=/simile_new/exhibit/api/extensions/invalid-json/invalid-json-extension.js" type="text/javascript"></script>-->
 <script src="/simile_new/exhibit/api/exhibit-api.js?bundle=false"
 	type="text/javascript"></script>
-<script src="/simile_new/ajax/api/simile-ajax-api.js"
+<script src="/simile_new/ajax/api/simile-ajax-api.js?bundle=false""
 	type="text/javascript"></script>
-<script src="/simile_new/ajax/api/simile-ajax-bundle.js"
+<script src="/simile_new/ajax/api/simile-ajax-bundle.js?bundle=false""
 	type="text/javascript"></script>
 <!--<link rel="exhibit-extension" href="/simile_new/exhibit/api/extensions/map/map-extension.js"/>-->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -104,10 +104,10 @@
 				<div class="box_content">
 					<table border="0" width="100%">
 						<tr>
-							<td id="chart_div_pub_res"></td>
+							<td id="chart_div_epa_nonepa"></td>
 							<td id="chart_div_metadata"></td>
-							<td id="chart_div_content_type"></td>
-							<td id="chart_div_owner"></td>
+							<td id="chart_div_aclvl"></td>
+							<td id="chart_div_license-status"></td>
 						</tr>
 						<tr>
 							<td colspan="4" class="title">Total no of records : <span
@@ -118,7 +118,16 @@
 			</div>
 			<div id="facet">
 				<!-- FACET -->
-
+                <div>
+					<form method="post" target="_blank" action="csvExporter.jsp"
+						name="csvForm">
+						<textarea name="docuuids" id="docuuids" style="display: none;"></textarea>
+						<input type="hidden" name="report" value="inventory" /> <input
+							type="hidden" name="headings" /> <a href="javascript:void(0)"
+							onClick='submitFrom({"title":"Resource title","username":"Owner","epapub":"EPA/Non-EPA","publisher":"Publisher","docuuid":"Document UUID","sourceuri_str":"Source URI","content_type":"Content Type","acl_opt":"Access Level","accesslevel":"POD AccessLevel","schema_key":"Metadata standard","inputdate":"Input Date","updatedate":"Update Date","approvalstatus":"Approval Status","pubmethod":"Publication Method","source":"Source","abstract":"Abstract","pri_linkage":"Primary Linkage","licenseurl":"License URL"});'><img
+							src="images/document_excel_csv.png" border="0" /> [ Export selection set to CSV ] </a>
+					</form>
+				</div>
 				<!--  <fieldset>
                         <legend>Legends</legend>
                         <div style="float:left; width: 10px; height: 10px; background-color: #d6d7d9; border: 1px solid #CCC; margin-top: 4px; margin-left: 10px;"></div>
@@ -131,7 +140,7 @@
 					<div id="anytext" data-ex-role="facet"
 						data-ex-history-enabled="false" data-ex-facet-class="TextSearch"
 						data-ex-expressions=""
-						data-ex-facet-label="Text based search on &quot;Publisher&quot;">
+						data-ex-facet-label="Text-based search">
 					</div>
 					<select id="sel"
 						style="padding-bottom: 0px; padding-top: -3px; margin-left: 242px; width: 122px; margin-top: -22px; height: 22px;"
@@ -141,8 +150,6 @@
 						<option value=".username">Owner</option>
 						<option value=".publisher">Publisher</option>
 						<option value=".docuuid">Document UUID</option>
-
-
 					</select>
 
 					<div data-ex-role="facet" data-ex-expression=".username"
@@ -192,7 +199,7 @@
 						data-ex-collapsed="true" data-ex-facet-label="License Status :"
 						title="This shows whether the standard EPA Data License is included in the metadata or not."></div>
 					<div data-ex-role="facet" data-ex-expression=".licenseurl"
-						data-ex-collapsed="true" data-ex-facetlabel="License URL :"
+						data-ex-collapsed="true" data-ex-facet-label="License URL :"
 						title="This should be a URL to a page describing the license under which the data is released."></div>
 					<div data-ex-role="facet" data-ex-expression=".rightsstatus"
 						data-ex-collapsed="true" data-ex-facet-label="Rights Status :"
@@ -209,17 +216,6 @@
 						data-ex-collapsed="true" data-ex-facet-label="Collection :"
 						title="Indicates whether the metadata record is part of a collection recognized by data.gov."></div>
 				</fieldset>
-				<div>
-					<form method="post" target="_blank" action="csvExporter.jsp"
-						name="csvForm">
-						<textarea name="docuuids" id="docuuids" style="display: none;"></textarea>
-						<input type="hidden" name="report" value="inventory" /> <input
-							type="hidden" name="headings" /> <a href="javascript:void(0)"
-							onClick='submitFrom({"title":"Resource title","username":"Owner","epapub":"EPA/Non-EPA","publisher":"Publisher","docuuid":"Document UUID","sourceuri_str":"Source URI","content_type":"Content Type","acl_opt":"Access Level","accesslevel":"POD AccessLevel","schema_key":"Metadata standard","inputdate":"Input Date","updatedate":"Update Date","approvalstatus":"Approval Status","pubmethod":"Publication Method","source":"Source","abstract":"Abstract","pri_linkage":"Primary Linkage","licenseurl":"License URL"});'><img
-							src="images/document_excel_csv.png" border="0" /> [ EDG
-							Inventory CSV ] </a>
-					</form>
-				</div>
 			</div>
 
 			<div data-ex-role="lens" style="display: none;" id="subLens"></div>
