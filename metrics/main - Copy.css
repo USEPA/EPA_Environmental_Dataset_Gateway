@@ -1,0 +1,343 @@
+.header {
+    background-color: #3F6B95;
+}
+
+body {
+    font-family: "Lucida Grande",Geneva,Verdana,Arial,Helvetica,sans-serif;
+    font-size: 100%;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.5;
+    padding: 0pt;
+    background-color: #4A5B63;
+    font-size:10pt;
+    font-style:bold;
+    margin: 0;
+}
+
+a:link, a:visited {
+    border-bottom: 1px dotted;
+    color: #3D5E84;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#plain {
+    border-bottom:none;
+    text-decoration:none;
+}
+
+a:hover, a:focus {
+    border-bottom-style:solid;
+    color:#D03900;
+    font-size: 100%;
+}
+
+h1 {
+    color:#CC3333;
+    font-weight:normal;
+    font-size:14pt;
+}
+
+table {
+    text-align: left;
+    background-color: #FFF;
+    color: #777777;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    font-size: xx-small;
+    vertical-align:text-top;
+}
+
+/**
+ * helper classes (IE Fix)
+*/
+.clearfix:after {
+    clear:both;
+    content:".";
+    display:block;
+    height:0pt;
+    visibility:hidden;
+}
+.clearfix {
+}
+.clearfix {
+    display:block;
+}
+.nowrap {white-space: nowrap;}
+
+
+#frmBanner {
+    float: right;
+}
+/* ~~this fixed width container surrounds the other divs~~ */
+.container{
+    width:100%; 
+    float: left; 
+    background-color: #fff;
+}
+
+.content {
+    width: 940px;
+    float: left;
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    border-top-width: thick;
+    border-right-width: thick;
+    border-bottom-width: 25px;
+    border-left-width: thick;
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #4C7283;
+    border-right-color: #4A5B63;
+    border-bottom-color: #4A5B63;
+    border-left-color: #4A5B63;
+    background-color: #FFF;
+}
+
+li {
+}
+
+div.exhibit-facet-body-frame {
+    width: 360px;
+    word-wrap: break-word;
+}
+
+/* ~~ The footer ~~ */
+.footer {
+    width: 100%;
+    padding:0px;
+    background: #4A5B63;
+    position: relative;/* this gives IE6 hasLayout to properly clear */
+    clear: both; /* this clear property forces the .container to understand where the columns end and contain them 
+    */
+    background-color: #4A5B63;
+    text-align: center;
+    color: #FFF;
+    font-size: 14px;
+    padding-top: 40px;
+}
+
+.footer a{
+    color: #FFF;
+    font-size: 14px;
+}
+
+/*added later by deewen*/
+#body_container{
+    width:1280px; 
+    margin:0px auto; 
+}
+
+#menu ul{
+    background-image: url("images/nav.jpg");
+    background-repeat: repeat-x;
+    height: 31px;
+    line-height: 31px;
+    padding: 0px;
+    margin: 0px;
+    white-space:nowrap;
+}
+
+#menu ul li{
+    padding: 0px 15px; 
+    display: inline-block;
+    margin: 0px;
+    border-right: 1px dotted #000;
+    float : left;
+    border-bottom: 2px solid #4A5B63;
+}
+
+#menu ul li a{
+    font-size: 15px;
+    color: #000;
+    border: 0px;
+}
+
+#menu ul li:hover{
+    background-image: url("images/nav_selected.png");
+    background-repeat: repeat-x;
+    border-bottom: 2px solid orange;
+}
+
+#menu ul li:hover a, #menu ul li.selected a{
+    color: #FFF;
+}
+
+#menu ul li.selected{
+    background-image: url("images/nav_selected.png");
+    background-repeat: repeat-x;
+    border-bottom: 2px solid orange;
+}
+
+legend{
+    font-weight: bold;
+    padding:0px 10px;
+    font-size: 20px;
+    color: #369;
+}
+
+#view{
+    width:860px;
+    float:left;
+}
+
+#facet{
+    padding-top : 70px;
+    width:360px; 
+    float:right;
+    padding-right:30px;
+
+}
+
+#view .box{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin:0px;
+    padding:0px;
+    margin-bottom: 10px;
+    width:800px;
+    overflow:hidden;
+}
+
+#view .public{
+    background-color: #ACD372;
+    border: 2px solid #8BA446;
+}
+
+#view .restricted{
+    background-color: #FFF467;
+    border: 2px solid #FFA824;
+}
+
+#view .public  .box_header, #view .public  .box_header div{
+    background-color: #8BA446;
+}
+
+#view .restricted  .box_header, #view .restricted  .box_header div{
+    background-color:  #FFA824;
+}
+
+#view .public .box_content{
+    background-color: #ACD372;
+}
+
+#view .restricted .box_content{
+    background-color: #FFF467;
+}
+
+.box{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid #CCC;
+    margin-bottom: 20px;
+    margin: 2px;
+}
+
+.box .box_header,.box .box_header div{
+    background-color: #CCC;
+    padding-left:2px; 
+    line-height: 24px;
+    font-weight: bold;
+    margin-left: -1px;
+}
+
+.box .box_content{
+    padding-left:2px; 
+    background-color: #FFF;
+}
+
+
+
+
+fieldset{
+    border-color: #E3E6EC;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-width: 2px;
+    width: inherit;
+
+    padding: 10px;
+    overflow:hidden;
+
+}
+
+fieldset div{
+    line-height: 18px;
+    font-size: 12px;
+}
+
+.map_desc{
+    float:left;
+}
+
+.map_desc span{
+    display: inline;
+}
+
+.label{
+    font-weight:bold;
+}
+
+.title{
+    font-weight:bold;
+}
+
+#body_container #header{
+    background: url("images/banner.jpg") no-repeat scroll 0 0 #346796;
+    height: 116px;
+
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: inline;
+}
+
+.right{
+    float:right;
+}
+
+.rightTitle{
+    float:right;
+    width: 50px;
+}
+
+.left{
+    float:left;
+}
+
+.leftTitle{
+    float:left;
+    width: 720px;
+}
+
+.clear{
+    clear:both;
+}
+
+ol.exhibit-tileView-body{
+    margin-top:0px;
+    list-style-position: outside;
+    list-style: decimal;
+   
+   
+}
+
+ol.exhibit-tileView-body li{
+    vertical-align: text-top;
+}
