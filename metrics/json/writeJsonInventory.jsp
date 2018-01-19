@@ -12,6 +12,11 @@
     jsonServer obj = new jsonServer(1);
     HashMap params = new HashMap();
     params.put("acl",ret[1]);
+    
+    HashMap hint = new HashMap();
+    hint.put("progressstatus", "STRING");
+    obj.setHint(hint);    
+    
     jsonDataProvider cdpObj = new jsonDataProvider(obj);
     ResultSet rs = cdpObj.getInventoryData(params,false);
     
