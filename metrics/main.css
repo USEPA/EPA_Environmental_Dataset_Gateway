@@ -113,6 +113,21 @@ li {
 div.exhibit-facet-body-frame {
     width: 360px;
     word-wrap: break-word;
+	  overflow-wrap: break-word;
+	  word-wrap: break-word;
+	  -ms-word-break: break-all;
+	  word-break: break-all;
+	  word-break: break-word;
+	  -ms-hyphens: auto;
+	  -moz-hyphens: auto;
+	  -webkit-hyphens: auto;
+	  hyphens: auto;
+}
+
+div.exhibit-facet-value-inner{
+	padding-left: 0.2em;
+	margin-left: 3.2em;
+	border-left: 1px solid lightgrey;
 }
 
 /* ~~ The footer ~~ */
@@ -264,6 +279,17 @@ legend{
     background-color: #FFF;
 }
 
+.longURL{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
 
 
 
@@ -348,9 +374,6 @@ ol.exhibit-tileView-body li{
     vertical-align: text-top;
 }
 
-div.exhibit-text-facet input {
-    width: 250px;
-}
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
     padding: 8px;
     line-height: 1.128571;
@@ -366,3 +389,6 @@ th{
 	background-color:#f1f1f1;
 	font-weight:700;
 }
+
+/*fix for flicker bug https://stackoverflow.com/questions/37902708/google-charts-tooltip-flickering */
+svg > g > g:last-child { pointer-events: none }

@@ -17,7 +17,7 @@ class jsonDataProvider {
             str = str.replaceAll(">", "&gt;");
             str = str.replaceAll("\n", " ");
             str = str.replaceAll("\r", " ");
-
+			str = str.replaceAll("\t", " ");
             return str;
         }
 
@@ -134,35 +134,40 @@ class jsonDataProvider {
 
             String sql = new String();
             sql = "SELECT DISTINCT ON (gres.docuuid) gres.title,gusr.username,gres.docuuid,gres.fileidentifier";
-            sql += ",coalesce(linkage.val,'unknown') as pri_linkage";
-            //if (forExport) {
-                sql += ", coalesce(metadata.val,'unknown') as abstract";
-            //}
-            sql += ",(CASE WHEN gres.pubmethod='upload' THEN ";
+            sql += ",coalesce(linkage.val,'# No Primary Link Provided') as pri_linkage";
+            if (forExport) {
+                sql += ", coalesce(left(metadata.val,255),'# No Abstract Provided') as abstract";
+            }
+																				  
+			 
+            sql += ",(CASE WHEN gres.pubmethod='uVpload' THEN ";
             sql += " (CASE WHEN (gres.sourceuri IS NULL OR trim(gres.sourceuri)='') THEN ";
             sql += " 'Metadata file \"unknown\" uploaded by \"'||gusr.username||'\"' ";
             sql += " ELSE 'Metadata file \"'||substring(gres.sourceuri FROM position('/' in gres.sourceuri)+1)||'\" uploaded by \"'||gusr.username||'\"' ";
             sql += " END)";
             sql += " ELSE ";
-            sql += " (CASE WHEN (gres.sourceuri IS NULL OR trim(gres.sourceuri)='') THEN 'unknown' ELSE gres.sourceuri END)";
+            sql += " (CASE WHEN (gres.sourceuri IS NULL OR trim(gres.sourceuri)='') THEN '# Unknown Source URI' ELSE gres.sourceuri END)";
             sql += " END) as sourceuri_str";
-            sql += ",coalesce(lower(gres.content_type),'unknown') as content_type";
+            sql += ",coalesce(lower(gres.content_type),'# No Content Type Provided') as content_type";
             sql += " ,CASE WHEN (gres.acl IS NULL OR trim(gres.acl)='') THEN 'public' ELSE 'restricted' END as acl_opt ";
-            sql += ",(CASE WHEN gres.schema_key='bestpractice' THEN 'FGDC best practice' WHEN gres.schema_key='dataGov' THEN 'data.gov' WHEN gres.schema_key='dc' THEN 'Dublin Core' WHEN gres.schema_key='fgdc' THEN 'FGDC' ELSE gres.schema_key END) as schema_key";
+            sql += ",(CASE WHEN gres.schema_key='bestpractice' THEN 'FGDC' WHEN gres.schema_key='dcat' THEN 'Project Open data' WHEN gres.schema_key='iso-19115' THEN 'ISO Metadata' WHEN gres.schema_key='esri-arcgis' THEN 'ArcGIS Metadata' WHEN gres.schema_key='dataGov' THEN 'data.gov' WHEN gres.schema_key='dc' THEN 'Dublin Core' WHEN gres.schema_key='fgdc' THEN 'FGDC' ELSE 'Unknown Schema' END) as schema_key";
             sql += ",date(gres.inputdate) as inputdate,date(gres.updatedate) as updatedate";
-            sql += ",coalesce(gres.approvalstatus,'not approved') as approvalstatus,gres.pubmethod,CASE WHEN gres.siteuuid IS NULL OR gres.siteuuid='' THEN 'unknown' ELSE gres.siteuuid END as siteuuid,gres.sourceuri ";
-            sql += ",(CASE WHEN gres.siteuuid IS NULL OR gres.siteuuid='' THEN 'unknown' ELSE gres1.title||'('||coalesce(gres1.host_url,'unknown')||')' END) as source ";
-            sql += ",gres1.title site_title, gres1.host_url site_host_url, compilation.parenttitle cmpparenttitle, collection.parenttitle colparenttitle";
+            sql += ",coalesce(gres.approvalstatus,'not approved') as approvalstatus,gres.pubmethod";
+			sql += ",CASE WHEN gres.siteuuid IS NULL OR gres.siteuuid='' THEN '# Unknown Source URI' ELSE gres.siteuuid END as siteuuid,gres.sourceuri ";
+            sql += ",(CASE WHEN gres.siteuuid IS NULL OR gres.siteuuid='' THEN '# Unknown Harvest Source' ELSE gres1.title||'('||coalesce(gres1.host_url,'# Unknown Harvest Source')||')' END) as source ";
+            sql += ",gres1.title site_title, gres1.host_url site_host_url";
+			sql += ",coalesce(compilation.parenttitle,'# Not Part of a Compilation') as cmpparenttitle";
+			sql += ",coalesce(collection.parenttitle,'# Not Part of a Collection') as colparenttitle";
             sql += ",coalesce(initcap(isokey1.val),'') as iso_kwd1";
             sql += ",coalesce(initcap(place.val),'') as placekey";
-            sql += ",coalesce(initcap(publisher.val),'') as publisher";
+            sql += ",coalesce(initcap(publisher.val),'# No Publisher Provided') as publisher";
             sql += ",(CASE WHEN ((publisher.val LIKE 'U.S.%' OR publisher.val like 'US%' OR publisher.val like 'Environmental Protection Agency') AND (publisher.val LIKE '%Environmental%' OR publisher.val like '%EPA%') AND NOT (publisher.val LIKE '%Extract%')) THEN 'U.S. EPA' ELSE 'Non-EPA' END) as epapub";
             sql += ",(CASE WHEN lower(podAccessLevel.val) IN ('high confidentiality','non-public','non-public','secret','top secret') THEN 'non-public' WHEN lower(podAccessLevel.val) IN ('medium confidentiality','restricted','confidential','sensitive') THEN 'restricted public' ELSE 'public' END) as accesslevel";
             sql += ",(CASE WHEN lower(REGEXP_REPLACE(licenseField.val, '[\\n\\r\\s]+', '','g')) IN ('http://edg.epa.gov/epa_data_license.htm','http://edg.epa.gov/epa_data_license.html','https://edg.epa.gov/epa_data_license.htm','https://edg.epa.gov/epa_data_license.html') THEN 'EPA Standard License' ELSE 'Other' END) as licensestatus";
-            sql += ",coalesce(left(lower(licenseField.val),48),'') as licenseurl";
+            sql += ",coalesce(left(lower(licenseField.val),48),'# No License Provided') as licenseurl";
             sql += ",(CASE WHEN left(lower(rightsField.val),13) = 'epa category:' THEN 'Valid EPA CUI Statement' ELSE 'Other' END) as rightsstatus";
-            sql += ",coalesce(left(rightsField.val,42),'') as rightsnote";
-            sql += ",coalesce(left(progress.val,42),'') as progressstatus";
+            sql += ",coalesce(left(rightsField.val,42),'# No rights statement provided') as rightsnote";
+            sql += ",coalesce(left(progress.val,42),'# No progress status provided') as progressstatus";
             sql += ",cleanFloat(coalesce(ebc.val,'')) as eastbc";
             sql += ",cleanFloat(coalesce(wbc.val,'')) as westbc";
             sql += ",cleanFloat(coalesce(nbc.val,'')) as northbc";

@@ -29,42 +29,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>EDG Inventory</title>
 <link href="main.css" rel="stylesheet" type="text/css" />
-<link href="<% out.print(jsonUrl);%>" type="application/json"
-	rel="exhibit-data" />
+<link href="<% out.print(jsonUrl);%>" type="application/json" rel="exhibit-data" />
 <!--<script src="/simile_new/exhibit/api/exhibit-api.js?bundle=false&js=/simile_new/exhibit/api/extensions/invalid-json/invalid-json-extension.js" type="text/javascript"></script>-->
-<script src="/simile_new/exhibit/api/exhibit-api.js?bundle=false"
-	type="text/javascript"></script>
-<script src="/simile_new/ajax/api/simile-ajax-api.js?bundle=false""
-	type="text/javascript"></script>
-<script src="/simile_new/ajax/api/simile-ajax-bundle.js?bundle=false""
-	type="text/javascript"></script>
+<script src="/simile_new/exhibit/api/exhibit-api.js?bundle=false" type="text/javascript"></script>
+<script src="/simile_new/ajax/api/simile-ajax-api.js?bundle=false" type="text/javascript"></script>
+<!--<script src="/simile_new/ajax/api/simile-ajax-bundle.js?bundle=false" type="text/javascript"></script>
 <!--<link rel="exhibit-extension" href="/simile_new/exhibit/api/extensions/map/map-extension.js"/>-->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-<link
-	href='javaScripts/jquery-ui/development-bundle/themes/base/jquery.ui.all.css'
-	rel='stylesheet' type='text/css' />
-<script>
-
- 
- function filterDropdown() {
-			//document.getElementById("anytext").value = "";
-			var textEle = document.getElementById("anytext").childNodes[1].childNodes[0];
-			textEle.value="";
-			document.getElementById("anytext").setAttribute("data-ex-expressions","");
-			if ("createEvent" in document) {
-				var evt = document.createEvent("HTMLEvents");
-				evt.initEvent("keyup", false, true);
-				
-				textEle.dispatchEvent(evt);
-			} else {
-				//textEle.setAttribute("data-ex-expressions", defaultDataPath);
-				textEle.fireEvent("onkeyup");
-			}
-			document.getElementById("anytext").setAttribute("data-ex-expressions",
-					document.getElementById("sel").value);
-		}
-		</script>
+<link href='javaScripts/jquery-ui/development-bundle/themes/base/jquery.ui.all.css' rel='stylesheet' type='text/css' />
 <style>
 .olFramedCloudPopupContent {
 	width: 400px;
@@ -96,9 +69,10 @@
 
 			<div class="box">
 				<div class="box_header">
-					Summary<span style="float: right;"><img
-						src="images/bullet-toggle-minus-icon.png"
-						onclick="toggleSign(this.parentNode);" style="cursor: pointer;" /></span>
+					Summary
+					<span style="float: right;">
+						<img src="images/bullet-toggle-minus-icon.png"onclick="toggleSign(this.parentNode);" style="cursor: pointer;" />
+					</span>
 
 				</div>
 				<div class="box_content">
@@ -110,8 +84,7 @@
 							<td id="chart_div_license-status"></td>
 						</tr>
 						<tr>
-							<td colspan="4" class="title">Total no of records : <span
-								id="total_count"></span></td>
+							<td colspan="4" class="title">Total no of records : <span id="total_count"></span></td>
 						</tr>
 					</table>
 				</div>
@@ -142,7 +115,7 @@
 						data-ex-expressions=""
 						data-ex-facet-label="Text-based search">
 					</div>
-					<select id="sel"
+					<!--<select id="sel"
 						style="padding-bottom: 0px; padding-top: -3px; margin-left: 242px; width: 122px; margin-top: -22px; height: 22px;"
 						onchange="filterDropdown()">
 						<option value="">Filter By</option>
@@ -150,69 +123,69 @@
 						<option value=".username">Owner</option>
 						<option value=".publisher">Publisher</option>
 						<option value=".docuuid">Document UUID</option>
-					</select>
+					</select>-->
 
-					<div data-ex-role="facet" data-ex-expression=".username"
+					<div data-ex-role="facet" data-ex-expression=".username" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Owner :"
-						title="Name of the account or organization that owns the document in the EDG."></div>
+						title="Name of the account or organization that stewards the record in the EDG."></div>
 
 
-					<div data-ex-role="facet" data-ex-expression=".epapub"
+					<div data-ex-role="facet" data-ex-expression=".epapub" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="EPA/Non-EPA :"
-						title="EPA Dataset that is contributed to Data.gov."></div>
+						title="Indicates whether the record represents an EPA Dataset that is contributed to Data.gov."></div>
 
 
-					<div data-ex-role="facet" data-ex-expression=".publisher"
+					<div data-ex-role="facet" data-ex-expression=".publisher" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Publisher :"
-						title="Name of the publisher listed in the document."></div>
+						title="Name of the publisher listed in the record."></div>
 
 					<div data-ex-role="facet" data-ex-expression=".inputdate"
 						data-ex-collapsed="true" data-ex-facet-label="Input Date :"
-						title="Date resource was registered."></div>
+						title="Date record was registered."></div>
 					<div data-ex-role="facet" data-ex-expression=".updatedate"
 						data-ex-collapsed="true" data-ex-facet-label="Update Date :"
-						title="Date resource was last updated."></div>
-					<div data-ex-role="facet" data-ex-expression=".approvalstatus"
+						title="Date record was last updated."></div>
+					<div data-ex-role="facet" data-ex-expression=".approvalstatus" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Approval Status :"
-						title="Indicates if resource is approved (&quot;approved&quot;=approved, &quot;not approved&quot;= not approved, record has any other status) "></div>
-					<div data-ex-role="facet" data-ex-expression=".pubmethod"
+						title="Indicates if record is approved (&quot;approved&quot;=approved, &quot;not approved&quot;= not approved, record has any other status) "></div>
+					<div data-ex-role="facet" data-ex-expression=".pubmethod" data-ex-sort-mode="count"
 						data-ex-collapsed="true"
 						data-ex-facet-label="Publication Method :"
-						title="How the resource was published to the portal (e.g. &quot;upload&quot;, &quot;registration&quot;, &quot;harvester&quot; (synchronization), &quot;batch&quot;, &quot;editor&quot;) "></div>
-					<div data-ex-role="facet" data-ex-expression=".acl_opt"
+						title="How the record was published to the portal (e.g. &quot;upload&quot;, &quot;registration&quot;, &quot;harvester&quot; (synchronization), &quot;batch&quot;, &quot;editor&quot;) "></div>
+					<div data-ex-role="facet" data-ex-expression=".acl_opt" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="EDG Access Level :"
 						title="Indicates whether a user must log in to the EDG to view the record. Restricted records may still be published to Data.gov."></div>
-					<div data-ex-role="facet" data-ex-expression=".accesslevel"
+					<div data-ex-role="facet" data-ex-expression=".accesslevel" data-ex-sort-mode="count"
 						data-ex-collapsed="true"
 						data-ex-facet-label="Data.gov Access Level :"
 						title="Indicates the restriction policy (if any) on whether the data may be released to the public."></div>
-					<div data-ex-role="facet" data-ex-expression=".schema_key"
+					<div data-ex-role="facet" data-ex-expression=".schema_key" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Metadata standard :"
 						title="Name of the metadata format or schema of the record"></div>
-					<div data-ex-role="facet" data-ex-expression=".content_type"
+					<div data-ex-role="facet" data-ex-expression=".content_type" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Content Type :"
-						title="Type of resource represented by the metadata document"></div>
-					<div data-ex-role="facet" data-ex-expression=".source"
+						title="Type of resource represented by the metadata record"></div>
+					<div data-ex-role="facet" data-ex-expression=".site_title" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Harvest Source :"
 						title="Repository from which the metadata record was harvested"></div>
-					<div data-ex-role="facet" data-ex-expression=".licensestatus"
+					<div data-ex-role="facet" data-ex-expression=".licensestatus" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="License Status :"
 						title="This shows whether the standard EPA Data License is included in the metadata or not."></div>
-					<div data-ex-role="facet" data-ex-expression=".licenseurl"
+					<div data-ex-role="facet" data-ex-expression=".licenseurl" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="License URL :"
 						title="This should be a URL to a page describing the license under which the data is released."></div>
-					<div data-ex-role="facet" data-ex-expression=".rightsstatus"
+					<div data-ex-role="facet" data-ex-expression=".rightsstatus" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Rights Status :"
 						title="This shows whether a standard EPA CUI justification is included in the metadata or not."></div>
-					<div data-ex-role="facet" data-ex-expression=".rightsnote"
+					<div data-ex-role="facet" data-ex-expression=".rightsnote" data-ex-sort-mode="count"
 						data-ex-collapsed="true"
 						data-ex-facet-label="Rights (CUI Statement) :"
 						title="If access to a dataset is restricted because of data sensitivity, this field should list the official CUI category. Otherwise it may be free text."></div>
 					<!--<div data-ex-role="facet" data-ex-expression=".progressstatus" data-ex-facetLabel="Progress Status :" title="Progress Status"></div>-->
-					<div data-ex-role="facet" data-ex-expression=".cmpparenttitle"
+					<div data-ex-role="facet" data-ex-expression=".cmpparenttitle" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Compilation :"
 						title="Indicates whether the metadata record is part of an EDG compilation"></div>
-					<div data-ex-role="facet" data-ex-expression=".colparenttitle"
+					<div data-ex-role="facet" data-ex-expression=".colparenttitle" data-ex-sort-mode="count"
 						data-ex-collapsed="true" data-ex-facet-label="Collection :"
 						title="Indicates whether the metadata record is part of a collection recognized by data.gov."></div>
 				</fieldset>
@@ -245,11 +218,11 @@
 										<table class="table">
 											<thead class="thead-default">
 												<tr>
-													<th><span title="Metadata Links" /> <img
+													<th><span title="Links to the full metadata record - including the raw, unformatted XML and the EDG Details page." /> <img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Metadata Links (XML/Details)</span></th>
-													<th colspan="2"><span title="Abstract" /><img
+													<th colspan="2"><span title="Human-readable description with sufficient detail to enable a user to quickly understand whether the asset is of interest." /><img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 						     							class="title">Abstract</span></th>
@@ -258,12 +231,12 @@
 											<tbody>
 
 												<tr>
-													<td><a
+													<td><!--<a
 														data-ex-href-subcontent="javaScript:openLink('<% out.print(resourceLink);%>?id={{.docuuid}}&xsl=metadata_to_html_full');">Formatted</a>
+														/--><a
+														data-ex-href-subcontent="javaScript:openLink('<% out.print(resourceLink);%>?id={{.docuuid}}');">Raw XML</a>
 														/<a
-														data-ex-href-subcontent="javaScript:openLink('<% out.print(resourceLink);%>?id={{.docuuid}}');">XML</a>
-														/<a
-														data-ex-href-subcontent="javaScript:openLink('<% out.print(metadataLink);%>?uuid={{.docuuid}}');">Details</a></td>
+														data-ex-href-subcontent="javaScript:openLink('<% out.print(metadataLink);%>?uuid={{.docuuid}}');">EDG Details Page</a></td>
 													<td colspan="2"><span class="abstract_content"
 														data-ex-label-subcontent="{{.docuuid}}"
 														data-ex-id-subcontent="abs_{{.docuuid}}"></span></td>
@@ -275,12 +248,12 @@
 											<thead class="thead-default">
 												<tr>
 													<th><span
-														title="Name of the account or organization that owns he document in the EDG." />
+														title="Name of the account or organization that stewards the document in the EDG." />
 														<img src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Owner</span></th>
 													<th colspan="2"><span
-														title="Name of the publisher listed in the document." /> <img
+														title="Name of the publisher listed in the metadata record." /> <img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Publisher</span></th>
@@ -310,7 +283,7 @@
 											<tbody>
 												<tr>
 													<td><span data-ex-content=".schema_key"></span></td>
-													<td colspan="2"><span
+													<td colspan="2" class="longURL"><span
 														data-ex-if="not(contains(.siteuuid, 'unknown'))"> <span>
 																<span data-ex-content=".site_title"></span> (<a
 																data-ex-href-subcontent="javaScript:openLink('{{.site_host_url}}');"
@@ -323,12 +296,12 @@
 											</tbody>
 											<thead class="thead-default">
 												<tr>
-													<th><span title="Progress Status" /> <img
+													<th><span title="If present in the metadata record, indicates the state of the dataset, may be: Complete, In work, or Planned." /> <img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Progress Status</span></th>
 													<th colspan="2"><span
-														title="User id and originating filename/location of the resource." />
+														title="Unique resource identifier - may be full URL of harvested record, filename of uploaded file, or embedded identifier of non-geo record." />
 														<img src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Source URI</span></th>
@@ -337,7 +310,7 @@
 											<tbody>
 												<tr>
 													<td><span data-ex-content=".progressstatus"></span></td>
-													<td colspan="2">
+													<td colspan="2" class="longURL">
 														<div data-ex-if="contains(.pubmethod, 'registration')">
 															<span><a data-ex-content=".sourceuri_str"
 																data-ex-href-subcontent="javaScript:openLink('{{.sourceuri}}');"></a></span>
@@ -353,7 +326,7 @@
 											<thead class="thead-default">
 												<tr>
 													<th><span
-														title="EPA Dataset that is contributed to Data.gov." /> <img
+														title="Indicates whether the record represents an EPA Dataset that is contributed to Data.gov." /> <img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">EPA/Non-EPA Status</span></th>
@@ -367,7 +340,7 @@
 											<tbody>
 												<tr>
 													<td><span data-ex-content=".epapub"></span></td>
-													<td colspan="2"><a data-ex-content=".licenseurl"
+													<td colspan="2" class="longURL"><a data-ex-content=".licenseurl"
 														data-ex-href-subcontent="javaScript:openLink('{{.licenseURL}}');"></a></td>
 												</tr>
 											</tbody>
@@ -394,16 +367,16 @@
 											</tbody>
 											<thead class="thead-default">
 												<tr>
-													<th><span title="Data resource was last updated." /> <img
+													<th><span title="Date record was last updated." /> <img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Update Date</span></th>
 													<th><span
-														title="Unique string associated with each resource." /> <img
+														title="Unique identifier used by the EDG to track this record. If the metadata record does not have an embedded identifier, or the identifier is something other than a UUID, the EDG will assign a UUID to the record. If the embedded UUID is a UUID, this should match the embedded UUID." /> <img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Document UUID</span></th>
-													<th><span title="Embedded UUID." /> <img
+													<th><span title="Unique identifier embedded in the metadata record. This may be a UUID or some other identifer, such as a DOI. If the embedded UUID is a UUID, it should match the document identifier, otherwise the EDG will assign a UUID as a document identifier." /> <img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Embedded UUID</span></th>
@@ -418,7 +391,7 @@
 											</tbody>
 											<thead class="thead-default">
 												<tr>
-													<th><span title="Data resource was registered." /> <img
+													<th><span title="Date record was first registered in the EDG." /> <img
 														src="images/Help-icon.png"
 														onclick="showItem(this.parentNode);" class="hlpImg" /><span
 														class="title">Input Date</span></th>

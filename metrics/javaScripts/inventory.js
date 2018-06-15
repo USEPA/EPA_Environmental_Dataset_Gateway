@@ -1,20 +1,16 @@
-var dataForGraph = [
-{
+var dataForGraph = [{
     "renderInDiv":"chart_div_epa_nonepa",
     "graphTitle":"EPA/Non-EPA",
     "data":null
-}
-,{
+	}, {
     "renderInDiv":"chart_div_metadata",
     "graphTitle":"Metadata Standard",
     "data":null
-}
-,{
+	}, {
     "renderInDiv":"chart_div_aclvl",
     "graphTitle":"Data.gov Access Level",
     "data":null
-}
-,{
+	}, {
     "renderInDiv":"chart_div_license-status",
     "graphTitle":"License Status",
     "data":null
@@ -39,7 +35,9 @@ function submitFrom(fieldsToDisplay){
     var db          = exhibit._uiContext.getDatabase();
     var docuuids    = new Array();
     var count=0;
-    var values, valStr, docuuid;
+	var values,
+	valStr,
+	docuuid;
     var headings    = new Array();
     
     set.visit(function(itemID) {
@@ -173,7 +171,7 @@ function callAjax(docuuid){
     }
 }
 
-$(document).ready(function() {
+function exhibit_is_loaded() {
     /*
     *This function overrides the paging re-construct method to 
     *enable auto collapse/expand 
@@ -233,11 +231,23 @@ $(document).ready(function() {
     })(Exhibit.TileView.prototype._reconstruct );
 
  //DISABLE REPORTING WHEN USER MOVES FROM ONE PAGE TO ANOTHER WITHOUT COMPLETELY LOADING THE CONTENT
-    Exhibit.UI.showJsonFileValidation = function(message, url) {return null;};
-});
+	Exhibit.UI.showJsonFileValidation = function (message, url) {
+		return null;
+	};
+}
 
-function refreshGraph(){
+function is_exhibit_loaded() {
+	setTimeout(function () {
+		if (Exhibit.signals["exhibitConfigured.exhibit"]) {
+			exhibit_is_loaded();
+		} else {
+			is_exhibit_loaded();
+		}
+	}, 300);
+}
+is_exhibit_loaded();
     
+function refreshGraph() {
     var datasByEpaNonEpa      = {};
     var datasByMetadataStandard = {};
     var datasByDataGovAcLvl      = {};
@@ -245,14 +255,13 @@ function refreshGraph(){
     
     var set = exhibit.getDefaultCollection().getRestrictedItems();
     var db = exhibit._uiContext.getDatabase();
-    var values,valStr;
-    
+	var values,
+	valStr;
     
     set.visit(function(itemID) {
         values = db.getObjects(itemID, "epapub");
         valStr = values.toArray().join(",");
         valStr = Exhibit.CSVExporter._cleanData(valStr);
-        
         
         if(datasByEpaNonEpa[valStr]){
             datasByEpaNonEpa[valStr]++;
@@ -288,9 +297,7 @@ function refreshGraph(){
         }else{
             datasByLicenseStatus[valStr]=1;
         }
-   
     });
-    
     
     for(var i=0;i<dataForGraph.length;i++){
         var totalRecords = 0
@@ -385,23 +392,25 @@ function showItem(elmt) {
     var heading = elmt.getElementsByTagName("span");
     heading = heading[0].innerHTML;
     itemID = '<b>'+heading+'</b><br>'+itemID;
-	console.log(itemID);
+	//console.log(itemID);
     //Exhibit.UI.showItemInPopup(itemID, elmt, exhibit.getUIContext());
     Exhibit.UI.showItemInPopup = function(itemID, elmt, uiContext, opts) {
-        SimileAjax.WindowManager.popAllLayers();
+		//SimileAjax.WindowManager.popAllLayers();
 
         opts = opts || {};
         opts.coords = opts.coords || Exhibit.UI.calculatePopupPosition(elmt);
 
         var itemLensDiv = document.createElement("div");
         itemLensDiv.innerHTML=itemID;
-		 var close = function() { 
-       
-            document.body.removeChild(bubble._div);
-            
-    };
-    
-    var layer = SimileAjax.WindowManager.pushLayer(close, true, itemLensDiv);
+		/*var close = function () {
+			//console.log("Trying to close ");
+			//console.log(itemLensDiv);
+			//console.log(bubble);
+			//document.body.removeChild(itemLensDiv);
+		};*/
+		//console.log(SimileAjax.WindowManager._layers);
+		//var layer = SimileAjax.WindowManager.pushLayer(close, true, itemLensDiv);
+		//console.log(SimileAjax.WindowManager._layers);
         var lensOpts = {
             inPopup: true,
             coords: opts.coords
@@ -421,9 +430,9 @@ function showItem(elmt) {
             itemLensDiv, 
             opts.coords.x,
             opts.coords.y, 
-            uiContext.getSetting("bubbleWidth")
-            );
+			uiContext.getSetting("bubbleWidth"));
     }(itemID, elmt, exhibit.getUIContext());
+	
 	/*Exhibit.UI.showItemInPopup = function(itemID, elmt, uiContext, opts) {
     var itemLensDiv, lensOpts;
 
@@ -465,7 +474,6 @@ function showDetails(docuuid){
     var abstractField = document.getElementById("abstract_"+docuuid);
     var obj=link[0];
     
-    
     var displayOpt = obj.getAttribute("displayopt");
     if(displayOpt==0){
         $(abstractField).hide("slow");
@@ -492,4 +500,30 @@ function showDetails(docuuid){
             }
         });
     }
+}
+
+function filterDropdown() {
+	//This code changes the DOM element attribute "data-ex-expressions"
+	//but that's only evaluated on pageload - the facet as stored in the Exhibit registry
+	//is unaffected. So somehow we need to update the facet. In theory the documentation suggests
+	//that there's a method to update the facet, but the documentation is so poor, it's not clear
+	//how we reference the facet we need and how we specify the setting to change. If we can
+	//figure that out, the code below should tell us how to get the right values.
+	//https://github.com/simile-widgets/exhibit/wiki/Developer-Scripted-API
+	//document.getElementById("anytext").value = "";
+	//Exhibit.History._registry._idCache.anytext.setExpressionString
+	var textEle = document.getElementById("anytext").childNodes[1].childNodes[0];
+	textEle.value = "";
+	document.getElementById("anytext").setAttribute("data-ex-expressions", "");
+	if ("createEvent" in document) {
+		var evt = document.createEvent("HTMLEvents");
+		evt.initEvent("keyup", false, true);
+
+		textEle.dispatchEvent(evt);
+	} else {
+		//textEle.setAttribute("data-ex-expressions", defaultDataPath);
+		textEle.fireEvent("onkeyup");
+	}
+	document.getElementById("anytext").setAttribute("data-ex-expressions",
+		document.getElementById("sel").value);
 }

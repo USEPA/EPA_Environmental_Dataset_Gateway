@@ -91,6 +91,7 @@
                 str = str.replace(">", "&gt;");
                 str = str.replace("\n", " ");
                 str = str.replace("\r", " ");
+				str = str.replace("\t", " ");
             }
 
             return str;
@@ -303,9 +304,9 @@
                     tableColumns.add(columnAttributes);
                 }
                 if (this.pretty) {
-                    returnStr.append("{\n\titems:[\n");
+                    returnStr.append("{\n\t\"items\":[\n");
                 } else {
-                    returnStr.append("{items:[");
+                    returnStr.append("{\"items\":[");
                 }
                 
                 while (resultSetObj.next()) {
