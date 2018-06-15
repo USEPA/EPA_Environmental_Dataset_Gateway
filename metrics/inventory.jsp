@@ -154,7 +154,7 @@
 
 					<div data-ex-role="facet" data-ex-expression=".username"
 						data-ex-collapsed="true" data-ex-facet-label="Owner :"
-						title="Name of the account or organization that owns he document in the EDG."></div>
+						title="Name of the account or organization that owns the document in the EDG."></div>
 
 
 					<div data-ex-role="facet" data-ex-expression=".epapub"
