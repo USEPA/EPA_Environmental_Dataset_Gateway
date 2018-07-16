@@ -433,7 +433,7 @@ $(document).ready(function(){
 								<div class="col-md-6 col-sm-6">
 									<div class="block wow fadeInRight" data-wow-delay="1s">
 										<h2>Environmental Dataset Gateway</h2>
-										<p>Find data easily. Connecting EPA's Environmental Resources.</p>
+										<p>EPA's official open data catalog.</p>
 										<div class="app-showcase wow fadeInDown" data-wow-delay=".5s">
 											<h:form id="hpFrmSearch"
 												onkeypress="javascript:hpSubmitForm(event,this);">
@@ -1445,7 +1445,7 @@ $(document).ready(function(){
                                                         <li><a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Webinar_3.wmv" target = "_blank">EDG Search and Discovery Video 3 (Search Results) (WMV)</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video3_Agenda.pdf" target = "_blank">Video Agenda</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation3_SearchResults.pdf" target = "_blank">Slides (PDF)<a/></li>
                                                         <li><a href="../../webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf" target = "_blank">How to Capture and Use RSS Feeds from EDG (PDF)</a> </li> 
                                                         <li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">How to Get Started with EDG Reuse (PDF) </a> </li>
-														<li><a href="../../webhelp/en/gptlv10/inno/EDGSOPV3_1_20151118.pdf" target="_blank">EDG Standard Operating Procedure and Governance Document (PDF)</a></li>
+														<li><a href="../../webhelp/en/gptlv10/inno/EDG_Rules_of_Behavior_and_Governance_Structure_SOP.pdf" target="_blank">EDG Governance Structure and Standard Operating Procedure (PDF)</a></li>
 														<li><a href="../../webhelp/en/gptlv10/inno/PublicDataForumRolesandResponsibilities.pdf" target="_blank">Public Data Forum Roles and Responsibilites (PDF)</a></li>
 													</ul>
 												</div>

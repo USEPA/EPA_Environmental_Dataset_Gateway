@@ -567,7 +567,6 @@ private void prepareActionCriteria(RequestContext context) throws Exception {
     prepareAccessPolicyConfig(context);
   }
   getActionCriteria().setMetadataAccessPolicyType(_metadataAccessPolicyConfig.getAccessPolicyType());
-  System.out.println("print access policy type"+_metadataAccessPolicyConfig.getAccessPolicyType());
   getActionCriteria().setAccessToGroupDN(_metadataAccessPolicyConfig.getAccessToGroupDN());
 }
 
@@ -667,8 +666,7 @@ protected void processSubAction(ActionEvent event, RequestContext context)
         || sAction.equalsIgnoreCase("setDisapproved")
         || sAction.equalsIgnoreCase("setReviewed")
         || applyToAll;
-    if (bRequiresAdmin && publisher.getIsAdministrator()) {
-    	LOG.info("print publisher:"+publisher.getIsAdministrator());
+    if (bRequiresAdmin && !publisher.getIsAdministrator()) {
       throw new NotAuthorizedException("Not authorized.");
     }
     executeAction(event, context, actionCriteria, publisher, applyToAll);
