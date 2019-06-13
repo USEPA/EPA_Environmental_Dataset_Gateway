@@ -51,6 +51,18 @@
   </property>   
     
   <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[1]/dcat:downloadURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[2]/dcat:downloadURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[3]/dcat:downloadURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[4]/dcat:downloadURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[5]/dcat:downloadURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[6]/dcat:downloadURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[1]/dcat:accessURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[2]/dcat:accessURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[3]/dcat:accessURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[4]/dcat:accessURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[5]/dcat:accessURL"/>
+  <property meaning="resource.url" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[6]/dcat:accessURL"/>
+
   <property meaning="website.url" xpath="/rdf:RDF/dcat:dataset/dcat:landingPage"/>
     
   <property meaning="contentType" xpath="/rdf:RDF/dcat:dataset/dcat:distribution[1]/dcat:mediaType"/>
