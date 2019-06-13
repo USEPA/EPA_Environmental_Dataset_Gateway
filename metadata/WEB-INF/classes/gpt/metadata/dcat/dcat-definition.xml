@@ -78,6 +78,13 @@
   <!-- Distribution Section -->
   <section key="pod.distribution">
     <label resourceKey="catalog.mdParam.distribution.caption"/>
+    <parameter key="dcat.downloadURLtitle">
+      <label resourceKey="catalog.mdParam.schema.dcat.distribution.title"/>
+      <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false" valueType="string"/>
+      <content useSelectForUpdate="true" deleteIfEmpty="true"
+               select="/rdf:RDF/dcat:dataset/dcat:distribution[1]/dct:title" />
+    </parameter>      
     <parameter key="dcat.downloadURL">
       <label resourceKey="catalog.mdParam.schema.dcat.distribution.downloadURL"/>
       <input type="text" size="50" maxlength="4000" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
@@ -796,7 +803,7 @@
   <!-- Access Section -->
   <section key="pod.access">
 	<label resourceKey="catalog.mdParam.constraint.caption"/>
-	<parameter key="accessLevel">
+	<parameter key="pod.accessLevel">
 		<label resourceKey="catalog.mdParam.schema.dcat.accessLevelLabel"/>
 		<input type="selectOneMenu" defaultValue="Public" />
 		<validation required="true"/>
