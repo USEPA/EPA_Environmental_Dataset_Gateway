@@ -83,7 +83,7 @@ public class ConverterLinksToHtml implements Converter {
 
                 if (linkNo <= maxLinksToShow) {
                     if (linkNo > 1) {
-                        sb.append(" X ");
+                        //sb.append(" X ");
                     }
                     if (linkNo == maxLinksToShow && detailsLink != null) {
                         appendLink(sb, detailsLink.getUrl(), "More resource links", detailsLink.getTarget());
