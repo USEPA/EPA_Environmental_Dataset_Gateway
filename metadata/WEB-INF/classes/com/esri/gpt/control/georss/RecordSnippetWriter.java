@@ -18,7 +18,10 @@ import com.esri.gpt.catalog.search.ResourceLink;
 import com.esri.gpt.catalog.search.ResourceLinks;
 import com.esri.gpt.framework.jsf.MessageBroker;
 import com.esri.gpt.framework.util.Val;
+import com.esri.gpt.framework.context.ApplicationContext;
 import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * HTML snippet writer.
@@ -331,7 +334,6 @@ public class RecordSnippetWriter {
         _writer.println("<div class=\"" + LINKS_STYLE_CLASS + "\">");
 
         ResourceLinks links = record.getResourceLinks();
-        System.out.println("AYHAN:links.size" + links.size());
         writeLinks(links);
 
         _writer.println("</div>");
@@ -350,14 +352,7 @@ public class RecordSnippetWriter {
         // First pass through links for non-resource links
         ResourceLink detailsLink = null;
         for (ResourceLink link : links) {
-            System.out.println("AYHAN:link.getUrl" + link.getUrl());
-            System.out.println("AYHAN:getLabel" + link.getLabel());
-            System.out.println("AYHAN:getTag" + link.getTag());
-            if (link.getTag() != "resource"
-                    && link.getTag() != "open"
-                    && !link.getUrl().endsWith(".kml")
-                    && !link.getUrl().endsWith(".nmf")
-                    && !link.getUrl().endsWith(".lyr")) {
+            if (link.getTag() != "resource") {
                 writeLink(link.getUrl(), link.getLabel());
             }
             if (link.getTag() == "details") {
@@ -372,33 +367,21 @@ public class RecordSnippetWriter {
             if (link.getTag() == "resource") {
                 linkNo++;
                 if (linkNo == 1) {
-                    //_writer.print("<BR/><UL>Resource links: ");
                     _writer.print("<BR/>Resource links: ");
                 }
-
-                System.out.println("AYHAN:link.getUrl" + link.getUrl());
-                System.out.println("AYHAN:getLabel" + link.getLabel());
-                System.out.println("AYHAN:getTag" + link.getTag());
 
                 if (linkNo <= maxLinksToShow) {
                     if (linkNo > 1) {
                         _writer.print(" <B>|</B> ");
                     }
-                    // _writer.print("<LI>");
-                    if (linkNo == maxLinksToShow) {
+                    if (linkNo == maxLinksToShow && detailsLink != null) {
                         writeLink(detailsLink.getUrl(), "More resource links");
-                    } else if (detailsLink != null) {
+                        break;
+                    } else {
                         writeLink(link.getUrl(), link.getLabel());
                     }
-                    // _writer.print("</LI>");
                 }
             }
-        }
-        if (linkNo > 0) {
-            _writer.print("</UL>");
-        }
-        if (linkNo > maxLinksToShow) {
-            //_writer.print("Click 'Details' for all resource links...");
         }
     }
 
@@ -481,4 +464,3 @@ public class RecordSnippetWriter {
     }
 
 }
-
