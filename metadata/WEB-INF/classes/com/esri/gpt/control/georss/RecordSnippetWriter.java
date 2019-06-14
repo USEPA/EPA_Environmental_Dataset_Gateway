@@ -350,9 +350,14 @@ public class RecordSnippetWriter {
         }
 
         // First pass through links for non-resource links
+        int linkNo = 0;
         ResourceLink detailsLink = null;
         for (ResourceLink link : links) {
             if (link.getTag() != "resource") {
+                linkNo++;
+                if (linkNo == 1) {
+                    _writer.print("EDG links: ");
+                }
                 writeLink(link.getUrl(), link.getLabel());
             }
             if (link.getTag() == "details") {
@@ -361,7 +366,7 @@ public class RecordSnippetWriter {
         }
 
         // Second pass through links for resource links
-        int linkNo = 0;
+        linkNo = 0;
         int maxLinksToShow = 6;
         for (ResourceLink link : links) {
             if (link.getTag() == "resource") {
