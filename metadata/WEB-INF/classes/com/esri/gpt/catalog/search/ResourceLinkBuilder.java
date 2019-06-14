@@ -292,7 +292,7 @@ public class ResourceLinkBuilder {
             ResourceLink link = this.makeLink(addToMapUrl, ResourceLink.TAG_ADDTOMAP,
                     resourceKey);
             link.setTarget(iMapViewer.readTarget());
-            record.getResourceLinks().add(link);
+            addLinkToRecordIfEligible(record, link);
             return;
 
         }
@@ -339,7 +339,7 @@ public class ResourceLinkBuilder {
             String resourceKey = "catalog.rest.addToMap";
             ResourceLink link = this.makeLink(url, ResourceLink.TAG_ADDTOMAP,
                     resourceKey);
-            record.getResourceLinks().add(link);
+            addLinkToRecordIfEligible(record, link);
         }
 
         String url = "";
@@ -391,7 +391,7 @@ public class ResourceLinkBuilder {
                 }
                 resourceKey = "catalog.rest.addToGlobeKml";
                 link = this.makeLink(url, ResourceLink.TAG_AGSKML, resourceKey);
-                record.getResourceLinks().add(link);
+                addLinkToRecordIfEligible(record, link);
             }
 
             // nmf
@@ -400,7 +400,7 @@ public class ResourceLinkBuilder {
                 url = restUrl + "?f=nmf";
                 resourceKey = "catalog.rest.addToGlobeNmf";
                 link = this.makeLink(url, ResourceLink.TAG_AGSNMF, resourceKey);
-                record.getResourceLinks().add(link);
+                addLinkToRecordIfEligible(record, link);
             }
 
             // lyr
@@ -409,7 +409,7 @@ public class ResourceLinkBuilder {
                 url = restUrl + "?f=lyr";
                 resourceKey = "catalog.rest.addToArcMap";
                 link = this.makeLink(url, ResourceLink.TAG_AGSLYR, resourceKey);
-                record.getResourceLinks().add(link);
+                addLinkToRecordIfEligible(record, link);
             }
         }
     }
@@ -519,7 +519,7 @@ public class ResourceLinkBuilder {
                     resourceKey);
 
             // record.getResourceLinks().add(link);
-            record.getResourceLinks().add(resourcePageLink);
+            addLinkToRecordIfEligible(record, resourcePageLink);
         }
     }
 
@@ -556,7 +556,7 @@ public class ResourceLinkBuilder {
             String resourceKey = "catalog.rest.viewFullMetadata";
             ResourceLink link = this.makeLink(url, ResourceLink.TAG_METADATA,
                     resourceKey);
-            record.getResourceLinks().add(link);
+            addLinkToRecordIfEligible(record, link);
         }
     }
 
@@ -594,7 +594,7 @@ public class ResourceLinkBuilder {
         if (serviceType.length() > 0) {
             link.getParameters().add(new StringAttribute(RESOURCE_TYPE, serviceType));
         }
-        record.getResourceLinks().add(link);
+        addLinkToRecordIfEligible(record, link);
 
         //this.makeAddToMapFromFactory(resourceUrl, null, resourceKey, record);
     }
@@ -683,7 +683,7 @@ public class ResourceLinkBuilder {
         if (record.isExternal()) {
             link.setForExtenalRecord(true);
         }
-        record.getResourceLinks().add(link);
+        addLinkToRecordIfEligible(record, link);
     }
 
     private boolean showThumbnail() {
@@ -769,7 +769,7 @@ public class ResourceLinkBuilder {
 
             ResourceLink link = this.makeLink(url, ResourceLink.TAG_WEBSITE,
                     resourceKey);
-            record.getResourceLinks().add(link);
+            addLinkToRecordIfEligible(record, link);
         }
         this.makeAddToMapFromFactory(url, null, resourceKey, record);
     }
@@ -796,8 +796,9 @@ public class ResourceLinkBuilder {
                 url = this.checkUrl(url);
                 if (url.length() > 0) {
                     ResourceLink link = this.makeLink(url, ResourceLink.TAG_CUSTOM, label);
-                    record.getResourceLinks().add(link);
-                    makeAddToMapFromFactory(url, null, label, record);
+                    if (addLinkToRecordIfEligible(record, link)) {
+                        makeAddToMapFromFactory(url, null, label, record);
+                    }
                 }
             }
         }
@@ -866,7 +867,7 @@ public class ResourceLinkBuilder {
             }
             link.setLabel(Val.chkStr(label));
 
-            record.getResourceLinks().add(link);
+            addLinkToRecordIfEligible(record, link);
 
             if (i == 0) {
                 resourceUrl = Val.chkStr(url);
@@ -1011,6 +1012,48 @@ public class ResourceLinkBuilder {
         }
     }
 
+    /*
+     * Adds the link to the record if the link is found to be eligible (based on EDG rules)
+     *
+     * @param record reoord to add the link to
+     * @param link the resource link to add, if elgible
+     *
+     * @return true if link added, false otherwise
+     */
+    private boolean addLinkToRecordIfEligible(SearchResultRecord record, ResourceLink link) {
+        if (filterLink(link)) {
+            return false;
+        } else {
+            record.getResourceLinks().add(link);
+            return true;
+        }
+    }
+
+    /*
+    * determines if the link needs to be filtered (based on EDG rules)
+    *
+    * @param link the resource link to be inspected for potentially filtering
+    * @return True if link needs to be filtered
+     */
+    private boolean filterLink(ResourceLink link) {
+        String url = link.getUrl();
+
+        String sFilter = Val.chkStr(ApplicationContext.getInstance().getConfiguration().getCatalogConfiguration().getParameters().getValue("edg.resourceLinkBuilder.url.filter"));
+        if (sFilter.length() > 0) {
+            try {
+                Pattern pattern = Pattern.compile(sFilter, Pattern.CASE_INSENSITIVE);
+                Matcher matcher = pattern.matcher(url);
+                if (matcher.matches()) {
+                    return true;
+                }
+            } catch (Exception ex) {
+
+            }
+        }
+
+        return link.getTag() == "open";
+    }
+
     /**
      * Makes a link.
      *
@@ -1109,7 +1152,7 @@ public class ResourceLinkBuilder {
                 + this.getMessageBroker().retrieveMessage(resourceKey);
         link.setLabel(label);
         link.setTarget(iMapViewer.readTarget());
-        record.getResourceLinks().add(link);
+        addLinkToRecordIfEligible(record, link);
     }
 
 }
