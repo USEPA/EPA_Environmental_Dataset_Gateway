@@ -353,14 +353,14 @@ public class RecordSnippetWriter {
         int linkNo = 0;
         ResourceLink detailsLink = null;
         for (ResourceLink link : links) {
-            if (link.getTag() != "resource") {
+            if (link.getTag() != ResourceLink.TAG_RESOURCE && link.getTag() != ResourceLink.TAG_WEBSITE) {
                 linkNo++;
                 if (linkNo == 1) {
                     _writer.print("EDG links: ");
                 }
                 writeLink(link.getUrl(), link.getLabel());
             }
-            if (link.getTag() == "details") {
+            if (link.getTag() == ResourceLink.TAG_DETAILS) {
                 detailsLink = link;
             }
         }
@@ -369,7 +369,7 @@ public class RecordSnippetWriter {
         linkNo = 0;
         int maxLinksToShow = 6;
         for (ResourceLink link : links) {
-            if (link.getTag() == "resource") {
+            if (link.getTag() == ResourceLink.TAG_RESOURCE || link.getTag() == ResourceLink.TAG_WEBSITE) {
                 linkNo++;
                 if (linkNo == 1) {
                     _writer.print("<BR/>Resource links: ");
