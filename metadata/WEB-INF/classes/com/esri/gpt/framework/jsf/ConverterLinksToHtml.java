@@ -61,29 +61,34 @@ public class ConverterLinksToHtml implements Converter {
         StringBuffer sb = new StringBuffer();
 
         // First pass through links for non-resource links
+        int linkNo = 0;
         ResourceLink detailsLink = null;
         for (ResourceLink link : links) {
-            if (link.getTag() != "resource") {
+            if (link.getTag() != ResourceLink.TAG_RESOURCE && link.getTag() != ResourceLink.TAG_WEBSITE) {
+            linkNo++;
+                if (linkNo == 1) {
+                    sb.append("<span class=\"resultsLink\">EDG Links: </span>");
+                }
                 appendLink(sb, link.getUrl(), link.getLabel(), link.getTarget());
             }
-            if (link.getTag() == "details") {
+            if (link.getTag() == ResourceLink.TAG_DETAILS) {
                 detailsLink = link;
             }
         }
 
         // Second pass through links for resource links
-        int linkNo = 0;
+        linkNo = 0;
         int maxLinksToShow = 6;
         for (ResourceLink link : links) {
-            if (link.getTag() == "resource") {
+            if (link.getTag() == ResourceLink.TAG_RESOURCE || link.getTag() == ResourceLink.TAG_WEBSITE) {
                 linkNo++;
                 if (linkNo == 1) {
                     sb.append("<br/>");
                 }
 
                 if (linkNo <= maxLinksToShow) {
-                    if (linkNo > 1) {
-                        sb.append(" X ");
+                    if (linkNo == 1) {
+                        sb.append("<span class=\"resultsLink\">Resource Links: </span>");
                     }
                     if (linkNo == maxLinksToShow && detailsLink != null) {
                         appendLink(sb, detailsLink.getUrl(), "More resource links", detailsLink.getTarget());

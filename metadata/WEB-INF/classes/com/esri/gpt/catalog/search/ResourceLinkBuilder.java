@@ -856,7 +856,7 @@ public class ResourceLinkBuilder {
 
             ResourceLink link = new ResourceLink();
             link.setUrl(url);
-            link.setTag("resource");
+            link.setTag(ResourceLink.TAG_RESOURCE);
             String[] nameParts = url.split("/", 0);
             String label = nameParts[nameParts.length - 1];
             try {
@@ -1051,14 +1051,14 @@ public class ResourceLinkBuilder {
             }
         }
 
-        return link.getTag() == "open";
+        return link.getTag() == ResourceLink.TAG_OPEN;
     }
 
     /**
      * Makes a link.
      *
      * @param url the URL associated with the resource
-     * @param tag the tag idenitfying a type of link
+     * @param tag the tag identifying a type of link
      * @param resourceKey the resource bundle key associated with the label
      */
     protected ResourceLink makeLink(String url, String tag, String resourceKey) {
