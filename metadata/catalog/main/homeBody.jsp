@@ -1401,7 +1401,8 @@ $(document).ready(function(){
 														<li><a
 															href="https://project-open-data.cio.gov/schema/">Project
 																Open Data Metadata Schema</a></li>
-														
+														<li><a
+															href="https://edg.epa.gov/epa-open-data-metadata-editor/">EPA Open Data Metadata Editor</a></li>
 														<li><a href="/metadata/webhelp/en/gptlv10/inno/EDG_ClipAndShip_procedures.pdf" target = "_blank">
 																How to Post Data to EDG Clip N Ship (PDF)</a></li>
 																
