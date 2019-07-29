@@ -130,9 +130,9 @@ public class Data extends HttpServlet {
             
             
             String reqPath = request.getPathInfo();
-			log.fine("bji 2, reqPath: "+ + reqPath);
+			log.fine("bji 2, reqPath: "+ reqPath);
             reqPath = reqPath.toUpperCase(); 
-			log.fine("bji 3, reqPath: "+ + reqPath);
+			log.fine("bji 3, reqPath: "+ reqPath);
             if (reqPath.startsWith("/"))
                 reqPath = reqPath.substring(1).toUpperCase();
             log.fine("reqPath1: "+reqPath);
@@ -168,7 +168,7 @@ public class Data extends HttpServlet {
             // determine if req for specific file, or dir
             if (isFile) {// a file
                 int rc = getUrlContents(dataLoc + reqPath, response);
-                 PrintWriter out = response.getWriter();
+                // PrintWriter out = response.getWriter();
  
              
                 //int rc = HttpStatus.SC_FORBIDDEN;
@@ -289,9 +289,12 @@ public class Data extends HttpServlet {
                 return statusCode;
             }
             copyHeadersToResponse(method, response);
-            response.setContentType("application/x-download");
-            response.setHeader("Content-disposition", "attachment; filename=\"" + fileName + "\"");
-
+            if (urlStr.toUpperCase().endsWith(".XML") || urlStr.toUpperCase().endsWith(".XSD")) {
+            	response.setContentType("text/xml");
+            } else {
+	            response.setContentType("application/x-download");
+	            response.setHeader("Content-disposition", "attachment; filename=\"" + fileName + "\"");
+            }
             
             // copy contents to out
             BufferedInputStream in = new BufferedInputStream(method.getResponseBodyAsStream());
