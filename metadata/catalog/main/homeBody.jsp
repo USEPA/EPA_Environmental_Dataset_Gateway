@@ -275,7 +275,7 @@ caption, div {
   margin-top: 20px;
 }
 body, .box.special > .pane-content, .box.special > .pane-content {
-    font-size: 98%;
+    font-size: 14px;
 }
 .media-left, .media>.pull-left {
     padding-right: 24px !important;
@@ -313,7 +313,7 @@ body, button, input, select, textarea {
 }
 .site-slogan {
     padding-top: 1.7272em;
-    font-size: 75.75%;
+    font-size: 75%;
     font-weight: normal;
    
 }
@@ -325,7 +325,7 @@ body, button, input, select, textarea {
 }
 .secondary-menu > li > a {
     color: #fff;
-    font-size: 75%;
+    /*font-size: 75%;*/
     margin: -.3333em;
     padding: .3333em;
     text-decoration: none;
@@ -350,12 +350,13 @@ body, button, input, select, textarea {
     padding-top: 0.25em;
 	visibility: hidden;
 }
+/*
 .main-column, .region-highlighted {
     clear: left;
     margin-top: -4.4em;
 }
 .main-nav > .nav__inner > .menu > .menu-item > .menu-link {
-    /* color: #fff; */
+    color: #fff; 
     font-family: "Merriweather", "Georgia", "Cambria", "Times New Roman", "Times", serif;
     font-size: .9em;
     font-weight: bold;
@@ -364,6 +365,7 @@ body, button, input, select, textarea {
     text-decoration: none;
     max-width: 83em;
 }
+*/
 body, button, input, select, textarea {
     font-family: Tahoma, Geneva, Verdana, sans-serif;
 }

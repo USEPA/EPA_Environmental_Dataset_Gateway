@@ -45,7 +45,7 @@ body, html {
 body {
 	color: #0071bc;
 	font-family: "Lucida Grande",Geneva,Verdana,Arial,Helvetica,sans-serif;
-	font-size: 76%;
+	font-size: 125%;
 	
 	font-stretch: normal;
 	font-style: normal;
@@ -235,7 +235,7 @@ table.nostyle td {
 .site-slogan {
     color: #0071bc;
     font-family: Arial, sans-serif;
-    font-size: 0.7471rem;
+    /*font-size: 0.7471rem;*/
     font-weight: 500;
     line-height: 1;
     position: relative;
