@@ -110,7 +110,7 @@
             <input type="text" maxlength="4000" defaultValue=""/>
             <validation required="false" valueType="string"/>
             <!--<content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='webservice']" deleteIfEmpty="false"/>-->
-            <content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='007']]" deleteIfEmpty="false"/>
+            <content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='011']]" deleteIfEmpty="false"/>
         </parameter>
         <parameter key="distinfo.downloadUrl">
             <label resourceKey="fgdc.citation.onlineLinkage.download"/>
