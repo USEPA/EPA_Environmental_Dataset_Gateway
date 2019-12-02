@@ -42,6 +42,6 @@ String PROD = "prod";
 <script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/livedata.js"%>"></script>
 <script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/gpt-asn.js"%>"></script>
 <script type="text/javascript" src="<%=request.getContextPath()+"/catalog/js/" +PROD+ "/gpt-browse.js"%>"></script>
-<script src="https://www.epa.gov/sites/all/libraries/template2/jquery.js"></script>
-<script src="https://www.epa.gov/sites/all/libraries/template2/js.js"></script>
-<script src="https://www.epa.gov/sites/all/modules/custom/epa_core/js/alert.js"></script>
+  <script src="https://www.epa.gov/sites/all/libraries/template2/jquery.js"></script>
+  <script src="https://www.epa.gov/sites/all/libraries/template2/js.js"></script>
+  <script src="https://www.epa.gov/sites/all/modules/custom/epa_core/js/alert.js"></script>

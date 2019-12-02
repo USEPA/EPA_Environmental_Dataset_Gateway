@@ -684,7 +684,7 @@ function scSubmitForm(event, form) {
 
 function checkFormSubmitted(form) {
 	return false;
-	
+  
   // TODO: how did urban do this?
   if(!GptUtils.exists(form)) {
     GptUtils.logl(GptUtils.log.Level.WARNING, 

@@ -1485,6 +1485,6 @@ $(document).ready(function(){
 									</div>
 								</div>
 							</div>
-					</section>			
+					</section>	
 	
 	<!--[if lt IE 9]><script src="https://www2.epa.gov/sites/all/themes/epa/js/ie.js"></script><![endif]-->

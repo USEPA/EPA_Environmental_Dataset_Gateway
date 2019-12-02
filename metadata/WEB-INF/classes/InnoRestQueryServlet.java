@@ -78,8 +78,7 @@ public class InnoRestQueryServlet extends HttpServlet {
     	response.setContentType("application/json;charset=UTF-8");
     	
     	response.setCharacterEncoding("UTF-8");
-    	PrintWriter out = response.getWriter();
-        
+        PrintWriter out = response.getWriter();
 
         try {
             /* If there is no xsl parm, simply return the output from the ESRI RestQueryServlet. Otherwise,
@@ -252,7 +251,7 @@ public class InnoRestQueryServlet extends HttpServlet {
             // if no xsl, return xmlIn and done
             if (xslParm == null) {
             	response.setContentType(c.getContentType());
-            	out.println(xmlIn);//display here 
+                out.println(xmlIn);//display here 
                 return;                
             }
             // there is an xsl parm, so process text and return that

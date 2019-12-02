@@ -534,7 +534,7 @@ function mmdClearAclSelection(){
   <% // approval status  and publication method%>
   <h:outputLabel for="mmdStatus"
     value="#{gptMsg['catalog.publication.manageMetadata.label.status']}"/>
-  <h:panelGroup >
+  <h:panelGroup>
 	 
 	  <h:selectOneMenu id="mmdStatus"
 	    value="#{ManageMetadataController.queryCriteria.approvalStatus}">
@@ -649,7 +649,7 @@ function mmdClearAclSelection(){
     <f:selectItem
       itemValue="delete"
       itemLabel="#{gptMsg['catalog.publication.manageMetadata.action.delete']}"/>
-    <f:selectItem
+	<f:selectItem
       itemValue="transfer"
       itemLabel="#{gptMsg['catalog.publication.manageMetadata.action.transfer']}"/>
     <f:selectItem
