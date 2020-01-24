@@ -403,7 +403,7 @@
         <parameter key="theme.topics">
             <label resourceKey="catalog.mdParam.theme.topics" />
             <input type="selectManyCheckbox" />
-            <validation required="true" />
+            <validation required="false" />
             <content nodeType="list" useSelectForUpdate="true"
         delete="/metadata/dataIdInfo/tpCat"
   			select="/metadata/dataIdInfo/tpCat/TopicCatCd/@value">

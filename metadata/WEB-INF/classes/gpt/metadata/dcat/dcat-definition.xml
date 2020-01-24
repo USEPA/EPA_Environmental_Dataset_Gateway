@@ -565,7 +565,10 @@
              defaultValue="#{EditMetadataController.now}"/>
       <validation required="false" valueType="date"/>
       <content useSelectForUpdate="true" deleteIfEmpty="true"
-               select="concat(/rdf:RDF/dcat:dataset/dct:temporal[1],' to ',/rdf:RDF/dcat:dataset/dct:temporal[2])"/>
+               select="/rdf:RDF/dcat:dataset/dct:temporal"/>
+      <!--<content useSelectForUpdate="false" deleteIfEmpty="true"
+               select="concat(/rdf:RDF/dcat:dataset/dct:temporal[1],' to ',/rdf:RDF/dcat:dataset/dct:temporal[2])"
+               update="/rdf:RDF/dcat:dataset/dct:temporal"/>-->
     </parameter>	
 	<!-- Accrual Periodicity (needs code map)-->
 	<parameter key="pod.accrual">

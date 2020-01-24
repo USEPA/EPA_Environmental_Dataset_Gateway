@@ -162,11 +162,11 @@ background-color: #FFF;}
 		onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 	</h:outputLink--%>
 	
-				<li>
+				<%--<li>
 	<h:outputLink styleClass="bigGreen"  value = "#" style="padding-top:0px;border: 0;margin-top: 26px;" id="openShareFeedback" 
 		onclick="window.open('http://developer.epa.gov/forums/forum/dataset-qa/', 'ShareYourFeedback')">
 		<h:outputText value="#{gptMsg['catalog.shareFeedback']}" />
-	</h:outputLink></li>
+	</h:outputLink></li>--%>
 	
 	<%--h:commandLink 
         id="identityFeedback"
@@ -176,7 +176,7 @@ background-color: #FFF;}
 		<li><h:outputLink value="../identity/feedback.page"
 		styleClass="menu-link" id="contactus">Contact Us	
 	</h:outputLink></li>
-	<li><div class="btn-group sharebtn">
+	<%--<li><div class="btn-group sharebtn">
 				<button class="btn btn-inverse dropdown-toggle"
 					data-toggle="dropdown">SHARE</button>
 				<ul id="share" class="dropdown-menu">
@@ -191,7 +191,7 @@ background-color: #FFF;}
 					<li class="share-pinterest"><a
 						href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Flibraries%2Ftemplate2%2Fstandalone.html&amp;description=%7BPAGE%20NAME%7D%20%7C%20%7BWEB%20AREA%20NAME%7D%20%7C%20US%20EPAmedia=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Fthemes%2Fepa%2Fimg%2Fepa-seal.png">Pinterest</a></li>
 				</ul>
-		</div></li>
+		</div></li>--%>
 		<li><h:outputLink value="#"
 		id="openHelp"  styleClass="menu-link"
 		onclick="javascript:mainOpenPageHelp()">
