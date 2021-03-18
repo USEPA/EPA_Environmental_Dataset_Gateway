@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema key="iso19115-2" 
         templateFile="gpt/metadata/iso/iso-19115-2-template.xml"
-        cswOutputSchema="http://www.isotc211.org/2005/gmd" 
+        cswOutputSchema="https://www.isotc211.org/2005/gmd" 
         cswBriefXslt="gpt/metadata/iso/apiso-2-brief.xslt" 
         cswSummaryXslt="gpt/metadata/iso/apiso-2-summary.xslt"
-        xsdLocation="http://www.isotc211.org/2005/gmi/gmi.xsd">
+        xsdLocation="https://www.isotc211.org/2005/gmi/gmi.xsd">
 
 
-    <!-- schema label -->
+<!-- schema label -->
     <label resourceKey="catalog.mdParam.schema.iso19115-2.coregeog"/>
 
     <!-- schema namespaces -->
-    <namespace prefix="gmd" uri="http://www.isotc211.org/2005/gmd"/>
-    <namespace prefix="gco" uri="http://www.isotc211.org/2005/gco"/>
+  <namespace prefix="gmd" uri="https://www.isotc211.org/2005/gmd"/>
+  <namespace prefix="gco" uri="https://www.isotc211.org/2005/gco"/>
     <namespace prefix="gml" uri="http://www.opengis.net/gml/3.2"/>
-    <namespace prefix="gts" uri="http://www.isotc211.org/2005/gts"/> 
-    <namespace prefix="gmi" uri="http://www.isotc211.org/2005/gmi"/>
+  <namespace prefix="gts" uri="https://www.isotc211.org/2005/gts"/> 
+  <namespace prefix="gmi" uri="https://www.isotc211.org/2005/gmi"/>
     <!--  NGDC Addition -->
-    <namespace prefix="srv" uri="http://www.isotc211.org/2005/srv"/>
+  <namespace prefix="srv" uri="https://www.isotc211.org/2005/srv"/>
 
     <!-- schema interrogation -->
     <interrogation count="count(/gmi:MI_Metadata)"/>
@@ -28,7 +28,61 @@
     <!-- Geoportal XML editor -->
     <editor fileName="gpt/gxe/iso/iso19139/iso19139-2-dataset-editor.xml"/>
 
-    <!-- identification section -->
+  <!-- general section -->
+  
+    <section key="general">
+    <label resourceKey="catalog.mdParam.general.caption"/>  
+    
+   <parameter key="general.fileIdentifier" meaning="fileIdentifier">
+      <label resourceKey="catalog.mdParam.general.fileIdentifier"/>
+      <input type="text" size="50" maxlength="2048"
+             defaultValue="#{EditMetadataController.newUuid}"/>
+      <validation required="false"/>
+      <content useSelectForUpdate="true" deleteParentIfEmpty="true"
+               select="/gmi:MI_Metadata/gmd:fileIdentifier/gco:CharacterString"/>
+    </parameter>
+     
+      <!-- language used for documenting metadata -->
+      <parameter key="general.language" meaning="language">
+      <label resourceKey="catalog.mdParam.general.metadataLanguage"/>
+      <input type="text" size="50" maxlength="2048"
+             defaultValue="en"/>
+      <validation required="false"/>
+      <content useSelectForUpdate="true" deleteParentIfEmpty="true"
+               select="/gmi:MI_Metadata/gmd:language/gco:CharacterString"/>
+    </parameter>
+    
+     <!--"date that the metadata was created " as per ISO 19115 standard -->
+            <parameter key="general.datestamp" meaning="datestamp"> 
+            <label resourceKey="catalog.mdParam.general.metadataDateStamp"/>
+            <input type="text" size="20" maxlength="10" 
+               hintResourceKey="catalog.general.inputDateFormat"
+               defaultValue="#{EditMetadataController.now}"/>
+            <validation required="true" valueType="date"/>
+            <content useSelectForUpdate="true"
+                 select="/gmi:MI_Metadata/gmd:dateStamp/gco:Date | /gmi:MI_Metadata/gmd:dateStamp/gco:DateTime"
+                 update="/gmi:MI_Metadata/gmd:dateStamp/gco:Date"/>
+          </parameter>  
+
+       <!--party responsible for the metadata information-->
+    <parameter key="general.organization">
+      <label resourceKey="catalog.mdParam.general.organization"/>
+      <input type="text" defaultValue="#{EditMetadataController.userProfile['organization'].value}"/>
+      <validation required="true"/>
+      <content useSelectForUpdate="true" 
+               select="/gmi:MI_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString"/>
+    </parameter>
+    
+    <!-- "custodian" role: party that accepts accountability and responsibility for the data and ensures appropriate care and maintenance of the resource", as per ISO 19115 standard -->
+    <parameter key="general.custodian">
+      <label resourceKey="catalog.mdParam.general.custodian"/>
+      <input type="text" editable="false" defaultValue="custodian"/>
+      <validation required="true"/>
+      <content nodeType="isoCodeListValue" useSelectForUpdate="true" select="/gmi:MI_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue"/>     
+        </parameter>
+		</section>
+
+<!-- identification section -->
     <section key="identification">
         <label resourceKey="catalog.mdParam.identification.caption"/>
 
@@ -39,7 +93,7 @@
             <content useSelectForUpdate="true"
                select="/gmi:MI_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString"/>
         </parameter>
-
+    <!--  
         <parameter key="identification.publicationDate"> 
             <label resourceKey="catalog.mdParam.identification.datasetPublicationDate"/>
             <input type="text" size="20" maxlength="10" 
@@ -50,7 +104,7 @@
                select="/gmi:MI_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date | gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:DateTime"
                update="gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date"/>
         </parameter>
-
+    -->
         <parameter key="identification.datasetInfo.datasetLanguage"> 
             <label resourceKey="catalog.mdParam.datasetInfo.datasetLanguage"/>
             <input type="text" size="20" maxlength="10" defaultValue="en"/>
@@ -130,58 +184,6 @@
         </parameter>    
     </section> 
 
-        <!-- distribution section -->
-    <section key="distribution" open="false" obligation="optional" select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution">
-        <label resourceKey="catalog.mdParam.distribution.caption"/>
-
-        <parameter key="distribution.format.name">
-            <label resourceKey="catalog.mdParam.distribution.format.name"/>
-            <input type="text"/>
-            <validation required="false"/>
-            <content useSelectForUpdate="true" 
-               delete="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat"
-               select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat/gmd:MD_Format/gmd:name/gco:CharacterString"/>
-        </parameter>
-
-        <parameter key="distribution.format.version">
-            <label resourceKey="catalog.mdParam.distribution.format.version"/>
-            <input type="text"/>
-            <validation required="false"/>
-            <content useSelectForUpdate="true" 
-               delete="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat"
-               select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat/gmd:MD_Format/gmd:version/gco:CharacterString"/>
-        </parameter>
-
-        <parameter key="distribution.transferOptions.onLine.linkage" meaning="resource.url">
-            <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
-            <input type="text" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
-            <validation required="false"/>
-            <content useSelectForUpdate="true" select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:linkage/gmd:URL" delete="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions"/>
-        </parameter>
-
-        <parameter key="distribution.transferOptions.onLine.function" meaning="resource.type">
-            <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.function"/>
-            <input type="selectOneMenu"/>
-            <validation required="false"/>
-            <content useSelectForUpdate="true" deleteParentIfEmpty="true"
-               select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:function/gmd:CI_OnLineFunctionCode">
-                <codes>
-                    <code key=""/>
-                    <code key="download"                    
-                resourceKey="catalog.mdCode.onLineFunctionCode.download"/>
-                    <code key="information"                    
-                resourceKey="catalog.mdCode.onLineFunctionCode.information"/>
-                    <code key="offlineAccess"                    
-                resourceKey="catalog.mdCode.onLineFunctionCode.offlineAccess"/>
-                    <code key="order"                    
-                resourceKey="catalog.mdCode.onLineFunctionCode.order"/>
-                    <code key="search"                    
-                resourceKey="catalog.mdCode.onLineFunctionCode.search"/>                
-                </codes>
-            </content>
-        </parameter>
-    </section>
-    
     <!-- theme section -->
     <section key="theme">
         <label resourceKey="catalog.mdParam.theme.caption"/>
@@ -236,8 +238,8 @@
         </parameter>  
     </section>
 
-    <!-- reference system information -->
-    <section key="referenceSystemInfo" open="false" obligation="optional" select="/gmi:MI_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier">
+<!-- reference system information -->
+<section key="referenceSystemInfo" open="false" obligation="optional" select="/gmi:MI_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier">
         <label resourceKey="catalog.mdParam.referenceSystemInfo.caption"/>
 
         <parameter key="referenceSystemInfo.code">
@@ -254,7 +256,7 @@
             <content useSelectForUpdate="true" deleteParentIfEmpty="true"
                select="/gmi:MI_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:codeSpace/gco:CharacterString"/>
         </parameter>    
-    </section>
+</section>
 
     <!-- envelope section -->
     <section key="envelope">
@@ -380,11 +382,11 @@
         </parameter>   
     </section>
 
-    <!-- contact section, a subset of the identification section) -->
+<!-- contact section, a subset of the identification section) -->
     <section key="contact" open="false" obligation="optional" select="/gmi:MI_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact">
         <label resourceKey="catalog.mdParam.contact.caption"/>
 
-        <!--point of contact:identification of, and means of communication with, person(s) and organization(s) associated with the resource(s)" -->
+<!--point of contact:identification of, and means of communication with, person(s) and organization(s) associated with the resource(s)" -->
         <parameter key="contact.organization">
             <label resourceKey="catalog.mdParam.contact.organization"/>
             <input type="text" defaultValue="#{EditMetadataController.userProfile['organization'].value}"/>
@@ -474,59 +476,57 @@
         </parameter>
     </section>
     
-    <!-- general section -->
-    <section key="general">
-        <label resourceKey="catalog.mdParam.general.caption"/>  
+  <!-- distribution section -->
+  <section key="distribution" open="false" obligation="optional" select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution">
+    <label resourceKey="catalog.mdParam.distribution.caption"/>
 
-        <parameter key="general.fileIdentifier" meaning="fileIdentifier">
-            <label resourceKey="catalog.mdParam.general.fileIdentifier"/>
-            <input type="text" size="50" maxlength="2048"
-             defaultValue="#{EditMetadataController.newUuid}"/>
+    <parameter key="distribution.format.name">
+      <label resourceKey="catalog.mdParam.distribution.format.name"/>
+      <input type="text"/>
             <validation required="false"/>
-            <content useSelectForUpdate="true" deleteParentIfEmpty="true"
-               select="/gmi:MI_Metadata/gmd:fileIdentifier/gco:CharacterString"/>
+      <content useSelectForUpdate="true" 
+               delete="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat"
+               select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat/gmd:MD_Format/gmd:name/gco:CharacterString"/>
         </parameter>
 
-        <!-- language used for documenting metadata -->
-        <parameter key="general.language" meaning="language">
-            <label resourceKey="catalog.mdParam.general.metadataLanguage"/>
-            <input type="text" size="50" maxlength="2048"
-             defaultValue="en"/>
+    <parameter key="distribution.format.version">
+      <label resourceKey="catalog.mdParam.distribution.format.version"/>
+      <input type="text"/>
             <validation required="false"/>
-            <content useSelectForUpdate="true" deleteParentIfEmpty="true"
-               select="/gmi:MI_Metadata/gmd:language/gco:CharacterString"/>
-        </parameter>
-
-        <!--"date that the metadata was created " as per ISO 19115 standard -->
-        <parameter key="general.datestamp" meaning="datestamp"> 
-            <label resourceKey="catalog.mdParam.general.metadataDateStamp"/>
-            <input type="text" size="20" maxlength="10" 
-               hintResourceKey="catalog.general.inputDateFormat"
-               defaultValue="#{EditMetadataController.now}"/>
-            <validation required="true" valueType="date"/>
             <content useSelectForUpdate="true"
-                 select="/gmi:MI_Metadata/gmd:dateStamp/gco:Date | /gmi:MI_Metadata/gmd:dateStamp/gco:DateTime"
-                 update="/gmi:MI_Metadata/gmd:dateStamp/gco:Date"/>
+               delete="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat"
+               select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat/gmd:MD_Format/gmd:version/gco:CharacterString"/>
         </parameter>  
 
-        <!--party responsible for the metadata information-->
-        <parameter key="general.organization">
-            <label resourceKey="catalog.mdParam.general.organization"/>
-            <input type="text" defaultValue="#{EditMetadataController.userProfile['organization'].value}"/>
-            <validation required="true"/>
-            <content useSelectForUpdate="true" 
-               select="/gmi:MI_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString"/>
+    <parameter key="distribution.transferOptions.onLine.linkage" meaning="resource.url">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.linkage"/>
+      <input type="text" testResourceKey="catalog.publication.editMetadata.button.test.service"/>
+      <validation required="false"/>
+      <content useSelectForUpdate="true" select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:linkage/gmd:URL" delete="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions"/>
         </parameter>
 
-        <!-- "custodian" role: party that accepts accountability and responsibility for the data and ensures appropriate care and maintenance of the resource", as per ISO 19115 standard -->
-        <parameter key="general.custodian">
-            <label resourceKey="catalog.mdParam.general.custodian"/>
-            <input type="text" editable="false" defaultValue="custodian"/>
-            <validation required="true"/>
-            <content nodeType="isoCodeListValue" useSelectForUpdate="true" select="/gmi:MI_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue"/>     
+    <parameter key="distribution.transferOptions.onLine.function" meaning="resource.type">
+      <label resourceKey="catalog.mdParam.distribution.transferOptions.onLine.function"/>
+      <input type="selectOneMenu"/>
+      <validation required="false"/>
+      <content useSelectForUpdate="true" deleteParentIfEmpty="true"
+               select="/gmi:MI_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:function/gmd:CI_OnLineFunctionCode">
+		    <codes>
+		      <code key=""/>
+		      <code key="download"                    
+                resourceKey="catalog.mdCode.onLineFunctionCode.download"/>
+          <code key="information"                    
+                resourceKey="catalog.mdCode.onLineFunctionCode.information"/>
+          <code key="offlineAccess"                    
+                resourceKey="catalog.mdCode.onLineFunctionCode.offlineAccess"/>
+          <code key="order"                    
+                resourceKey="catalog.mdCode.onLineFunctionCode.order"/>
+          <code key="search"                    
+                resourceKey="catalog.mdCode.onLineFunctionCode.search"/>                
+		    </codes>
+		  </content>
         </parameter>
-    </section>
-
+</section>
 
     <!-- metadata standard section -->
     <section key="standard" open="false">

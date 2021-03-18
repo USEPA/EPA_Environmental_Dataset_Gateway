@@ -40,8 +40,8 @@
 	  <property meaning="body" xpathType="STRING" xpath="//*"/>
 <!-- dcat-specific -->
     <property meaning="dcat.publisher" xpath="/metadata/dataIdInfo/idPoC/rpOrgName"/>
-    <property meaning="dcat.person" xpath="/metadata/dataIdInfo/idPoC/rpIndName"/>
-    <property meaning="dcat.mbox" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd"/> 
+    <property meaning="dcat.person" xpath="/metadata/dataIdInfo/idPoC/rpIndName[../role/RoleCd[@value='010']]"/>
+    <property meaning="dcat.mbox" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd[../role/RoleCd[@value='010']]"/> 
     <property meaning="dcat.accessLevel" xpath="/metadata/dataIdInfo/resConst/SecConsts/class/ClasscationCd/@value"/>
     <property meaning="dcat.programCode" xpath="/metadata/dataIdInfo/subTopicCatKeys/keyword[../thesaName/resTitle='Federal Program Inventory']"/>   
     <property meaning="dcat.dataDictionary" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='002']]"/>
