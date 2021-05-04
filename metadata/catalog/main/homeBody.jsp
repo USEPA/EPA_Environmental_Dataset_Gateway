@@ -1379,7 +1379,7 @@ $(document).ready(function(){
 													<ul>
 														<li><a href="/data/" target='_blank'>EPA Data Download Site</a></li>
 														<li><a href="/clipship/" target='_blank'>Clip and Ship</a></li>
-                                                        <li><a href="ftp://newftp.epa.gov/EPADataCommons/" target='_blank'>EPA Data Commons FTP Site</a></li>
+                                                        <li><a href="https://gaftp.epa.gov/EPADataCommons/" target='_blank'>EPA Data Commons FTP Site</a></li>
 													</ul>
 												</div>
 											</div>
@@ -1393,11 +1393,11 @@ $(document).ready(function(){
 														<li><a href="/EME/">EPA Metadata Editor (EME) - for geospatial metadata</a></li>
 															<ul style="padding-left:20px">
 															<li><a href="https://edg.epa.gov/media/EMEToolforProTraining.mp4">EME Pro Training</a></li>
-															<li>EME 5 Training</li>
+															<li>EME 5 Training - Coming Soon!</li>
 															</ul>
 															<li><a href="https://edg.epa.gov/epa-open-data-metadata-editor/">EPA Open Data Metadata Editor - for non-geospatial metadata</a></li>
 															<ul style="padding-left:20px">
-															<li>EPA Open Data Metadata Editor Training</li>
+															<li>EPA Open Data Metadata Editor Training - Coming Soon!</li>
 															</ul>
 														<li><a
 															href="../../webhelp/en/gptlv10/inno/EDG_GettingStarted.pdf">Quick
@@ -1434,7 +1434,7 @@ $(document).ready(function(){
 													<ul>
 														<li><a href="/metadata/webhelp/en/gptlv10/inno/Stewards/Stewards.html" target = "_blank">
 														List of EDG Stewards (opens new window)</a></li>
-														<li>An Introduction to the Environmental Dataset Gateway Training</>
+														<li>EDG Introductory Training - Coming Soon!</li>
 														<li><a
 															href="https://www.epa.gov/geospatial/epa-metadata-technical-specification">EPA
 																Metadata Technical Specification</a></li>
@@ -1467,8 +1467,7 @@ $(document).ready(function(){
 													<h4 class="media-heading">Open Data</h4>
 													<ul>
 														<li><a href="https://www.data.gov/">U.S. Government's Open Data Site: Data.gov</a></li>
-														<li><a href="https://project-open-data.cio.gov/">Federal Open Data Policy: Project
-																Open Data</a></li>
+														<li><a href="https://project-open-data.cio.gov/">Project Open Data: Federal Open Data Policy</a></li>
 														<li><a
 															href="https://resources.data.gov/resources/dcat-us/">Project
 																Open Data Metadata Schema</a></li>

@@ -119,6 +119,22 @@
   gptMapConfig.locatorGraphicURL = "<%=request.getContextPath()%>/catalog/images/pushpin_red.gif";
   gptMapConfig.mapVisibleLayers = "<%=imConfig.getMapVisibleLayers()%>";
   gptMapConfig.mapInitialExtent = "<%=imConfig.getMapInitialExtent()%>";
+  
+  var searchNode = dojo.byId("frmSearchCriteria:btnDoSearch");
+  ga('create', 'UA-32633028-1', 'auto');
+  dojo.connect(searchNode,'onclick',function(){
+      var searchTerm = document.getElementById("frmSearchCriteria:scText").value;
+      var expandedSearch = document.getElementById("frmSearchCriteria:searchSynonym").checked;
+      var searchType = "EDGsearch"
+      if (expandedSearch){
+          searchType = "EDGexpandedSearch";
+      }
+      console.log(searchTerm,searchType,ga);
+      ga('send', 'event', 'EnvironmentalDatasetGateway', searchType, "searchTerm: " + searchTerm);
+      console.log('ga tracked');
+  });
+
+  
 </script>
 
 <f:verbatim>

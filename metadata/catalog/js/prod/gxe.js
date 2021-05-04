@@ -4370,10 +4370,10 @@ dojo.declare("gxe.control.Section",gxe.control.Control,{
    */
   initializeLabelEvents: function(xmlNode,ctlMenu,ctlIndexedIabArray,domProcessor,domNode) {
     
-    var ctlHeader = this.findFirstChildControl("> [gxename='header']");
+    var ctlHeader = this.findFirstChildControl(">[gxename='header']");
     if (ctlHeader != null) {
       
-      var ctlLabel = ctlHeader.findFirstChildControl("> [gxename='label']");
+      var ctlLabel = ctlHeader.findFirstChildControl(">[gxename='label']");
       if (ctlLabel != null) {
         
         var cn = ctlLabel.htmlElement.childNodes;

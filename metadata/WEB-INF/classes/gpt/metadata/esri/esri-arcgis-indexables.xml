@@ -39,9 +39,9 @@
 	  <property meaning="dataTheme" xpath="/metadata/dataIdInfo/tpCat/TopicCatCd/@value"/>
 	  <property meaning="body" xpathType="STRING" xpath="//*"/>
 <!-- dcat-specific -->
-    <property meaning="dcat.publisher" xpath="/metadata/dataIdInfo/idPoC/rpOrgName"/>
+    <property meaning="dcat.publisher" xpath="/metadata/dataIdInfo/idPoC/rpOrgName[../role/RoleCd[@value='010']]"/>
     <property meaning="dcat.person" xpath="/metadata/dataIdInfo/idPoC/rpIndName[../role/RoleCd[@value='010']]"/>
-    <property meaning="dcat.mbox" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd[../role/RoleCd[@value='010']]"/> 
+    <property meaning="dcat.mbox" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd[../../../role/RoleCd[@value='010']]"/> 
     <property meaning="dcat.accessLevel" xpath="/metadata/dataIdInfo/resConst/SecConsts/class/ClasscationCd/@value"/>
     <property meaning="dcat.programCode" xpath="/metadata/dataIdInfo/subTopicCatKeys/keyword[../thesaName/resTitle='Federal Program Inventory']"/>   
     <property meaning="dcat.dataDictionary" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='002']]"/>
@@ -57,7 +57,7 @@
     <property meaning="dcat.language" xpath="/metadata/dataIdInfo/dataLang/languageCode/@value"/>
     <property meaning="dcat.references" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='002']]"/>
     <property meaning="dcat.landingPage" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='009']]"/>
-    <property meaning="metadataFormat" xpathType="STRING" xpath="'arcgis'"/>
+    <!--<property meaning="metadataFormat" xpathType="STRING" xpath="'arcgis'"/>-->
     <property meaning="dcat.accessLevelComment" xpath="/metadata/dataIdInfo/resConst/SecConsts/userNote" xpathType="STRING"/>
     <property meaning="dcat.ParentIdentifier" xpath="/metadata/dataIdInfo/aggrInfo/aggrDSIdent/identCode"/>
     <property meaning="dcat.license" xpath="/metadata/dataIdInfo/resConst/LegConsts/othConsts[not(contains(.,' '))]"/>

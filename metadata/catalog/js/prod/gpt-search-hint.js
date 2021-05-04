@@ -12,7 +12,7 @@ function hint(name, count) {
 $(document).ready(function(){  
 	var ctxPath = $("#schContextPath").val();
 	var hintPrompt = $("#schHintPrompt").val();
-	var sUrl =  ctxPath + "/rest/index/stats/fields?field=keywords&max=5000&f=json";
+	var sUrl =  ctxPath + "/rest/index/stats/fields?field=keywords&max=10000&f=json";
 	
 	$.get(sUrl,
         function(response) {
