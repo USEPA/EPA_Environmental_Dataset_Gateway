@@ -22,8 +22,7 @@
         xsdLocation=""
         toEsriItemInfoXslt="gpt/metadata/iso/iso-toEsriItemInfo.xslt"
          >
-    <!-- removed because they caused problems. detailsXslt="gpt/metadata/iso/iso-details.xslt"
-		 xsdLocation="http://www.isotc211.org/2005/gmd/metadataEntity.xsd[GML32]http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmd/metadataEntity.xsd"-->
+    <!-- detailsXslt="gpt/metadata/iso/iso-details.xslt" -->
 
     <!-- schema label -->
     <label resourceKey="catalog.mdParam.schema.iso19139.coregeog"/>

@@ -47,13 +47,13 @@
             </tr>
 			<tr>
                 <td align="middle">
-                    <a href="https://www.epa.gov/rcs" style="border-bottom:none;background-color: transparent;">
-                        <img src="RCS.png" alt="Reusable Component Services " title="Reusable Component Services "/>
+                    <a href="https://sscatalog.epa.gov/sharedservicecatalog/" style="border-bottom:none;background-color: transparent;">
+                        <img src="SSRC.png" alt="Shared Services Resource Catalog" title="Shared Services Resource Catalog"/>
                     </a>
                 </td>
                 <td valign="top">
                     <div class="prompt">
-                        <a href="https://www.epa.gov/rcs"><b>EPA Reusable Component Services (RCS)</b></a><br>RCS is a registry or catalog of reusable resources of many types, including web services, software tools, programming code and others. The resources are used to build, document, and test systems and applications. 
+                        <a href="https://sscatalog.epa.gov/sharedservicecatalog/"><b>Shared Services Resource Catalog (SSRC)</b></a><br>SSRC is a catalog of reusable resources of many types, including web services, software tools, programming code and others. The resources are used to build, document, and test systems and applications. 
                     </div>
                 </td>
             </tr>

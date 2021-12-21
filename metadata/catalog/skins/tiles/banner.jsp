@@ -173,7 +173,7 @@ background-color: #FFF;}
         action="catalog.identity.feedback" 
         styleClass="#{PageContext.tabStyleMap['catalog.identity.feedback']}"
         value="#{gptMsg['catalog.identity.feedback.menuCaption']}" /--%>
-		<li><h:outputLink value="../identity/feedback.page"
+		<li><h:outputLink value="https://usepa.servicenowservices.com/ecss?id=ecss_csm_get_help_1&sys_id=02f93a8f1b139410aedaa64ce54bcbf1"
 		styleClass="menu-link" id="contactus">Contact Us	
 	</h:outputLink></li>
 	<%--<li><div class="btn-group sharebtn">

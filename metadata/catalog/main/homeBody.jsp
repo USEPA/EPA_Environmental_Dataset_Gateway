@@ -643,7 +643,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab1SearchStr%>')">See More</a>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab1SearchStr%>')">Find More</a>
 										</p>
 										<p></p>
 									</div>
@@ -688,7 +688,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab2SearchStr%>')">See More</a>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab2SearchStr%>')">Find More</a>
 										</p>
 										<p></p>
 									</div>
@@ -735,7 +735,7 @@ $(document).ready(function(){
 									</div>
 									<div class="col-md-12 col-sm-12 text-right">
 										<p>
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab3SearchStr%>')">See More</a>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=featuredTab3SearchStr%>')">Find More</a>
 										</p>
 										<p></p>
 									</div>
@@ -783,7 +783,7 @@ $(document).ready(function(){
 									</div>
 												<div class="col-md-12 col-sm-12 text-right">
 										<p>
-											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=popDataSearchStr%>')">See More</a>
+											<a href="javascript: void(0)" onclick="javascript:executeSearchAction('<%=popDataSearchStr%>')">Find More</a>
 										</p>
 										<p></p>
 									</div>
@@ -931,7 +931,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region1')">See
+									onclick="javascript:executeRegionSearch('region1')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -979,7 +979,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region2')">See
+									onclick="javascript:executeRegionSearch('region2')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1025,7 +1025,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region3')">See
+									onclick="javascript:executeRegionSearch('region3')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1072,7 +1072,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region4')">See
+									onclick="javascript:executeRegionSearch('region4')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1119,7 +1119,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region5')">See
+									onclick="javascript:executeRegionSearch('region5')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1165,7 +1165,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region6')">See
+									onclick="javascript:executeRegionSearch('region6')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1211,7 +1211,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region7')">See
+									onclick="javascript:executeRegionSearch('region7')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1257,7 +1257,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region8')">See
+									onclick="javascript:executeRegionSearch('region8')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1303,7 +1303,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region9')">See
+									onclick="javascript:executeRegionSearch('region9')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1349,7 +1349,7 @@ $(document).ready(function(){
 						<div class="col-md-12 col-sm-12 text-right">
 							<p>
 								<a href="javascript: void(0)"
-									onclick="javascript:executeRegionSearch('region10')">See
+									onclick="javascript:executeRegionSearch('region10')">Find
 									More</a>
 							</p>
 							<p></p>
@@ -1379,7 +1379,7 @@ $(document).ready(function(){
 													<ul>
 														<li><a href="/data/" target='_blank'>EPA Data Download Site</a></li>
 														<li><a href="/clipship/" target='_blank'>Clip and Ship</a></li>
-                                                        <li><a href="ftp://newftp.epa.gov/EPADataCommons/" target='_blank'>EPA Data Commons FTP Site</a></li>
+                                                        <li><a href="https://gaftp.epa.gov/EPADataCommons/" target='_blank'>EPA Data Commons FTP Site</a></li>
 													</ul>
 												</div>
 											</div>
@@ -1387,33 +1387,26 @@ $(document).ready(function(){
 												<img class="media-object pull-left"
 													src="../skins/themes/blue/images/item-2.png" alt="Image">
 												<div class="media-body">
-													<h4 class="media-heading">Metadata Publishing</h4>
+													<h4 class="media-heading">Metadata Editing and Publishing</h4>
 													<ul>
-														<li><a href="/EME/">EPA
-																Metadata Editor</a></li>
+													
+														<li><a href="/EME/">EPA Metadata Editor (EME) - for geospatial metadata</a></li>
+															<ul style="padding-left:20px">
+															<li><a href="https://edg.epa.gov/media/EMEToolforProTraining.mp4">EME Pro Training</a></li>
+															<li>EME 5 Training - Coming Soon!</li>
+															</ul>
+															<li><a href="https://edg.epa.gov/epa-open-data-metadata-editor/">EPA Open Data Metadata Editor - for non-geospatial metadata</a></li>
+															<ul style="padding-left:20px">
+															<li>EPA Open Data Metadata Editor Training - Coming Soon!</li>
+															</ul>
 														<li><a
 															href="../../webhelp/en/gptlv10/inno/EDG_GettingStarted.pdf">Quick
 																start guide for publishing metadata</a></li>
 														<li><a
-															href="https://www.epa.gov/geospatial/epa-metadata-technical-specification">EPA
-																Metadata Technical Specification</a></li>
-														<li><a
 															href="https://www.epa.gov/geospatial/epa-metadata-style-guide-geospatial-and-non-geospatial-data">Metadata
 																Style Guide</a></li>
-														<li><a
-															href="https://project-open-data.cio.gov/schema/">Project
-																Open Data Metadata Schema</a></li>
-														<li><a
-															href="https://edg.epa.gov/epa-open-data-metadata-editor/">EPA Open Data Metadata Editor</a></li>
-														<li><a href="/metadata/webhelp/en/gptlv10/inno/EDG_ClipAndShip_procedures.pdf" target = "_blank">
-																How to Post Data to EDG Clip N Ship (PDF)</a></li>
-																
 														<li><a href="/metadata/webhelp/en/gptlv10/inno/EDG_Download_Locations.pdf" target = "_blank">
 														How to Post Data to EDG Download Sites (PDF)</a></li>
-														
-														<li><a href="/metadata/webhelp/en/gptlv10/inno/Stewards/Stewards.html" target = "_blank">
-														List of EDG Stewards (opens new window)</a></li>		
-														
 													</ul>
 												</div>
 											</div>
@@ -1437,16 +1430,18 @@ $(document).ready(function(){
 												<img class="media-object pull-left"
 													src="../skins/themes/blue/images/item-3.png" alt="Image">
 												<div class="media-body">
-													<h4 class="media-heading">Training and More</h4>
+													<h4 class="media-heading">EDG Guidance</h4>
 													<ul>
-                                                        <li><a href="../../webhelp/en/gptlv10/index.html#/How_to_Login_and_Manage_my_Password/00t000000023000000/" target="_blank">Get Help Logging In </a></li>
-                                                        <li><a href="/media/EDGSearchandDiscovery101Webinar_1.wmv" target = "_blank">EDG Search and Discovery Video 1 (Homepage Overview) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video1_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation1_HomepageWalkThrough.pdf" target = "_blank">Slides (PDF)<a/></li>
-                                                        <li><a href="/media/EDGSearchandDiscovery101Webinar_2.wmv" target = "_blank">EDG Search and Discovery Video 2 (Advanced Search) (WMV)</a> <a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video2_Agenda.pdf" target = "_blank">Video Agenda</a> <a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation2_AdvancedSearch.pdf" target = "_blank">Slides (PDF)<a/></li>
-                                                        <li><a href="/media/EDGSearchandDiscovery101Webinar_3.wmv" target = "_blank">EDG Search and Discovery Video 3 (Search Results) (WMV)</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/SearchandDiscovery101Video3_Agenda.pdf" target = "_blank">Video Agenda</a> &nbsp;<a href="../../webhelp/en/gptlv10/inno/EDGSearchandDiscovery101Presentation3_SearchResults.pdf" target = "_blank">Slides (PDF)<a/></li>
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf" target = "_blank">How to Capture and Use RSS Feeds from EDG (PDF)</a> </li> 
-                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">How to Get Started with EDG Reuse (PDF) </a> </li>
+														<li><a href="/metadata/webhelp/en/gptlv10/inno/Stewards/Stewards.html" target = "_blank">
+														List of EDG Stewards (opens new window)</a></li>
+														<li>EDG Introductory Training - Coming Soon!</li>
+														<li><a
+															href="https://www.epa.gov/geospatial/epa-metadata-technical-specification">EPA
+																Metadata Technical Specification</a></li>
+														<li><a
+															href="https://resources.data.gov/resources/dcat-us/">Project
+																Open Data Metadata Schema</a></li>														
 														<li><a href="../../webhelp/en/gptlv10/inno/EDG_Rules_of_Behavior_and_Governance_Structure_SOP.pdf" target="_blank">EDG Governance Structure and Standard Operating Procedure (PDF)</a></li>
-														<li><a href="../../webhelp/en/gptlv10/inno/PublicDataForumRolesandResponsibilities.pdf" target="_blank">Public Data Forum Roles and Responsibilites (PDF)</a></li>
 													</ul>
 												</div>
 											</div>
@@ -1459,7 +1454,8 @@ $(document).ready(function(){
 														<li><a href="../../webhelp/en/gptlv10/index.html#/Catalog_Service/00t00000004m000000/" target = "_blank">EDG REST Interface</a></li>
 														<li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">EDG Search Widget</a></li>
 														<li><a href="../../webhelp/en/gptlv10/index.html#/Catalog_Service/00t00000004m000000/" target = "_blank">EDG CS-W Interface</a></li>
-														<li><a href="https://developer.epa.gov" target = "_blank">EPA's Developer Central</a></li>
+														<li><a href="../../webhelp/en/gptlv10/inno/EDG_RSS_Feed_procedures.pdf" target = "_blank">How to Capture and Use RSS Feeds from EDG (PDF)</a> </li> 
+                                                        <li><a href="../../webhelp/en/gptlv10/inno/EDG_Reuse.pdf" target = "_blank">How to Get Started with EDG Reuse (PDF) </a> </li>
 														<li><a href="https://www.epa.gov/sor/">EPA's System of Registries</a></li>
 													</ul>
 												</div>
@@ -1471,12 +1467,11 @@ $(document).ready(function(){
 													<h4 class="media-heading">Open Data</h4>
 													<ul>
 														<li><a href="https://www.data.gov/">U.S. Government's Open Data Site: Data.gov</a></li>
-														<li><a href="https://project-open-data.cio.gov/">Federal Open Data Policy: Project
-																Open Data</a></li>
+														<li><a href="https://project-open-data.cio.gov/">Project Open Data: Federal Open Data Policy</a></li>
 														<li><a
-															href="https://project-open-data.cio.gov/schema/">Project
+															href="https://resources.data.gov/resources/dcat-us/">Project
 																Open Data Metadata Schema</a></li>
-                                                        <li><a href="https://www.epa.gov/open/digital-strategy">EPA Digital Strategy for Open Data</a></li>
+                                                        <li><a href="https://www.epa.gov/data/digital-strategy">EPA Digital Strategy for Open Data</a></li>
                                                         <li><a href="https://www.ncbi.nlm.nih.gov/pmc/funder/epa/">EPA Research Publications</a></li>
 													</ul>
 												</div>

@@ -503,12 +503,12 @@
             </div>
             <div id="browse-results-body"></div>
             <div id="innoRestLinks" style="display:none">
-                Internet REST Links:
+                Internet REST API Links:
                 <a id="innoGeorss" target="_blank">GEORSS</a>&nbsp;
                 <a id="innoHtml" target="_blank">HTML</a>&nbsp;
                 <a id="innoFragment" target="_blank">FRAGMENT</a>&nbsp;
                 <a id="innoKml" target="_blank">KML</a><br/>
-                Intranet REST Links:
+                Intranet REST API Links:
                 <a id="innoGeorssIntra" target="_blank">GEORSS</a>&nbsp;
                 <a id="innoHtmlIntra" target="_blank">HTML</a>&nbsp;
                 <a id="innoFragmentIntra" target="_blank">FRAGMENT</a>&nbsp;
