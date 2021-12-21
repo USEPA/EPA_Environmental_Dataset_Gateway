@@ -379,7 +379,8 @@ public class ResourceLinkBuilder {
         String resourceKey;
         ResourceLink link;
         Pattern maplayer = Pattern.compile("/\\d+$");
-
+        // All of these links are obsolete - Esri eliminated support for nmf completely, will soon end support for .lyr files, and KMZ, well, it's not dead yet but was never supported well by Esri.
+        /*
         if ((restUrl.length() > 0) && serviceType.equals("ags") && !maplayer.matcher(resourceUrl).find()) {
 
             // kml
@@ -412,6 +413,7 @@ public class ResourceLinkBuilder {
                 addLinkToRecordIfEligible(record, link);
             }
         }
+        */
     }
 
     /**
