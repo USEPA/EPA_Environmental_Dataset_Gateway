@@ -284,7 +284,7 @@
 <dependency>
     <groupId>org.glassfish</groupId>
     <artifactId>javax.faces</artifactId>
-    <version>2.2.0</version>
+    <version>2.2.6</version>
 </dependency>
 
 <!-- http://mvnrepository.com/artifact/jstl/jstl -->
