@@ -80,12 +80,13 @@ public class PortalIdentityAdapter extends IdentityAdapter {
 	public static String GptAdministratorsGroupId;
 	public static boolean AllUsersCanPublish = false;
 	private Groups _metadataManagementGroups;
-	
-	 private static Logger LOGGER = Logger.getLogger(PortalIdentityAdapter.class.getName());
+
+	private static Logger LOGGER = Logger.getLogger(PortalIdentityAdapter.class.getName());
 	
 	/** Default constructor. */
 	public PortalIdentityAdapter() {
 	super();
+	//Groups mmGroups = LdapClient().getConfiguration().getIdentityConfiguration.getMetadataManagementGroups();
 	setMetadataManagementGroups(new Groups());
 	}
 	
@@ -159,7 +160,7 @@ public class PortalIdentityAdapter extends IdentityAdapter {
 	  	if (credentials instanceof UsernamePasswordCredentials) {
 	  		UsernamePasswordCredentials upCreds = (UsernamePasswordCredentials)credentials;
 	  		String username = upCreds.getUsername();
-	  		System.out.println("print username:"+username);
+	  		//System.out.println("print username:"+username);
 	  		String password = upCreds.getPassword();
 	  		try {
 	  			String referer = getThisReferer();
@@ -338,7 +339,7 @@ public class PortalIdentityAdapter extends IdentityAdapter {
 	@Override
 	public void readUserGroups(User user)
 	  throws IdentityException, NamingException, SQLException {
-		System.out.println("entering read usergroups");
+		//System.out.println("entering read usergroups");
 		// TODO if admin read all groups?
 	  if (user.getDistinguishedName() == "*" && this.getRequestContext() != null) {
 	  	if (this.getRequestContext().getUser() != null) {
@@ -458,7 +459,6 @@ public class PortalIdentityAdapter extends IdentityAdapter {
 	}
 	
 	private void executeGetUser(User user, String token, String username, String referer) throws Exception {
-		System.err.println("entering executeget user");
 		String adminGroupId = GptAdministratorsGroupId;
 		String pubGroupId = GptPublishersGroupId;
 		boolean allUsersCanPublish = AllUsersCanPublish;
@@ -467,6 +467,8 @@ public class PortalIdentityAdapter extends IdentityAdapter {
 		boolean hasOrgAdminRole = false;
 		boolean hasOrgPubRole = false;
 		boolean hasOrgUserRole = false;
+		Groups mmGroups = this.getRequestContext().getIdentityConfiguration().getMetadataManagementGroups();
+
 		
     String restBaseUrl = this.getRestBaseUrl();
     //String url = restBaseUrl+"community/users/"+URLEncoder.encode(username,"UTF-8");
@@ -480,15 +482,15 @@ public class PortalIdentityAdapter extends IdentityAdapter {
 		http.setUrl(url);
 		http.setContentHandler(handler);
 		if (referer != null) {
-			System.err.println("Referer="+referer);
+			//System.err.println("Referer="+referer);
 			http.setRequestHeader("Referer",referer);
 		};
 		http.execute();
 		//System.err.println(handler.getContent());
     
     String sResponse = handler.getContent();
-    System.err.println("username="+username);
-    System.err.println("response="+sResponse);
+    //System.err.println("username="+username);
+    //System.err.println("response="+sResponse);
     JSONObject jsoResponse = new JSONObject(sResponse);
     if (jsoResponse.has("error") && (!jsoResponse.isNull("error"))) {
     	LOGGER.warning(sResponse);
@@ -499,7 +501,7 @@ public class PortalIdentityAdapter extends IdentityAdapter {
     	return;
     } else {
     	username = jsoResponse.getString("username");
-    	System.out.println("print user"+username);
+    	//System.out.println("print user"+username);
     }
     
     user.setDistinguishedName(username);
@@ -530,42 +532,28 @@ public class PortalIdentityAdapter extends IdentityAdapter {
         if ((pubGroupId != null) && (pubGroupId.length() > 0) && pubGroupId.equals(groupId)) {
         	isInPubGroup = true;
         }
-        System.err.println("groupId="+groupId); 
+
         if (jsoGroup.has("title") && (!jsoGroup.isNull("title"))) {
-        	String groupName = jsoGroup.getString("title");
-        	System.out.println("groupName="+groupName); 
-        	Group group = new Group();
-        	group.setKey(groupId);
-        	group.setDistinguishedName(group.getKey());
-        	group.setName(groupName);
-        	user.getGroups().add(group);
-        	System.out.println("user="+user); 
+        	for (Group mmgroup:mmGroups.values()){
+        		if (mmgroup.getDistinguishedName().equalsIgnoreCase(groupId)) {
+		        	String groupName = jsoGroup.getString("title");
+		        	//System.out.println("groupName="+groupName); 
+		        	Group group = new Group();
+		        	group.setKey(groupId);
+		        	group.setDistinguishedName(group.getKey());
+		        	group.setName(groupName);
+		        	user.getGroups().add(group); 
+		        	//System.out.println(groupName);
+        		}
+        	}
         }
       }
   	}
-  	
-  /*	if (jsoResponse.has("metadataManagementGroup") && (!jsoResponse.isNull("metadataManagementGroup"))) {
-  		JSONArray jsoGroups = jsoResponse.getJSONArray("metadataManagementGroup");
-      for (int i=0;i<jsoGroups.length();i++) {
-      	JSONObject jsoGroup = jsoGroups.getJSONObject(i);
-      	String groupName = jsoGroup.getString("name");
-      	String groupDName = jsoGroup.getString("groupDN");
-       
-        System.err.println("groupId="+groupName); 
-           	Group group = new Group();
-        	group.setKey(groupName);
-        	group.setDistinguishedName(groupDName);
-        	group.setName(groupName);
-        	getMetadataManagementGroups().add(group);
-        
-      }
-  	}*/
     	
     boolean isAdmin = false;
     boolean isPublisher = false;
     if ((adminGroupId != null) && (adminGroupId.length() > 0)) {
     	if (isInAdminGroup) isAdmin = true;
-    	//if (hasOrgAdminRole) isAdmin = true;
     } else {
     	if (hasOrgAdminRole) isAdmin = true;
     }

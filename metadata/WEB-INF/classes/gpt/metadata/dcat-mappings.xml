@@ -105,7 +105,7 @@
 	  <field name="webService" index="resource.url" required="false"/> 
 	  <field name="format" index="dcat.format" required="false"/>
 	  <field name="license" index="dcat.license" required="false">
-        <!--<map from="^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$" to="*"/>-->
+        <map from="^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$" to="*"/>
         <map from=".*" to="https://edg.epa.gov/EPA_Data_License.html"/>
       </field>
 	  <field name="accessURL" index="dcat.accessUrl" required="false"/>
@@ -246,7 +246,7 @@
       </field>
       <field name="isPartOf" index="dcat.parentIdentifier" required="false" />
 	</fields>
-	<fields schema="iso-19115,iso-19119,iso19115-2,gemini-iso-19115,gemini-iso-19119,inspire-iso-19115,inspire-iso-19119"> 
+	<fields schema="iso-19115,iso-19119,iso19115-2,gemini-iso-19115,gemini-iso-19119,inspire-iso-19115,inspire-iso-19119,esri-arcgis"> 
 	  <field name="title" index="title"  required="true"/>  
 	  <field name="description" index="abstract" required="true"/>
 	  <field name="keyword" index="keywords" type="array" required="true"/>

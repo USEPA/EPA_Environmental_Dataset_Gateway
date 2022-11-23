@@ -19,7 +19,6 @@
 
 dojo.require("dijit.Dialog");
 
-
 /**
  * @fileOverview Geoportal XML Editor (GXE).
  * @version 1.2.2
@@ -2912,9 +2911,9 @@ dojo.declare("gxe.control.Control",null,{
     if ((domProcessor != null) && (domNode != null)) {
       domMatch = domProcessor.findMatchingChildAttribute(domNode,cfgAttribute);
     } else {
-      if (sDefault != null) xmlAttribute.nodeInfo.nodeValue = sDefault;      
+      if (sDefault != null) xmlAttribute.nodeInfo.nodeValue = sDefault;
     }
-    
+
     if(sTargetName == "gml:id" && xmlAttribute){
 	  xmlAttribute.nodeInfo.nodeValue = "Temporal-" + (Math.floor((Math.random()*100000)+1)).toString();
 	}
@@ -4371,10 +4370,10 @@ dojo.declare("gxe.control.Section",gxe.control.Control,{
    */
   initializeLabelEvents: function(xmlNode,ctlMenu,ctlIndexedIabArray,domProcessor,domNode) {
     
-    var ctlHeader = this.findFirstChildControl("> [gxename='header']");
+    var ctlHeader = this.findFirstChildControl(">[gxename='header']");
     if (ctlHeader != null) {
       
-      var ctlLabel = ctlHeader.findFirstChildControl("> [gxename='label']");
+      var ctlLabel = ctlHeader.findFirstChildControl(">[gxename='label']");
       if (ctlLabel != null) {
         
         var cn = ctlLabel.htmlElement.childNodes;
@@ -4715,7 +4714,7 @@ dojo.declare("gxe.control.Element",gxe.control.Section,{
     var ctlMenu = null;
     var ctlIndexedIabArray = null;
     var sImages = this.context.contextPath+"/catalog/images/";
-    var ctlHeader = this.findFirstChildControl("> [gxename='header']");
+    var ctlHeader = this.findFirstChildControl(">[gxename='header']");
     if (ctlHeader != null) {
       
       var bBuildRepeatables = false;
@@ -5699,7 +5698,7 @@ dojo.declare("gxe.control.InputGemetKeyword",gxe.control.InputText,{
   /** Override gxe.control.Control.onHtmlChildrenCreated() */
   onHtmlChildrenCreated: function(domProcessor,domNode) {
 	  
-   this.inherited(arguments);
+    this.inherited(arguments);
    
    
    

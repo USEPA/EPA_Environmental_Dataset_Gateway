@@ -61,14 +61,14 @@ table,
 tr,
 caption {
   background-color: #fff;
-  
+
 }
 table,
 th,
 td {
   border: 0px solid #ddd;
   padding: 0;
-  
+
 }
 thead,
 tr:nth-of-type(even),
@@ -294,7 +294,7 @@ label {
     font-weight: bold;
     padding: 2px 5px;
     margin: 0em 0em;
-    text-align: center;
+  text-align: center;
     text-decoration: none;
 }
 
@@ -532,7 +532,7 @@ img.datepicker_trigger {
 	text-align: center;
 }
 .datepicker_close, .datepicker_next {
-	float: right;
+    float: right;
 	width: 34%;
 	text-align: right;
 }
@@ -800,7 +800,7 @@ img.datepicker_trigger {
 	font-size: 0.9em;
 }
 .resultsThumbnail {
-	float: right;
+    float: right;
 	margin: 0 0 0.5em 0.5em;
 }
 .resultsLink {

@@ -110,7 +110,7 @@
             <input type="text" maxlength="4000" defaultValue=""/>
             <validation required="false" valueType="string"/>
             <!--<content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='webservice']" deleteIfEmpty="false"/>-->
-            <content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='007']]" deleteIfEmpty="false"/>
+            <content useSelectForUpdate="true" select="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='011']]" deleteIfEmpty="false"/>
         </parameter>
         <parameter key="distinfo.downloadUrl">
             <label resourceKey="fgdc.citation.onlineLinkage.download"/>
@@ -216,18 +216,18 @@
                 resourceKey="catalog.mdCode.dataType.vector"/>
                     <code key="002"        
                 resourceKey="catalog.mdCode.dataType.grid"/>
-                    <code key="003"   
+                    <code key="003"
                 resourceKey="catalog.mdCode.dataType.textTable"/>
-                    <code key="004"         
+                    <code key="004"
                 resourceKey="catalog.mdCode.dataType.tin"/>
-                    <code key="005" 
+                    <code key="005"
                 resourceKey="catalog.mdCode.dataType.stereoModel"/>
-                    <code key="006"       
+                    <code key="006"
                 resourceKey="catalog.mdCode.dataType.video"/>
-                </codes> 
-            </content>       
-        </parameter> 
-        
+                </codes>
+            </content>
+        </parameter>
+
         <parameter key="identification.equivalentScale"> 
             <label resourceKey="catalog.mdParam.identification.equivalentScale"/>
             <input type="text" size="20" maxlength="24"/>
@@ -236,7 +236,7 @@
                delete="/metadata/dataIdInfo/dataScale"
                select="/metadata/dataIdInfo/dataScale/equScale/rfDenom"/>
         </parameter>
-        
+
         <parameter key="referenceSystemInfo.code">
             <label resourceKey="catalog.mdParam.referenceSystemInfo.code" />
             <input type="text" editable="true" maxlength="4" defaultValue="4326" />
@@ -350,37 +350,37 @@
                select="/metadata/dqInfo/dqScope/scpLvl/ScopeCd/@value">
                 <codes>
                     <code key=""/>
-                    <code key="attribute"                       
+                    <code key="001"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.attribute"/>
-                    <code key="attributeType"                       
+                    <code key="002"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.attributeType"/>
-                    <code key="collectionHardware"                       
+                    <code key="003"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.collectionHardware"/>
-                    <code key="collectionSession"                       
+                    <code key="004"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.collectionSession"/>
-                    <code key="dataset"                       
+                    <code key="005"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.dataset"/>
-                    <code key="series"                       
+                    <code key="006"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.series"/>
-                    <code key="nonGeographicDataset"                       
+                    <code key="007"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.nonGeographicDataset"/>
-                    <code key="dimensionGroup"                       
+                    <code key="008"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.dimensionGroup"/>
-                    <code key="feature"                       
+                    <code key="009"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.feature"/>
-                    <code key="featureType"                       
+                    <code key="010"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.featureType"/>
-                    <code key="propertyType"                       
+                    <code key="011"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.propertyType"/>
-                    <code key="fieldSession"                       
+                    <code key="012"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.fieldSession"/>
-                    <code key="software"                       
+                    <code key="013"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.software"/>
-                    <code key="service"                       
+                    <code key="014"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.service"/>
-                    <code key="model"                       
+                    <code key="015"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.model"/>
-                    <code key="tile"                       
+                    <code key="016"                       
               resourceKey="catalog.mdParam.dataQualityInfo.scope.tile"/>
                 </codes>
             </content>
@@ -403,7 +403,7 @@
         <parameter key="theme.topics">
             <label resourceKey="catalog.mdParam.theme.topics" />
             <input type="selectManyCheckbox" />
-            <validation required="true" />
+            <validation required="false" />
             <content nodeType="list" useSelectForUpdate="true"
         delete="/metadata/dataIdInfo/tpCat"
   			select="/metadata/dataIdInfo/tpCat/TopicCatCd/@value">
@@ -488,7 +488,7 @@
             <content useSelectForUpdate="true" deleteIfEmpty="true" 
                select="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd"/>
         </parameter>
-        
+
         <parameter key="contact.address">
             <label resourceKey="catalog.mdParam.contact.address.address"/>
             <input type="text" defaultValue="#{EditMetadataController.userProfile['street'].value}"/>
@@ -570,7 +570,7 @@
             <content useSelectForUpdate="true" deleteIfEmpty="true"
                select="/metadata/mdFileID"/> 
         </parameter>
-        
+
         <!-- Language used in the dataset -->
         <parameter key="identification.datasetInfo.datasetLanguage"> 
             <label resourceKey="catalog.mdParam.datasetInfo.datasetLanguage"/>
@@ -617,8 +617,33 @@
             <input type="text" editable="true" defaultValue="custodian"/>
             <validation required="false"/>
             <content nodeType="isoCodeListValue" useSelectForUpdate="true"
-                delete="/metadata/mdContact/role"
-                select="/metadata/mdContact/role/RoleCd/@value"/>     
+                delete="/metadata/dataIdInfo/idPoC/role"
+                select="/metadata/dataIdInfo/idPoC/role/RoleCd/@value">
+				<codes>
+                    <code key="001"
+  					resourceKey="catalog.mdCode.custodian.resourceProvider" />
+                    <code key="002"
+  					resourceKey="catalog.mdCode.custodian.custodian" />
+                    <code key="003"
+  					resourceKey="catalog.mdCode.custodian.owner" />
+                    <code key="004"
+  					resourceKey="catalog.mdCode.custodian.user" />
+                    <code key="005"
+  					resourceKey="catalog.mdCode.custodian.distributor" />
+                    <code key="006"
+  					resourceKey="catalog.mdCode.custodian.originator" />
+                    <code key="007"
+  					resourceKey="catalog.mdCode.custodian.pointOfContact" />
+					<code key="008"
+  					resourceKey="catalog.mdCode.custodian.principalInvestigator" />
+                    <code key="009"
+  					resourceKey="catalog.mdCode.custodian.processor" />
+                    <code key="010"
+  					resourceKey="catalog.mdCode.custodian.publisher" />
+                    <code key="011"
+  					resourceKey="catalog.mdCode.custodian.author" />
+                </codes>
+			</content>
         </parameter>                       
     </section>
 

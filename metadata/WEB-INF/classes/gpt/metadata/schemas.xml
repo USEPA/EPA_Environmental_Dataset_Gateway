@@ -25,14 +25,15 @@ between that and the fgdc-bestpractice. Resort so fgdc, dg, ...
 <!--By listing this first, do we ensure records are FGDC unless FGDC sections have been purged?-->
   <schema fileName="gpt/metadata/fgdc/fgdc-definition.xml"/>
   <schema fileName="gpt/metadata/esri/esri-arcgis-definition.xml"/>
+  <schema fileName="gpt/metadata/dcat/dcat-definition.xml"/>
   <schema fileName="gpt/metadata/data-gov/data-gov-definition.xml"/>
   <!-- AE 20120731 New metadata format based on DC but used only internally as virtual members of collections -->
   <schema fileName="gpt/metadata/virtual/virtual-definition.xml"/>
   <schema fileName="gpt/metadata/dc/dc-definition.xml"/>
 <!--   <schema fileName="gpt/metadata/iso/inspire/inspire-iso-19115-definition.xml"/>
-  <schema fileName="gpt/metadata/iso/inspire/inspire-iso-19119-definition.xml"/> -->
+  <schema fileName="gpt/metadata/iso/inspire/inspire-iso-19119-definition.xml"/>
   <schema fileName="gpt/metadata/iso/Gemini2_R1r2/gemini-iso-19115-definition.xml"/>
-  <schema fileName="gpt/metadata/iso/Gemini2_R1r2/gemini-iso-19119-definition.xml"/>
+  <schema fileName="gpt/metadata/iso/Gemini2_R1r2/gemini-iso-19119-definition.xml"/>-->
   <!--schema fileName="gpt/metadata/iso/nap/nap-iso-19115-definition.xml"/>
   <schema fileName="gpt/metadata/iso/nap/nap-iso-19119-definition.xml"/-->
   <schema fileName="gpt/metadata/iso/iso-19115-definition.xml"/>
@@ -44,5 +45,4 @@ between that and the fgdc-bestpractice. Resort so fgdc, dg, ...
   <schema fileName="gpt/metadata/ogc/cswRecord-definition.xml"/>
   <schema fileName="gpt/metadata/other/georss-definition.xml"/> 
   <schema fileName="gpt/metadata/other/opensearch-definition.xml"/>
-  <schema fileName="gpt/metadata/dcat/dcat-definition.xml"/>
 </schemas>

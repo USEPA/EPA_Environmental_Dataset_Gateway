@@ -24,7 +24,7 @@
     <name resourceKey="catalog.browse.toc.browseCatalog"></name>
     <query>searchText=*:*</query>
     
-    <!-- Content types -->
+    <!-- Remove Content types At Mike Pendleton's request 2021-04-23 
 		<item>
 		  <id>1</id>
 		  <name resourceKey="catalog.search.filterContentTypes.title"></name>
@@ -86,7 +86,7 @@
                     <query>contentType=staticMapImage&amp;xsl=metadata_to_html_full</query>
 			</item>
 		</item>
-		
+	-->	
     <!-- Data categories -->
     <item>
         <name resourceKey="catalog.search.filterCategories.title"></name>

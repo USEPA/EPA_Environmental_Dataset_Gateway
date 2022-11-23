@@ -35,12 +35,15 @@
         <OCSPP-OPPT name="OCSPP-OPPT"/>
     </OCSPP>
     <OECA name="OECA"/>
+	<OCFO name="OCFO"/>
     <OEI name="OEI">
         <OEI-OIAA name="OEI-OIAA"/>
         <OEI-OIC name="OEI-OIC"/>
     </OEI>
-    <OCFO name="OCFO"/>
-	<OLEM name="OLEM">
+	<OGC name="OGC"/>
+	<OIG name="OIG"/>
+	<OITA name="OITA"/>
+    <OLEM name="OLEM">
 	<OLEM-OCPA name="OLEM-OCPA"/>
 	<OLEM-FFRRO name="OLEM-FFRRO"/>
 	<OLEM-OBLR name="OLEM-OBLR"/>
@@ -72,4 +75,5 @@
         <Region_9 name="Region 9"/>
         <Region_10 name="Region 10"/>
     </REGIONS>
+	<Extramural-Research name="Extramural-Research"/>
 </owners>

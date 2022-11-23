@@ -31,33 +31,33 @@
       
 	  <!--<property meaning="resource.url" xpath="/metadata/distInfo/distributor/distorTran/onLineSrc/linkage"/>
 	  <property meaning="website.url" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntOnlineRes/linkage"/>-->
-      <property meaning="resource.url" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='webservice']"/>
-	  <property meaning="website.url" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='download']"/>
+      <property meaning="resource.url" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='011']]"/>
+	  <property meaning="website.url" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='009']]"/>
 	  <property meaning="thumbnail.url" xpath="/metadata/dataIdInfo/graphOver/bgFileName"/>
 	    
 	  <property meaning="contentType" xpath="/metadata/Esri/resourceType | /metadata/distInfo/distributor/distorTran/onLineSrc/orDesc"/>
 	  <property meaning="dataTheme" xpath="/metadata/dataIdInfo/tpCat/TopicCatCd/@value"/>
 	  <property meaning="body" xpathType="STRING" xpath="//*"/>
 <!-- dcat-specific -->
-    <property meaning="dcat.publisher" xpath="/metadata/dataIdInfo/idPoC/rpOrgName"/>
-    <property meaning="dcat.person" xpath="/metadata/dataIdInfo/idPoC/rpIndName"/>
-    <property meaning="dcat.mbox" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd"/> 
+    <property meaning="dcat.publisher" xpath="/metadata/dataIdInfo/idPoC/rpOrgName[../role/RoleCd[@value='010']]"/>
+    <property meaning="dcat.person" xpath="/metadata/dataIdInfo/idPoC/rpIndName[../role/RoleCd[@value='010']]"/>
+    <property meaning="dcat.mbox" xpath="/metadata/dataIdInfo/idPoC/rpCntInfo/cntAddress/eMailAdd[../../../role/RoleCd[@value='010']]"/> 
     <property meaning="dcat.accessLevel" xpath="/metadata/dataIdInfo/resConst/SecConsts/class/ClasscationCd/@value"/>
     <property meaning="dcat.programCode" xpath="/metadata/dataIdInfo/subTopicCatKeys/keyword[../thesaName/resTitle='Federal Program Inventory']"/>   
-    <property meaning="dcat.dataDictionary" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='information']"/>
+    <property meaning="dcat.dataDictionary" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='002']]"/>
     
-    <property meaning="dcat.downloadUrl" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='download']"/>
+    <property meaning="dcat.downloadUrl" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='001']]"/>
 
     <property meaning="dcat.accessUrl" 
-      xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='webservice']"/>
+      xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='011']]"/>
     
 <!--Added by Torrin Hultgren 2/21/13 to include "Optional" dcat components-->
     <property meaning="dcat.issued" xpath="/metadata/dataIdInfo/idCitation/date/pubDate"/>
     <property meaning="dcat.accrualPeriodicity" xpath="/metadata/dataIdInfo/resMaint/maintFreq/MaintFreqCd"/>
     <property meaning="dcat.language" xpath="/metadata/dataIdInfo/dataLang/languageCode/@value"/>
-    <property meaning="dcat.references" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='information']"/>
-    <property meaning="dcat.landingPage" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd='browsing']"/>
-    <property meaning="metadataFormat" xpathType="STRING" xpath="'arcgis'"/>
+    <property meaning="dcat.references" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='002']]"/>
+    <property meaning="dcat.landingPage" xpath="/metadata/distInfo/distTranOps/onLineSrc/linkage[../orFunct/OnFunctCd[@value='009']]"/>
+    <!--<property meaning="metadataFormat" xpathType="STRING" xpath="'arcgis'"/>-->
     <property meaning="dcat.accessLevelComment" xpath="/metadata/dataIdInfo/resConst/SecConsts/userNote" xpathType="STRING"/>
     <property meaning="dcat.ParentIdentifier" xpath="/metadata/dataIdInfo/aggrInfo/aggrDSIdent/identCode"/>
     <property meaning="dcat.license" xpath="/metadata/dataIdInfo/resConst/LegConsts/othConsts[not(contains(.,' '))]"/>

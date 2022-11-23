@@ -151,7 +151,7 @@ function rnpInit(){
     });  
   }
   //start extract dcat info
-   var uDCAT = "<%=rnpRestUrlDCAT%>";
+/*    var uDCAT = "<%=rnpRestUrlDCAT%>";
    if(uDCAT.length > 0){		     
     dojo.xhrGet({
       handleAs: "json",
@@ -181,7 +181,7 @@ function rnpInit(){
                     externalLink = externalLink + "&keywords=" + keywordInfo;
                 }
         } */
-        var elLinkDevelop = dojo.byId("rnpLinkDevelop");
+/*        var elLinkDevelop = dojo.byId("rnpLinkDevelop");
         elLinkDevelop.href = externalLink; 
         elLinkDevelop.innerHTML = "Share Your Feedback"; 
 
@@ -189,7 +189,7 @@ function rnpInit(){
 
       }
     });  
-  }
+  }*/ 
   
   //end of extracting dcat info
 }
@@ -208,6 +208,6 @@ table {
 	<a id="rnpDetails" style="margin: 0 1em 0 0" href="<%=rnpDetailUrl %>&xsl=metadata_to_html_full"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.details.title")%></a>
 	<!-- <a id="rnpReview" style="margin: 0 1em 0 0" href="<%=rnpReviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.review.title")%></a>-->
 	<a id="rnpRelationships" style="display:none" href="<%=rnpRelationshipsUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.resource.relationships.title")%></a>
-	<a id="rnpLinkDevelop" href="" style="float:right;" target="_blank"></a>
+	<!--<a id="rnpLinkDevelop" href="" style="float:right;" target="_blank"></a>-->
 	<a id="rnpPreview" style="display:none" href="<%=rnpPreviewUrl %>"><%=com.esri.gpt.framework.jsf.PageContext.extractMessageBroker().retrieveMessage("catalog.search.liveData.title")%></a>	
 </f:verbatim>

@@ -892,13 +892,13 @@ alert("test");
    
     var scPage = dojo.byId("frmSearchCriteria:scCurrentPage").value;
     var scMaxResultsPerPage = dojo.byId("frmSearchCriteria:scRecordsPerPage").value;
-	var intPage = parseInt(scPage);
+    var intPage = parseInt(scPage);
     var intMaxResultsPerPage = parseInt(scMaxResultsPerPage);
     if(intPage != NaN && intMaxResultsPerPage != NaN) {
       var startPosition = ((intPage - 1) * intMaxResultsPerPage) + 1;
       restParams += "&start=" + encodeURIComponent(startPosition);
       restParams += "&max=" + intMaxResultsPerPage;
-	 }
+    }
    
     var scSort = GptUtils.valChkStr(
     dojo.byId("frmSearchCriteria:scSelSortHidden").value);
@@ -931,7 +931,7 @@ alert("test");
       scThemes = scThemes.replace(/\|/g, ","); 
       restParams += "&dataCategory=" + scThemes; 
     }
-	
+   
 	var regionParams = "";
 	for(i=1; i<=10; i++){
 		var region = document.getElementById("frmSearchCriteria:regions"+i);
@@ -987,9 +987,9 @@ alert("test");
     node != null && (node.checked == "checked" || node.checked == true)) {
       restParams += "&expandResults=true";
     }
-  return restParams;
+    return restParams;
   }
-  
+
   function resetSearchText(checkBoxEle){
 	  dojo.byId('frmSearchCriteria:scText').value = "";
 	  }
@@ -1070,7 +1070,7 @@ alert("test");
       url: urlToSearch,
   
       load: dojo.hitch(this, function (data) {
-       if(typeof(clear) == 'boolean' && clear == true) {
+        if(typeof(clear) == 'boolean' && clear == true) {
           window.location = contextPath + "/catalog/search/search.page";
           return;
         }
@@ -2016,7 +2016,7 @@ alert("test");
   <h:panelGrid id="scPnlContent">
     <h:selectOneMenu id="scSelContent"
                      value="#{SearchController.searchCriteria.searchFilterContentTypes.selectedContentType}"
-                     onchange="javascript:updateHiddenValue(this)" 
+                     onchange="javascript:updateHiddenValue(this)"
                      >
       <f:selectItem itemValue=""
                     itemLabel="#{gptMsg['catalog.search.filterContentTypes.default']}" />

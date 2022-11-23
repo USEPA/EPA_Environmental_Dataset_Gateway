@@ -154,7 +154,7 @@ public class InnoRestServlet extends HttpServlet {
             
             out.println(xmlIn);
             return;            
-           /* if (xslParm == null || xslParm.equals("")) {
+            /*if (xslParm == null || xslParm.equals("")) {
                 response.setContentType(contentType);
                 out.println(xmlIn);
                 return;

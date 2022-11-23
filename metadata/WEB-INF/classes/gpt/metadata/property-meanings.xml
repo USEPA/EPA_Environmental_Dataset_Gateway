@@ -180,7 +180,7 @@
      <summary>
       <dc>
         <meaning-names>fileIdentifier,uuid,title</meaning-names>
-                <meaning-names>contentType,dataTheme,sys.childlist,sys.parentlist</meaning-names>
+        <meaning-names>contentType,dataTheme,sys.childlist,sys.parentlist</meaning-names>
         <meaning-names>dateModified,abstract</meaning-names>
         <meaning-names>resource.url,website.url,thumbnail.url,xml.url</meaning-names>
         <meaning-names>geometry,date,relation</meaning-names>
@@ -434,13 +434,65 @@
   <property-meaning name="dcat.primaryITInvestmentUII" valueType="String" comparisonType="value"/>
   <property-meaning name="dcat.describedBy" valueType="String" comparisonType="value"/>
   <property-meaning name="dcat.describedByType" valueType="String" comparisonType="value"/>
-  <property-meaning name="dcat.downloadUrl2" valueType="String" comparisonType="value"/>  
-  <property-meaning name="dcat.downloadUrl3" valueType="String" comparisonType="value"/>  
-  <property-meaning name="dcat.downloadUrl4" valueType="String" comparisonType="value"/>  
-  <property-meaning name="dcat.downloadUrl5" valueType="String" comparisonType="value"/>  
-  <property-meaning name="dcat.downloadUrl6" valueType="String" comparisonType="value"/>  
-  <property-meaning name="dcat.downloadUrl7" valueType="String" comparisonType="value"/>  
-  <property-meaning name="dcat.downloadUrl8" valueType="String" comparisonType="value"/>  
-  <property-meaning name="dcat.downloadUrl9" valueType="String" comparisonType="value"/>  
-  <property-meaning name="dcat.downloadUrl10" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle1" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL1" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL1" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle2" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL2" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL2" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle3" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL3" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL3" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle4" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL4" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL4" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle5" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL5" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL5" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle6" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL6" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL6" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle7" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL7" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL7" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle8" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL8" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL8" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle9" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL9" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL9" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle10" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL10" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL10" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle11" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL11" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL11" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle12" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL12" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL12" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle13" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL13" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL13" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle14" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL14" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL14" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle15" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL15" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL15" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle16" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL16" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL16" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle17" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL17" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL17" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle18" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL18" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL18" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle19" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL19" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL19" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURLtitle20" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.downloadURL20" valueType="String" comparisonType="value"/>  
+  <property-meaning name="dcat.accessURL20" valueType="String" comparisonType="value"/>  
+ 
 </property-meanings>

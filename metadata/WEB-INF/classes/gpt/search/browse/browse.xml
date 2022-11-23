@@ -17,5 +17,5 @@
 <treeCollection>
   <tree key="browseCatalog" fileName="https://edg-staging.epa.gov/metadata/BrowseOwners"/>
   <!--tree key="browseCatalog" fileName="gpt/search/browse/browse-catalog.xml"/-->
-  <tree key="browseResource" fileName="gpt/search/browse/browse-resource.xml"/>
+  <tree key="browseResource" fileName="metadata/search/browse/browse-resource.xml"/>
 </treeCollection>
