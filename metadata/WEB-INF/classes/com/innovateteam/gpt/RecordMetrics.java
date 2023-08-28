@@ -120,7 +120,7 @@ public class RecordMetrics extends HttpServlet {
         if(rip!=null && rip.length() >= 7) {
             BufferedReader in = null;
             try {
-                URL geolocator = new URL("http://geoip3.maxmind.com/f?l=uHb8LATVUFub&i=" + rip);
+                URL geolocator = new URL("https://geoip.maxmind.com/f?l=uHb8LATVUFub&i=" + rip);
                 in = new BufferedReader(new InputStreamReader(geolocator.openStream()));
                 geoInfo = in.readLine();
             }
