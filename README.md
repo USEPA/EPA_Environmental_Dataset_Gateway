@@ -1,4 +1,5 @@
 # EPA_Environmental_Dataset_Gateway
+DEPRECATED - This repository is no longer being maintained and is available for reuse.
 
 The EPA Environmental Dataset Gateway (EDG) is an open-source metadata catalog built on [Esri's Geoportal Server](https://github.com/Esri/geoportal-server). 
 
